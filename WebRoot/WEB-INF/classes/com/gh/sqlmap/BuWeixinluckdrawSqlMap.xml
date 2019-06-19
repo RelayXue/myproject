@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="tj_BuWeixinluckdraw">
+
+    <resultMap id="re_BuWeixinluckdraw" class="com.gh.entity.BuWeixinluckdraw">
+        <result property="fuid" column="FUID"/>
+        <result property="content" column="CONTENT"/>
+        <result property="userid" column="USERID"/>
+        <result property="headerimg" column="HEADERIMG"/>
+        <result property="username" column="USERNAME"/>
+        <result property="iswinning" column="ISWINNING"/>
+        <result property="drawtime" column="DRAWTIME"/>
+        <result property="awardtime" column="AWARDTIME"/>
+        <result property="isaward" column="ISAWARD"/>
+    </resultMap>
+    
+    <!-- 用于select查询公用抽取的列 -->
+	<sql id="BuWeixinluckdraw.columns">
+	    <![CDATA[
+        FUID ,CONTENT ,USERID ,HEADERIMG ,USERNAME ,ISWINNING ,DRAWTIME ,AWARDTIME ,ISAWARD 
+	    ]]>
+	</sql>
+  
+	 <select id="selectByPrimaryKey" parameterClass="com.gh.entity.BuWeixinluckdraw" resultMap="re_BuWeixinluckdraw">
+	    SELECT <include refid="BuWeixinluckdraw.columns"/>
+	    from bu_weixinluckdraw
+	    where 
+		        FUID = #fuid:VARCHAR# 
+ 	 </select>
+ 	 
+	<delete id="deleteByPrimaryKey" parameterClass="com.gh.entity.BuWeixinluckdraw">
+	    delete from bu_weixinluckdraw
+    	where 
+		        FUID = #fuid:VARCHAR# 
+  </delete>
+  
+  	<delete id="deleteByWhere" parameterClass="java.lang.String">
+	    delete from bu_weixinluckdraw
+    	where 
+		      $swhere$
+	  </delete>
+  
+   <insert id="insert" parameterClass="com.gh.entity.BuWeixinluckdraw">
+	        insert into bu_weixinluckdraw (  FUID ,   CONTENT ,   USERID ,   HEADERIMG ,   USERNAME ,   ISWINNING ,   DRAWTIME ,   AWARDTIME ,   ISAWARD   )
+   	 	values ( #fuid:VARCHAR# ,  #content:VARCHAR# ,  #userid:VARCHAR# ,  #headerimg:VARCHAR# ,  #username:VARCHAR# ,  #iswinning:VARCHAR# ,  #drawtime:TIMESTAMP# ,  #awardtime:TIMESTAMP# ,  #isaward:VARCHAR#  )
+   	
+  </insert>
+ 	
+ 	
+ 	<update id="updateByPrimaryKey" parameterClass="com.gh.entity.BuWeixinluckdraw">
+   	UPDATE bu_weixinluckdraw SET
+	        CONTENT = #content:VARCHAR# ,
+	        USERID = #userid:VARCHAR# ,
+	        HEADERIMG = #headerimg:VARCHAR# ,
+	        USERNAME = #username:VARCHAR# ,
+	        ISWINNING = #iswinning:VARCHAR# ,
+	        DRAWTIME = #drawtime:TIMESTAMP# ,
+	        AWARDTIME = #awardtime:TIMESTAMP# ,
+	        ISAWARD = #isaward:VARCHAR# 
+        WHERE 
+	        FUID = #fuid:VARCHAR# 
+  </update>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterClass="com.gh.entity.BuWeixinluckdraw">
+  	  update bu_weixinluckdraw
+  	  <dynamic prepend="set">
+  	   <isNotNull prepend="," property="fuid">
+  	 	  FUID = #fuid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="content">
+  	 	  CONTENT = #content:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="userid">
+  	 	  USERID = #userid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="headerimg">
+  	 	  HEADERIMG = #headerimg:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="username">
+  	 	  USERNAME = #username:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="iswinning">
+  	 	  ISWINNING = #iswinning:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="drawtime">
+  	 	  DRAWTIME = #drawtime:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="awardtime">
+  	 	  AWARDTIME = #awardtime:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="isaward">
+  	 	  ISAWARD = #isaward:VARCHAR#
+  	  </isNotNull>
+     </dynamic>
+    where FUID = #fuid:VARCHAR# 
+  </update>
+  
+   <select id="execSql" parameterClass="string" resultMap="re_BuWeixinluckdraw"><![CDATA[$sql$]]></select>
+   
+    <select id="execSqlObject" parameterClass="string" resultClass="java.lang.Object"><![CDATA[$sql$]]></select>
+</sqlMap>
+

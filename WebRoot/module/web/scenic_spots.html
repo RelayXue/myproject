@@ -1,0 +1,205 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>乌镇国际旅游区</title>
+<script type="text/javascript" src="<%=basePath%>js/jquery-1.8.3.min.js"></script>
+<link rel="stylesheet" type="text/css" href="<%=basePath %>Resource/Theme/StyleDefault/style.css"/>  
+<script type="text/javascript" src="<%=basePath %>js/GPS/map.js"></script>
+<script type="text/javascript" src="<%=basePath%>module/web/js/common.js"></script>
+<script type="text/javascript" src="<%=basePath%>module/web/js/TTuJing.js"></script>
+<script type="text/javascript" src="<%=basePath%>module/web/js/TMapType.js"></script>
+<script type="text/javascript" src="<%=basePath%>module/web/js/TJSoft.js"></script>
+<link rel="stylesheet" type="text/css" href="<%=basePath%>module/web/css/main.css"/>
+<style type="text/css">
+._stream_list{
+	display:block;
+	width:254px;
+	float:left;
+}
+
+._stream_list ._item{
+	display:block;
+	border-radius: 5px;            /* W3C syntax */
+    -moz-border-radius: 5px;      /* Gecko browsers */
+    -webkit-border-radius: 5px;   /* Webkit browsers */
+	box-shadow:0px 0px 6px #4E4E4E;
+	width:243px;
+	background-color:#f8f8ec;
+	margin:0 12px 12px 0;
+	overflow:hidden;
+	font-family:"微软雅黑", "幼圆", "黑体";
+	overflow:hidden;
+}
+
+._stream_list ._item img{
+	display:block;
+	border-radius: 5px;            /* W3C syntax */
+    -moz-border-radius: 5px;      /* Gecko browsers */
+    -webkit-border-radius: 5px;   /* Webkit browsers */
+	width:227px;
+	overflow:hidden;
+	margin:8px;
+}
+
+._stream_list ._item ._title{
+	margin-left:8px;
+	font-size:20px;
+}
+._stream_list ._item ._content{
+	font-size:14px;
+	color:#666;
+	margin:0 8px 8px 8px;
+}
+</style>
+<script type="text/javascript">
+function openDetailLayout(){
+	$.layer({
+    type: 2,
+    border: [0],
+    title: false,
+    shadeClose: true,
+    closeBtn: false,
+    iframe: {src : 'open_layout.html'},
+    area: ['637px', '628px']
+});
+}
+
+$(function(){
+	$("._stream_list ._item").click(function(){
+		openDetailLayout();
+	});
+});
+
+</script>
+</head>
+
+<body>
+<div class="_top">
+	<div class="_grop">
+    	<div class="_logo"></div>
+        <div class="_box">
+        	<div class="_name"></div>
+            <div class="_ms">
+            	<div class="_search_box">
+               		<input type="text" placeholder="综合查询" value="综合查询"/>
+                    <div class="_search_btn"></div>
+                </div>
+                <div class="_menu">景点  |  服务  |  机构  |  特色街  |  购物  |  特产  |  交通播报</div>
+            </div>
+            <div class="_weather">
+            	<img src="images/m_icon_06.png" />
+                <div class="_tt1">25℃ [晴]</div>
+                <div class="_tt2">东北风（3~4）级</div>
+            </div>
+        </div>
+    </div>
+    <div class="_tllp"></div>
+</div>
+<div style=" width:980px; margin:0 auto;">
+    <div class="_body_top_menu">
+
+    	<div style="background-image:url(images/21_04.png); background-position:0 center; background-repeat:no-repeat; padding-left:32px; height:32px; position:absolute; left:15px; top:12px;" ><span style="font-size:18px; line-height:42px;">景点</span></div>
+        <div style="padding-left: 50px;">
+        <div class="_menu_btn _hover">西栅(50)</div>
+        <div class="_menu_btn">东栅(50)</div>
+        <div style="clear:both"></div>
+        </div>
+    </div>
+    <div style="overflow:hidden; width:1020px">
+        <div class="_stream_list">
+            <div class="_item">
+            	<img src="http://www.w3school.com.cn/i/eg_tulip.jpg" />
+                <div class="_title">西栅水阁</div>
+                <div class="_content">水阁是乌镇独具一格的建筑形式</div>
+            </div>
+            <div class="_item">
+            	<img src="http://f.hiphotos.baidu.com/image/pic/item/f2deb48f8c5494eeb528761b2ef5e0fe99257ead.jpg" />
+                <div class="_title">西栅水阁</div>
+                <div class="_content">水阁是乌镇独具一格的建筑形式</div>
+            </div>
+            <div class="_item">
+            	<img src="http://h.hiphotos.baidu.com/image/pic/item/e1fe9925bc315c60cb71c4748fb1cb1348547741.jpg" />
+                <div class="_title">西栅水阁</div>
+                <div class="_content">水阁是乌镇独具一格的建筑形式</div>
+            </div>
+        </div>
+        <div class="_stream_list">
+            <div class="_item">
+            	<img src="http://a.hiphotos.baidu.com/image/pic/item/279759ee3d6d55fb1abdc82f6f224f4a20a4dd44.jpg" />
+                <div class="_title">西栅水阁</div>
+                <div class="_content">水阁是乌镇独具一格的建筑形式</div>
+            </div>
+            <div class="_item">
+            	<img src="http://b.hiphotos.baidu.com/image/pic/item/86d6277f9e2f07080160f21deb24b899a901f242.jpg" />
+                <div class="_title">西栅水阁</div>
+                <div class="_content">水阁是乌镇独具一格的建筑形式</div>
+            </div>
+        </div>
+        <div class="_stream_list">
+            <div class="_item">
+            	<img src="http://d.hiphotos.baidu.com/image/pic/item/10dfa9ec8a1363278957c93b938fa0ec08fac704.jpg" />
+                <div class="_title">西栅水阁</div>
+                <div class="_content">水阁是乌镇独具一格的建筑形式</div>
+            </div>
+            <div class="_item">
+            	<img src="http://c.hiphotos.baidu.com/image/pic/item/adaf2edda3cc7cd987b16cde3b01213fb80e911c.jpg" />
+                <div class="_title">西栅水阁</div>
+                <div class="_content">水阁是乌镇独具一格的建筑形式</div>
+            </div>
+            <div class="_item">
+            	<img src="http://a.hiphotos.baidu.com/image/pic/item/2f738bd4b31c8701919e66b7257f9e2f0708ffb3.jpg" />
+                <div class="_title">西栅水阁</div>
+                <div class="_content">水阁是乌镇独具一格的建筑形式</div>
+            </div>
+            <div class="_item">
+            	<img src="http://c.hiphotos.baidu.com/image/pic/item/b21c8701a18b87d6156a7f4e050828381f30fdb3.jpg" />
+                <div class="_title">西栅水阁</div>
+                <div class="_content">水阁是乌镇独具一格的建筑形式</div>
+            </div>
+        </div>
+        <div class="_stream_list">
+            <div class="_item">
+            	<img src="http://c.hiphotos.baidu.com/image/pic/item/8b82b9014a90f60351c248163b12b31bb051ed75.jpg" />
+                <div class="_title">西栅水阁</div>
+                <div class="_content">水阁是乌镇独具一格的建筑形式</div>
+            </div>
+            <div class="_item">
+            	<img src="http://h.hiphotos.baidu.com/image/w%3D230/sign=70e82f229f16fdfad86cc1ed848f8cea/241f95cad1c8a7861e109e076509c93d70cf5085.jpg" />
+                <div class="_title">西栅水阁</div>
+                <div class="_content">水阁是乌镇独具一格的建筑形式</div>
+            </div>
+            <div class="_item">
+            	<img src="http://e.hiphotos.baidu.com/image/w%3D230/sign=2fd955b68e5494ee8722081a1df5e0e1/7e3e6709c93d70cfe7c07e04fadcd100baa12b85.jpg" />
+                <div class="_title">西栅水阁</div>
+                <div class="_content">水阁是乌镇独具一格的建筑形式</div>
+            </div>
+            <div class="_item">
+            	<img src="http://d.hiphotos.baidu.com/image/pic/item/b812c8fcc3cec3fdcf6e0475d488d43f87942759.jpg" />
+                <div class="_title">西栅水阁</div>
+                <div class="_content">水阁是乌镇独具一格的建筑形式</div>
+            </div>
+        </div>
+        
+    </div>
+    
+      <!-- 分页 -->
+      <div class="_next_btn">更多景点</div>
+    
+</div>
+<div class="_bottom">
+<span style="color:#969696">————————————————</span>&nbsp;&nbsp;&nbsp;&nbsp;乌镇国际旅游区&nbsp;&nbsp;·&nbsp;&nbsp;联系我们&nbsp;&nbsp;·&nbsp;&nbsp;友情链接&nbsp;&nbsp;·&nbsp;&nbsp;媒体专区&nbsp;&nbsp;·&nbsp;&nbsp;网络预订&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#969696">————————————————</spa
+></div>
+
+
+<!-- 回首页 -->
+<div class="_totop">回顶部</div>
+
+</body>
+</html>

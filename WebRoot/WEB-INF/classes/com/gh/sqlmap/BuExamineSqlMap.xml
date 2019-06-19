@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="tj_BuExamine">
+
+    <resultMap id="re_BuExamine" class="com.gh.entity.BuExamine">
+        <result property="fuid" column="FUID"/>
+        <result property="passenger" column="PASSENGER"/>
+        <result property="ephone" column="EPHONE"/>
+        <result property="pid" column="PID"/>
+        <result property="arrivetime" column="ARRIVETIME"/>
+        <result property="reason" column="REASON"/>
+        <result property="hostelname" column="HOSTELNAME"/>
+        <result property="hostelid" column="HOSTELID"/>
+        <result property="managers" column="MANAGERS"/>
+        <result property="audittime" column="AUDITTIME"/>
+        <result property="auditperson" column="AUDITPERSON"/>
+        <result property="auditstatus" column="AUDITSTATUS"/>
+        <result property="createdate" column="CREATEDATE"/>
+    </resultMap>
+    
+    <!-- 用于select查询公用抽取的列 -->
+	<sql id="BuExamine.columns">
+	    <![CDATA[
+        FUID ,PASSENGER ,EPHONE ,PID ,ARRIVETIME ,REASON ,HOSTELNAME ,HOSTELID ,MANAGERS ,AUDITTIME ,AUDITPERSON ,AUDITSTATUS ,CREATEDATE 
+	    ]]>
+	</sql>
+  
+	 <select id="selectByPrimaryKey" parameterClass="com.gh.entity.BuExamine" resultMap="re_BuExamine">
+	    SELECT <include refid="BuExamine.columns"/>
+	    from bu_examine
+	    where 
+		        FUID = #fuid:VARCHAR# 
+ 	 </select>
+ 	 
+	<delete id="deleteByPrimaryKey" parameterClass="com.gh.entity.BuExamine">
+	    delete from bu_examine
+    	where 
+		        FUID = #fuid:VARCHAR# 
+  </delete>
+  
+  	<delete id="deleteByWhere" parameterClass="java.lang.String">
+	    delete from bu_examine
+    	where 
+		      $swhere$
+	  </delete>
+  
+   <insert id="insert" parameterClass="com.gh.entity.BuExamine">
+	        insert into bu_examine (  FUID ,   PASSENGER ,   EPHONE ,   PID ,   ARRIVETIME ,   REASON ,   HOSTELNAME ,   HOSTELID ,   MANAGERS ,   AUDITTIME ,   AUDITPERSON ,   AUDITSTATUS ,   CREATEDATE   )
+   	 	values ( #fuid:VARCHAR# ,  #passenger:VARCHAR# ,  #ephone:VARCHAR# ,  #pid:VARCHAR# ,  #arrivetime:TIMESTAMP# ,  #reason:VARCHAR# ,  #hostelname:VARCHAR# ,  #hostelid:VARCHAR# ,  #managers:VARCHAR# ,  #audittime:TIMESTAMP# ,  #auditperson:VARCHAR# ,  #auditstatus:VARCHAR# ,  #createdate:TIMESTAMP#  )
+   	
+  </insert>
+ 	
+ 	
+ 	<update id="updateByPrimaryKey" parameterClass="com.gh.entity.BuExamine">
+   	UPDATE bu_examine SET
+	        PASSENGER = #passenger:VARCHAR# ,
+	        EPHONE = #ephone:VARCHAR# ,
+	        PID = #pid:VARCHAR# ,
+	        ARRIVETIME = #arrivetime:TIMESTAMP# ,
+	        REASON = #reason:VARCHAR# ,
+	        HOSTELNAME = #hostelname:VARCHAR# ,
+	        HOSTELID = #hostelid:VARCHAR# ,
+	        MANAGERS = #managers:VARCHAR# ,
+	        AUDITTIME = #audittime:TIMESTAMP# ,
+	        AUDITPERSON = #auditperson:VARCHAR# ,
+	        AUDITSTATUS = #auditstatus:VARCHAR# ,
+	        CREATEDATE = #createdate:TIMESTAMP# 
+        WHERE 
+	        FUID = #fuid:VARCHAR# 
+  </update>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterClass="com.gh.entity.BuExamine">
+  	  update bu_examine
+  	  <dynamic prepend="set">
+  	   <isNotNull prepend="," property="passenger">
+  	 	  PASSENGER = #passenger:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="ephone">
+  	 	  EPHONE = #ephone:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="pid">
+  	 	  PID = #pid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="arrivetime">
+  	 	  ARRIVETIME = #arrivetime:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="reason">
+  	 	  REASON = #reason:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="hostelname">
+  	 	  HOSTELNAME = #hostelname:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="hostelid">
+  	 	  HOSTELID = #hostelid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="managers">
+  	 	  MANAGERS = #managers:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="audittime">
+  	 	  AUDITTIME = #audittime:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="auditperson">
+  	 	  AUDITPERSON = #auditperson:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="auditstatus">
+  	 	  AUDITSTATUS = #auditstatus:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createdate">
+  	 	  CREATEDATE = #createdate:TIMESTAMP#
+  	  </isNotNull>
+     </dynamic>
+    where FUID = #fuid:VARCHAR# 
+  </update>
+  
+   <select id="execSql" parameterClass="string" resultMap="re_BuExamine"><![CDATA[$sql$]]></select>
+   
+    <select id="execSqlObject" parameterClass="string" resultClass="java.lang.Object"><![CDATA[$sql$]]></select>
+</sqlMap>
+

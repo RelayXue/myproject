@@ -1,0 +1,28 @@
+@charset "utf-8";
+/* CSS Document */
+
+#container{background:#f4f1e7;}
+
+#header{width:100%;height:35px;background:#2e3c50;padding:10px 0px;float:left; text-align:center;}
+#header #return{width:20%;height:100%;float:left;}
+#header a{display:block;width:100%;height:100%;line-height:35px;text-align:center;}
+#header #return a{background:url(../images/return.png) center center no-repeat;}
+/*搜索框*/
+#header #title{float:left;width:60%;height:100%;text-align:center;color:#fff;font-size:1.1875em;line-height:35px;}
+/*弹出层*/
+#hover{margin:0px 15px;}
+#hover p{border:1px solid #b4b4b4;background:#fff;border-radius:5px;margin-top:10px;padding:10px 0px;float:left;width:100%;box-sizing: border-box;}
+#hover input{width:100%;height:100%;float:left;font-size:0.95em;}
+#hover .bor input{border-left:5px solid #fff;box-sizing: border-box;}
+#hover .btn{border:0px;}
+#hover p span{display:block;float:left;width:15%;color:#272727;	font-size:0.95em;text-align:right;border-left:5px solid #fff;box-sizing: border-box;}
+#hover p .w80{width:85%;}
+#hover .h120{height:120px;}
+#hover textarea{height:100%;width:100%;font-size:1.1em;outline:none;border:none;color:#a4a4a4;border-left:5px solid #fff;box-sizing: border-box;}
+#hover .sc span{display:block;width:100%;text-align:center;color:#a4a4a4;}
+#hover .sc img{margin-bottom:5px;}
+#hover .btn{padding:0px;}
+#hover .btn input{height:40px;background:#717699;border-radius:5px;color:#fff;font-size:1.2em; cursor:pointer;}
+
+
+

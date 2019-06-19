@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.devMode" value="false" />
+	<package name="system" namespace="/" extends="oriental-pearl">
+		<!-- 部门 -->
+		<action name="Organize" class="com.gh.action.system.OrganizeAction"
+			method="show">
+			<result name="Organize">/system/Organize.jsp</result>
+			<result name="showMenu" type="redirectAction">
+				<param name="actionName">Menu!showMenu?OrganizeId=${OrganizeId}</param>
+			</result>
+			<result name="OrganizeEditor">/system/OrganizeEditor.jsp
+			</result>
+		</action>
+		<!-- 登录 -->
+		<action name="Login" class="com.gh.action.system.LoginAction" method="login">
+			<result name="login">/login.jsp</result>
+			<result name="logins">/login.jsp</result>
+			<result name="indexY" type="redirectAction">
+				<param name="actionName">User!index?type=${type}</param>
+			</result>
+			<result name="index" type="redirectAction">
+				<param name="actionName">User!index</param>
+			</result>
+			<result name="virtual" type="redirectAction">
+				<param name="actionName">virtual</param>
+			</result>
+		</action>
+		<!-- 用户 -->
+		<action name="User" class="com.gh.action.system.UserAction"
+			method="show">
+			<result name="main">/main.jsp</result>
+			<result name="mainY">/mainY.jsp</result>
+			<result name="left">/left.jsp</result>
+			<result name="logins">/login.jsp</result>
+			<result name="user">/system/user.jsp</result>
+			<result name="userinfo">/system/user_info.jsp</result>
+			<result name="usereditor">/system/user_info_edit.jsp</result>
+			<result name="show" type="redirectAction">
+				<param name="actionName">User!Usershow?OrganizeId=${OrganizeId}</param>
+			</result>
+		    <result name="PasswordUpdate">/business/PasswordUpdate.jsp</result>
+			<result name="passLogout" type="redirectAction">
+				<param name="actionName">Login!logout</param>
+			</result>
+
+		</action>
+		<!-- 角色 -->
+		<action name="Role" class="com.gh.action.system.RoleAction"
+			method="show">
+			<result name="role">/system/role.jsp</result>
+			<result name="scopeRole">/system/scope_role.jsp</result>
+			<result name="roleChange">/system/role_change.jsp</result>
+			<result name="roleEditor">/system/role_edit.jsp</result>
+			<result name="show" type="redirectAction">
+				<param name="actionName">Role!showRole?OrganizeId=${OrganizeId}</param>
+			</result>
+		</action>
+		<!-- 菜单 -->
+		<action name="Menu" class="com.gh.action.system.MenuAction"
+			method="show">
+			<result name="menu">/system/menu.jsp</result>
+			<result name="menuorganize">/system/menu_organize.jsp</result>
+			<result name="menurole">/system/menu_role.jsp</result>
+			<result name="MenuEditor">/system/menu_edit.jsp</result>
+			<result name="show" type="redirectAction">
+				<param name="actionName">Menu</param>
+			</result>
+		</action>
+		<!-- 操作 -->
+		<action name="Operating" class="com.gh.action.system.OperatingAction"
+			method="show">
+			<result name="operating">/system/operating.jsp</result>
+			<result name="OperatingInfo">/system/operating_info.jsp
+			</result>
+			<result name="operatingEditor">/system/operating_info_edit.jsp
+			</result>
+			<result name="show" type="redirectAction">
+				<param name="actionName">Operating!Operatingshow?MenuId=${MenuId}</param>
+			</result>
+		</action>
+		<!-- 操作日志 -->
+		<action name="OperatingLog" class="com.gh.action.system.OperationLogAction" method="show">
+			<result name="OperatingLog">/system/OperatingLog.jsp</result>
+			<result name="show" type="redirectAction">
+				<param name="actionName">OperatingLog</param>
+			</result>
+		</action>
+		<!-- 数据集权限 -->
+		<action name="Scope" class="com.gh.action.system.ScopeAction"
+			method="show">
+			<result name="BaseScope">/system/scope_menu.jsp</result>
+			<result name="OperatingInfo">/system/operating_info.jsp
+			</result>
+			<result name="operatingEditor">/system/operating_info_edit.jsp
+			</result>
+			<result name="show" type="redirectAction">
+				<param name="actionName">Operating!Operatingshow?MenuId=${MenuId}</param>
+			</result>
+		</action>
+		<!-- 数据字典 -->
+		<action name="Datadictionary" class="com.gh.action.system.DatadictionaryAction"
+			method="show">
+			<result name="Type">/system/Type.jsp</result>
+			<result name="Type2">/system/Type2.jsp</result>
+			<result name="Type3">/system/Type3.jsp</result>
+			<result name="TypeEditor">/system/TypeEditor.jsp</result>
+			<result name="show1" type="redirectAction">
+				<param name="actionName">Datadictionary!show?code=${code}</param>
+			</result>
+			<result name="show2" type="redirectAction">
+				<param name="actionName">Datadictionary!showChild2?code=${code}</param>
+			</result>
+			<result name="show3" type="redirectAction">
+				<param name="actionName">Datadictionary!showChild3?code=${code}</param>
+			</result>
+		</action>
+		
+	</package>
+	<package name="business" namespace="/" extends="oriental-pearl">
+	
+	
+		<!-- 自动提示数据 -->
+		<action name="PromptData" class="com.gh.action.business.ObPromptdataAction"
+			method="show">
+		</action>
+		<!-- 视频管理 -->
+		<action name="obVideo" class="com.gh.action.business.ObVideoAction" method="show">
+			<result name="ObVideoEditor">/business/ObVideoEditor.jsp
+			</result>
+			<result name="ObVideo">/business/ObVideo.jsp</result>
+			<result name="showVideo">/GPS/Video.jsp</result>
+			<result name="show" type="redirectAction">
+				<param name="actionName">obVideo</param>
+			</result>
+		</action>
+		<!-- 事件管理 -->
+		<action name="buEvent" class="com.gh.action.business.BuEventAction" method="show">
+			<result name="buEventEditor">/business/BuEventEditor.jsp
+			</result>
+			<result name="CountAnalysis">/business/CountAnalysis.jsp</result>
+			<result name="YearAnalysis">/business/BuEventYearAnalysis.jsp</result>
+			<result name="buEvent">/business/BuEvent.jsp</result>
+			<result name="buEventCount">/business/BuEventCount.jsp</result>
+			<result name="show" type="redirectAction">
+				<param name="actionName">buEvent?indexPage=${indexPage}</param>
+			</result>
+		</action>
+		<!-- 服务项目管理 -->
+		<action name="buServiceltems" class="com.gh.action.business.BuServiceltemsAction" method="show">
+			<result name="buServiceltemsEditor">/business/BuServiceltemsEditor.jsp
+			</result>
+			<result name="buServiceltems">/business/BuServiceltems.jsp</result>
+			<result name="show" type="redirectAction">
+				<param name="actionName">buServiceltems?indexPage=${indexPage}</param>
+			</result>
+		</action>
+		<!-- 人员管理 -->
+		<action name="buPersonnel" class="com.gh.action.business.BuPersonnelAction" method="show">
+			<result name="buPersonnelEditor">/business/BuPersonnelEditor.jsp
+			</result>
+			<result name="buPersonnel">/business/BuPersonnel.jsp</result>
+			<result name="show" type="redirectAction">
+				<param name="actionName">buPersonnel?indexPage=${indexPage}</param>
+			</result>
+			<result name="selectperson">/business/selectPerson.jsp</result>
+		</action>
+		<!-- 人员地图位置 -->
+		<action name="select" class="com.gh.action.business.SelectAction" >
+			<result name="personSite">/business/map_person_wz.jsp</result>
+			<result name="personGJ">business/map_background.jsp?type=gj</result>
+			<result name="selectTJ">business/personGj.jsp</result>
+		</action>
+		
+		<!-- 特色商铺管理 -->
+		<action name="buCommodity" class="com.gh.action.business.BuCommodityAction" method="show">
+			<result name="buCommodityExamine">/business/BuBarcodeExamine_commodity.jsp</result>
+			<result name="BuBarcode">/business/BuBarcode_commodity.jsp</result>
+			<result name="buCommodityEditor">/business/BuCommodityEditor.jsp
+			</result>
+			<result name="buCommodity">/business/BuCommodity.jsp</result>
+			<result name="show" type="redirectAction">
+				<param name="actionName">buCommodity?indexPage=${indexPage}</param>
+			</result>
+			<result name="showExamine" type="redirectAction">
+				<param name="actionName">buCommodity!BcodeShow?indexPage=${indexPage}</param>
+			</result>
+		</action>
+		<!-- 特色活动管理 -->
+		<action name="buActivities" class="com.gh.action.business.BuActivitiesAction" method="show">
+			<result name="buActivitiesEditor">/business/BuActivitiesEditor.jsp
+			</result>
+			<result name="buActivities">/business/BuActivities.jsp</result>
+			<result name="show" type="redirectAction">
+				<param name="actionName">buActivities?indexPage=${indexPage}</param>
+			</result>
+		</action>
+		<!-- 评论管理 -->
+		<action name="buComment" class="com.gh.action.business.BuCommentAction" method="show">
+			<result name="buComment">/business/BuComment.jsp</result>
+			<result name="show" type="redirectAction">
+				<param name="actionName">buComment</param>
+				<param name="indexPage">${indexPage}</param>
+				<param name="type">${type}</param>
+			</result>
+		</action>
+		<!-- 兴趣点管理 -->
+		<action name="buInterest" class="com.gh.action.business.BuInterestAction" method="show">
+			<result name="buInterestEditor">/business/BuInterestEditor.jsp
+			</result>
+			<result name="map_Other">/business/map_Other.jsp</result>
+			<result name="buInterest">/business/BuInterest.jsp</result>
+			<result name="BuInterestCount">/business/BuInterestCount.jsp</result>
+			<result name="show" type="redirectAction">
+				<param name="actionName">buInterest</param>
+				<param name="indexPage">${indexPage}</param>
+				<param name="skey">${skey}</param>
+				<param name="type">${type}</param>
+			</result>
+		</action>
+		<!-- 统计分析-->
+		<action name="Analysis" class="com.gh.action.business.AnalysisAction" >
+			<result name="AffairsAnalysis">/Analysis/AffairsAnalysis.jsp</result>
+			<result name="NewsAnalysis">/Analysis/NewsAnalysis.jsp</result>
+			
+		</action>
+		<!-- 路线管理 -->
+		<action name="buNavigation" class="com.gh.action.business.BuNavigationAction" method="show">
+			<result name="buNavigationEditor">/business/BuNavigationEditor.jsp
+			</result>
+			<result name="buNavigation">/business/BuNavigation.jsp</result>
+			<result name="show" type="redirectAction">
+				<param name="actionName">buNavigation</param>
+				<param name="indexPage">${indexPage}</param>
+				<param name="skey">${skey}</param>
+			</result>
+		</action>
+		<!-- 微信消息管理-->
+		<action name="weixinMessage" class="com.gh.action.weixin.backstage.BuWeixinmessageAction" method="show">
+			<result name="buWeixinmessageEditor">/module/weixin/BuWeixinmessageEditor.jsp</result>
+			<result name="buWeixinmessage">/module/weixin/BuWeixinmessage.jsp</result>
+			<result name="show" type="redirectAction">
+				<param name="actionName">buNavigation</param>
+				<param name="indexPage">${indexPage}</param>
+				<param name="skey">${skey}</param>
+			</result>
+		</action>
+		<!-- 虚拟游地图-->
+		<action name="map" class="com.gh.action.gps.mapAction" method="show">
+			<result name="map">/gps/Map.jsp</result>
+			<result name="show" type="redirectAction">
+				<param name="actionName">map</param>
+			</result>
+		</action>
+		<!-- 图片上传-->
+		<action name="fileUpload" class="com.gh.action.business.ObImagesAction" method="show">
+			<result name="obImg">/business/fileUpload.jsp</result>
+			<result name="show" type="redirectAction">
+				<param name="actionName">fileUpload</param>
+				<param name="uid">${uid}</param>
+				<param name="otherId">${otherId}</param>
+			</result>
+		</action>
+		<!-- 路网管理 -->
+		<action name="buRoad" class="com.gh.action.web.BuRoadAction" method="show">
+			<result name="buRoadEditor">/business/BuRoadEditor.jsp
+			</result>
+			<result name="buRoad">/business/BuRoad.jsp</result>
+			<result name="show" type="redirectAction">
+				<param name="actionName">buRoad?indexPage=${indexPage}</param>
+			</result>
+		</action>
+	</package>
+	<package name="tour" namespace="/" extends="struts-default">
+	  <!-- 前端虚拟游-->
+		<action name="virtual" class="com.gh.action.tour.VirtualAction" method="show">
+			<result name="scenicDetail">/tour/scenicDetail.jsp</result>
+			<result name="attrDetail">/tour/attrDetail.jsp</result>
+			<result name="serviceItemsDetail">/tour/serviceItemsDetail.jsp</result>
+			<result name="commodityDetail">/tour/commodityDetail.jsp</result>
+			<result name="activitiesDetail">/tour/activitiesDetail.jsp</result>
+			<result name="virtual">/tour/virtual.jsp</result>
+			<result name="show" type="redirectAction">
+				<param name="actionName">virtual</param>
+			</result>
+		</action>
+	</package>
+	<package name="weixin" namespace="/" extends="struts-default">
+	  <!-- 微信接入验证-->
+		<action name="weixin" class="com.gh.action.weixin.backstage.WeixinAction" >
+		</action>
+		<!-- 微信菜单管理--> 
+		<action name="weixinMenu" class="com.gh.action.weixin.backstage.BuWeixinmenuAction"   method="show" >
+			<result name="buWeixinmenu">/weixin/BuWeixinmenu.jsp</result>
+			<result name="buWeixinmenuEditor">/weixin/BuWeixinmenuEditor.jsp</result>
+			<result name="show" type="redirectAction">
+				<param name="actionName">weixinMenu</param>
+			</result>
+		</action>
+		<!-- 微信菜单管理--> 
+		<action name="fnews" class="com.gh.action.weixin.front.BuNewsAction"   method="show" >
+			<result name="ykfx">/module/weixin/ykfx.jsp</result>
+			<result name="ykfxPage">/module/weixin/ykfxPage.jsp</result>
+			<result name="WzCelebrity">/module/weixin/WzCelebrity.jsp</result>
+			<result name="WzSurvey">/module/weixin/WzSurvey.jsp</result>
+			<result name="fresh">/module/weixin/Fresh.jsp</result>
+			<result name="freshPage">/module/weixin/FreshPage.jsp</result>
+			<result name="freshDetails">/module/weixin/FreshDetails.jsp</result>
+			<result name="youli">/module/weixin/Youli.jsp</result>
+			<result name="youliPage">/module/weixin/YouliPage.jsp</result>
+			<result name="youliDetails">/module/weixin/YouliDetails.jsp</result>
+			<result name="share">/module/weixin/Share.jsp</result>
+			<result name="shareDetails">/module/weixin/ShareDetails.jsp</result>
+			<result name="selfDriving">/module/weixin/SelfDriving.jsp</result>
+			<result name="selfDrivingPage">/module/weixin/selfDrivingPage.jsp</result>
+			<result name="selfDrivingDetails">/module/weixin/SelfDrivingDetails.jsp</result>
+			<result name="Recommend">/module/weixin/Recommend.jsp</result>
+			<result name="RecommendPage">/module/weixin/RecommendPage.jsp</result>
+			<result name="RecommendDetails">/module/weixin/RecommendDetails.jsp</result>
+			<result name="RecommendDetails1">/module/weixin/RecommendDetails1.jsp</result>
+			<result name="summary">/module/weixin/Summary.jsp</result>
+			<result name="LuckDraw">/module/weixin/LuckDraw.jsp</result>
+			<result name="LuckDrawWin">/module/weixin/LuckDrawWin.jsp</result>
+			<result name="LuckDrawFail">/module/weixin/LuckDrawFail.jsp</result>
+			<result name="LuckDrawNext">/module/weixin/LuckDrawNext.jsp</result>
+			<result name="LuckDrawRule">/module/weixin/LuckDrawRule.jsp</result>
+			<result name="LuckDrawTime">/module/weixin/LuckDrawTime.jsp</result>
+			<result name="poem">/module/weixin/poem.jsp</result>
+			<result name="showRule2">/module/weixin/rule.jsp</result>
+			<result name="PoeticWorks">/module/weixin/PoeticWorks.jsp</result>
+			<result name="PoeticWorksPage">/module/weixin/PoeticWorksPage.jsp</result>
+			<result name="PoeticWorksDetails">/module/weixin/PoeticWorksDetails.jsp</result>
+			<result name="PoeticWorksVote">/module/weixin/PoeticWorksVote.jsp</result>
+			<result name="GetWeixin" type="redirectAction">
+				<param name="actionName">fnews!poetryVoteList</param>
+			</result>
+			<result name="updateVote" type="redirectAction">
+				<param name="actionName">fnews!poetryVoteList</param>
+			</result>
+			<result name="voteEntity">/module/weixin/VoteEntity.jsp</result>
+			<result name="votingrecordPage">/module/weixin/Votingrecord.jsp</result>
+			<result name="newList">/module/weixin/newsList.jsp</result>
+			<result name="news">/module/weixin/news.jsp</result>
+		</action>
+		<!-- 微信群发管理--> 
+		<action name="buWeixinmass" class="com.gh.action.weixin.backstage.BuWeixinmassAction"   method="show" >
+			<result name="buWeixinmassEditor">/module/weixin/BuWeixinmassEditor.jsp</result>
+			<result name="buWeixinmass">/module/weixin/BuWeixinmass.jsp</result>
+				<result name="show" type="redirectAction">
+				<param name="actionName">buWeixinmass?indexPage=${indexPage}</param>
+			</result>
+		</action>
+		
+		
+		<!-- 微信摇奖配置 -->
+		<action name="buWeixinconfig" class="com.gh.action.weixin.front.BuWeixinconfigAction" method="show">
+			<result name="addUI_1">/module/weixin/BuWeixinconfigEditor.jsp</result>
+			<result name="addUI_2">/module/weixin/BuWeixinconfigEditor.jsp</result>
+			<result name="editUI">/module/weixin/drawConfingEditor.jsp</result><!-- 设置 -->
+			<result name="show" type="redirectAction">
+				<param name="actionName">buWeixinconfig</param>
+				<param name="type">${type}</param>
+			</result>
+		
+		</action>
+		
+		
+		<!-- 微信摇奖管理 -->
+		<action name="buWeixinluckdraw" class="com.gh.action.weixin.front.BuWeixinluckdrawAction" method="show">
+			<result name="buWeixinluckdraw">/module/weixin/BuWeixinluckdraw.jsp</result>
+			<result name="buWeixinluckdrawEditor">/module/weixin/BuWeixinluckdrawEditor.jsp</result>
+			<result name="export" type="stream">
+			   <param name="contentType">application/vnd.ms-excel;charset=utf-8</param>
+			   <param name="inputName">inputStream</param>
+			   <param name="contentDisposition">
+                 attachment;filename=${fileName}
+              </param>
+			   <param name="bufferSize">4096</param>
+			</result>
+		</action>
+		
+		<action name="ziye" class="com.gh.action.phone.ziye" >
+			<result name="ziye">/phone/ziye.jsp</result>
+		</action>
+		
+		
+		
+		
+		<!-- 天气预报--> 
+		<action name="weather" class="com.gh.action.weixin.front.BuWeatherAction"   method="show" >
+			<result name="buWeather">/module/weixin/Weather.jsp</result>
+		</action>
+	</package>
+	<package name="touch" namespace="/touch" extends="struts-default">
+		<!-- 首页--> 
+		<action name="index" class="com.gh.action.touch.indexAction" method="show" >
+			<result name="index">/module/touch/index.jsp</result>
+			<result name="fresh">/module/touch/FreshDetails.jsp</result>
+			<result name="history">/module/touch/history.jsp</result>
+			<result name="geography">/module/touch/geography.jsp</result>
+			<result name="folklore">/module/touch/folklore.jsp</result>
+			<result name="story">/module/touch/story.jsp</result>
+			<result name="celebrity">/module/touch/person.jsp</result>
+			<result name="protection">/module/touch/protection.jsp</result>
+		</action>
+	</package>
+
+	<package name="js" namespace="/" extends="struts-default">
+		<!-- js缓存调用 -->
+		<action name="JsContext" class="com.gh.action.system.JsContext"></action>
+	</package>
+</struts>

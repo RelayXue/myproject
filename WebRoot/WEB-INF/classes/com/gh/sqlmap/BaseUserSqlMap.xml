@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="tj_BaseUser">
+
+    <resultMap id="re_BaseUser" class="com.gh.entity.BaseUser">
+        <result property="fuid" column="FUID"/>
+        <result property="code" column="CODE"/>
+        <result property="realname" column="REALNAME"/>
+        <result property="username" column="USERNAME"/>
+        <result property="useraddressid" column="USERADDRESSID"/>
+        <result property="roleid" column="ROLEID"/>
+        <result property="departmentid" column="DEPARTMENTID"/>
+        <result property="departmentname" column="DEPARTMENTNAME"/>
+        <result property="sex" column="SEX"/>
+        <result property="mobile" column="MOBILE"/>
+        <result property="birthday" column="BIRTHDAY"/>
+        <result property="title" column="TITLE"/>
+        <result property="userpassword" column="USERPASSWORD"/>
+        <result property="question" column="QUESTION"/>
+        <result property="answerquestion" column="ANSWERQUESTION"/>
+        <result property="lang" column="LANG"/>
+        <result property="theme" column="THEME"/>
+        <result property="firstvisit" column="FIRSTVISIT"/>
+        <result property="previousvisit" column="PREVIOUSVISIT"/>
+        <result property="lastvisit" column="LASTVISIT"/>
+        <result property="logincount" column="LOGINCOUNT"/>
+        <result property="useronline" column="USERONLINE"/>
+        <result property="ipaddress" column="IPADDRESS"/>
+        <result property="macaddress" column="MACADDRESS"/>
+        <result property="deletemark" column="DELETEMARK"/>
+        <result property="description" column="DESCRIPTION"/>
+        <result property="createdate" column="CREATEDATE"/>
+        <result property="createuserid" column="CREATEUSERID"/>
+        <result property="createuserrealname" column="CREATEUSERREALNAME"/>
+        <result property="modifydate" column="MODIFYDATE"/>
+        <result property="modifyuserid" column="MODIFYUSERID"/>
+        <result property="modifyuserrealname" column="MODIFYUSERREALNAME"/>
+    </resultMap>
+    
+    <!-- 用于select查询公用抽取的列 -->
+	<sql id="BaseUser.columns">
+	    <![CDATA[
+        FUID ,CODE ,REALNAME ,USERNAME ,USERADDRESSID ,ROLEID ,DEPARTMENTID ,DEPARTMENTNAME ,SEX ,MOBILE ,BIRTHDAY ,TITLE ,USERPASSWORD ,QUESTION ,ANSWERQUESTION ,LANG ,THEME ,FIRSTVISIT ,PREVIOUSVISIT ,LASTVISIT ,LOGINCOUNT ,USERONLINE ,IPADDRESS ,MACADDRESS ,DELETEMARK ,DESCRIPTION ,CREATEDATE ,CREATEUSERID ,CREATEUSERREALNAME ,MODIFYDATE ,MODIFYUSERID ,MODIFYUSERREALNAME 
+	    ]]>
+	</sql>
+  
+	 <select id="selectByPrimaryKey" parameterClass="com.gh.entity.BaseUser" resultMap="re_BaseUser">
+	    SELECT <include refid="BaseUser.columns"/>
+	    from base_user
+	    where 
+		        FUID = #fuid:VARCHAR# 
+ 	 </select>
+ 	 
+	<delete id="deleteByPrimaryKey" parameterClass="com.gh.entity.BaseUser">
+	    delete from base_user
+    	where 
+		        FUID = #fuid:VARCHAR# 
+  </delete>
+  
+  
+   <insert id="insert" parameterClass="com.gh.entity.BaseUser">
+	        insert into base_user (  FUID ,   CODE ,   REALNAME ,   USERNAME ,   USERADDRESSID ,   ROLEID ,   DEPARTMENTID ,   DEPARTMENTNAME ,   SEX ,   MOBILE ,   BIRTHDAY ,   TITLE ,   USERPASSWORD ,   QUESTION ,   ANSWERQUESTION ,   LANG ,   THEME ,   FIRSTVISIT ,   PREVIOUSVISIT ,   LASTVISIT ,   LOGINCOUNT ,   USERONLINE ,   IPADDRESS ,   MACADDRESS ,   DELETEMARK ,   DESCRIPTION ,   CREATEDATE ,   CREATEUSERID ,   CREATEUSERREALNAME ,   MODIFYDATE ,   MODIFYUSERID ,   MODIFYUSERREALNAME   )
+   	 	values ( #fuid:VARCHAR# ,  #code:VARCHAR# ,  #realname:VARCHAR# ,  #username:VARCHAR# ,  #useraddressid:VARCHAR# ,  #roleid:VARCHAR# ,  #departmentid:VARCHAR# ,  #departmentname:VARCHAR# ,  #sex:VARCHAR# ,  #mobile:VARCHAR# ,  #birthday:VARCHAR# ,  #title:VARCHAR# ,  #userpassword:VARCHAR# ,  #question:VARCHAR# ,  #answerquestion:VARCHAR# ,  #lang:VARCHAR# ,  #theme:VARCHAR# ,  #firstvisit:TIMESTAMP# ,  #previousvisit:TIMESTAMP# ,  #lastvisit:TIMESTAMP# ,  #logincount:DOUBLE# ,  #useronline:DOUBLE# ,  #ipaddress:VARCHAR# ,  #macaddress:VARCHAR# ,  #deletemark:DOUBLE# ,  #description:VARCHAR# ,  #createdate:TIMESTAMP# ,  #createuserid:VARCHAR# ,  #createuserrealname:VARCHAR# ,  #modifydate:TIMESTAMP# ,  #modifyuserid:VARCHAR# ,  #modifyuserrealname:VARCHAR#  )
+   	
+  </insert>
+ 	
+ 	
+ 	<update id="updateByPrimaryKey" parameterClass="com.gh.entity.BaseUser">
+   	UPDATE base_user SET
+	        CODE = #code:VARCHAR# ,
+	        REALNAME = #realname:VARCHAR# ,
+	        USERNAME = #username:VARCHAR# ,
+	        USERADDRESSID = #useraddressid:VARCHAR# ,
+	        ROLEID = #roleid:VARCHAR# ,
+	        DEPARTMENTID = #departmentid:VARCHAR# ,
+	        DEPARTMENTNAME = #departmentname:VARCHAR# ,
+	        SEX = #sex:VARCHAR# ,
+	        MOBILE = #mobile:VARCHAR# ,
+	        BIRTHDAY = #birthday:VARCHAR# ,
+	        TITLE = #title:VARCHAR# ,
+	        USERPASSWORD = #userpassword:VARCHAR# ,
+	        QUESTION = #question:VARCHAR# ,
+	        ANSWERQUESTION = #answerquestion:VARCHAR# ,
+	        LANG = #lang:VARCHAR# ,
+	        THEME = #theme:VARCHAR# ,
+	        FIRSTVISIT = #firstvisit:TIMESTAMP# ,
+	        PREVIOUSVISIT = #previousvisit:TIMESTAMP# ,
+	        LASTVISIT = #lastvisit:TIMESTAMP# ,
+	        LOGINCOUNT = #logincount:DOUBLE# ,
+	        USERONLINE = #useronline:DOUBLE# ,
+	        IPADDRESS = #ipaddress:VARCHAR# ,
+	        MACADDRESS = #macaddress:VARCHAR# ,
+	        DELETEMARK = #deletemark:DOUBLE# ,
+	        DESCRIPTION = #description:VARCHAR# ,
+	        CREATEDATE = #createdate:TIMESTAMP# ,
+	        CREATEUSERID = #createuserid:VARCHAR# ,
+	        CREATEUSERREALNAME = #createuserrealname:VARCHAR# ,
+	        MODIFYDATE = #modifydate:TIMESTAMP# ,
+	        MODIFYUSERID = #modifyuserid:VARCHAR# ,
+	        MODIFYUSERREALNAME = #modifyuserrealname:VARCHAR# 
+        WHERE 
+	        FUID = #fuid:VARCHAR# 
+  </update>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterClass="com.gh.entity.BaseUser">
+  	  update base_user
+  	  <dynamic prepend="set">
+  	   <isNotNull prepend="," property="fuid">
+  	 	  FUID = #fuid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="code">
+  	 	  CODE = #code:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="realname">
+  	 	  REALNAME = #realname:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="username">
+  	 	  USERNAME = #username:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="useraddressid">
+  	 	  USERADDRESSID = #useraddressid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="roleid">
+  	 	  ROLEID = #roleid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="departmentid">
+  	 	  DEPARTMENTID = #departmentid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="departmentname">
+  	 	  DEPARTMENTNAME = #departmentname:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="sex">
+  	 	  SEX = #sex:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="mobile">
+  	 	  MOBILE = #mobile:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="birthday">
+  	 	  BIRTHDAY = #birthday:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="title">
+  	 	  TITLE = #title:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="userpassword">
+  	 	  USERPASSWORD = #userpassword:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="question">
+  	 	  QUESTION = #question:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="answerquestion">
+  	 	  ANSWERQUESTION = #answerquestion:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="lang">
+  	 	  LANG = #lang:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="theme">
+  	 	  THEME = #theme:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="firstvisit">
+  	 	  FIRSTVISIT = #firstvisit:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="previousvisit">
+  	 	  PREVIOUSVISIT = #previousvisit:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="lastvisit">
+  	 	  LASTVISIT = #lastvisit:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="logincount">
+  	 	  LOGINCOUNT = #logincount:DOUBLE#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="useronline">
+  	 	  USERONLINE = #useronline:DOUBLE#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="ipaddress">
+  	 	  IPADDRESS = #ipaddress:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="macaddress">
+  	 	  MACADDRESS = #macaddress:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="deletemark">
+  	 	  DELETEMARK = #deletemark:DOUBLE#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="description">
+  	 	  DESCRIPTION = #description:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createdate">
+  	 	  CREATEDATE = #createdate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createuserid">
+  	 	  CREATEUSERID = #createuserid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createuserrealname">
+  	 	  CREATEUSERREALNAME = #createuserrealname:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="modifydate">
+  	 	  MODIFYDATE = #modifydate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="modifyuserid">
+  	 	  MODIFYUSERID = #modifyuserid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="modifyuserrealname">
+  	 	  MODIFYUSERREALNAME = #modifyuserrealname:VARCHAR#
+  	  </isNotNull>
+     </dynamic>
+    where FUID = #fuid:VARCHAR# 
+  </update>
+  
+   <select id="execSql" parameterClass="string" resultMap="re_BaseUser"><![CDATA[$sql$]]></select>
+   <select id="execSqlObject" parameterClass="string" resultClass="java.lang.Object"><![CDATA[$sql$]]></select>
+</sqlMap>
+

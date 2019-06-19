@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="tj_BuAttractions">
+
+    <resultMap id="re_BuAttractions" class="com.gh.entity.BuAttractions">
+        <result property="fuid" column="FUID"/>
+        <result property="fullname" column="FULLNAME"/>
+        <result property="dimages" column="DIMAGES"/>
+        <result property="introduction" column="INTRODUCTION"/>
+        <result property="fx" column="FX"/>
+        <result property="fy" column="FY"/>
+        <result property="address" column="ADDRESS"/>
+        <result property="createdate" column="CREATEDATE"/>
+        <result property="modifydate" column="MODIFYDATE"/>
+        <result property="scenicid" column="SCENICID"/>
+        <result property="praise" column="PRAISE"/>
+        <result property="iszy" column="iszy"/>
+        <result property="browse" column="BROWSE"/>
+        <result property="type" column="TYPE"/>
+        <result property="deletemark" column="DELETEMARK"/>
+        <result property="comment" column="COMMENT"/>
+        <result property="star" column="star"/>
+        <result property="sort" column="sort"/>
+    </resultMap>
+    
+    <!-- 用于select查询公用抽取的列 -->
+	<sql id="BuAttractions.columns">
+	    <![CDATA[
+        FUID ,FULLNAME ,DIMAGES ,INTRODUCTION ,FX ,FY ,ADDRESS ,CREATEDATE ,MODIFYDATE ,SCENICID ,PRAISE ,iszy ,BROWSE ,TYPE ,DELETEMARK ,COMMENT ,star ,sort 
+	    ]]>
+	</sql>
+  
+	 <select id="selectByPrimaryKey" parameterClass="com.gh.entity.BuAttractions" resultMap="re_BuAttractions">
+	    SELECT <include refid="BuAttractions.columns"/>
+	    from bu_attractions
+	    where 
+		        FUID = #fuid:VARCHAR# 
+ 	 </select>
+ 	 
+	<delete id="deleteByPrimaryKey" parameterClass="com.gh.entity.BuAttractions">
+	    delete from bu_attractions
+    	where 
+		        FUID = #fuid:VARCHAR# 
+  </delete>
+  
+  	<delete id="deleteByWhere" parameterClass="java.lang.String">
+	    delete from bu_attractions
+    	where 
+		      $swhere$
+	  </delete>
+  
+   <insert id="insert" parameterClass="com.gh.entity.BuAttractions">
+	        insert into bu_attractions (  FUID ,   FULLNAME ,   DIMAGES ,   INTRODUCTION ,   FX ,   FY ,   ADDRESS ,   CREATEDATE ,   MODIFYDATE ,   SCENICID ,   PRAISE ,   iszy ,   BROWSE ,   TYPE ,   DELETEMARK ,   COMMENT ,   star ,   sort   )
+   	 	values ( #fuid:VARCHAR# ,  #fullname:VARCHAR# ,  #dimages:VARCHAR# ,  #introduction:VARCHAR# ,  #fx:VARCHAR# ,  #fy:VARCHAR# ,  #address:VARCHAR# ,  #createdate:TIMESTAMP# ,  #modifydate:TIMESTAMP# ,  #scenicid:VARCHAR# ,  #praise:INTEGER# ,  #iszy:INTEGER# ,  #browse:INTEGER# ,  #type:VARCHAR# ,  #deletemark:INTEGER# ,  #comment:INTEGER# ,  #star:DECIMAL# ,  #sort:INTEGER#  )
+   	
+  </insert>
+ 	
+ 	
+ 	<update id="updateByPrimaryKey" parameterClass="com.gh.entity.BuAttractions">
+   	UPDATE bu_attractions SET
+	        FULLNAME = #fullname:VARCHAR# ,
+	        DIMAGES = #dimages:VARCHAR# ,
+	        INTRODUCTION = #introduction:VARCHAR# ,
+	        FX = #fx:VARCHAR# ,
+	        FY = #fy:VARCHAR# ,
+	        ADDRESS = #address:VARCHAR# ,
+	        CREATEDATE = #createdate:TIMESTAMP# ,
+	        MODIFYDATE = #modifydate:TIMESTAMP# ,
+	        SCENICID = #scenicid:VARCHAR# ,
+	        PRAISE = #praise:INTEGER# ,
+	        iszy = #iszy:INTEGER# ,
+	        BROWSE = #browse:INTEGER# ,
+	        TYPE = #type:VARCHAR# ,
+	        DELETEMARK = #deletemark:INTEGER# ,
+	        COMMENT = #comment:INTEGER# ,
+	        star = #star:DECIMAL# ,
+	        sort = #sort:INTEGER# 
+        WHERE 
+	        FUID = #fuid:VARCHAR# 
+  </update>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterClass="com.gh.entity.BuAttractions">
+  	  update bu_attractions
+  	  <dynamic prepend="set">
+  	   <isNotNull prepend="," property="fullname">
+  	 	  FULLNAME = #fullname:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="dimages">
+  	 	  DIMAGES = #dimages:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="introduction">
+  	 	  INTRODUCTION = #introduction:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="fx">
+  	 	  FX = #fx:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="fy">
+  	 	  FY = #fy:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="address">
+  	 	  ADDRESS = #address:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createdate">
+  	 	  CREATEDATE = #createdate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="modifydate">
+  	 	  MODIFYDATE = #modifydate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="scenicid">
+  	 	  SCENICID = #scenicid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="praise">
+  	 	  PRAISE = #praise:INTEGER#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="iszy">
+  	 	  iszy = #iszy:INTEGER#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="browse">
+  	 	  BROWSE = #browse:INTEGER#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="type">
+  	 	  TYPE = #type:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="deletemark">
+  	 	  DELETEMARK = #deletemark:INTEGER#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="comment">
+  	 	  COMMENT = #comment:INTEGER#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="star">
+  	 	  star = #star:DECIMAL#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="sort">
+  	 	  sort = #sort:INTEGER#
+  	  </isNotNull>
+     </dynamic>
+    where FUID = #fuid:VARCHAR# 
+  </update>
+  
+   <select id="execSql" parameterClass="string" resultMap="re_BuAttractions"><![CDATA[$sql$]]></select>
+   
+    <select id="execSqlObject" parameterClass="string" resultClass="java.lang.Object"><![CDATA[$sql$]]></select>
+</sqlMap>
+

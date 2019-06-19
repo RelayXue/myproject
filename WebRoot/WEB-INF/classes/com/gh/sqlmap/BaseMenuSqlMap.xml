@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="tj_BaseMenu">
+
+    <resultMap id="re_BaseMenu" class="com.gh.entity.BaseMenu">
+        <result property="fuid" column="FUID"/>
+        <result property="menuName" column="MENU_NAME"/>
+        <result property="menuParentid" column="MENU_PARENTID"/>
+        <result property="menuUrl" column="MENU_URL"/>
+        <result property="menuOrder" column="MENU_ORDER"/>
+        <result property="createdate" column="CREATEDATE"/>
+        <result property="modifydate" column="MODIFYDATE"/>
+        <result property="createuserrealname" column="CREATEUSERREALNAME"/>
+        <result property="createuserid" column="CREATEUSERID"/>
+        <result property="modifyuserrealname" column="MODIFYUSERREALNAME"/>
+        <result property="modifyuserid" column="MODIFYUSERID"/>
+        <result property="images" column="images"/>
+    </resultMap>
+    
+    <!-- 用于select查询公用抽取的列 -->
+	<sql id="BaseMenu.columns">
+	    <![CDATA[
+        FUID ,MENU_NAME ,MENU_PARENTID ,MENU_URL ,MENU_ORDER ,CREATEDATE ,MODIFYDATE ,CREATEUSERREALNAME ,CREATEUSERID ,MODIFYUSERREALNAME ,MODIFYUSERID ,images 
+	    ]]>
+	</sql>
+  
+	 <select id="selectByPrimaryKey" parameterClass="com.gh.entity.BaseMenu" resultMap="re_BaseMenu">
+	    SELECT <include refid="BaseMenu.columns"/>
+	    from base_menu
+	    where 
+		        FUID = #fuid:VARCHAR# 
+ 	 </select>
+ 	 
+	<delete id="deleteByPrimaryKey" parameterClass="com.gh.entity.BaseMenu">
+	    delete from base_menu
+    	where 
+		        FUID = #fuid:VARCHAR# 
+  </delete>
+  
+  	<delete id="deleteByWhere" parameterClass="java.lang.String">
+	    delete from base_menu
+    	where 
+		      $swhere$
+	  </delete>
+  
+   <insert id="insert" parameterClass="com.gh.entity.BaseMenu">
+	        insert into base_menu (  FUID ,   MENU_NAME ,   MENU_PARENTID ,   MENU_URL ,   MENU_ORDER ,   CREATEDATE ,   MODIFYDATE ,   CREATEUSERREALNAME ,   CREATEUSERID ,   MODIFYUSERREALNAME ,   MODIFYUSERID ,   images   )
+   	 	values ( #fuid:VARCHAR# ,  #menuName:VARCHAR# ,  #menuParentid:VARCHAR# ,  #menuUrl:VARCHAR# ,  #menuOrder:DOUBLE# ,  #createdate:TIMESTAMP# ,  #modifydate:TIMESTAMP# ,  #createuserrealname:VARCHAR# ,  #createuserid:VARCHAR# ,  #modifyuserrealname:VARCHAR# ,  #modifyuserid:VARCHAR# ,  #images:VARCHAR#  )
+   	
+  </insert>
+ 	
+ 	
+ 	<update id="updateByPrimaryKey" parameterClass="com.gh.entity.BaseMenu">
+   	UPDATE base_menu SET
+	        MENU_NAME = #menuName:VARCHAR# ,
+	        MENU_PARENTID = #menuParentid:VARCHAR# ,
+	        MENU_URL = #menuUrl:VARCHAR# ,
+	        MENU_ORDER = #menuOrder:DOUBLE# ,
+	        CREATEDATE = #createdate:TIMESTAMP# ,
+	        MODIFYDATE = #modifydate:TIMESTAMP# ,
+	        CREATEUSERREALNAME = #createuserrealname:VARCHAR# ,
+	        CREATEUSERID = #createuserid:VARCHAR# ,
+	        MODIFYUSERREALNAME = #modifyuserrealname:VARCHAR# ,
+	        MODIFYUSERID = #modifyuserid:VARCHAR# ,
+	        images = #images:VARCHAR# 
+        WHERE 
+	        FUID = #fuid:VARCHAR# 
+  </update>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterClass="com.gh.entity.BaseMenu">
+  	  update base_menu
+  	  <dynamic prepend="set">
+  	   <isNotNull prepend="," property="fuid">
+  	 	  FUID = #fuid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="menuName">
+  	 	  MENU_NAME = #menuName:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="menuParentid">
+  	 	  MENU_PARENTID = #menuParentid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="menuUrl">
+  	 	  MENU_URL = #menuUrl:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="menuOrder">
+  	 	  MENU_ORDER = #menuOrder:DOUBLE#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createdate">
+  	 	  CREATEDATE = #createdate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="modifydate">
+  	 	  MODIFYDATE = #modifydate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createuserrealname">
+  	 	  CREATEUSERREALNAME = #createuserrealname:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createuserid">
+  	 	  CREATEUSERID = #createuserid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="modifyuserrealname">
+  	 	  MODIFYUSERREALNAME = #modifyuserrealname:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="modifyuserid">
+  	 	  MODIFYUSERID = #modifyuserid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="images">
+  	 	  images = #images:VARCHAR#
+  	  </isNotNull>
+     </dynamic>
+    where FUID = #fuid:VARCHAR# 
+  </update>
+  
+   <select id="execSql" parameterClass="string" resultMap="re_BaseMenu"><![CDATA[$sql$]]></select>
+   
+    <select id="execSqlObject" parameterClass="string" resultClass="java.lang.Object"><![CDATA[$sql$]]></select>
+</sqlMap>
+

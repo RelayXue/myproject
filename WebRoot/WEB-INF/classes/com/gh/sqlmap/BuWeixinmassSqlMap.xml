@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="tj_BuWeixinmass">
+
+    <resultMap id="re_BuWeixinmass" class="com.gh.entity.BuWeixinmass">
+        <result property="fuid" column="FUID"/>
+        <result property="content" column="CONTENT"/>
+        <result property="msgtype" column="MSGTYPE"/>
+        <result property="picurl" column="PICURL"/>
+        <result property="createdate" column="CREATEDATE"/>
+        <result property="description" column="DESCRIPTION"/>
+        <result property="author" column="AUTHOR"/>
+        <result property="title" column="TITLE"/>
+        <result property="state" column="STATE"/>
+        <result property="orderby" column="ORDERBY"/>
+        <result property="mediaid" column="MEDIAID"/>
+        <result property="contenturl" column="CONTENTURL"/>
+    </resultMap>
+    
+    <!-- 用于select查询公用抽取的列 -->
+	<sql id="BuWeixinmass.columns">
+	    <![CDATA[
+        FUID ,CONTENT ,MSGTYPE ,PICURL ,CREATEDATE ,DESCRIPTION ,AUTHOR ,TITLE ,STATE ,ORDERBY ,MEDIAID ,CONTENTURL 
+	    ]]>
+	</sql>
+  
+	 <select id="selectByPrimaryKey" parameterClass="com.gh.entity.BuWeixinmass" resultMap="re_BuWeixinmass">
+	    SELECT <include refid="BuWeixinmass.columns"/>
+	    from bu_weixinmass
+	    where 
+		        FUID = #fuid:VARCHAR# 
+ 	 </select>
+ 	 
+	<delete id="deleteByPrimaryKey" parameterClass="com.gh.entity.BuWeixinmass">
+	    delete from bu_weixinmass
+    	where 
+		        FUID = #fuid:VARCHAR# 
+  </delete>
+  
+  	<delete id="deleteByWhere" parameterClass="java.lang.String">
+	    delete from bu_weixinmass
+    	where 
+		      $swhere$
+	  </delete>
+  
+   <insert id="insert" parameterClass="com.gh.entity.BuWeixinmass">
+	        insert into bu_weixinmass (  FUID ,   CONTENT ,   MSGTYPE ,   PICURL ,   CREATEDATE ,   DESCRIPTION ,   AUTHOR ,   TITLE ,   STATE ,   ORDERBY ,   MEDIAID ,   CONTENTURL   )
+   	 	values ( #fuid:VARCHAR# ,  #content:VARCHAR# ,  #msgtype:VARCHAR# ,  #picurl:VARCHAR# ,  #createdate:TIMESTAMP# ,  #description:VARCHAR# ,  #author:VARCHAR# ,  #title:VARCHAR# ,  #state:VARCHAR# ,  #orderby:INTEGER# ,  #mediaid:VARCHAR# ,  #contenturl:VARCHAR#  )
+   	
+  </insert>
+ 	
+ 	
+ 	<update id="updateByPrimaryKey" parameterClass="com.gh.entity.BuWeixinmass">
+   	UPDATE bu_weixinmass SET
+	        CONTENT = #content:VARCHAR# ,
+	        MSGTYPE = #msgtype:VARCHAR# ,
+	        PICURL = #picurl:VARCHAR# ,
+	        CREATEDATE = #createdate:TIMESTAMP# ,
+	        DESCRIPTION = #description:VARCHAR# ,
+	        AUTHOR = #author:VARCHAR# ,
+	        TITLE = #title:VARCHAR# ,
+	        STATE = #state:VARCHAR# ,
+	        ORDERBY = #orderby:INTEGER# ,
+	        MEDIAID = #mediaid:VARCHAR# ,
+	        CONTENTURL = #contenturl:VARCHAR# 
+        WHERE 
+	        FUID = #fuid:VARCHAR# 
+  </update>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterClass="com.gh.entity.BuWeixinmass">
+  	  update bu_weixinmass
+  	  <dynamic prepend="set">
+  	   <isNotNull prepend="," property="fuid">
+  	 	  FUID = #fuid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="content">
+  	 	  CONTENT = #content:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="msgtype">
+  	 	  MSGTYPE = #msgtype:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="picurl">
+  	 	  PICURL = #picurl:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createdate">
+  	 	  CREATEDATE = #createdate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="description">
+  	 	  DESCRIPTION = #description:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="author">
+  	 	  AUTHOR = #author:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="title">
+  	 	  TITLE = #title:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="state">
+  	 	  STATE = #state:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="orderby">
+  	 	  ORDERBY = #orderby:INTEGER#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="mediaid">
+  	 	  MEDIAID = #mediaid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="contenturl">
+  	 	  CONTENTURL = #contenturl:VARCHAR#
+  	  </isNotNull>
+     </dynamic>
+    where FUID = #fuid:VARCHAR# 
+  </update>
+  
+   <select id="execSql" parameterClass="string" resultMap="re_BuWeixinmass"><![CDATA[$sql$]]></select>
+   
+    <select id="execSqlObject" parameterClass="string" resultClass="java.lang.Object"><![CDATA[$sql$]]></select>
+</sqlMap>
+

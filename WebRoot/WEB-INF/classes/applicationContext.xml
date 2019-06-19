@@ -1,0 +1,851 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:/jdbc.properties" />
+	</bean>
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName"
+			value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+
+	<bean id="sqlMapClient"
+		class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="configLocation" value="classpath:/SqlMapConfig.xml" />
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<bean id="sqlMapClientTemplate"
+		class="org.springframework.orm.ibatis.SqlMapClientTemplate">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+	<bean id="BaseOrganizeDAO" class="com.gh.dao.BaseOrganizeDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean id="BaseOrganizeService" class="com.gh.service.BaseOrganizeServiceImpl">
+		<property name="baseOrganizeDAO">
+			<ref bean="BaseOrganizeDAO" />
+		</property>
+	</bean>
+	<bean id="BaseUserDAO" class="com.gh.dao.BaseUserDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean id="BaseUserService" class="com.gh.service.BaseUserServiceImpl">
+		<property name="baseUserDAO">
+			<ref bean="BaseUserDAO" />
+		</property>
+	</bean>
+	<bean id="BaseRoleDAO" class="com.gh.dao.BaseRoleDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean id="BaseRoleService" class="com.gh.service.BaseRoleServiceImpl">
+		<property name="baseRoleDAO">
+			<ref bean="BaseRoleDAO" />
+		</property>
+	</bean>
+	<bean id="BaseUserRoleDAO" class="com.gh.dao.BaseUserRoleDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean id="BaseUserRoleService" class="com.gh.service.BaseUserRoleServiceImpl">
+		<property name="baseUserRoleDAO">
+			<ref bean="BaseUserRoleDAO" />
+		</property>
+	</bean>
+	<bean id="BaseMenuDAO" class="com.gh.dao.BaseMenuDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean id="BaseMenuService" class="com.gh.service.BaseMenuServiceImpl">
+		<property name="baseMenuDAO">
+			<ref bean="BaseMenuDAO" />
+		</property>
+	</bean>
+	<bean id="BaseOrganizeMenuDAO" class="com.gh.dao.BaseOrganizeMenuDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean id="BaseOrganizeMenuService" class="com.gh.service.BaseOrganizeMenuServiceImpl">
+		<property name="baseOrganizeMenuDAO">
+			<ref bean="BaseOrganizeMenuDAO" />
+		</property>
+	</bean>
+	<bean id="BaseOperatingDAO" class="com.gh.dao.BaseOperatingDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean id="BaseOperatingService" class="com.gh.service.BaseOperatingServiceImpl">
+		<property name="baseOperatingDAO">
+			<ref bean="BaseOperatingDAO" />
+		</property>
+	</bean>
+	<bean id="BaseMenuRoleDAO" class="com.gh.dao.BaseMenuRoleDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean id="BaseMenuRoleService" class="com.gh.service.BaseMenuRoleServiceImpl">
+		<property name="baseMenuRoleDAO">
+			<ref bean="BaseMenuRoleDAO" />
+		</property>
+	</bean>
+	<bean id="BaseScopeDAO" class="com.gh.dao.BaseScopeDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean id="BaseScopeService" class="com.gh.service.BaseScopeServiceImpl">
+		<property name="baseScopeDAO">
+			<ref bean="BaseScopeDAO" />
+		</property>
+	</bean>
+	<bean id="BaseDatadictionaryDAO" class="com.gh.dao.BaseDatadictionaryDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean id="BaseDatadictionaryService" class="com.gh.service.BaseDatadictionaryServiceImpl">
+		<property name="baseDatadictionaryDAO">
+			<ref bean="BaseDatadictionaryDAO" />
+		</property>
+	</bean>
+	
+ 
+	<bean id="BaseOperationLogDAO" class="com.gh.dao.BaseOperationLogDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean id="BaseOperationLogService" class="com.gh.service.BaseOperationLogServiceImpl">
+		<property name="baseOperationLogDAO">
+			<ref bean="BaseOperationLogDAO" />
+		</property>
+	</bean>
+ 
+	<bean id="ObVideoDAO" class="com.gh.dao.ObVideoDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean id="ObVideoService" class="com.gh.service.ObVideoServiceImpl">
+		<property name="obVideoDAO">
+			<ref bean="ObVideoDAO" />
+		</property>
+	</bean>
+ 
+	<bean id="ObPromptdataDAO" class="com.gh.dao.ObPromptdataDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean id="ObPromptdataService" class="com.gh.service.ObPromptdataServiceImpl">
+		<property name="obPromptdataDAO">
+			<ref bean="ObPromptdataDAO" />
+		</property>
+	</bean>
+
+	<bean id="buStreetlightsDAO" class="com.gh.dao.BuStreetlightsDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean id="buStreetlightsService" class="com.gh.service.BuStreetlightsServiceImpl">
+		<property name="buStreetlightsDAO">
+			<ref bean="buStreetlightsDAO" />
+		</property>
+	</bean>
+	
+	<bean id="buPublicfacilitiesDAO" class="com.gh.dao.BuPublicfacilitiesDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean id="buPublicfacilitiesService" class="com.gh.service.BuPublicfacilitiesServiceImpl">
+		<property name="buPublicfacilitiesDAO">
+			<ref bean="buPublicfacilitiesDAO" />
+		</property>
+	</bean>
+	
+	<bean id="buBarcodeDAO" class="com.gh.dao.BuBarcodeDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean id="buBarcodeService" class="com.gh.service.BuBarcodeServiceImpl">
+		<property name="buBarcodeDAO">
+			<ref bean="buBarcodeDAO" />
+		</property>
+	</bean>
+	
+
+		<bean id="buQuicklinksDAO" class="com.gh.dao.BuQuicklinksDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean id="buQuicklinksService" class="com.gh.service.BuQuicklinksServiceImpl">
+		<property name="buQuicklinksDAO">
+			<ref bean="buQuicklinksDAO" />
+		</property>
+	</bean>
+
+	<bean id="BuEventDAO" class="com.gh.dao.BuEventDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean id="buEventService" class="com.gh.service.BuEventServiceImpl">
+		<property name="buEventDAO">
+			<ref bean="BuEventDAO" />
+		</property>
+	</bean>
+	
+	<bean id="BuServiceltemsDAO" class="com.gh.dao.BuServiceltemsDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean id="buServiceltemsService" class="com.gh.service.BuServiceltemsServiceImpl">
+		<property name="buServiceltemsDAO">
+			<ref bean="BuServiceltemsDAO" />
+		</property>
+	</bean>
+	
+	<bean id="BuCommodityDAO" class="com.gh.dao.BuCommodityDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean id="buCommodityService" class="com.gh.service.BuCommodityServiceImpl">
+		<property name="buCommodityDAO">
+			<ref bean="BuCommodityDAO" />
+		</property>
+	</bean>
+	
+	<bean id="BuActivitiesDAO" class="com.gh.dao.BuActivitiesDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean id="buActivitiesService" class="com.gh.service.BuActivitiesServiceImpl">
+		<property name="buActivitiesDAO">
+			<ref bean="BuActivitiesDAO" />
+		</property>
+	</bean>
+	
+	<bean id="BuInterestDAO" class="com.gh.dao.BuInterestDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean id="buInterestService" class="com.gh.service.BuInterestServiceImpl">
+		<property name="buInterestDAO">
+			<ref bean="BuInterestDAO" />
+		</property>
+	</bean>
+	
+	<bean id="BuNavigationDAO" class="com.gh.dao.BuNavigationDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean id="buNavigationService" class="com.gh.service.BuNavigationServiceImpl">
+		<property name="buNavigationDAO">
+			<ref bean="BuNavigationDAO" />
+		</property>
+	</bean>
+	
+	<bean id="BuScenicDAO" class="com.gh.dao.BuScenicDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean id="buScenicService" class="com.gh.service.BuScenicServiceImpl">
+		<property name="buScenicDAO">
+			<ref bean="BuScenicDAO" />
+		</property>
+	</bean>
+	
+	<bean id="BuNaattrDAO" class="com.gh.dao.BuNaattrDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean id="buNaattrService" class="com.gh.service.BuNaattrServiceImpl">
+		<property name="buNaattrDAO">
+			<ref bean="BuNaattrDAO" />
+		</property>
+	</bean>
+	
+	<bean id="ObImagesDAO" class="com.gh.dao.ObImagesDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean id="ObImagesService" class="com.gh.service.ObImagesServiceImpl">
+		<property name="obImagesDAO">
+			<ref bean="ObImagesDAO" />
+		</property>
+	</bean>
+	
+	<!--景区管理   景点  -->
+	<bean id="BuAttractionsDAO" class="com.gh.dao.BuAttractionsDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean id="BuAttractionsService" class="com.gh.service.BuAttractionsServiceImpl">
+		<property name="buAttractionsDAO">
+			<ref bean="BuAttractionsDAO"/>
+		</property>
+	</bean>
+	
+	
+	<!-- 基础地图数据 -->
+	 <bean id="BuBasicdataDAO" class="com.gh.dao.BuBasicdataDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean id="buBasicdataService" class="com.gh.service.BuBasicdataServiceImpl">
+		<property name="buBasicdataDAO">
+			<ref bean="BuBasicdataDAO"/>
+		</property>
+	</bean>
+	
+	
+	<!--===== 特殊数据管理====== -->
+	<!--  酒店、名宿管理  -->
+	<bean id="BuStayDAO" class="com.gh.dao.BuStayDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+	<bean id="buStayService" class="com.gh.service.BuStayServiceImpl">
+		<property name="buStayDAO">
+			<ref bean="BuStayDAO"/>
+		</property>
+	</bean>
+	
+	<bean id="BuStayRoomDAO" class="com.gh.dao.BuStayRoomDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+	<bean id="buStayRoomService" class="com.gh.service.BuStayRoomServiceImpl">
+		<property name="buStayRoomDAO">
+			<ref bean="BuStayRoomDAO"/>
+		</property>
+	</bean>
+	
+	<!-- 餐饮管理 -->
+	
+	<bean id="BuDiningDAO" class="com.gh.dao.BuDiningDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+	<bean id="buDiningService" class="com.gh.service.BuDiningServiceImpl">
+		<property name="buDiningDAO">
+			<ref bean="BuDiningDAO"/>
+		</property>
+	</bean>
+	
+	<bean id="BuDiningSpecialtyDAO" class="com.gh.dao.BuDiningSpecialtyDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+	<bean id="buDiningSpecialtyService" class="com.gh.service.BuDiningSpecialtyServiceImpl">
+		<property name="buDiningSpecialtyDAO">
+			<ref bean="BuDiningSpecialtyDAO"/>
+		</property>
+	</bean>
+	
+	<!-- 购物管理 -->
+	
+	<bean id="BuEntertainmentshoppingDAO" class="com.gh.dao.BuEntertainmentshoppingDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean id="buEntertainmentshoppingService" class="com.gh.service.BuEntertainmentshoppingServiceImpl">
+		<property name="buEntertainmentshoppingDAO">
+			<ref bean="BuEntertainmentshoppingDAO"/>
+		</property>
+	</bean>
+	
+	
+	<!-- 微信菜单 -->
+	
+	<bean id="BuWeixinmenuDAO" class="com.gh.dao.BuWeixinmenuDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean id="BuWeixinmenuService" class="com.gh.service.BuWeixinmenuServiceImpl">
+		<property name="buWeixinmenuDAO">
+			<ref bean="BuWeixinmenuDAO"/>
+		</property>
+	</bean>
+	<!-- 新闻管理 -->
+	<bean id="BuNewsDAO" class="com.gh.dao.BuNewsDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean id="BuNewsService" class="com.gh.service.BuNewsServiceImpl">
+		<property name="buNewsDAO">
+			<ref bean="BuNewsDAO"/>
+		</property>
+	</bean>
+	
+	<!-- 微信消息管理 -->
+	<bean id="BuWeixinmessageDAO" class="com.gh.dao.BuWeixinmessageDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean id="BuWeixinmessageService" class="com.gh.service.BuWeixinmessageServiceImpl">
+		<property name="buWeixinmessageDAO">
+			<ref bean="BuWeixinmessageDAO"/>
+		</property>
+	</bean>
+	<!-- 事务管理 -->
+	<bean id="BuAffairsDAO" class="com.gh.dao.BuAffairsDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean id="BuAffairsService" class="com.gh.service.BuAffairsServiceImpl">
+		<property name="buAffairsDAO">
+			<ref bean="BuAffairsDAO"/>
+		</property>
+	</bean>
+	<!-- 天气预报 -->
+	<bean id="BuWeatherDAO" class="com.gh.dao.BuWeatherDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean id="BuWeatherService" class="com.gh.service.BuWeatherServiceImpl">
+		<property name="buWeatherDAO">
+			<ref bean="BuWeatherDAO"/>
+		</property>
+	</bean>
+	
+	<bean id="BuGeographyDAO" class="com.gh.dao.BuGeographyDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean id="BuGeographyService" class="com.gh.service.BuGeographyServiceImpl">
+		<property name="buGeographyDAO">
+			<ref bean="BuGeographyDAO"/>
+		</property>
+	</bean>
+	
+	<bean id="WebSearchService" class="com.gh.service.WebSearchServiceImpl">
+		<property name="buGeographyDAO">
+			<ref bean="BuGeographyDAO"/>
+		</property>
+		<property name="buDiningDAO">
+			<ref bean="BuDiningDAO"/>
+		</property>
+		<property name="buEntertainmentshoppingDAO">
+			<ref bean="BuEntertainmentshoppingDAO"/>
+		</property>
+		<property name="buStayDAO">
+			<ref bean="BuStayDAO"/>
+		</property>
+		<property name="buAttractionsDAO">
+			<ref bean="BuAttractionsDAO"/>
+		</property>
+		<property name="buNewsDAO">
+			<ref bean="BuNewsDAO"/>
+		</property>
+	</bean>
+		<!-- 消息群发 -->
+	<bean id="BuWeixinmassDAO" class="com.gh.dao.BuWeixinmassDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean id="BuWeixinmassService" class="com.gh.service.BuWeixinmassServiceImpl">
+		<property name="buWeixinmassDAO">
+			<ref bean="BuWeixinmassDAO"/>
+		</property>
+	</bean>
+	
+	<bean id="GmPathCrossPointDAO" class="com.gh.dao.GmPathCrossPointDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean id="gmpathcrosspointService" class="com.gh.service.GmPathCrossPointServiceImpl">
+		<property name="gmPathCrossPointDAO">
+			<ref bean="GmPathCrossPointDAO"/>
+		</property>
+	</bean>
+	
+	<bean id="GmPathLineDAO" class="com.gh.dao.GmPathLineDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean id="gmpathlineService" class="com.gh.service.GmPathLineServiceImpl">
+		<property name="gmPathLineDAO">
+			<ref bean="GmPathLineDAO"/>
+		</property>
+	</bean>
+	
+	<bean id="BuCommentDAO" class="com.gh.dao.BuCommentDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean id="BuCommentService" class="com.gh.service.BuCommentServiceImpl">
+		<property name="buCommentDAO">
+			<ref bean="BuCommentDAO"/>
+		</property>
+	</bean>
+	
+	<bean id="BuRoadDAO" class="com.gh.dao.BuRoadDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean id="BuRoadService" class="com.gh.service.BuRoadServiceImpl">
+		<property name="buRoadDAO">
+			<ref bean="BuRoadDAO"/>
+		</property>
+	</bean>
+	
+	<bean id="BuPersonnelDAO" class="com.gh.dao.BuPersonnelDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean id="BuPersonnelService" class="com.gh.service.BuPersonnelServiceImpl">
+		<property name="buPersonnelDAO">
+			<ref bean="BuPersonnelDAO"/>
+		</property>
+	</bean>
+	
+	<bean id="BuGpsdeviceDAO" class="com.gh.dao.BuGpsdeviceDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean id="BuGpsdeviceService" class="com.gh.service.BuGpsdeviceServiceImpl">
+		<property name="buGpsdeviceDAO">
+			<ref bean="BuGpsdeviceDAO"/>
+		</property>
+	</bean>
+	
+	<bean id="IntegrateddataDAO" class="com.gh.dao.IntegrateddataDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	
+	<bean id="BuLoglogDAO" class="com.gh.dao.BuLoglogDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean id="BuLoglogService" class="com.gh.service.BuLoglogServiceImpl">
+		<property name="buLoglogDAO">
+			<ref bean="BuLoglogDAO"/>
+		</property>
+	</bean>
+	
+	<bean id="BuScanningDAO" class="com.gh.dao.BuScanningDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean id="BuScanningService" class="com.gh.service.BuScanningServiceImpl">
+		<property name="buScanningDAO">
+			<ref bean="BuScanningDAO"/>
+		</property>
+	</bean>
+	<!-- 友情连接 -->
+	<bean id="BuLinkDAO" class="com.gh.dao.BuLinkDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	
+	<bean id="BuLinkService" class="com.gh.service.BuLinkServiceImpl">
+		<property name="buLinkDAO">
+			<ref bean="BuLinkDAO"/>
+		</property>
+	</bean>
+	
+	<!-- 微信配置 -->
+	<bean id="BuWeixinconfigDAO" class="com.gh.dao.BuWeixinconfigDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	
+	<bean id="BuWeixinconfigService" class="com.gh.service.BuWeixinconfigServiceImpl">
+		<property name="buWeixinconfigDAO">
+			<ref bean="BuWeixinconfigDAO"/>
+		</property>
+	</bean>
+	
+	<!-- 微信抽奖 -->
+	<bean id="BuWeixinluckdrawDAO" class="com.gh.dao.BuWeixinluckdrawDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	
+	<bean id="BuWeixinluckdrawService" class="com.gh.service.BuWeixinluckdrawServiceImpl">
+		<property name="buWeixinluckdrawDAO">
+			<ref bean="BuWeixinluckdrawDAO"/>
+		</property>
+	</bean>
+	
+	<!-- 微信活动专区 -->
+	<bean id="BuWeixinactivityDAO" class="com.gh.dao.BuWeixinactivityDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	
+	<bean id="BuWeixinactivityService" class="com.gh.service.BuWeixinactivityServiceImpl">
+		<property name="buWeixinactivityDAO">
+			<ref bean="BuWeixinactivityDAO"/>
+		</property>
+	</bean>
+	
+	
+	<!-- 微信投票 -->
+	<bean id="BuWeixinvoteDAO" class="com.gh.dao.BuWeixinvoteDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	
+	<bean id="BuWeixinvoteService" class="com.gh.service.BuWeixinvoteServiceImpl">
+		<property name="buWeixinvoteDAO">
+			<ref bean="BuWeixinvoteDAO"/>
+		</property>
+	</bean>
+	
+	
+	<!-- 游客详情 -->
+	<bean id="BuExamineDAO" class="com.gh.dao.BuExamineDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+	
+	<bean id="BuExamineService" class="com.gh.service.BuExamineServiceImpl">
+		<property name="buExamineDAO">
+			<ref bean="BuExamineDAO"/>
+		</property>
+	</bean>
+	
+	<!-- 身份绑定_公安 -->
+	<bean id="BuPublicsecurityDAO" class="com.gh.dao.BuPublicsecurityDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+	
+	<bean id="BuPublicsecurityService" class="com.gh.service.BuPublicsecurityServiceImpl">
+		<property name="buPublicsecurityDAO">
+			<ref bean="BuPublicsecurityDAO"/>
+		</property>
+	</bean>
+	
+	<!-- 身份绑定_旅店 -->
+	<bean id="BuHostelDAO" class="com.gh.dao.BuHostelDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+	
+	<bean id="BuHostelService" class="com.gh.service.BuHostelServiceImpl">
+		<property name="buHostelDAO">
+			<ref bean="BuHostelDAO"/>
+		</property>
+	</bean>
+	
+	
+	<!-- bu_accommodation -->
+	<bean id="BuAccommodationDAO" class="com.gh.dao.BuAccommodationDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+	
+	<bean id="BuAccommodationService" class="com.gh.service.BuAccommodationServiceImpl">
+		<property name="buAccommodationDAO">
+			<ref bean="BuAccommodationDAO"/>
+		</property>
+	</bean>
+	
+	
+	<bean id="VotingrecordDAO" class="com.gh.dao.VotingrecordDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+	
+	<bean id="VotingrecordService" class="com.gh.service.VotingrecordServiceImpl">
+		<property name="votingrecordDAO">
+			<ref bean="VotingrecordDAO"/>
+		</property>
+	</bean>
+	
+	<bean id="BuWeixinrewardDAO" class="com.gh.dao.BuWeixinrewardDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+	
+	<bean id="BuWeixinrewardService" class="com.gh.service.BuWeixinrewardServiceImpl">
+		<property name="buWeixinrewardDAO">
+			<ref bean="BuWeixinrewardDAO"/>
+		</property> 
+	</bean>
+	
+	
+	<bean id="OpinionDAO" class="com.gh.dao.OpinionDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+	
+	<bean id="OpinionService" class="com.gh.service.OpinionServiceImpl">
+		<property name="opinionDAO">
+			<ref bean="OpinionDAO"/>
+		</property>
+	</bean>
+	
+	
+	<bean id="BuWeixinVotingRecordDAO" class="com.gh.dao.BuWeixinVotingRecordDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+	
+	<bean id="BuWeixinVotingRecordService" class="com.gh.service.BuWeixinVotingRecordServiceImpl">
+		<property name="buWeixinVotingRecordDAO">
+			<ref bean="BuWeixinVotingRecordDAO"/>
+		</property>
+	</bean>
+	<!-- 摄影活动 -->
+	<bean id="A20161characterworksDAO" class="com.gh.dao.A20161characterworksDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+	
+	<bean id="A20161characterworksService" class="com.gh.service.A20161characterworksServiceImpl">
+		<property name="a20161characterworksDAO">
+			<ref bean="A20161characterworksDAO"/>
+		</property>
+	</bean>
+	<bean id="A20161clickDAO" class="com.gh.dao.A20161clickDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+	
+	<bean id="A20161clickService" class="com.gh.service.A20161clickServiceImpl">
+		<property name="a20161clickDAO">
+			<ref bean="A20161clickDAO"/>
+		</property>
+	</bean>
+	<bean id="A20161activityDAO" class="com.gh.dao.A20161activityDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+	
+	<bean id="A20161activityService" class="com.gh.service.A20161activityServiceImpl">
+		<property name="a20161activityDAO">
+			<ref bean="A20161activityDAO"/>
+		</property>
+	</bean>
+	
+	
+	
+	
+	
+	<bean id="A20162subjectDAO" class="com.gh.dao.A20162subjectDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+	<bean id="A20162subjectService" class="com.gh.service.A20162subjectServiceImpl">
+		<property name="a20162subjectDAO">
+			<ref bean="A20162subjectDAO"/>
+		</property>
+	</bean>
+	
+	<bean id="A20162userDAO" class="com.gh.dao.A20162userDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+	<bean id="A20162userService" class="com.gh.service.A20162userServiceImpl">
+		<property name="a20162userDAO">
+			<ref bean="A20162userDAO"/>
+		</property>
+	</bean>
+	
+	
+	<!-- 2017-1 -->
+	<bean id="A20171bridgeroadDAO" class="com.gh.dao.A20171bridgeroadDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+	<bean id="A20171bridgeroadService" class="com.gh.service.A20171bridgeroadServiceImpl">
+		<property name="a20171bridgeroadDAO">
+			<ref bean="A20171bridgeroadDAO"/>
+		</property>
+	</bean>
+	<bean id="A20171userDAO" class="com.gh.dao.A20171userDAOImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+	<bean id="A20171userService" class="com.gh.service.A20171userServiceImpl">
+		<property name="a20171userDAO">
+			<ref bean="A20171userDAO"/>
+		</property>
+	</bean>
+</beans>

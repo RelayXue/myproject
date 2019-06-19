@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.devMode" value="false" />
+	<package name="Touch" namespace="/" extends="struts-default">
+		<!-- 景区信息维护 
+		<action name="phoneJq" class="com.gh.action.business.BuScenicAction"
+			method="getPhoneScenicList">
+			<result name="phoneScenicDetail">/phone/jqDetail.jsp</result>
+			<result name="phoneScenicList">/phone/index.jsp</result> 
+		</action>
+		<action name="phoneIndex" class="com.gh.action.business.BuScenicAction"
+			method="getPhoneScenicList">
+			<result name="phoneScenicDetail">/phone/jqDetail.jsp</result>
+			<result name="phoneScenicList">/phone/index.jsp</result> 
+		</action>-->
+		
+		<!-- 景点信息维护 
+		<action name="phoneJd" class="com.gh.action.business.BuAttractionsAction"
+			method="getPhoneDetail">
+			<result name="phoneAttractionsDetail">/phone/jdDetail.jsp</result>
+			<result name="fileUpload">/business/fileUpload2.jsp</result>
+		</action> 
+		<action name="phoneHd" class="com.gh.action.business.BuAttractionsAction"
+			method="getPhoneDetail">
+			<result name="phoneAttractionsDetail">/phone/jdDetail.jsp</result>
+		</action> 
+		<action name="phoneYhj" class="com.gh.action.business.BuAttractionsAction"
+			method="getPhoneDetail">
+			<result name="phoneAttractionsDetail">/phone/jdDetail.jsp</result>
+		</action> 
+		<action name="phoneSp" class="com.gh.action.business.BuAttractionsAction"
+			method="getPhoneDetail">
+			<result name="phoneAttractionsDetail">/phone/jdDetail.jsp</result>
+		</action> -->
+		
+		<!-- 城管客户端业务交互 -->
+		<action name="phoneFI" class="com.gh.phone.PhoneAction" method="forIdent"></action>
+		
+		<!-- 触摸屏(吃住玩乐业务) -->
+		<action name="touch_main_*" class="com.gh.action.touch.MainAction" method="{1}">
+			<result name="news_list">/module/touch/news_list.jsp</result>
+			<result name="mingren_detail">/module/touch/news_mingren_detail.jsp</result>
+		</action>
+		
+		<!-- 手机端web(业务) -->
+		<action name="phone_main_*" class="com.gh.action.phone.MainAction" method="{1}">
+			<result name="route_detail">/module/phone/route_detail.jsp</result>
+			<result name="select_eqcode" type="redirect">/module/phone/search_detail.jsp?id=${id}&amp;type=${category}&amp;use=1</result>
+		</action>
+		<action name="phone_traffic_*" class="com.gh.action.phone.TrafficAction" method="{1}">
+			<result name="traffic_news">/module/phone/traffic_news.jsp</result>
+			<result name="sync_traffic_list">/module/phone/sync_traffic_list.jsp</result>
+			<result name="timetable_list">/module/phone/timetable_list.jsp</result>
+			<result name="parking_service_list">/module/phone/parking_service_list.jsp</result>
+			<result name="traffic_news_detail">/module/phone/traffic_news_detail.jsp</result>
+			<result name="recommend_route_main">/module/phone/recommend_route_main.jsp</result>
+		</action>
+	</package>
+	
+	<package name="Phone1" namespace="/phone" extends="struts-default" >
+		<action name="index" class="com.gh.action.phone.MainAction" method="index">
+			<result name="index">/module/phone/main.jsp</result>
+		</action>
+		<action name="getbt" class="com.gh.action.phone.MainAction" method="getbt">
+			<result name="Midnight" type="redirect">/phone/Midnight.jsp?qid=${qid}</result>
+			<result name="detail" type="redirect">/module/phone/search_detail.jsp?id=${id}&amp;category=${category}</result>
+			<result name="show" type="redirectAction">
+				<param name="actionName">index</param>
+			</result>
+		</action>
+	</package>
+</struts>

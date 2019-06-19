@@ -1,0 +1,94 @@
+/**
+ * 初始化HTML标签及常用类型
+ **/
+
+/* ===============
+ * 重新定义Html元素
+ * =============== */
+html, body, div, ul, ol, li, dl, dt, dd, h1, h2, h3, h4, h5, h6, pre, form, p, blockquote, fieldset, input { padding: 0; margin: 0;}
+h1, h2, h3, h4, h5, h6, pre, code, address, caption, cite, code, em, strong, table, th, td { font-style: normal; font-weight: normal;}
+strong { font-weight: bold;}
+h1, h2, h3, h4, h5, h6{ font-weight:bold;}
+ul, ol { list-style: none outside none;}
+fieldset, img { border: medium none;}
+caption, th {  text-align: left;}
+table { border-collapse: collapse; border-spacing: 0;}
+input, select, textarea, option, button{ border:0 none;}
+body { color: #000; font: 12px/1 "宋体", Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;}
+a { outline: medium none;}
+a:link, a:visited, a:active { text-decoration: none;}
+a:hover { text-decoration: underline;}
+i, cite, em { font-style: normal;}
+
+/* Clearfix,*/
+.clearfix:after{content:"\0020"; height:0; display:block; clear:both;}
+.clearfix{zoom:1}
+
+/*文字
+******************************/
+.f12 { font-size:12px;}
+.f14 { font-size:14px;}
+.f16 { font-size:16px;}
+.f18 { font-size:18px;}
+.f19 { font-size:19px;}
+.f24 { font-size:24px;}
+.f30 { font-size:30px;}
+.ff { font-family:"微软雅黑";}
+.fb { font-weight:bold;}
+.fn { font-weight:normal;}
+.unl { text-decoration:underline;}
+.no_unl { text-decoration:none;}
+.noborder {border-style:none; border-width: 0;}
+
+
+/*定位 
+******************************/
+.tl { text-align:left !important;}
+.tc { text-align:center !important; }
+.tr { text-align:right !important;}
+.bc { margin-right:auto ;margin-left:auto;}
+.fl { float:left; display:inline;}
+.fr { float:right; display:inline;}
+.cb { clear:both;}
+.cl { clear:left;}
+.cr { clear:right;}
+.vm { vertical-align: middle;}
+.vt { vertical-align: top;}
+.pr { position:relative;}
+.pa { position:absolute;}
+.abs-right { position:absolute; right:0;}
+.zoom { zoom:1}
+/*.hidden { visibility:hidden;*/}
+.none { display:none;}
+.clear { clear: both; height: 0; font-size: 1px; }
+
+/*长度高度
+******************************/
+.w { width:100%}
+.h { height:100%}
+
+
+/*边框
+******************************/
+.bor1{ border-left:1px solid #cbe5c1; border-right:1px solid #cbe5c1; border-bottom:1px solid #cbe5c1;}
+
+/*边距
+******************************/
+.p5 { padding:5px;}
+.mr10{ margin-right:10px;}
+
+/*div宽高局中
+******************************/
+.thumb , .logo { display:table-cell; vertical-align:middle; text-align:center;}
+.thumb i , .logo i { *display:inline-block; *height:100%; *vertical-align:middle; }
+.thumb img , .logo img { *vertical-align:middle; }
+
+/*背景
+******************************/
+
+/*隐藏
+******************************/
+.hide{font-size: 0; line-height: 0; display: none;}
+.whide{display: block; text-indent: -999em; overflow: hidden;}
+
+

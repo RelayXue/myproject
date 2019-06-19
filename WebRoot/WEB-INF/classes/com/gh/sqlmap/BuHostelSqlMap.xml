@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="tj_BuHostel">
+
+    <resultMap id="re_BuHostel" class="com.gh.entity.BuHostel">
+        <result property="fuid" column="FUID"/>
+        <result property="realname" column="REALNAME"/>
+        <result property="hname" column="HNAME"/>
+        <result property="mobile" column="MOBILE"/>
+        <result property="description" column="DESCRIPTION"/>
+        <result property="createdate" column="CREATEDATE"/>
+        <result property="weixinid" column="WEIXINID"/>
+        <result property="pcode" column="PCODE"/>
+        <result property="ptime" column="PTIME"/>
+        <result property="examine" column="EXAMINE"/>
+        <result property="himg" column="HIMG"/>
+    </resultMap>
+    
+    <!-- 用于select查询公用抽取的列 -->
+	<sql id="BuHostel.columns">
+	    <![CDATA[
+        FUID ,REALNAME ,HNAME ,MOBILE ,DESCRIPTION ,CREATEDATE ,WEIXINID ,PCODE ,PTIME ,EXAMINE ,HIMG 
+	    ]]>
+	</sql>
+  
+	 <select id="selectByPrimaryKey" parameterClass="com.gh.entity.BuHostel" resultMap="re_BuHostel">
+	    SELECT <include refid="BuHostel.columns"/>
+	    from bu_hostel
+	    where 
+		        FUID = #fuid:VARCHAR# 
+ 	 </select>
+ 	 
+	<delete id="deleteByPrimaryKey" parameterClass="com.gh.entity.BuHostel">
+	    delete from bu_hostel
+    	where 
+		        FUID = #fuid:VARCHAR# 
+  </delete>
+  
+  	<delete id="deleteByWhere" parameterClass="java.lang.String">
+	    delete from bu_hostel
+    	where 
+		      $swhere$
+	  </delete>
+  
+   <insert id="insert" parameterClass="com.gh.entity.BuHostel">
+	        insert into bu_hostel (  FUID ,   REALNAME ,   HNAME ,   MOBILE ,   DESCRIPTION ,   CREATEDATE ,   WEIXINID ,   PCODE ,   PTIME ,   EXAMINE ,   HIMG   )
+   	 	values ( #fuid:VARCHAR# ,  #realname:VARCHAR# ,  #hname:VARCHAR# ,  #mobile:VARCHAR# ,  #description:VARCHAR# ,  #createdate:TIMESTAMP# ,  #weixinid:VARCHAR# ,  #pcode:VARCHAR# ,  #ptime:TIMESTAMP# ,  #examine:VARCHAR# ,  #himg:VARCHAR#  )
+   	
+  </insert>
+ 	
+ 	
+ 	<update id="updateByPrimaryKey" parameterClass="com.gh.entity.BuHostel">
+   	UPDATE bu_hostel SET
+	        REALNAME = #realname:VARCHAR# ,
+	        HNAME = #hname:VARCHAR# ,
+	        MOBILE = #mobile:VARCHAR# ,
+	        DESCRIPTION = #description:VARCHAR# ,
+	        CREATEDATE = #createdate:TIMESTAMP# ,
+	        WEIXINID = #weixinid:VARCHAR# ,
+	        PCODE = #pcode:VARCHAR# ,
+	        PTIME = #ptime:TIMESTAMP# ,
+	        EXAMINE = #examine:VARCHAR# ,
+	        HIMG = #himg:VARCHAR# 
+        WHERE 
+	        FUID = #fuid:VARCHAR# 
+  </update>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterClass="com.gh.entity.BuHostel">
+  	  update bu_hostel
+  	  <dynamic prepend="set">
+  	   <isNotNull prepend="," property="realname">
+  	 	  REALNAME = #realname:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="hname">
+  	 	  HNAME = #hname:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="mobile">
+  	 	  MOBILE = #mobile:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="description">
+  	 	  DESCRIPTION = #description:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createdate">
+  	 	  CREATEDATE = #createdate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="weixinid">
+  	 	  WEIXINID = #weixinid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="pcode">
+  	 	  PCODE = #pcode:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="ptime">
+  	 	  PTIME = #ptime:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="examine">
+  	 	  EXAMINE = #examine:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="himg">
+  	 	  HIMG = #himg:VARCHAR#
+  	  </isNotNull>
+     </dynamic>
+    where FUID = #fuid:VARCHAR# 
+  </update>
+  
+   <select id="execSql" parameterClass="string" resultMap="re_BuHostel"><![CDATA[$sql$]]></select>
+   
+    <select id="execSqlObject" parameterClass="string" resultClass="java.lang.Object"><![CDATA[$sql$]]></select>
+</sqlMap>
+

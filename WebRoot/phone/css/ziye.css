@@ -1,0 +1,49 @@
+.left{
+	float:left;
+	margin:22px -20px 343px -20px;
+	}
+
+.right{
+	float:right;
+	margin:20px 0px 0px 0px ;
+	}
+.top{
+	width:100%;height:100%;
+   }
+   
+.bottom{
+	width:100%;height:100%;z-index:-2;position:absolute;
+	}
+
+.dd1{
+		 font-size:17px; padding: 5px 15px 5px 24px;margin:10px 0px 0px 0px;cursor: pointer; font-family:KaiTi;
+		 font-weight:bold;}
+		
+.tt{font-family:KaiTi;font-size:17px;background:url(../images/wenzibg.png);color:white;padding: 5px 15px 5px 24px;margin:10px 0px 0px 0px; font-weight:bold;}
+
+.image{
+	width:125px;height:135px;margin:18px 0px 0px 0px ;
+	}
+
+.title{
+	float:left;width:10px;line-height:15px;margin:15px 5px 15px 5px;font-size:11px;
+	font-family:SimSun;
+	font-weight:bold;
+	}
+.content{
+	float:right;width:90px;height:75px;font-size:7px;margin:10px 5px 0px 5px;line-height:130%;
+	font-family:SimSun;
+	}	
+.detail{
+	width:58px;height:20px;font:SimSun;font-size:5px;
+	border-radius:10px;
+	margin:0px 0px 0px 0px;
+	}
+	
+.bg{
+   clear:both;
+   background:#aeacac;
+   width:88%;
+   height:10px;
+   margin:0px 0px 0px 30px
+	}

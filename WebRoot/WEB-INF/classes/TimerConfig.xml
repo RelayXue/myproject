@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>    
+        <!-- 要调用的工作类 -->
+        <bean id="BuWeatherService" class="com.gh.service.BuWeatherServiceImpl">
+        	<property name="buWeatherDAO"> 
+				<ref bean="BuWeatherDAO" />
+			</property>
+        </bean>
+        <bean id="AccessTokenService" class="com.gh.action.weixin.backstage.GetAccessToken">
+        	 
+        </bean>
+        <!-- 定义调用对象和调用对象的方法 -->
+        <!-- 百度天气预报服务 -->
+        <bean id="jobtask" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+            <!-- 调用的类 -->
+            <property name="targetObject">
+                <ref bean="BuWeatherService"/>
+            </property>
+            <!-- 调用类中的方法 -->
+            <property name="targetMethod">
+                <value>getBaiduWeather</value>
+            </property>
+        </bean>
+        <!-- 微信access_token服务 -->
+        <bean id="access" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+            <!-- 调用的类 -->
+            <property name="targetObject">
+                <ref bean="AccessTokenService"/>
+            </property>
+            <!-- 调用类中的方法 -->
+            <property name="targetMethod">
+                <value>newGetAccess</value>
+            </property>
+        </bean>
+        <!-- 定义触发时间 -->
+        <bean id="doTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+            <property name="jobDetail">
+                <ref bean="jobtask"/>
+            </property>
+            <!-- cron表达式 -->
+            <property name="cronExpression">
+               <value>0 0 * * * ?</value>
+            </property>
+        </bean>
+        <!--  -->
+         <bean id="workflowTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerBean">  
+	        <property name="jobDetail" ref="access" />  
+	        <!-- 这里定义的是服务启动后多少秒之后启动定时器，单位是毫秒，下面设置的是十秒 -->  
+	        <property name="startDelay" value="10000" />  
+	        <!-- 这里定义的是循环的周期，单位是毫秒 -->  
+	        <property name="repeatInterval" value="3600000" />   
+  		 </bean>  
+        
+        <!-- 总管理类 如果将lazy-init='false'那么容器启动就会执行调度程序  -->
+        <bean id="startQuertz" lazy-init="false" autowire="no" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+            <property name="triggers">
+                <list>
+                    <ref bean="doTime"/>
+                </list>
+            </property>
+        </bean>
+        <bean id="startQuertz1" lazy-init="false" autowire="no" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+            <property name="triggers">
+                <list>
+                    <ref bean="workflowTrigger"/>
+                </list>
+            </property>
+        </bean>
+    
+</beans>

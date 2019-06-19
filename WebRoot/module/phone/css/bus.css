@@ -1,0 +1,34 @@
+@charset "utf-8";
+/* CSS Document */
+
+#container{background:#f4f1e7;}
+
+#header{width:100%;height:50px;background:#2e3c50;float:left;}
+#header ul{width:100%;float:left;height:100%;}
+#header li{float:left;width:20%;height:100%;background:#fff;}
+#header li a{ display:block;height:100%;text-align:center;border:1px solid #a5a9ad;border-left:0px;box-sizing: border-box;}
+#header .nav1 a{background:url(../images/nav1.png) center center no-repeat;}
+#header .nav2 a{background:url(../images/nav2.png) center center no-repeat;}
+#header .nav3 a{background:url(../images/nav3.png) center center no-repeat;}
+#header .nav4 a{background:url(../images/nav4.png) center center no-repeat;}
+#header .nav5 a{background:url(../images/nav5.png) center center no-repeat;}
+#header .nav1 a{border-left:1px solid #a5a9ad;}
+#header .nav3{background:none;}
+
+#hover{margin:0px 15px;background:#fff;}
+#hover li{float:left;width:100%;height:70px;border:1px solid #fff;background:#ebe4ca;margin-top:10px; border-radius:5px;}
+#hover li div{margin:0px 10px;height:100%;position:relative;}
+#hover .left{float:left;height:100%;}
+#hover .left span{ display:block;padding-top:8px;}
+#hover .left .s1{font-size:1.09em;color:#1e1e1e;}
+#hover .left .s2{font-size:0.875em;color:#8c8c8c;}
+#hover .left .s1 a{color:#717699;font-size:0.8em;}
+#hover .right{position:absolute;right:0px;width:10px;height:100%;background:url(../images/jt9.png) center center no-repeat;}
+
+
+
+
+
+
+
+

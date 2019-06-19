@@ -1,0 +1,68 @@
+@charset "utf-8";
+/* CSS Document */
+
+#container{background:#f4f1e7;}
+
+#header{width:100%;height:35px;background:#2e3c50;padding:10px 0px;float:left; text-align:center;}
+#header #return{width:20%;height:100%;float:left;}
+#header #xq{width:20%;height:100%;float:left;font-size:1em;background:url(../images/wz.png) center center no-repeat;}
+#header a{display:block;width:100%;height:100%;line-height:35px;text-align:center;}
+#header #return a{background:url(../images/return.png) center center no-repeat;}
+#header #title{float:left;width:60%;height:100%;text-align:center;color:#fff;font-size:1.1875em;line-height:35px;}
+
+#hover{width:100%;float:left;background:#f0f0f0;border-bottom:1px solid #aca9a2;}
+/*轮播图样式*/
+#banner{width:100%;overflow:hidden;position:relative;}
+#banner .banner_img ul{position:relative;width:500%;}
+#banner .banner_img li{float:left;width:20%;position:relative;}
+#banner .banner_img img{width:100%;}
+#banner .banner_btn{position:absolute;left:50%;bottom:10px;margin-left:-25px;}
+#banner .banner_btn span{display:inline-block;_display:inline;_zoom:1;width:10px;height:10px;_font-size:0;cursor:pointer;background:#ccc;border-radius:50%; margin-right:4px;behavior:url(pie/pie.htc);position:relative;}
+#banner .banner_btn .on{background:#282828;}
+#describe{margin:0px 10px;}
+#describe ul{float:left;width:100%;padding:10px 0px;}
+#describe li{line-height:20px;color:#292929;font-size:0.75em;position:relative;}
+#describe .title{color:#1e1e1e;font-size:1.09375em;font-weight:bold;padding-bottom:5px;}
+#describe .title a{color:#717699;font-weight:normal;}
+#describe span{position:absolute;right:0px;font-size:1.25em;}
+#describe span img{ vertical-align:top;margin-left:5px;}
+#describe .btn{margin-top:10px;}
+#describe .btn a{ display:block;width:33.3333%;float:left;text-align:center;background:#b99883;padding:5px 0px;}
+#describe .btn img{ vertical-align:top;margin-right:5px;}
+#describe .phone img{margin-top:3px;}
+#describe .qza img{margin-top:5px;}
+#describe .zzb img{margin-top:-2px;}
+#describe .phone{ border-radius:5px 0px 0px 5px;border-right:1px solid #fff; box-sizing:border-box;}
+#describe .zzb{border-radius:0px 5px 5px 0px;border-left:1px solid #fff; box-sizing:border-box;}
+
+#menu{margin:0px 10px;clear:both;}
+#cont{float:left;width:100%;border:2px solid #c4c2bc;background:#fff;box-sizing:border-box;margin-top:5px;}
+#menu_title a{width:50%;float:left;text-align:center;background:#c4c2bc;height:40px;line-height:40px;font-weight:bold;}
+#cont #k1{padding-bottom:10px;}
+#cont #k1 li{color:#262626;font-size:0.875em;line-height:20px;}
+#cont #k1 ul{padding-left:10px;clear:both;padding-top:10px;}
+#k2 #list{float:left;width:100%;background:#FFF;border-left:2px solid #FFF;border-right:2px solid #FFF; box-sizing:border-box;}
+#k2 dl{float:left;width:100%;background:#f0f0f0;margin-top:2px;margin-bottom:2px;border:1px solid #c8c8c8; box-sizing:border-box;}
+#k2 dt{float:left;width:40%;border-right:15px solid transparent;box-sizing: border-box;}
+#k2 dt img{width:100%;}
+#k2 dd{float:left;width:60%;}
+#k2 li{font-size:0.75em;line-height:25px;color:#565148;}
+#k2 ul{float:left;width:100%;}
+#k2 .title{font-weight:bold;font-size:0.875em;;padding-top:5px;}
+#k2 .title a{color:#db742f;font-weight:normal;}
+#k2 .bor{border-bottom:1px solid #ccc;padding-bottom:5px;margin-bottom:5px;}
+#k2 .bor img{margin-right:5px;}
+#k2 li img{vertical-align:top;}
+#k2 #btn{clear:both;float:left;width:100%;margin-top:5px;}
+#k2 #btn p{width:50%;text-align:center;float:left;}
+#k2 #btn a{padding:3px 0px;display:block;background:#f0f0f0;border:1px solid;border-radius:5px;margin-right:4px;box-sizing:border-box;}
+#k2 #btn img{margin-right:5px;vertical-align:top;margin-top:4px;}
+#k2 #btn .phone a{color:#c9af9f;}
+#k2 #btn .zzb a{color:#8589a7;}
+#k2 #btn .zzb img{margin-left:5px;margin-right:0px;margin-top:6px;}
+
+#footer{position:fixed;float:left;bottom:0px;width:100%;background:#2e3c50;padding:10px 0px;}
+#footer a{text-align:center;float:left;width:50%; display:block;}
+#footer img{ vertical-align:top;margin-top:-3px;margin-right:5px;}
+#footer .bor{border-right:1px solid #fff; box-sizing:border-box;}
+

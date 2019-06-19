@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="tj_BaseOrganizeMenu">
+
+    <resultMap id="re_BaseOrganizeMenu" class="com.gh.entity.BaseOrganizeMenu">
+        <result property="fuid" column="FUID"/>
+        <result property="organizeId" column="ORGANIZE_ID"/>
+        <result property="menuId" column="MENU_ID"/>
+        <result property="createdate" column="CREATEDATE"/>
+        <result property="createuserrealname" column="CREATEUSERREALNAME"/>
+        <result property="createuserid" column="CREATEUSERID"/>
+        <result property="modifydate" column="MODIFYDATE"/>
+        <result property="modifyuserrealname" column="MODIFYUSERREALNAME"/>
+        <result property="modifyuserid" column="MODIFYUSERID"/>
+        <result property="operationid" column="OPERATIONID"/>
+    </resultMap>
+    
+    <!-- 用于select查询公用抽取的列 -->
+	<sql id="BaseOrganizeMenu.columns">
+	    <![CDATA[
+        FUID ,ORGANIZE_ID ,MENU_ID ,CREATEDATE ,CREATEUSERREALNAME ,CREATEUSERID ,MODIFYDATE ,MODIFYUSERREALNAME ,MODIFYUSERID ,OPERATIONID 
+	    ]]>
+	</sql>
+  
+	 <select id="selectByPrimaryKey" parameterClass="com.gh.entity.BaseOrganizeMenu" resultMap="re_BaseOrganizeMenu">
+	    SELECT <include refid="BaseOrganizeMenu.columns"/>
+	    from base_organize_menu
+	    where 
+		        FUID = #fuid:VARCHAR# 
+ 	 </select>
+ 	 
+	<delete id="deleteByPrimaryKey" parameterClass="com.gh.entity.BaseOrganizeMenu">
+	    delete from base_organize_menu
+    	where 
+		        FUID = #fuid:VARCHAR# 
+  </delete>
+  
+  
+   <insert id="insert" parameterClass="com.gh.entity.BaseOrganizeMenu">
+	        insert into base_organize_menu (  FUID ,   ORGANIZE_ID ,   MENU_ID ,   CREATEDATE ,   CREATEUSERREALNAME ,   CREATEUSERID ,   MODIFYDATE ,   MODIFYUSERREALNAME ,   MODIFYUSERID ,   OPERATIONID   )
+   	 	values ( #fuid:VARCHAR# ,  #organizeId:VARCHAR# ,  #menuId:VARCHAR# ,  #createdate:TIMESTAMP# ,  #createuserrealname:VARCHAR# ,  #createuserid:VARCHAR# ,  #modifydate:TIMESTAMP# ,  #modifyuserrealname:VARCHAR# ,  #modifyuserid:VARCHAR# ,  #operationid:VARCHAR#  )
+   	
+  </insert>
+ 	
+ 	
+ 	<update id="updateByPrimaryKey" parameterClass="com.gh.entity.BaseOrganizeMenu">
+   	UPDATE base_organize_menu SET
+	        ORGANIZE_ID = #organizeId:VARCHAR# ,
+	        MENU_ID = #menuId:VARCHAR# ,
+	        CREATEDATE = #createdate:TIMESTAMP# ,
+	        CREATEUSERREALNAME = #createuserrealname:VARCHAR# ,
+	        CREATEUSERID = #createuserid:VARCHAR# ,
+	        MODIFYDATE = #modifydate:TIMESTAMP# ,
+	        MODIFYUSERREALNAME = #modifyuserrealname:VARCHAR# ,
+	        MODIFYUSERID = #modifyuserid:VARCHAR# ,
+	        OPERATIONID = #operationid:VARCHAR# 
+        WHERE 
+	        FUID = #fuid:VARCHAR# 
+  </update>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterClass="com.gh.entity.BaseOrganizeMenu">
+  	  update base_organize_menu
+  	  <dynamic prepend="set">
+  	   <isNotNull prepend="," property="fuid">
+  	 	  FUID = #fuid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="organizeId">
+  	 	  ORGANIZE_ID = #organizeId:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="menuId">
+  	 	  MENU_ID = #menuId:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createdate">
+  	 	  CREATEDATE = #createdate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createuserrealname">
+  	 	  CREATEUSERREALNAME = #createuserrealname:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createuserid">
+  	 	  CREATEUSERID = #createuserid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="modifydate">
+  	 	  MODIFYDATE = #modifydate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="modifyuserrealname">
+  	 	  MODIFYUSERREALNAME = #modifyuserrealname:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="modifyuserid">
+  	 	  MODIFYUSERID = #modifyuserid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="operationid">
+  	 	  OPERATIONID = #operationid:VARCHAR#
+  	  </isNotNull>
+     </dynamic>
+    where FUID = #fuid:VARCHAR# 
+  </update>
+  
+   <select id="execSql" parameterClass="string" resultMap="re_BaseOrganizeMenu"><![CDATA[$sql$]]></select>
+   
+    <select id="execSqlObject" parameterClass="string" resultClass="java.lang.Object"><![CDATA[$sql$]]></select>
+</sqlMap>
+

@@ -1,0 +1,784 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script src="js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="css/main.css"/>
+    <script type="text/javascript">
+            var dragging = false;
+            var iY;
+			var iOffsetY;
+			var s = 0;
+			var mi = 0;	//最小层级
+			var ma = 10;	//最大层级
+			var interval = 11;	//滚动间隔
+			
+			
+			var is_full = true;	//表示是否全屏
+			$(function(){
+				$("._zoom_bar_line").height(interval * (ma+2));
+				$("#_zoom_bar_btn").mousedown(function(e) {
+					dragging = true;
+					iY = e.clientY;
+					iOffsetY = this.offsetTop;
+					$("#v").html(iY+","+this.offsetTop);
+					this.setCapture && this.setCapture();
+					return false;
+				});
+				document.onmousemove = function(e) {
+					if (dragging && s <= (ma*interval) && s >= (mi*interval)) {
+						var e = e || window.event;
+						var oY = e.clientY - iY + iOffsetY;
+						setZoomBar(oY);
+						return false;
+					}
+					
+				};
+				$(document).mouseup(function(e) {
+					dragging = false;
+					$("#v").html("-1");
+				})
+				
+				//初始默认层级
+				setZoomBar(interval*3);
+				
+				
+				openTab("._simple_content","._child_items","icon_open","icon_packup");
+	
+				fullView();
+			})
+
+			function runZoomBarBtn(i){
+				var oY = parseInt($("#_zoom_bar_btn").css("top"));
+				if(i == 1){
+					oY += interval;
+				}else if(i == 0){
+					oY -= interval;
+				}
+				setZoomBar(oY);
+			}
+			
+			function setZoomBar(oY){
+				if (oY <= (ma*interval) && oY >= (mi*interval)) {
+					if(oY < (mi*interval)) oY = (mi*interval);
+					if(oY > (ma*interval)) oY = (ma*interval);
+					if(oY % interval > 0) oY = parseInt(oY / interval) * interval;
+					$("#_zoom_bar_btn").css({"top":oY + "px"});
+					s = oY;
+					zoomBarScrollListener(parseInt(oY / interval));
+				}
+			}
+			
+			function zoomBarScrollListener(level){
+				alert(level);
+			}
+ 
+		 //地图标签内容切换
+		 function setMapTab(i){
+			 $("._tab1, ._tab2, ._tab3").removeClass("_hover");
+			 $("._tabc").hide();
+			 $("._tab"+i).addClass("_hover");
+			 $("#_tabc"+i).show();
+		 }
+		 
+		 function openTab(title_class, child_class, def_css, hover_css){
+			$(title_class).click(function(){
+				var css = $(this).attr("class");
+				if(css.indexOf(def_css) >= 0){
+					$(this).next(child_class).eq(0).show(300);
+					$(this).removeClass(def_css);
+					$(this).addClass(hover_css);
+				}else{
+					$(this).next(child_class).eq(0).hide(300);
+					$(this).removeClass(hover_css);
+					$(this).addClass(def_css);
+				}
+			});
+		 }
+		 
+		 function fullView(){
+			 var max_width;
+			 var max_height;
+			 
+			 if(is_full){
+				 max_width = 980;
+				 max_height = 804;
+				 $("body").css({"overflow":"scroll"});
+				 $("._canvas").css({"width":max_width+"px", "height":max_height+"px", "margin":"0 auto", "position":"relative", "top":0, "left":0});
+				 is_full = false;
+			 }else{
+				 $("body").css({"overflow":"hidden"});
+				 max_width = $(window).width();
+				 max_height = $(window).height();
+				 
+				 $("._canvas").css({"width":max_width+"px", "height":max_height+"px", "position":"absolute", "top":0, "left":0});
+				 is_full = true;
+			 }
+			$("._top_menu").width(max_width-2*72);
+			$("._left_menu").height(max_height-2*72);
+			$("._right_menu").height(max_height-2*72);
+		 }
+
+    </script>
+
+</head>
+
+<body>
+<div class="_top">
+	<div class="_grop">
+    	<div class="_logo"></div>
+        <div class="_box">
+        	<div class="_name"></div>
+            <div class="_ms">
+            	<div class="_search_box">
+               		<input type="text" placeholder="综合查询" value="综合查询"/>
+                    <div class="_search_btn"></div>
+                </div>
+                <div class="_menu">景点  |  服务  |  机构  |  特色街  |  购物  |  特产  |  交通播报</div>
+            </div>
+            <div class="_weather">
+            	<img src="images/m_icon_06.png" />
+                <div class="_tt1">25℃ [晴]</div>
+                <div class="_tt2">东北风（3~4）级</div>
+            </div>
+        </div>
+    </div>
+    <div class="_tllp"></div>
+</div>
+<div class="_body">
+	<div class="_canvas">
+    	<!-- 底部背景 -->
+        <div class="" style=" width:72px; height:72px; top:0; left:0; background-image:url(images/border1_03.jpg); z-index:1; position:absolute;"></div>
+        <div class="" style=" width:72px; height:72px; top:0; right:0; background-image:url(images/border1_07.jpg); z-index:1; position:absolute;"></div>
+        <div class="" style=" width:72px; height:72px; bottom:0; left:0; background-image:url(images/border1_16.jpg); z-index:1; position:absolute;"></div>
+        <div class="" style=" width:72px; height:72px; bottom:0; right:0; background-image:url(images/border1_18.jpg); z-index:1; position:absolute;"></div>
+        <!-- end -->
+    	<div class="_top_menu">
+        	<div class="_left">
+            	<a class="_ico1">
+                	<div id="_ipage">
+                    	<div class="" style="border:1px solid #ccc; height: 45px; margin:10px; background-color:#fff;">
+                        	<input type="text" placeholder="输入关键字" style="border:none;	height:28px; font-size:16px; margin-left:10px ;	margin-top:8px ; width:320px; line-height:28px;" />
+                            <div class="" style="float:right; border-left:1px solid #ccc; height:100%; width:50px; background-image:url(images/search_btn.png); background-repeat:no-repeat; background-position:center;"></div>
+                        </div>
+                        <div class="listA">
+                        	<span class="row ltop">
+                            	<span style="line-height:30px;">大家都喜欢去<span style="color:#57839e;  font-weight:bold; font-size:14px;">【可乘k350】</span></span>
+                                <div style="clear:both"></div>
+                            </span>
+                        	<div class="row right_icon icon_in right_icon_bb">
+                            	<span class="fleft" style="background-image:url(images/m_icon3_03.png); background-repeat:no-repeat; background-position:center; width:25px;  display:block; height:31px; text-align:center; line-height:18px; margin-right:20px; color:#FFF;">A</span>
+                            	<span class="fleft">西彭景点</span>
+                                <span class="fleft" style="display:block; background-image:url(images/m_icon3_06.png); background-repeat:no-repeat; background-position:0 3px; padding-left:26px;margin-left:20px; color:#e5772d">4.5</span>
+								<span class="fright" style="color:#717699">详细</span>
+                                <div style="clear:both"></div>
+                            </div>
+                        	<div class="row right_icon icon_in right_icon_bb">
+                            	<span class="fleft" style="background-image:url(images/m_icon3_10.png); background-repeat:no-repeat; background-position:center; width:25px;  display:block; height:31px; text-align:center; line-height:18px; margin-right:20px; color:#FFF;">B</span>
+                            	<span class="fleft">西彭景点</span>
+                                <span class="fleft" style="display:block; background-image:url(images/m_icon3_06.png); background-repeat:no-repeat; background-position:0 3px; padding-left:26px;margin-left:20px; color:#e5772d">4.5</span>
+								<span class="fright" style="color:#717699">详细</span>
+                                <div style="clear:both"></div>
+                            </div>
+                        	<div class="row right_icon icon_in right_icon_bb">
+                            	<span class="fleft" style="background-image:url(images/m_icon3_03.png); background-repeat:no-repeat; background-position:center; width:25px;  display:block; height:31px; text-align:center; line-height:18px; margin-right:20px; color:#FFF;">C</span>
+                            	<span class="fleft">西彭景点</span>
+                                <span class="fleft" style="display:block; background-image:url(images/m_icon3_06.png); background-repeat:no-repeat; background-position:0 3px; padding-left:26px;margin-left:20px; color:#e5772d">4.5</span>
+								<span class="fright" style="color:#717699">详细</span>
+                                <div style="clear:both"></div>
+                            </div>
+                        	<div class="row right_icon icon_in right_icon_bb">
+                            	<span class="fleft" style="background-image:url(images/m_icon3_03.png); background-repeat:no-repeat; background-position:center; width:25px;  display:block; height:31px; text-align:center; line-height:18px; margin-right:20px; color:#FFF;">D</span>
+                            	<span class="fleft">西彭景点</span>
+                                <span class="fleft" style="display:block; background-image:url(images/m_icon3_06.png); background-repeat:no-repeat; background-position:0 3px; padding-left:26px;margin-left:20px; color:#e5772d">4.5</span>
+								<span class="fright" style="color:#717699">详细</span>
+                                <div style="clear:both"></div>
+                            </div>
+                        	<div class="row right_icon icon_in right_icon_bb">
+                            	<span class="fleft" style="background-image:url(images/m_icon3_03.png); background-repeat:no-repeat; background-position:center; width:25px;  display:block; height:31px; text-align:center; line-height:18px; margin-right:20px; color:#FFF;">E</span>
+                            	<span class="fleft">西彭景点</span>
+                                <span class="fleft" style="display:block; background-image:url(images/m_icon3_06.png); background-repeat:no-repeat; background-position:0 3px; padding-left:26px;margin-left:20px; color:#e5772d">4.5</span>
+								<span class="fright" style="color:#717699">详细</span>
+                                <div style="clear:both"></div>
+                            </div>
+                        </div>
+                        <div class="_page_tool">
+                        	<span class="checked">1</span>
+                            <span>2</span>
+                            <span>3</span>
+                            <span>4</span>
+                            <span>5</span>
+                            <span>6</span>
+                        </div>
+                    </div>
+                </a>
+                <!-- <a class="_ico2"><div id="_ipage"></div></a> -->
+                <a class="_ico3">
+                	<div id="_ipage">
+                		<div class="font_organize" style="margin:10px; font-size:20px;">公交路线查询</div>
+                        <!-- 查询框 -->
+                        <div class="_routes_query_box">
+                        	<div class="_ref"></div>
+                            <div class="fleft">
+                            	<div style=" height:51px; border-bottom:1px solid #ccc; width:270px;">
+                                	<div style="background-color:#64a489; border-radius: 4px; text-align:center; width:32px; height:32px; line-height:32px; color:#FFFFFF;float:left; margin:10px;">起</div>
+                                	<input type="text" style=" width:200px; height:25px; line-height:25px; margin:12px 0; border:none" class="f_16" placeholder="输入起点"/>
+                                </div>
+                            	<div style="height:51px;width:270px;">
+                                	<div style="background-color:#717699; border-radius: 4px; text-align:center; width:32px; height:32px; line-height:32px; color:#FFFFFF;float:left; margin:10px;">终</div>
+                                	<input type="text" style=" width:200px; height:25px; line-height:25px; margin:12px 0; border:none" class="f_16" placeholder="输入终点"/>
+                                </div>
+                            </div>
+                            <div class="_search"></div>
+                        </div>
+                        <!-- end-->
+                        <!-- 查询结果 -->
+                        <div class="_texi_routes_query_box">
+                        	<div style="padding:8px;" class=" f_14 font_blackgrey">总路程：约30分钟 | 2.4公里</div>
+                            <div style=" border-top:1px solid #ccc; overflow:hidden">
+                            	<div style="background-color:#64a489; border-radius: 4px; text-align:center; width:32px; height:32px; line-height:32px; color:#FFFFFF;float:left; margin:10px;">起</div>
+                            	<span style="line-height:50px;" class="weight">乌镇人民政府</span>
+                            </div>
+                            <div class="_texi_routes_query_item">
+                                <div class="f_16 _simple_content icon_open">1.路线</div>
+                                <div class="_child_items">
+                                    <div class="f_14">(1) 从起点方向正东出现，演什么什么路一直开，然后转个弯继续开，进入下水道</div>
+                                    <div class="f_14">(2) 从起点方向正东出现，演什么什么路一直开，然后转个弯继续开，进入下水道</div>
+                                    <div class="f_14">(3) 从起点方向正东出现，演什么什么路一直开，然后转个弯继续开，进入下水道</div>
+                                </div>
+                            </div>
+                            <div class="_texi_routes_query_item">
+                                <div class="f_16 _simple_content icon_open">2.路线</div>
+                                <div class="_child_items">
+                                    <div class="f_14">(1) 从起点<span class="font_blued">方向</span>正东出现，演什么什么路一直开，然后转个弯继续开，进入下水道</div>
+                                    <div class="f_14">(2) 从起点方向正东出现，演什么什么路一直开，然后转个弯继续开，进入下水道</div>
+                                    <div class="f_14">(3) 从起点方向正东出现，演什么什么路一直开，然后转个弯继续开，进入下水道</div>
+                                </div>
+                            </div>
+                            <div class="_texi_routes_query_item">
+                                <div class="f_16 _simple_content icon_open">3.路线</div>
+                                <div class="_child_items">
+                                    <div class="f_14">(1) 从起点方向正东出现，演什么什么路一直开，然后转个弯继续开，进入下水道</div>
+                                    <div class="f_14">(2) 从起点方向正东出现，演什么什么路一直开，然后转个弯继续开，进入下水道</div>
+                                    <div class="f_14">(3) 从起点方向正东出现，演什么什么路一直开，然后转个弯继续开，进入下水道</div>
+                                </div>
+                            </div>
+                            <div style="border-top:1px solid #ccc; overflow:hidden">
+                            	<div style="background-color:#717699; border-radius: 4px; text-align:center; width:32px; height:32px; line-height:32px; color:#FFFFFF;float:left; margin:10px;">终</div>
+                            	<span style="line-height:50px;" class="weight">白莲塔</span>
+                            </div>
+                        </div>
+                        <!-- end-->
+                	</div>
+                </a>
+               <!--  <a class="_ico4"><div id="_ipage"></div></a> -->
+                <a class="_ico5">
+                <div id="_ipage">
+                		<div class="font_organize" style="margin:10px; font-size:20px;">公交路线查询</div>
+                        <!-- 查询框 -->
+                        <div class="_routes_query_box">
+                        	<div class="_ref"></div>
+                            <div class="fleft">
+                            	<div style=" height:51px; border-bottom:1px solid #ccc; width:270px;">
+                                	<div style="background-color:#64a489; border-radius: 4px; text-align:center; width:32px; height:32px; line-height:32px; color:#FFFFFF;float:left; margin:10px;">起</div>
+                                	<input type="text" style=" width:200px; height:25px; line-height:25px; margin:12px 0; border:none" class="f_16" placeholder="输入起点"/>
+                                </div>
+                            	<div style="height:51px;width:270px;">
+                                	<div style="background-color:#717699; border-radius: 4px; text-align:center; width:32px; height:32px; line-height:32px; color:#FFFFFF;float:left; margin:10px;">终</div>
+                                	<input type="text" style=" width:200px; height:25px; line-height:25px; margin:12px 0; border:none" class="f_16" placeholder="输入终点"/>
+                                </div>
+                            </div>
+                            <div class="_search"></div>
+                        </div>
+                        <!-- end-->
+                        <!-- 查询结果 -->
+                        <div class="_texi_routes_query_box">
+                        	<div style="padding:8px;" class=" f_14 font_blackgrey">总路程：约30分钟 | 2.4公里</div>
+                            <div style=" border-top:1px solid #ccc; overflow:hidden">
+                            	<div style="background-color:#64a489; border-radius: 4px; text-align:center; width:32px; height:32px; line-height:32px; color:#FFFFFF;float:left; margin:10px;">起</div>
+                            	<span style="line-height:50px;" class="weight">乌镇人民政府</span>
+                            </div>
+                            <div class="_texi_routes_query_item">
+                                <div class="f_16 _simple_content icon_open">1.路线</div>
+                                <div class="_child_items">
+                                    <div class="f_14">(1) 从起点方向正东出现，演什么什么路一直开，然后转个弯继续开，进入下水道</div>
+                                    <div class="f_14">(2) 从起点方向正东出现，演什么什么路一直开，然后转个弯继续开，进入下水道</div>
+                                    <div class="f_14">(3) 从起点方向正东出现，演什么什么路一直开，然后转个弯继续开，进入下水道</div>
+                                </div>
+                            </div>
+                            <div class="_texi_routes_query_item">
+                                <div class="f_16 _simple_content icon_open">2.路线</div>
+                                <div class="_child_items">
+                                    <div class="f_14">(1) 从起点方向正东出现，演什么什么路一直开，然后转个弯继续开，进入下水道</div>
+                                    <div class="f_14">(2) 从起点方向正东出现，演什么什么路一直开，然后转个弯继续开，进入下水道</div>
+                                    <div class="f_14">(3) 从起点方向正东出现，演什么什么路一直开，然后转个弯继续开，进入下水道</div>
+                                </div>
+                            </div>
+                            <div class="_texi_routes_query_item">
+                                <div class="f_16 _simple_content icon_open">3.路线</div>
+                                <div class="_child_items">
+                                    <div class="f_14">(1) 从起点方向正东出现，演什么什么路一直开，然后转个弯继续开，进入下水道</div>
+                                    <div class="f_14">(2) 从起点方向正东出现，演什么什么路一直开，然后转个弯继续开，进入下水道</div>
+                                    <div class="f_14">(3) 从起点方向正东出现，演什么什么路一直开，然后转个弯继续开，进入下水道</div>
+                                </div>
+                            </div>
+                            <div style="border-top:1px solid #ccc; overflow:hidden">
+                            	<div style="background-color:#717699; border-radius: 4px; text-align:center; width:32px; height:32px; line-height:32px; color:#FFFFFF;float:left; margin:10px;">终</div>
+                            	<span style="line-height:50px;" class="weight">白莲塔</span>
+                            </div>
+                        </div>
+                        <!-- end-->
+                </div>
+                </a>
+        	</div>
+            <div class="_right">
+            	<span class="_ico1">视野内查询
+                	<div id="_ipage" style="padding:0 8px;">
+                    	<div style=" border-bottom:solid #ccc 1px; padding-left:10px;" class="weight">在当前范围内搜索</div>
+                        <div style=" border-bottom:solid #ccc 1px; background-position:12px center; padding:8px 8px 8px 45px;line-height: 20px;" class="font_blued icon_1" >快酒店&nbsp;&nbsp;&nbsp;&nbsp;星级饭店&nbsp;&nbsp;&nbsp;&nbsp;旅馆&nbsp;&nbsp;&nbsp;&nbsp;如家</div>
+                        <div style=" border-bottom:solid #ccc 1px; background-position:12px center; padding:8px 8px 8px 45px;line-height: 20px;" class="font_blued icon_2" >快酒店&nbsp;&nbsp;&nbsp;&nbsp;星级饭店&nbsp;&nbsp;&nbsp;&nbsp;旅馆&nbsp;&nbsp;&nbsp;&nbsp;如家</div>
+                        <div style=" border-bottom:solid #ccc 1px; background-position:12px center; padding:8px 8px 8px 45px;line-height: 20px;" class="font_blued icon_3" >快酒店&nbsp;&nbsp;&nbsp;&nbsp;星级饭店&nbsp;&nbsp;&nbsp;&nbsp;旅馆&nbsp;&nbsp;&nbsp;&nbsp;如家</div>
+                        <div style=" border-bottom:solid #ccc 1px; background-position:12px center; padding:8px 8px 8px 45px;line-height: 20px;" class="font_blued icon_4" >快酒店&nbsp;&nbsp;&nbsp;&nbsp;星级饭店&nbsp;&nbsp;&nbsp;&nbsp;旅馆&nbsp;&nbsp;&nbsp;&nbsp;如家星级饭店&nbsp;&nbsp;&nbsp;&nbsp;旅馆&nbsp;&nbsp;&nbsp;&nbsp;如家星级饭店&nbsp;&nbsp;&nbsp;&nbsp;旅馆&nbsp;&nbsp;&nbsp;&nbsp;如家星级饭店&nbsp;&nbsp;&nbsp;&nbsp;旅馆&nbsp;&nbsp;&nbsp;&nbsp;如家星级饭店&nbsp;&nbsp;&nbsp;&nbsp;旅馆&nbsp;&nbsp;&nbsp;&nbsp;如家</div>
+                        
+                        <div style="margin:8px 0; overflow:hidden; border:1px solid #ccc; background-color:#FFFFFF;">
+                        	<input type="text" placeholder="输入关键字" style=" font-size:18px; border:none; margin-top:5px;"/>
+                        	<div style=" background-image:url(images/search_btn.png); width:36px; height:33px; " class="icon_no_repeat fright"></div>
+                        </div>
+                    </div>
+                </span>
+                <span class="_ico2 click_hover">测量</span>
+                <span class="_ico3">定位</span>
+                <span class="_ico4">截取</span>
+            </div>
+        </div>
+        <div class="_left_menu">
+        	<span class="_ico1">美食
+            	<!-- 2014-11-03 新增 -->
+                <div id="_ipage">
+                    	<div class="" style="border:1px solid #ccc; height: 45px; margin:10px; background-color:#fff;">
+                        	<input type="text" placeholder="输入关键字" style="border:none;	height:28px; font-size:16px; margin-left:10px ;	margin-top:8px ; width:320px; line-height:28px;" />
+                            <div class="" style="float:right; border-left:1px solid #ccc; height:100%; width:50px; background-image:url(images/search_btn.png); background-repeat:no-repeat; background-position:center;"></div>
+                        </div>
+                        <div class="listA">
+                        	<span class="row ltop">
+                            	<span style="line-height:30px;">大家都喜欢去<span style="color:#57839e;  font-weight:bold; font-size:14px;">【可乘k350】</span></span>
+                                <div style="clear:both"></div>
+                            </span>
+                        	<div class="row right_icon icon_in right_icon_bb">
+                            	<span class="fleft" style="background-image:url(images/m_icon3_03.png); background-repeat:no-repeat; background-position:center; width:25px;  display:block; height:31px; text-align:center; line-height:18px; margin-right:20px; color:#FFF;">A</span>
+                            	<span class="fleft">西彭景点</span>
+                                <span class="fleft" style="display:block; background-image:url(images/m_icon3_06.png); background-repeat:no-repeat; background-position:0 3px; padding-left:26px;margin-left:20px; color:#e5772d">4.5</span>
+								<span class="fright" style="color:#717699">详细</span>
+                                <div style="clear:both"></div>
+                            </div>
+                        	<div class="row right_icon icon_in right_icon_bb">
+                            	<span class="fleft" style="background-image:url(images/m_icon3_10.png); background-repeat:no-repeat; background-position:center; width:25px;  display:block; height:31px; text-align:center; line-height:18px; margin-right:20px; color:#FFF;">B</span>
+                            	<span class="fleft">西彭景点</span>
+                                <span class="fleft" style="display:block; background-image:url(images/m_icon3_06.png); background-repeat:no-repeat; background-position:0 3px; padding-left:26px;margin-left:20px; color:#e5772d">4.5</span>
+								<span class="fright" style="color:#717699">详细</span>
+                                <div style="clear:both"></div>
+                            </div>
+                        	<div class="row right_icon icon_in right_icon_bb">
+                            	<span class="fleft" style="background-image:url(images/m_icon3_03.png); background-repeat:no-repeat; background-position:center; width:25px;  display:block; height:31px; text-align:center; line-height:18px; margin-right:20px; color:#FFF;">C</span>
+                            	<span class="fleft">西彭景点</span>
+                                <span class="fleft" style="display:block; background-image:url(images/m_icon3_06.png); background-repeat:no-repeat; background-position:0 3px; padding-left:26px;margin-left:20px; color:#e5772d">4.5</span>
+								<span class="fright" style="color:#717699">详细</span>
+                                <div style="clear:both"></div>
+                            </div>
+                        	<div class="row right_icon icon_in right_icon_bb">
+                            	<span class="fleft" style="background-image:url(images/m_icon3_03.png); background-repeat:no-repeat; background-position:center; width:25px;  display:block; height:31px; text-align:center; line-height:18px; margin-right:20px; color:#FFF;">D</span>
+                            	<span class="fleft">西彭景点</span>
+                                <span class="fleft" style="display:block; background-image:url(images/m_icon3_06.png); background-repeat:no-repeat; background-position:0 3px; padding-left:26px;margin-left:20px; color:#e5772d">4.5</span>
+								<span class="fright" style="color:#717699">详细</span>
+                                <div style="clear:both"></div>
+                            </div>
+                        	<div class="row right_icon icon_in right_icon_bb">
+                            	<span class="fleft" style="background-image:url(images/m_icon3_03.png); background-repeat:no-repeat; background-position:center; width:25px;  display:block; height:31px; text-align:center; line-height:18px; margin-right:20px; color:#FFF;">E</span>
+                            	<span class="fleft">西彭景点</span>
+                                <span class="fleft" style="display:block; background-image:url(images/m_icon3_06.png); background-repeat:no-repeat; background-position:0 3px; padding-left:26px;margin-left:20px; color:#e5772d">4.5</span>
+								<span class="fright" style="color:#717699">详细</span>
+                                <div style="clear:both"></div>
+                            </div>
+                        </div>
+                        <div class="_page_tool">
+                        	<span class="checked">1</span>
+                            <span>2</span>
+                            <span>3</span>
+                            <span>4</span>
+                            <span>5</span>
+                            <span>6</span>
+                        </div>
+                </div>
+                <!-- end -->
+            </span>
+            <span class="_ico2">住宿
+            	<!-- 2014-12-03新增 -->
+                <div id="_ipage">
+                    	<div class="" style="border:1px solid #ccc; height: 45px; margin:10px; background-color:#fff;">
+                        	<input type="text" placeholder="输入关键字" style="border:none;	height:28px; font-size:16px; margin-left:10px ;	margin-top:8px ; width:320px; line-height:28px;" />
+                            <div class="" style="float:right; border-left:1px solid #ccc; height:100%; width:50px; background-image:url(images/search_btn.png); background-repeat:no-repeat; background-position:center;"></div>
+                        </div>
+                        <div class="listA">
+                        	<span class="row ltop">
+                            	<span style="line-height:30px;">大家都喜欢去<span style="color:#57839e;  font-weight:bold; font-size:14px;">【可乘k350】</span></span>
+                                <div style="clear:both"></div>
+                            </span>
+                        	<div class="row right_icon icon_in right_icon_bb">
+                            	<span class="fleft" style="background-image:url(images/m_icon3_03.png); background-repeat:no-repeat; background-position:center; width:25px;  display:block; height:31px; text-align:center; line-height:18px; margin-right:20px; color:#FFF;">A</span>
+                            	<span class="fleft">西彭景点</span>
+                                <span class="fleft" style="display:block; background-image:url(images/m_icon3_06.png); background-repeat:no-repeat; background-position:0 3px; padding-left:26px;margin-left:20px; color:#e5772d">4.5</span>
+								<span class="fright" style="color:#717699">详细</span>
+                                <div style="clear:both"></div>
+                            </div>
+                        	<div class="row right_icon icon_in right_icon_bb">
+                            	<span class="fleft" style="background-image:url(images/m_icon3_10.png); background-repeat:no-repeat; background-position:center; width:25px;  display:block; height:31px; text-align:center; line-height:18px; margin-right:20px; color:#FFF;">B</span>
+                            	<span class="fleft">西彭景点</span>
+                                <span class="fleft" style="display:block; background-image:url(images/m_icon3_06.png); background-repeat:no-repeat; background-position:0 3px; padding-left:26px;margin-left:20px; color:#e5772d">4.5</span>
+								<span class="fright" style="color:#717699">详细</span>
+                                <div style="clear:both"></div>
+                            </div>
+                        	<div class="row right_icon icon_in right_icon_bb">
+                            	<span class="fleft" style="background-image:url(images/m_icon3_03.png); background-repeat:no-repeat; background-position:center; width:25px;  display:block; height:31px; text-align:center; line-height:18px; margin-right:20px; color:#FFF;">C</span>
+                            	<span class="fleft">西彭景点</span>
+                                <span class="fleft" style="display:block; background-image:url(images/m_icon3_06.png); background-repeat:no-repeat; background-position:0 3px; padding-left:26px;margin-left:20px; color:#e5772d">4.5</span>
+								<span class="fright" style="color:#717699">详细</span>
+                                <div style="clear:both"></div>
+                            </div>
+                        	<div class="row right_icon icon_in right_icon_bb">
+                            	<span class="fleft" style="background-image:url(images/m_icon3_03.png); background-repeat:no-repeat; background-position:center; width:25px;  display:block; height:31px; text-align:center; line-height:18px; margin-right:20px; color:#FFF;">D</span>
+                            	<span class="fleft">西彭景点</span>
+                                <span class="fleft" style="display:block; background-image:url(images/m_icon3_06.png); background-repeat:no-repeat; background-position:0 3px; padding-left:26px;margin-left:20px; color:#e5772d">4.5</span>
+								<span class="fright" style="color:#717699">详细</span>
+                                <div style="clear:both"></div>
+                            </div>
+                        	<div class="row right_icon icon_in right_icon_bb">
+                            	<span class="fleft" style="background-image:url(images/m_icon3_03.png); background-repeat:no-repeat; background-position:center; width:25px;  display:block; height:31px; text-align:center; line-height:18px; margin-right:20px; color:#FFF;">E</span>
+                            	<span class="fleft">西彭景点</span>
+                                <span class="fleft" style="display:block; background-image:url(images/m_icon3_06.png); background-repeat:no-repeat; background-position:0 3px; padding-left:26px;margin-left:20px; color:#e5772d">4.5</span>
+								<span class="fright" style="color:#717699">详细</span>
+                                <div style="clear:both"></div>
+                            </div>
+                        </div>
+                        <div class="_page_tool">
+                        	<span class="checked">1</span>
+                            <span>2</span>
+                            <span>3</span>
+                            <span>4</span>
+                            <span>5</span>
+                            <span>6</span>
+                        </div>
+
+                </div>
+                <!-- end -->
+            </span>
+            <span class="_ico3">娱乐
+            	<!-- 2014-12-03新增 -->
+                <div id="_ipage">
+                    	<div class="" style="border:1px solid #ccc; height: 45px; margin:10px; background-color:#fff;">
+                        	<input type="text" placeholder="输入关键字" style="border:none;	height:28px; font-size:16px; margin-left:10px ;	margin-top:8px ; width:320px; line-height:28px;" />
+                            <div class="" style="float:right; border-left:1px solid #ccc; height:100%; width:50px; background-image:url(images/search_btn.png); background-repeat:no-repeat; background-position:center;"></div>
+                        </div>
+                        <div class="listA">
+                        	<span class="row ltop">
+                            	<span style="line-height:30px;">大家都喜欢去<span style="color:#57839e;  font-weight:bold; font-size:14px;">【可乘k350】</span></span>
+                                <div style="clear:both"></div>
+                            </span>
+                        	<div class="row right_icon icon_in right_icon_bb">
+                            	<span class="fleft" style="background-image:url(images/m_icon3_03.png); background-repeat:no-repeat; background-position:center; width:25px;  display:block; height:31px; text-align:center; line-height:18px; margin-right:20px; color:#FFF;">A</span>
+                            	<span class="fleft">西彭景点</span>
+                                <span class="fleft" style="display:block; background-image:url(images/m_icon3_06.png); background-repeat:no-repeat; background-position:0 3px; padding-left:26px;margin-left:20px; color:#e5772d">4.5</span>
+								<span class="fright" style="color:#717699">详细</span>
+                                <div style="clear:both"></div>
+                            </div>
+                        	<div class="row right_icon icon_in right_icon_bb">
+                            	<span class="fleft" style="background-image:url(images/m_icon3_10.png); background-repeat:no-repeat; background-position:center; width:25px;  display:block; height:31px; text-align:center; line-height:18px; margin-right:20px; color:#FFF;">B</span>
+                            	<span class="fleft">西彭景点</span>
+                                <span class="fleft" style="display:block; background-image:url(images/m_icon3_06.png); background-repeat:no-repeat; background-position:0 3px; padding-left:26px;margin-left:20px; color:#e5772d">4.5</span>
+								<span class="fright" style="color:#717699">详细</span>
+                                <div style="clear:both"></div>
+                            </div>
+                        	<div class="row right_icon icon_in right_icon_bb">
+                            	<span class="fleft" style="background-image:url(images/m_icon3_03.png); background-repeat:no-repeat; background-position:center; width:25px;  display:block; height:31px; text-align:center; line-height:18px; margin-right:20px; color:#FFF;">C</span>
+                            	<span class="fleft">西彭景点</span>
+                                <span class="fleft" style="display:block; background-image:url(images/m_icon3_06.png); background-repeat:no-repeat; background-position:0 3px; padding-left:26px;margin-left:20px; color:#e5772d">4.5</span>
+								<span class="fright" style="color:#717699">详细</span>
+                                <div style="clear:both"></div>
+                            </div>
+                        	<div class="row right_icon icon_in right_icon_bb">
+                            	<span class="fleft" style="background-image:url(images/m_icon3_03.png); background-repeat:no-repeat; background-position:center; width:25px;  display:block; height:31px; text-align:center; line-height:18px; margin-right:20px; color:#FFF;">D</span>
+                            	<span class="fleft">西彭景点</span>
+                                <span class="fleft" style="display:block; background-image:url(images/m_icon3_06.png); background-repeat:no-repeat; background-position:0 3px; padding-left:26px;margin-left:20px; color:#e5772d">4.5</span>
+								<span class="fright" style="color:#717699">详细</span>
+                                <div style="clear:both"></div>
+                            </div>
+                        	<div class="row right_icon icon_in right_icon_bb">
+                            	<span class="fleft" style="background-image:url(images/m_icon3_03.png); background-repeat:no-repeat; background-position:center; width:25px;  display:block; height:31px; text-align:center; line-height:18px; margin-right:20px; color:#FFF;">E</span>
+                            	<span class="fleft">西彭景点</span>
+                                <span class="fleft" style="display:block; background-image:url(images/m_icon3_06.png); background-repeat:no-repeat; background-position:0 3px; padding-left:26px;margin-left:20px; color:#e5772d">4.5</span>
+								<span class="fright" style="color:#717699">详细</span>
+                                <div style="clear:both"></div>
+                            </div>
+                        </div>
+                        <div class="_page_tool">
+                        	<span class="checked">1</span>
+                            <span>2</span>
+                            <span>3</span>
+                            <span>4</span>
+                            <span>5</span>
+                            <span>6</span>
+                        </div>
+
+                </div>
+                <!-- end -->
+            </span>
+            <span class="_ico4">交通
+            	<!-- 2014-12-03新增 -->
+                <div id="_ipage">
+                    	<div class="" style="border:1px solid #ccc; height: 45px; margin:10px; background-color:#fff;">
+                        	<input type="text" placeholder="输入关键字" style="border:none;	height:28px; font-size:16px; margin-left:10px ;	margin-top:8px ; width:320px; line-height:28px;" />
+                            <div class="" style="float:right; border-left:1px solid #ccc; height:100%; width:50px; background-image:url(images/search_btn.png); background-repeat:no-repeat; background-position:center;"></div>
+                        </div>
+                        <div class="listA">
+                        	<span class="row ltop">
+                            	<span style="line-height:30px;">大家都喜欢去<span style="color:#57839e;  font-weight:bold; font-size:14px;">【可乘k350】</span></span>
+                                <div style="clear:both"></div>
+                            </span>
+                        	<div class="row right_icon icon_in right_icon_bb">
+                            	<span class="fleft" style="background-image:url(images/m_icon3_03.png); background-repeat:no-repeat; background-position:center; width:25px;  display:block; height:31px; text-align:center; line-height:18px; margin-right:20px; color:#FFF;">A</span>
+                            	<span class="fleft">西彭景点</span>
+                                <span class="fleft" style="display:block; background-image:url(images/m_icon3_06.png); background-repeat:no-repeat; background-position:0 3px; padding-left:26px;margin-left:20px; color:#e5772d">4.5</span>
+								<span class="fright" style="color:#717699">详细</span>
+                                <div style="clear:both"></div>
+                            </div>
+                        	<div class="row right_icon icon_in right_icon_bb">
+                            	<span class="fleft" style="background-image:url(images/m_icon3_10.png); background-repeat:no-repeat; background-position:center; width:25px;  display:block; height:31px; text-align:center; line-height:18px; margin-right:20px; color:#FFF;">B</span>
+                            	<span class="fleft">西彭景点</span>
+                                <span class="fleft" style="display:block; background-image:url(images/m_icon3_06.png); background-repeat:no-repeat; background-position:0 3px; padding-left:26px;margin-left:20px; color:#e5772d">4.5</span>
+								<span class="fright" style="color:#717699">详细</span>
+                                <div style="clear:both"></div>
+                            </div>
+                        	<div class="row right_icon icon_in right_icon_bb">
+                            	<span class="fleft" style="background-image:url(images/m_icon3_03.png); background-repeat:no-repeat; background-position:center; width:25px;  display:block; height:31px; text-align:center; line-height:18px; margin-right:20px; color:#FFF;">C</span>
+                            	<span class="fleft">西彭景点</span>
+                                <span class="fleft" style="display:block; background-image:url(images/m_icon3_06.png); background-repeat:no-repeat; background-position:0 3px; padding-left:26px;margin-left:20px; color:#e5772d">4.5</span>
+								<span class="fright" style="color:#717699">详细</span>
+                                <div style="clear:both"></div>
+                            </div>
+                        	<div class="row right_icon icon_in right_icon_bb">
+                            	<span class="fleft" style="background-image:url(images/m_icon3_03.png); background-repeat:no-repeat; background-position:center; width:25px;  display:block; height:31px; text-align:center; line-height:18px; margin-right:20px; color:#FFF;">D</span>
+                            	<span class="fleft">西彭景点</span>
+                                <span class="fleft" style="display:block; background-image:url(images/m_icon3_06.png); background-repeat:no-repeat; background-position:0 3px; padding-left:26px;margin-left:20px; color:#e5772d">4.5</span>
+								<span class="fright" style="color:#717699">详细</span>
+                                <div style="clear:both"></div>
+                            </div>
+                        	<div class="row right_icon icon_in right_icon_bb">
+                            	<span class="fleft" style="background-image:url(images/m_icon3_03.png); background-repeat:no-repeat; background-position:center; width:25px;  display:block; height:31px; text-align:center; line-height:18px; margin-right:20px; color:#FFF;">E</span>
+                            	<span class="fleft">西彭景点</span>
+                                <span class="fleft" style="display:block; background-image:url(images/m_icon3_06.png); background-repeat:no-repeat; background-position:0 3px; padding-left:26px;margin-left:20px; color:#e5772d">4.5</span>
+								<span class="fright" style="color:#717699">详细</span>
+                                <div style="clear:both"></div>
+                            </div>
+                        </div>
+                        <div class="_page_tool">
+                        	<span class="checked">1</span>
+                            <span>2</span>
+                            <span>3</span>
+                            <span>4</span>
+                            <span>5</span>
+                            <span>6</span>
+                        </div>
+
+                </div>
+                <!-- end -->
+            </span>
+            <span class="_ico5">诚信<br />商家
+            	<!-- 2014-12-03新增 -->
+                <div id="_ipage">
+                    	<div class="" style="border:1px solid #ccc; height: 45px; margin:10px; background-color:#fff;">
+                        	<input type="text" placeholder="输入关键字" style="border:none;	height:28px; font-size:16px; margin-left:10px ;	margin-top:8px ; width:320px; line-height:28px;" />
+                            <div class="" style="float:right; border-left:1px solid #ccc; height:100%; width:50px; background-image:url(images/search_btn.png); background-repeat:no-repeat; background-position:center;"></div>
+                        </div>
+                        <div class="listA">
+                        	<span class="row ltop">
+                            	<span style="line-height:30px;">大家都喜欢去<span style="color:#57839e;  font-weight:bold; font-size:14px;">【可乘k350】</span></span>
+                                <div style="clear:both"></div>
+                            </span>
+                        	<div class="row right_icon icon_in right_icon_bb">
+                            	<span class="fleft" style="background-image:url(images/m_icon3_03.png); background-repeat:no-repeat; background-position:center; width:25px;  display:block; height:31px; text-align:center; line-height:18px; margin-right:20px; color:#FFF;">A</span>
+                            	<span class="fleft">西彭景点</span>
+                                <span class="fleft" style="display:block; background-image:url(images/m_icon3_06.png); background-repeat:no-repeat; background-position:0 3px; padding-left:26px;margin-left:20px; color:#e5772d">4.5</span>
+								<span class="fright" style="color:#717699">详细</span>
+                                <div style="clear:both"></div>
+                            </div>
+                        	<div class="row right_icon icon_in right_icon_bb">
+                            	<span class="fleft" style="background-image:url(images/m_icon3_10.png); background-repeat:no-repeat; background-position:center; width:25px;  display:block; height:31px; text-align:center; line-height:18px; margin-right:20px; color:#FFF;">B</span>
+                            	<span class="fleft">西彭景点</span>
+                                <span class="fleft" style="display:block; background-image:url(images/m_icon3_06.png); background-repeat:no-repeat; background-position:0 3px; padding-left:26px;margin-left:20px; color:#e5772d">4.5</span>
+								<span class="fright" style="color:#717699">详细</span>
+                                <div style="clear:both"></div>
+                            </div>
+                        	<div class="row right_icon icon_in right_icon_bb">
+                            	<span class="fleft" style="background-image:url(images/m_icon3_03.png); background-repeat:no-repeat; background-position:center; width:25px;  display:block; height:31px; text-align:center; line-height:18px; margin-right:20px; color:#FFF;">C</span>
+                            	<span class="fleft">西彭景点</span>
+                                <span class="fleft" style="display:block; background-image:url(images/m_icon3_06.png); background-repeat:no-repeat; background-position:0 3px; padding-left:26px;margin-left:20px; color:#e5772d">4.5</span>
+								<span class="fright" style="color:#717699">详细</span>
+                                <div style="clear:both"></div>
+                            </div>
+                        	<div class="row right_icon icon_in right_icon_bb">
+                            	<span class="fleft" style="background-image:url(images/m_icon3_03.png); background-repeat:no-repeat; background-position:center; width:25px;  display:block; height:31px; text-align:center; line-height:18px; margin-right:20px; color:#FFF;">D</span>
+                            	<span class="fleft">西彭景点</span>
+                                <span class="fleft" style="display:block; background-image:url(images/m_icon3_06.png); background-repeat:no-repeat; background-position:0 3px; padding-left:26px;margin-left:20px; color:#e5772d">4.5</span>
+								<span class="fright" style="color:#717699">详细</span>
+                                <div style="clear:both"></div>
+                            </div>
+                        	<div class="row right_icon icon_in right_icon_bb">
+                            	<span class="fleft" style="background-image:url(images/m_icon3_03.png); background-repeat:no-repeat; background-position:center; width:25px;  display:block; height:31px; text-align:center; line-height:18px; margin-right:20px; color:#FFF;">E</span>
+                            	<span class="fleft">西彭景点</span>
+                                <span class="fleft" style="display:block; background-image:url(images/m_icon3_06.png); background-repeat:no-repeat; background-position:0 3px; padding-left:26px;margin-left:20px; color:#e5772d">4.5</span>
+								<span class="fright" style="color:#717699">详细</span>
+                                <div style="clear:both"></div>
+                            </div>
+                        </div>
+                        <div class="_page_tool">
+                        	<span class="checked">1</span>
+                            <span>2</span>
+                            <span>3</span>
+                            <span>4</span>
+                            <span>5</span>
+                            <span>6</span>
+                        </div>
+
+                </div>
+                <!-- end -->
+            </span>
+        </div>
+        <div class="_right_menu">
+        	<span class="_ico1">导览
+            	<!-- 2014-12-03新增 -->
+                <div id="_ipage" style="text-align:left;">
+                	<div style="margin:20px 15px; font-size:30px;">360°景点导览</div>
+                    <div style="overflow:hidden; ">
+                    	<div style="width:182px; float:left; margin-left:15px; margin-bottom:15px;"><img src="images/bg_08.jpg" style="width:180px; height:120px; border:1px solid #ccc"/><div style="margin-top:3px; text-align:center">染布坊</div></div>
+                    	<div style="width:182px; float:left; margin-left:15px; margin-bottom:15px;"><img src="images/bg_08.jpg" style="width:180px; height:120px; border:1px solid #ccc"/><div style="margin-top:3px; text-align:center">染布坊</div></div>
+                    	<div style="width:182px; float:left; margin-left:15px; margin-bottom:15px;"><img src="images/bg_08.jpg" style="width:180px; height:120px; border:1px solid #ccc"/><div style="margin-top:3px; text-align:center">染布坊</div></div>
+                    	<div style="width:182px; float:left; margin-left:15px; margin-bottom:15px;"><img src="images/bg_08.jpg" style="width:180px; height:120px; border:1px solid #ccc"/><div style="margin-top:3px; text-align:center">染布坊</div></div>
+                    	<div style="width:182px; float:left; margin-left:15px; margin-bottom:15px;"><img src="images/bg_08.jpg" style="width:180px; height:120px; border:1px solid #ccc"/><div style="margin-top:3px; text-align:center">染布坊</div></div>
+                    	<div style="width:182px; float:left; margin-left:15px; margin-bottom:15px;"><img src="images/bg_08.jpg" style="width:180px; height:120px; border:1px solid #ccc"/><div style="margin-top:3px; text-align:center">染布坊</div></div>
+                    </div>
+                </div>
+                <!-- end -->
+            </span>
+            <span class="_ico2">路况
+            	<!-- 2014-12-03新增 -->
+                <div id="_ipage" style="text-align:left;">
+                	<div style="margin:10px;">
+                    	<span class="f_16 fleft" style="margin-right:15px; line-height:24px">实时路况</span>
+                    	<div class="fleft" style=" background-color:#4B231B; color:#FFFFFF; padding:2px 8px; font-size:13px;">严重拥堵</div>
+                        <div class="fleft" style=" background-color:#7F4288; color:#FFFFFF; padding:2px 8px; font-size:13px;">拥堵</div>
+                        <div class="fleft" style=" background-color:#5A69B3; color:#FFFFFF; padding:2px 8px; font-size:13px;">缓慢</div>
+                        <div class="fleft" style=" background-color:#4FB3B3; color:#FFFFFF; padding:2px 8px; font-size:13px;">畅通</div>
+                        <div style="clear:both"></div>
+                        <Br />
+                        <div style="width:130px; background-image:url(images/18_08.png); background-repeat:no-repeat; background-position:95% center;" class="fleft">时间：15时36分</div>
+                        <img src="images/18_05.png"  class="fright"/><img src="images/18_03.png" class="fright"/>
+                    </div>
+                </div>
+                <!-- end -->
+            </span>
+            <span class="_ico3">分享
+            	<!-- 2014-12-03新增 -->
+                <div id="_ipage" style="text-align:left;">
+                	<div style="margin:10px;">
+                    	<div class="f_14">您可将当前地图上的内容分享给好友</div>
+                        <div><input type="text" style="width:230px"/><button>复制</button></div>
+                        <div><img src="images/2qcode.jpg" /></div>
+                        <div>分享到</div>
+                    </div>
+                </div>
+                <!-- end -->
+            </span>
+        </div>
+        <div class="_zoom_bar">
+			<div class="_zoom_bar_add_btn" onclick="runZoomBarBtn(0)"></div>
+            <div class="_zoom_bar_body" >
+                <div style="position:relative;">
+                    <div id="_zoom_bar_btn" class="_zoom_bar_btn"></div>
+                    <div class="_zoom_bar_line"></div>
+                </div>
+            </div>
+            <div class="_zoom_bar_minus_btn" onclick="runZoomBarBtn(1)"></div>
+        </div>
+        <!-- 2014-11-03 新增 -->
+        <div style=" position:absolute; width:427px; height:306px; top: 100px; left:150px; display:none">
+        	<div style="background:#f8f8ec; padding:8px; position:relative;">
+            	<!-- 图片 -->
+            	<div style="background-color:#666666; border-radius: 8px; overflow:hidden; width:200px; height:200px; float:left; "><img src="" /></div>
+                <!-- 内容 -->
+                <div style="width:198px; float:left; margin-left:12px; ">
+                	<div style="border-bottom:1px solid #ccc; padding-bottom:8px;">
+                    	<img src="images/m_icon5_05.png" style="float:right; margin-left:10px;"  />
+                        <img src="images/m_icon5_03.png" style="float:right; margin-left:10px;" />
+                    	<div style="float:right; height:30px; width:24px; background-image:url(images/m_icon5_08.png); background-repeat:no-repeat; background-position:center; "></div>
+                        <div style="clear:both"></div>
+                    </div>
+                    <div style="padding-top:8px;">
+                    	<div style="font-size:24px;">乌镇风景区</div>
+                        <div style="margin-top:8px; font-size: 16px; color:#e5772d; background-image:url(images/m_icon3_06.png); background-repeat:no-repeat; background-position:0px center; padding-left: 25px;">4.5  人均 ￥40~200</div>
+                        <div style="margin-top:8px; font-size: 14px; color:#666; ">
+                        	类型：景区<br />
+                            电话：(057688731088)<br />
+                            地址：浙江省嘉兴桐乡市乌镇石佛南路18号
+                        </div>
+                    </div>
+                </div>
+                <div style="clear:both"></div>
+                <!-- 底部内容 -->
+                <div class="_bom_tab_box">
+                	<span class="_tab1 _hover" onclick="setMapTab(1);">去这里</span><span class="_tab2" onclick="setMapTab(2);">从这走</span><span class="_tab3" onclick="setMapTab(3);">找周边</span>
+                    <div style="clear:both"></div>
+                    <div id="_tabc1" class="_tabc">
+                    	<div style="background-color:#64a489; border-radius: 4px; text-align:center; width:32px; height:32px; line-height:32px; color:#FFFFFF;float:left;">起</div>
+                        <div style="background-color:#fff; border:1px solid #ccc; border-radius: 4px; height:32px; line-height:32px; margin-left:10px; float:left;"><input type="text" placeholder="输入关键字" /><div class="_search_btn"></div></div>
+                        <div class="_ico1"></div>
+                        <div class="_ico2"></div>
+                        <div class="_ico3"></div>
+                        <div style="clear:both"></div>
+                    </div>
+                    <div id="_tabc2" class="_tabc" style="display:none">
+                    	<div style="background-color:#717699; border-radius: 4px; text-align:center; width:32px; height:32px; line-height:32px; color:#FFFFFF;float:left;">终</div>
+                        <div style="background-color:#fff; border:1px solid #ccc; border-radius: 4px; height:32px; line-height:32px; margin-left:10px; float:left;"><input type="text" placeholder="输入关键字" /><div class="_search_btn"></div></div>
+                        <div class="_ico1"></div>
+                        <div class="_ico2"></div>
+                        <div class="_ico3"></div>
+                        <div style="clear:both"></div>
+                    </div>
+                    <div id="_tabc3" class="_tabc" style="display:none">
+                        <div style="background-color:#fff; border:1px solid #ccc; border-radius: 4px; height:32px; line-height:32px; float:left;"><input type="text" placeholder="输入关键字" /><div class="_search_btn"></div></div> <span style="font-size:14px; color:#6a7685; line-height:32px; padding-left:10px;">美食&nbsp;&nbsp;服务&nbsp;&nbsp;住宿&nbsp;&nbsp;娱乐</span> 
+                        <div style="clear:both"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end -->
+    	<div class="_close" onclick="fullView()"></div>
+    </div>
+</div>
+<div class="_bottom">
+<span style="color:#969696">————————————————</span>&nbsp;&nbsp;&nbsp;&nbsp;乌镇国际旅游区&nbsp;&nbsp;·&nbsp;&nbsp;联系我们&nbsp;&nbsp;·&nbsp;&nbsp;友情链接&nbsp;&nbsp;·&nbsp;&nbsp;媒体专区&nbsp;&nbsp;·&nbsp;&nbsp;网络预订&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#969696">————————————————</spa
+></div>
+
+
+
+<div class="f_14 _right_key_menu" style=" position:absolute; top:0; left:0; z-index:1000px; visibility:hidden;">
+	<div style="" class="icon_right_click_1">设为起点</div>
+    <div style="" class="icon_right_click_2">设为终点</div>
+    <div style="" class="icon_right_click_3">在周边找</div>
+    <div style="" class="icon_right_click_4">选择定位</div>
+    <div style="" class="icon_right_click_5">放大</div>
+    <div style="" class="icon_right_click_6">缩小</div>
+    <div style="" class="icon_right_click_7">居中</div>
+</div>
+
+</body>
+</html>

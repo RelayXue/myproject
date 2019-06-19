@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="tj_BuAffairs">
+
+    <resultMap id="re_BuAffairs" class="com.gh.entity.BuAffairs">
+        <result property="fuid" column="FUID"/>
+        <result property="code" column="CODE"/>
+        <result property="type" column="TYPE"/>
+        <result property="description" column="DESCRIPTION"/>
+        <result property="reported" column="REPORTED"/>
+        <result property="reportedid" column="REPORTEDID"/>
+        <result property="beforeimage" column="BEFOREIMAGE"/>
+        <result property="afterimage" column="AFTERIMAGE"/>
+        <result property="status" column="STATUS"/>
+        <result property="afterexplain" column="AFTEREXPLAIN"/>
+        <result property="deletemark" column="DELETEMARK"/>
+        <result property="createdate" column="CREATEDATE"/>
+        <result property="modifydate" column="MODIFYDATE"/>
+    </resultMap>
+    
+    <!-- 用于select查询公用抽取的列 -->
+	<sql id="BuAffairs.columns">
+	    <![CDATA[
+        FUID ,CODE ,TYPE ,DESCRIPTION ,REPORTED ,REPORTEDID ,BEFOREIMAGE ,AFTERIMAGE ,STATUS ,AFTEREXPLAIN ,DELETEMARK ,CREATEDATE ,MODIFYDATE 
+	    ]]>
+	</sql>
+  
+	 <select id="selectByPrimaryKey" parameterClass="com.gh.entity.BuAffairs" resultMap="re_BuAffairs">
+	    SELECT <include refid="BuAffairs.columns"/>
+	    from bu_affairs
+	    where 
+		        FUID = #fuid:VARCHAR# 
+ 	 </select>
+ 	 
+	<delete id="deleteByPrimaryKey" parameterClass="com.gh.entity.BuAffairs">
+	    delete from bu_affairs
+    	where 
+		        FUID = #fuid:VARCHAR# 
+  </delete>
+  
+  	<delete id="deleteByWhere" parameterClass="java.lang.String">
+	    delete from bu_affairs
+    	where 
+		      $swhere$
+	  </delete>
+  
+   <insert id="insert" parameterClass="com.gh.entity.BuAffairs">
+	        insert into bu_affairs (  FUID ,   CODE ,   TYPE ,   DESCRIPTION ,   REPORTED ,   REPORTEDID ,   BEFOREIMAGE ,   AFTERIMAGE ,   STATUS ,   AFTEREXPLAIN ,   DELETEMARK ,   CREATEDATE ,   MODIFYDATE   )
+   	 	values ( #fuid:VARCHAR# ,  #code:VARCHAR# ,  #type:VARCHAR# ,  #description:VARCHAR# ,  #reported:VARCHAR# ,  #reportedid:VARCHAR# ,  #beforeimage:VARCHAR# ,  #afterimage:VARCHAR# ,  #status:VARCHAR# ,  #afterexplain:VARCHAR# ,  #deletemark:INTEGER# ,  #createdate:TIMESTAMP# ,  #modifydate:TIMESTAMP#  )
+   	
+  </insert>
+ 	
+ 	
+ 	<update id="updateByPrimaryKey" parameterClass="com.gh.entity.BuAffairs">
+   	UPDATE bu_affairs SET
+	        CODE = #code:VARCHAR# ,
+	        TYPE = #type:VARCHAR# ,
+	        DESCRIPTION = #description:VARCHAR# ,
+	        REPORTED = #reported:VARCHAR# ,
+	        REPORTEDID = #reportedid:VARCHAR# ,
+	        BEFOREIMAGE = #beforeimage:VARCHAR# ,
+	        AFTERIMAGE = #afterimage:VARCHAR# ,
+	        STATUS = #status:VARCHAR# ,
+	        AFTEREXPLAIN = #afterexplain:VARCHAR# ,
+	        DELETEMARK = #deletemark:INTEGER# ,
+	        CREATEDATE = #createdate:TIMESTAMP# ,
+	        MODIFYDATE = #modifydate:TIMESTAMP# 
+        WHERE 
+	        FUID = #fuid:VARCHAR# 
+  </update>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterClass="com.gh.entity.BuAffairs">
+  	  update bu_affairs
+  	  <dynamic prepend="set">
+  	   <isNotNull prepend="," property="fuid">
+  	 	  FUID = #fuid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="code">
+  	 	  CODE = #code:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="type">
+  	 	  TYPE = #type:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="description">
+  	 	  DESCRIPTION = #description:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="reported">
+  	 	  REPORTED = #reported:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="reportedid">
+  	 	  REPORTEDID = #reportedid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="beforeimage">
+  	 	  BEFOREIMAGE = #beforeimage:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="afterimage">
+  	 	  AFTERIMAGE = #afterimage:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="status">
+  	 	  STATUS = #status:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="afterexplain">
+  	 	  AFTEREXPLAIN = #afterexplain:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="deletemark">
+  	 	  DELETEMARK = #deletemark:INTEGER#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createdate">
+  	 	  CREATEDATE = #createdate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="modifydate">
+  	 	  MODIFYDATE = #modifydate:TIMESTAMP#
+  	  </isNotNull>
+     </dynamic>
+    where FUID = #fuid:VARCHAR# 
+  </update>
+  
+   <select id="execSql" parameterClass="string" resultMap="re_BuAffairs"><![CDATA[$sql$]]></select>
+   
+    <select id="execSqlObject" parameterClass="string" resultClass="java.lang.Object"><![CDATA[$sql$]]></select>
+</sqlMap>
+

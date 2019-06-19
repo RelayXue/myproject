@@ -1,0 +1,78 @@
+﻿body
+{
+    background-color: #e5e5e5;
+}
+.container
+{
+}
+.container .item
+{
+    width: 100%;
+    font-size: 12pt;
+}
+.container .item .pic
+{
+    width: 73px;
+    height: 73px;
+    border: 1.5px solid #92918f;
+    margin: 10px 10px 10px 10px;
+    background-color:#f9f6f2;
+    float: left;
+}
+.container .item .pic img
+{
+    width: 58px;
+    height: 58px;
+    border: 2px solid #bcad9c;
+    margin: 6px 6px 6px 6px;
+}
+.container .item .right
+{
+    margin: 10px 10px 10px 10px;
+    height: 58px;
+    vertical-align:middle;
+}
+.container .item .content
+{
+    line-height: 18px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    font-size: 11pt;
+}
+.container .item .date
+{
+    font-size: 10pt;
+    float: left;
+}
+.container .item .view
+{
+    font-size: 10pt;
+    right: 0px;
+    float: right;
+}
+.container .item .font
+{
+    font-size: 12pt;
+    font-weight: bold;
+}
+a:link
+{
+    color: #000000;
+    text-decoration: none;
+}
+a:visited
+{
+    color: #000000;
+    text-decoration: none;
+}
+a:hover
+{
+    color: #7d7b77;
+    text-decoration: none;
+}
+a:active
+{
+    color: #000000; 
+    text-decoration: none;
+}
+

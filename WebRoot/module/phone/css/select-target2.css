@@ -1,0 +1,52 @@
+@charset "utf-8";
+/* CSS Document */
+
+#container{background:url(../images/map.png) no-repeat;background-size:100% 100%;}
+
+#header{padding:0px 10px;padding-top:10px;}
+/*搜索框*/
+#search{width:100%;height:35px;background:#FFF;box-shadow:3px 3px 5px #999999;border-radius:10px;}
+#search span{display:block;width:12%;float:left;height:100%;background:url(../images/search.png) center center no-repeat;}
+#search input{width:75%;float:left;height:100%;font-size:0.875em;border-radius:0px 10px 10px 0px;}
+#search a{width:13%;height:100%;float:left;background:url(../images/yy.jpg) center center no-repeat;}
+/*右侧工具*/
+#tool{position:absolute;top:60px;right:10px;}
+#tool li{margin-bottom:10px;}
+#tool a{ display:block;background:#c6c6c5;text-align:center;color:#2e3c50;font-size:0.75em;padding:5px 0px; border-radius:5px;}
+#tool img{margin-bottom:5px;}
+/*弹出层*/
+#hover{position:absolute;top:15%;width:80%;left:50%;margin-left:-45%;padding:5px 0px;background:#f4e4c4;border:1px solid #fff; border-radius:5px;}
+#hover div{margin:0px 15px;}
+#hover li{float:left;width:100%;padding:10px 0px;border-bottom:1px solid #d1c9b8;}
+#hover p{float:left;height:35px;}
+#hover .p1{width:15%;}
+#hover .p2{width:70%;}
+#hover .p3{width:15%;}
+#hover span{ display:block;color:#605b51;font-size:0.75em;line-height:18px;}
+#hover .title{font-size:1em;font-weight:bold;}
+#hover .i{background:url(../images/i.jpg) 0px center no-repeat;}
+#hover .c{background:url(../images/c.jpg) 0px center no-repeat;}
+#hover .e{background:url(../images/e.jpg) 0px center no-repeat;}
+#hover .p3{background:url(../images/jt.jpg) right center no-repeat;}
+#hover .nob{border:0px;}
+#hover #xjt{position:absolute;left:50%;bottom:-13px;margin-left:-50%;text-align:center;width:100%;}
+/*缩放*/
+#zoom{width:30px;height:80px;padding:0px 3px;position:absolute;bottom:80px;right:10px;background:#c6c6c5;}
+#zoom span{ display:block;width:100%;}
+#zoom .add{height:50%;background:url(../images/add.png) no-repeat center center;border-bottom:1px solid #73787e;}
+#zoom .minus{height:50%;background:url(../images/minus.png) no-repeat center center;}
+/*定位图标*/
+#dw{position:absolute;bottom:80px;left:100px;}
+/*底部菜单*/
+#menu{position:absolute;width:100%;bottom:0px;left:0px;background:#2e3c50;}
+#menu ul{float:left;width:100%;}
+#menu li{width:25%;float:left;text-align:center;}
+#menu a{display:block;font-size:0.875em;padding:10px 0px;}
+#menu img{margin-bottom:5px;}
+
+
+
+
+
+
+

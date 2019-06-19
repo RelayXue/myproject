@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="tj_A20171user">
+
+    <resultMap id="re_A20171user" class="com.gh.entity.A20171user">
+        <result property="fuid" column="FUID"/>
+        <result property="bridgeroadName" column="BRIDGEROAD_NAME"/>
+        <result property="bridgeroadTemporaryName" column="BRIDGEROAD_TEMPORARY_NAME"/>
+        <result property="bridgeroadTemporaryId" column="BRIDGEROAD_TEMPORARY_ID"/>
+        <result property="name" column="NAME"/>
+        <result property="weixinid" column="WEIXINID"/>
+        <result property="phone" column="PHONE"/>
+        <result property="createtime" column="CREATETIME"/>
+        <result property="isWinning" column="IS_WINNING"/>
+    </resultMap>
+    
+    <!-- 用于select查询公用抽取的列 -->
+	<sql id="A20171user.columns">
+	    <![CDATA[
+        FUID ,BRIDGEROAD_NAME ,BRIDGEROAD_TEMPORARY_NAME ,BRIDGEROAD_TEMPORARY_ID ,NAME ,WEIXINID ,PHONE ,CREATETIME ,IS_WINNING 
+	    ]]>
+	</sql>
+  
+	 <select id="selectByPrimaryKey" parameterClass="com.gh.entity.A20171user" resultMap="re_A20171user">
+	    SELECT <include refid="A20171user.columns"/>
+	    from a2017_1_user
+	    where 
+		        FUID = #fuid:VARCHAR# 
+ 	 </select>
+ 	 
+	<delete id="deleteByPrimaryKey" parameterClass="com.gh.entity.A20171user">
+	    delete from a2017_1_user
+    	where 
+		        FUID = #fuid:VARCHAR# 
+  </delete>
+  
+  	<delete id="deleteByWhere" parameterClass="java.lang.String">
+	    delete from a2017_1_user
+    	where 
+		      $swhere$
+	  </delete>
+  
+   <insert id="insert" parameterClass="com.gh.entity.A20171user">
+	        insert into a2017_1_user (  FUID ,   BRIDGEROAD_NAME ,   BRIDGEROAD_TEMPORARY_NAME ,   BRIDGEROAD_TEMPORARY_ID ,   NAME ,   WEIXINID ,   PHONE ,   CREATETIME ,   IS_WINNING   )
+   	 	values ( #fuid:VARCHAR# ,  #bridgeroadName:VARCHAR# ,  #bridgeroadTemporaryName:VARCHAR# ,  #bridgeroadTemporaryId:VARCHAR# ,  #name:VARCHAR# ,  #weixinid:VARCHAR# ,  #phone:VARCHAR# ,  #createtime:TIMESTAMP# ,  #isWinning:INTEGER#  )
+   	
+  </insert>
+ 	
+ 	
+ 	<update id="updateByPrimaryKey" parameterClass="com.gh.entity.A20171user">
+   	UPDATE a2017_1_user SET
+	        BRIDGEROAD_NAME = #bridgeroadName:VARCHAR# ,
+	        BRIDGEROAD_TEMPORARY_NAME = #bridgeroadTemporaryName:VARCHAR# ,
+	        BRIDGEROAD_TEMPORARY_ID = #bridgeroadTemporaryId:VARCHAR# ,
+	        NAME = #name:VARCHAR# ,
+	        WEIXINID = #weixinid:VARCHAR# ,
+	        PHONE = #phone:VARCHAR# ,
+	        CREATETIME = #createtime:TIMESTAMP# ,
+	        IS_WINNING = #isWinning:INTEGER# 
+        WHERE 
+	        FUID = #fuid:VARCHAR# 
+  </update>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterClass="com.gh.entity.A20171user">
+  	  update a2017_1_user
+  	  <dynamic prepend="set">
+  	   <isNotNull prepend="," property="bridgeroadName">
+  	 	  BRIDGEROAD_NAME = #bridgeroadName:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="bridgeroadTemporaryName">
+  	 	  BRIDGEROAD_TEMPORARY_NAME = #bridgeroadTemporaryName:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="bridgeroadTemporaryId">
+  	 	  BRIDGEROAD_TEMPORARY_ID = #bridgeroadTemporaryId:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="name">
+  	 	  NAME = #name:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="weixinid">
+  	 	  WEIXINID = #weixinid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="phone">
+  	 	  PHONE = #phone:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createtime">
+  	 	  CREATETIME = #createtime:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="isWinning">
+  	 	  IS_WINNING = #isWinning:INTEGER#
+  	  </isNotNull>
+     </dynamic>
+    where FUID = #fuid:VARCHAR# 
+  </update>
+  
+   <select id="execSql" parameterClass="string" resultMap="re_A20171user"><![CDATA[$sql$]]></select>
+   
+    <select id="execSqlObject" parameterClass="string" resultClass="java.lang.Object"><![CDATA[$sql$]]></select>
+</sqlMap>
+

@@ -1,0 +1,9 @@
+<chart caption="±ÃÕ¾¹©Ë®Á¿Õ¼±ÈÍ¼" subcaption="(2012-02-01)" palette="4">
+  <set label="1#±Ã" value="3200" /> 
+  <set label="2#±Ã" value="6400" /> 
+  <set label="3#±Ã" value="5000" /> 
+  <set label="4#±Ã" value="2000" /> 
+  <set label="5#±Ã" value="3500" isSliced="1" /> 
+  <set label="ËÄÃÅ±ÃÕ¾" value="2500" isSliced="1" /> 
+  <set label="ÅÅº£±ÃÕ¾" value="5100" />  
+  </chart>

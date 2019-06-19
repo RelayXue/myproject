@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="tj_WebSearch">
+
+    <resultMap id="tj_data_entity" class="com.gh.entity.DataEntity">
+    
+    </resultMap>
+    
+    <!-- 用于select查询公用抽取的列 -->
+	<sql id="BaseRole.columns">
+	    <![CDATA[
+        FUID ,SYSTEMID ,ORGANIZEID ,CODE ,REALNAME ,CATEGORY ,SORTCODE ,DELETEMARK ,ENABLED ,DESCRIPTION ,CREATEDATE ,CREATEUSERID ,CREATEUSERREALNAME ,MODIFYDATE ,MODIFYUSERID ,MODIFYUSERREALNAME 
+	    ]]>
+	</sql>
+  
+	 <select id="selectByPrimaryKey" parameterClass="com.gh.entity.BaseRole" resultMap="re_BaseRole">
+	    SELECT <include refid="BaseRole.columns"/>
+	    from base_role
+	    where 
+		        FUID = #fuid:VARCHAR# 
+ 	 </select>
+ 	 
+   <select id="execSql" parameterClass="string" resultMap="re_BaseRole"><![CDATA[$sql$]]></select>
+   
+    <select id="execSqlObject" parameterClass="string" resultClass="java.lang.Object"><![CDATA[$sql$]]></select>
+</sqlMap>
+

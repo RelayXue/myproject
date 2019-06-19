@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.devMode" value="false" />
+	<package name="Hbussiness" namespace="/" extends="oriental-pearl">
+		<!-- 景区信息维护 
+		<action name="buScenic" class="com.gh.action.business.BuScenicAction"
+			method="show">
+			<result name="buScenicExamine">/business/BuBarcodeExamine_scenic.jsp</result>
+			<result name="BuBarcode">/business/BuBarcode_scenic.jsp</result>
+			<result name="buScenic">/business/BuScenic.jsp</result>
+			<result name="buScenicEditor">/business/BuScenicEditor.jsp</result>
+			<result name="show" type="redirectAction">
+				<param name="actionName">buScenic?indexPage=${indexPage}</param>
+			</result>
+			<result name="showExamine" type="redirectAction">
+				<param name="actionName">buScenic!BcodeShow?indexPage=${indexPage}</param>
+			</result> 
+		</action>-->
+		<!-- 景点信息维护
+		<action name="buAttractions" class="com.gh.action.business.BuAttractionsAction"
+			method="show">
+			<result name="buAttractionsExamine">/business/BuBarcodeExamine_attraction.jsp</result>
+			<result name="map_Attractions">/business/map_Attractions.jsp</result>
+			<result name="buAttractions">/business/BuAttractions.jsp</result>
+			<result name="buAttractionsEditor">/business/BuAttractionsEditor.jsp</result>
+			<result name="barcode">/business/BuBarcode_attraction.jsp</result>
+			<result name="show" type="redirectAction">
+				<param name="actionName">buAttractions?indexPage=${indexPage}</param>
+			</result>
+			<result name="showExamine" type="redirectAction">
+				<param name="actionName">buAttractions!showCode?indexPage=${indexPage}</param>
+			</result>
+		</action> -->
+		 <action name="buStreetlights" class="com.gh.action.business.BuStreetlightsAction"
+			method="show">
+			<result name="BuStreetlights">/business/BuStreetlights.jsp</result>
+			<result name="buStreetlightsEditor">/business/BuStreetlightsEditor.jsp</result>
+			<result name="show" type="redirectAction">
+				<param name="actionName">buStreetlights?indexPage=${indexPage}</param>
+			</result>
+		</action>
+		<action name="buPublicfacilities" class="com.gh.action.business.BuPublicfacilitiesAction"
+			method="show">
+			<result name="BuPublicfacilities">/business/BuPublicfacilities.jsp</result>
+			<result name="buPublicfacilitiesEditor">/business/BuPublicfacilitiesEditor.jsp</result>
+			<result name="show" type="redirectAction">
+				<param name="actionName">buPublicfacilities?indexPage=${indexPage}</param>
+			</result>
+		</action>
+		<action name="buBarcode" class="com.gh.action.business.BuBarcodeAction" method="show">
+			<result name="BuBarcode">/business/BuBarcode.jsp</result>
+			<result name="buBarcodeExamine">/business/BuBarcodeExamine.jsp</result>
+			<result name="buBarcodeEditor">/business/BuBarcodeEditor.jsp</result>
+				<result name="TbarcodeShow" type="redirectAction">
+					<param name="actionName">/buBarcode</param>
+				</result>
+			<result name="show" type="redirectAction">
+				<param name="actionName">buBarcode</param>
+				<param name="indexPage">${indexPage}</param>
+				<param name="type">${type}</param>
+				<param name="skey">${skey}</param> 
+			</result>
+		</action>
+		<action name="buQuicklinks" class="com.gh.action.business.BuQuicklinksAction" method="show">
+			<result name="BuQuicklinks">/business/BuQuicklinks.jsp</result>
+			<result name="buQuicklinksEditor">/business/BuQuicklinksEditor.jsp</result>
+			<result name="show" type="redirectAction">
+				<param name="actionName">buQuicklinks?indexPage=${indexPage}</param>
+			</result>
+		</action>
+	</package>
+</struts>

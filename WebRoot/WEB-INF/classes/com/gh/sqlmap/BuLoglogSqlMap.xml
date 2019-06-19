@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="tj_BuLoglog">
+
+    <resultMap id="re_BuLoglog" class="com.gh.entity.BuLoglog">
+        <result property="fuid" column="FUID"/>
+        <result property="realname" column="REALNAME"/>
+        <result property="mobile" column="MOBILE"/>
+        <result property="description" column="DESCRIPTION"/>
+        <result property="createdate" column="CREATEDATE"/>
+        <result property="perid" column="PERID"/>
+        <result property="logingtime" column="LOGINGTIME"/>
+        <result property="outtime" column="OUTTIME"/>
+    </resultMap>
+    
+    <!-- 用于select查询公用抽取的列 -->
+	<sql id="BuLoglog.columns">
+	    <![CDATA[
+        FUID ,REALNAME ,MOBILE ,DESCRIPTION ,CREATEDATE ,PERID ,LOGINGTIME ,OUTTIME 
+	    ]]>
+	</sql>
+  
+	 <select id="selectByPrimaryKey" parameterClass="com.gh.entity.BuLoglog" resultMap="re_BuLoglog">
+	    SELECT <include refid="BuLoglog.columns"/>
+	    from bu_loglog
+	    where 
+		        FUID = #fuid:VARCHAR# 
+ 	 </select>
+ 	 
+	<delete id="deleteByPrimaryKey" parameterClass="com.gh.entity.BuLoglog">
+	    delete from bu_loglog
+    	where 
+		        FUID = #fuid:VARCHAR# 
+  </delete>
+  
+  	<delete id="deleteByWhere" parameterClass="java.lang.String">
+	    delete from bu_loglog
+    	where 
+		      $swhere$
+	  </delete>
+  
+   <insert id="insert" parameterClass="com.gh.entity.BuLoglog">
+	        insert into bu_loglog (  FUID ,   REALNAME ,   MOBILE ,   DESCRIPTION ,   CREATEDATE ,   PERID ,   LOGINGTIME ,   OUTTIME   )
+   	 	values ( #fuid:VARCHAR# ,  #realname:VARCHAR# ,  #mobile:VARCHAR# ,  #description:VARCHAR# ,  #createdate:TIMESTAMP# ,  #perid:VARCHAR# ,  #logingtime:TIMESTAMP# ,  #outtime:TIMESTAMP#  )
+   	
+  </insert>
+ 	
+ 	
+ 	<update id="updateByPrimaryKey" parameterClass="com.gh.entity.BuLoglog">
+   	UPDATE bu_loglog SET
+	        REALNAME = #realname:VARCHAR# ,
+	        MOBILE = #mobile:VARCHAR# ,
+	        DESCRIPTION = #description:VARCHAR# ,
+	        CREATEDATE = #createdate:TIMESTAMP# ,
+	        PERID = #perid:VARCHAR# ,
+	        LOGINGTIME = #logingtime:TIMESTAMP# ,
+	        OUTTIME = #outtime:TIMESTAMP# 
+        WHERE 
+	        FUID = #fuid:VARCHAR# 
+  </update>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterClass="com.gh.entity.BuLoglog">
+  	  update bu_loglog
+  	  <dynamic prepend="set">
+  	   <isNotNull prepend="," property="fuid">
+  	 	  FUID = #fuid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="realname">
+  	 	  REALNAME = #realname:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="mobile">
+  	 	  MOBILE = #mobile:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="description">
+  	 	  DESCRIPTION = #description:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createdate">
+  	 	  CREATEDATE = #createdate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="perid">
+  	 	  PERID = #perid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="logingtime">
+  	 	  LOGINGTIME = #logingtime:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="outtime">
+  	 	  OUTTIME = #outtime:TIMESTAMP#
+  	  </isNotNull>
+     </dynamic>
+    where FUID = #fuid:VARCHAR# 
+  </update>
+  
+   <select id="execSql" parameterClass="string" resultMap="re_BuLoglog"><![CDATA[$sql$]]></select>
+   <update id="updateSql" parameterClass="string"><![CDATA[$sql$]]></update>
+   <select id="execSqlObject" parameterClass="string" resultClass="java.lang.Object"><![CDATA[$sql$]]></select>
+</sqlMap>
+

@@ -1,0 +1,41 @@
+.complete
+{
+    cursor: pointer;
+    width: 100%;
+}
+.complete:hover
+{
+    background-color: #c1ebff;
+}
+.autocomplete div
+{
+    background-position: #FFF;
+    display: none;
+    width: 250px;
+    border: 1px solid #999;
+    background: #FFF;
+    cursor: default;
+    text-align: left;
+    max-height: 350px;
+    overflow: auto;
+    font-weight: normal;
+    font-size: 12px;
+    text-indent: 3px;
+    line-height: 23px;
+}
+.autocomplete div .complete
+{
+    background: #F0F0F0;
+    display: block;
+}
+.autocomplete div strong
+{
+    font-weight: bold;
+    color: #3399FF;
+}
+
+td,tr,form
+{
+    margin: 0px;
+    padding: 0px;
+}

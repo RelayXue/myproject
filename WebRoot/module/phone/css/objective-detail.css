@@ -1,0 +1,46 @@
+@charset "utf-8";
+/* CSS Document */
+
+#container{background:#f4f1e7;}
+
+#header{width:100%;height:35px;background:#2e3c50;padding:10px 0px;float:left; text-align:center;}
+#header #return{width:20%;height:100%;float:left;}
+#header #xq{width:20%;height:100%;float:left;font-size:1em;background:url(../images/wz.png) center center no-repeat;}
+#header a{display:block;width:100%;height:100%;line-height:35px;text-align:center;}
+#header #return a{background:url(../images/return.png) center center no-repeat;}
+#header #title{float:left;width:60%;height:100%;text-align:center;color:#fff;font-size:1.1875em;line-height:35px;}
+
+#hover{margin:0px 15px;}
+#nc{padding:10px 0px;margin-top:15px;float:left;width:100%;background:#f4e4c4;border:1px solid #fff; border-radius:5px;color:#1e1e1e;}
+#nc #top,#nc #bottom{margin:0px 10px;}
+#nc li{font-size:0.875em;line-height:20px;}
+#nc li a{color:#717699;}
+#nc li img{ vertical-align:top;margin-top:2px;margin-right:5px;}
+#nc .title{font-size:0.9375em;line-height:25px;}
+#nc .f_r{float:right;}
+#nc #top{padding-bottom:10px;border-bottom:1px solid #aaaaaa;}
+#nc #bottom{padding-top:10px;line-height:20px;}
+#hover #btn{background:#b99883;border-radius:5px;clear:both;float:left;width:100%;margin-top:5px;}
+#hover #btn p{width:50%;text-align:center;float:left;}
+#hover #btn a{width:100%;color:#fff;padding:10px 0px; display:block;}
+#hover #btn img{margin-right:5px;vertical-align:top;}
+#hover #btn .phone a{border-right:1px solid #fff;}
+#hover #btn .phone img{margin-top:5px;}
+
+#qhb{float:left;width:100%;padding-top:15px;padding-bottom:10px;}
+#qhb img{width:100%;}
+
+#list{margin:0px 15px;}
+#list ul{float:left;width:100%;}
+#list li{float:left;width:25%;text-align:center;padding:5px 0px;border-right:1px solid #aaaaaa; box-sizing:border-box;}
+#list span{display:block;color:#1e1e1e;font-size:0.9375em;}
+#list img{margin-bottom:5px;}
+#list .bor{border-bottom:1px solid #aaaaaa;}
+#list .nob{border:0px;}
+
+
+
+
+
+
+

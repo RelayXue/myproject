@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="tj_BaseOrganize">
+
+    <resultMap id="re_BaseOrganize" class="com.gh.entity.BaseOrganize">
+        <result property="fuid" column="FUID"/>
+        <result property="parentid" column="PARENTID"/>
+        <result property="code" column="CODE"/>
+        <result property="fullname" column="FULLNAME"/>
+        <result property="layer" column="LAYER"/>
+        <result property="outerphone" column="OUTERPHONE"/>
+        <result property="innerphone" column="INNERPHONE"/>
+        <result property="manager" column="MANAGER"/>
+        <result property="deletemark" column="DELETEMARK"/>
+        <result property="enabled" column="ENABLED"/>
+        <result property="sortcode" column="SORTCODE"/>
+        <result property="description" column="DESCRIPTION"/>
+        <result property="address" column="ADDRESS"/>
+        <result property="businesslicense" column="BUSINESSLICENSE"/>
+        <result property="managerid" column="MANAGERID"/>
+        <result property="possonoapplicare" column="POSSONOAPPLICARE"/>
+        <result property="registeredcapital" column="REGISTEREDCAPITAL"/>
+        <result property="contact" column="CONTACT"/>
+        <result property="email" column="EMAIL"/>
+        <result property="fax" column="FAX"/>
+        <result property="operatingarea" column="OPERATINGAREA"/>
+        <result property="createdate" column="CREATEDATE"/>
+        <result property="createuserid" column="CREATEUSERID"/>
+        <result property="createuserrealname" column="CREATEUSERREALNAME"/>
+        <result property="modifydate" column="MODIFYDATE"/>
+        <result property="modifyuserid" column="MODIFYUSERID"/>
+        <result property="modifyuserrealname" column="MODIFYUSERREALNAME"/>
+        <result property="iscargo" column="ISCARGO"/>
+        <result property="emergency" column="EMERGENCY"/>
+    </resultMap>
+    
+    <!-- 用于select查询公用抽取的列 -->
+	<sql id="BaseOrganize.columns">
+	    <![CDATA[
+        FUID ,PARENTID ,CODE ,FULLNAME ,LAYER ,OUTERPHONE ,INNERPHONE ,MANAGER ,DELETEMARK ,ENABLED ,SORTCODE ,DESCRIPTION ,ADDRESS ,BUSINESSLICENSE ,MANAGERID ,POSSONOAPPLICARE ,REGISTEREDCAPITAL ,CONTACT ,EMAIL ,FAX ,OPERATINGAREA ,CREATEDATE ,CREATEUSERID ,CREATEUSERREALNAME ,MODIFYDATE ,MODIFYUSERID ,MODIFYUSERREALNAME ,ISCARGO ,EMERGENCY 
+	    ]]>
+	</sql>
+  
+	 <select id="selectByPrimaryKey" parameterClass="com.gh.entity.BaseOrganize" resultMap="re_BaseOrganize">
+	    SELECT <include refid="BaseOrganize.columns"/>
+	    from base_organize
+	    where 
+		        FUID = #fuid:VARCHAR# 
+ 	 </select>
+ 	 
+	<delete id="deleteByPrimaryKey" parameterClass="com.gh.entity.BaseOrganize">
+	    delete from base_organize
+    	where 
+		        FUID = #fuid:VARCHAR# 
+  </delete>
+  
+  
+   <insert id="insert" parameterClass="com.gh.entity.BaseOrganize">
+	        insert into base_organize (  FUID ,   PARENTID ,   CODE ,   FULLNAME ,   LAYER ,   OUTERPHONE ,   INNERPHONE ,   MANAGER ,   DELETEMARK ,   ENABLED ,   SORTCODE ,   DESCRIPTION ,   ADDRESS ,   BUSINESSLICENSE ,   MANAGERID ,   POSSONOAPPLICARE ,   REGISTEREDCAPITAL ,   CONTACT ,   EMAIL ,   FAX ,   OPERATINGAREA ,   CREATEDATE ,   CREATEUSERID ,   CREATEUSERREALNAME ,   MODIFYDATE ,   MODIFYUSERID ,   MODIFYUSERREALNAME ,   ISCARGO ,   EMERGENCY   )
+   	 	values ( #fuid:VARCHAR# ,  #parentid:VARCHAR# ,  #code:VARCHAR# ,  #fullname:VARCHAR# ,  #layer:DOUBLE# ,  #outerphone:VARCHAR# ,  #innerphone:VARCHAR# ,  #manager:VARCHAR# ,  #deletemark:DOUBLE# ,  #enabled:DOUBLE# ,  #sortcode:DOUBLE# ,  #description:LONGVARCHAR# ,  #address:LONGVARCHAR# ,  #businesslicense:VARCHAR# ,  #managerid:VARCHAR# ,  #possonoapplicare:LONGVARCHAR# ,  #registeredcapital:DECIMAL# ,  #contact:VARCHAR# ,  #email:VARCHAR# ,  #fax:VARCHAR# ,  #operatingarea:LONGVARCHAR# ,  #createdate:TIMESTAMP# ,  #createuserid:VARCHAR# ,  #createuserrealname:VARCHAR# ,  #modifydate:TIMESTAMP# ,  #modifyuserid:VARCHAR# ,  #modifyuserrealname:VARCHAR# ,  #iscargo:VARCHAR# ,  #emergency:VARCHAR#  )
+   	
+  </insert>
+ 	
+ 	
+ 	<update id="updateByPrimaryKey" parameterClass="com.gh.entity.BaseOrganize">
+   	UPDATE base_organize SET
+	        PARENTID = #parentid:VARCHAR# ,
+	        CODE = #code:VARCHAR# ,
+	        FULLNAME = #fullname:VARCHAR# ,
+	        LAYER = #layer:DOUBLE# ,
+	        OUTERPHONE = #outerphone:VARCHAR# ,
+	        INNERPHONE = #innerphone:VARCHAR# ,
+	        MANAGER = #manager:VARCHAR# ,
+	        DELETEMARK = #deletemark:DOUBLE# ,
+	        ENABLED = #enabled:DOUBLE# ,
+	        SORTCODE = #sortcode:DOUBLE# ,
+	        DESCRIPTION = #description:LONGVARCHAR# ,
+	        ADDRESS = #address:LONGVARCHAR# ,
+	        BUSINESSLICENSE = #businesslicense:VARCHAR# ,
+	        MANAGERID = #managerid:VARCHAR# ,
+	        POSSONOAPPLICARE = #possonoapplicare:LONGVARCHAR# ,
+	        REGISTEREDCAPITAL = #registeredcapital:DECIMAL# ,
+	        CONTACT = #contact:VARCHAR# ,
+	        EMAIL = #email:VARCHAR# ,
+	        FAX = #fax:VARCHAR# ,
+	        OPERATINGAREA = #operatingarea:LONGVARCHAR# ,
+	        CREATEDATE = #createdate:TIMESTAMP# ,
+	        CREATEUSERID = #createuserid:VARCHAR# ,
+	        CREATEUSERREALNAME = #createuserrealname:VARCHAR# ,
+	        MODIFYDATE = #modifydate:TIMESTAMP# ,
+	        MODIFYUSERID = #modifyuserid:VARCHAR# ,
+	        MODIFYUSERREALNAME = #modifyuserrealname:VARCHAR# ,
+	        ISCARGO = #iscargo:VARCHAR# ,
+	        EMERGENCY = #emergency:VARCHAR# 
+        WHERE 
+	        FUID = #fuid:VARCHAR# 
+  </update>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterClass="com.gh.entity.BaseOrganize">
+  	  update base_organize
+  	  <dynamic prepend="set">
+  	   <isNotNull prepend="," property="fuid">
+  	 	  FUID = #fuid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="parentid">
+  	 	  PARENTID = #parentid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="code">
+  	 	  CODE = #code:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="fullname">
+  	 	  FULLNAME = #fullname:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="layer">
+  	 	  LAYER = #layer:DOUBLE#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="outerphone">
+  	 	  OUTERPHONE = #outerphone:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="innerphone">
+  	 	  INNERPHONE = #innerphone:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="manager">
+  	 	  MANAGER = #manager:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="deletemark">
+  	 	  DELETEMARK = #deletemark:DOUBLE#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="enabled">
+  	 	  ENABLED = #enabled:DOUBLE#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="sortcode">
+  	 	  SORTCODE = #sortcode:DOUBLE#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="description">
+  	 	  DESCRIPTION = #description:LONGVARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="address">
+  	 	  ADDRESS = #address:LONGVARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="businesslicense">
+  	 	  BUSINESSLICENSE = #businesslicense:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="managerid">
+  	 	  MANAGERID = #managerid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="possonoapplicare">
+  	 	  POSSONOAPPLICARE = #possonoapplicare:LONGVARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="registeredcapital">
+  	 	  REGISTEREDCAPITAL = #registeredcapital:DECIMAL#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="contact">
+  	 	  CONTACT = #contact:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="email">
+  	 	  EMAIL = #email:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="fax">
+  	 	  FAX = #fax:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="operatingarea">
+  	 	  OPERATINGAREA = #operatingarea:LONGVARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createdate">
+  	 	  CREATEDATE = #createdate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createuserid">
+  	 	  CREATEUSERID = #createuserid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createuserrealname">
+  	 	  CREATEUSERREALNAME = #createuserrealname:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="modifydate">
+  	 	  MODIFYDATE = #modifydate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="modifyuserid">
+  	 	  MODIFYUSERID = #modifyuserid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="modifyuserrealname">
+  	 	  MODIFYUSERREALNAME = #modifyuserrealname:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="iscargo">
+  	 	  ISCARGO = #iscargo:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="emergency">
+  	 	  EMERGENCY = #emergency:VARCHAR#
+  	  </isNotNull>
+     </dynamic>
+    where FUID = #fuid:VARCHAR# 
+  </update>
+  
+   <select id="execSql" parameterClass="string" resultMap="re_BaseOrganize"><![CDATA[$sql$]]></select>
+   
+    <select id="execSqlObject" parameterClass="string" resultClass="java.lang.Object"><![CDATA[$sql$]]></select>
+</sqlMap>
+

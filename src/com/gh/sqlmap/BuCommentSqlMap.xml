@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="tj_BuComment">
+
+    <resultMap id="re_BuComment" class="com.gh.entity.BuComment">
+        <result property="fuid" column="FUID"/>
+        <result property="dimages" column="DIMAGES"/>
+        <result property="createdate" column="CREATEDATE"/>
+        <result property="modifydate" column="MODIFYDATE"/>
+        <result property="overallrating" column="OVERALLRATING"/>
+        <result property="taste" column="TASTE"/>
+        <result property="environment" column="ENVIRONMENT"/>
+        <result property="service" column="SERVICE"/>
+        <result property="room" column="ROOM"/>
+        <result property="product" column="PRODUCT"/>
+        <result property="description" column="DESCRIPTION"/>
+        <result property="systype" column="SYSTYPE"/>
+        <result property="objectid" column="OBJECTID"/>
+        <result property="capita" column="CAPITA"/>
+        <result property="praise" column="PRAISE"/>
+        <result property="examine" column="EXAMINE"/>
+        <result property="score" column="SCORE"/>
+    </resultMap>
+    
+    <!-- 用于select查询公用抽取的列 -->
+	<sql id="BuComment.columns">
+	    <![CDATA[
+        FUID ,DIMAGES ,CREATEDATE ,MODIFYDATE ,OVERALLRATING ,TASTE ,ENVIRONMENT ,SERVICE ,ROOM ,PRODUCT ,DESCRIPTION ,SYSTYPE ,OBJECTID ,CAPITA ,PRAISE ,EXAMINE ,SCORE 
+	    ]]>
+	</sql>
+  
+	 <select id="selectByPrimaryKey" parameterClass="com.gh.entity.BuComment" resultMap="re_BuComment">
+	    SELECT <include refid="BuComment.columns"/>
+	    from bu_comment
+	    where 
+		        FUID = #fuid:VARCHAR# 
+ 	 </select>
+ 	 
+	<delete id="deleteByPrimaryKey" parameterClass="com.gh.entity.BuComment">
+	    delete from bu_comment
+    	where 
+		        FUID = #fuid:VARCHAR# 
+  </delete>
+  
+  	<delete id="deleteByWhere" parameterClass="java.lang.String">
+	    delete from bu_comment
+    	where 
+		      $swhere$
+	  </delete>
+  
+   <insert id="insert" parameterClass="com.gh.entity.BuComment">
+	        insert into bu_comment (  FUID ,   DIMAGES ,   CREATEDATE ,   MODIFYDATE ,   OVERALLRATING ,   TASTE ,   ENVIRONMENT ,   SERVICE ,   ROOM ,   PRODUCT ,   DESCRIPTION ,   SYSTYPE ,   OBJECTID ,   CAPITA ,   PRAISE ,   EXAMINE ,   SCORE   )
+   	 	values ( #fuid:VARCHAR# ,  #dimages:VARCHAR# ,  #createdate:TIMESTAMP# ,  #modifydate:TIMESTAMP# ,  #overallrating:DECIMAL# ,  #taste:DECIMAL# ,  #environment:DECIMAL# ,  #service:DECIMAL# ,  #room:DECIMAL# ,  #product:DECIMAL# ,  #description:LONGVARCHAR# ,  #systype:VARCHAR# ,  #objectid:VARCHAR# ,  #capita:DECIMAL# ,  #praise:INTEGER# ,  #examine:VARCHAR# ,  #score:DECIMAL#  )
+   	
+  </insert>
+ 	
+ 	
+ 	<update id="updateByPrimaryKey" parameterClass="com.gh.entity.BuComment">
+   	UPDATE bu_comment SET
+	        DIMAGES = #dimages:VARCHAR# ,
+	        CREATEDATE = #createdate:TIMESTAMP# ,
+	        MODIFYDATE = #modifydate:TIMESTAMP# ,
+	        OVERALLRATING = #overallrating:DECIMAL# ,
+	        TASTE = #taste:DECIMAL# ,
+	        ENVIRONMENT = #environment:DECIMAL# ,
+	        SERVICE = #service:DECIMAL# ,
+	        ROOM = #room:DECIMAL# ,
+	        PRODUCT = #product:DECIMAL# ,
+	        DESCRIPTION = #description:LONGVARCHAR# ,
+	        SYSTYPE = #systype:VARCHAR# ,
+	        OBJECTID = #objectid:VARCHAR# ,
+	        CAPITA = #capita:DECIMAL# ,
+	        PRAISE = #praise:INTEGER# ,
+	        EXAMINE = #examine:VARCHAR# ,
+	        SCORE = #score:DECIMAL# 
+        WHERE 
+	        FUID = #fuid:VARCHAR# 
+  </update>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterClass="com.gh.entity.BuComment">
+  	  update bu_comment
+  	  <dynamic prepend="set">
+  	   <isNotNull prepend="," property="fuid">
+  	 	  FUID = #fuid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="dimages">
+  	 	  DIMAGES = #dimages:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createdate">
+  	 	  CREATEDATE = #createdate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="modifydate">
+  	 	  MODIFYDATE = #modifydate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="overallrating">
+  	 	  OVERALLRATING = #overallrating:DECIMAL#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="taste">
+  	 	  TASTE = #taste:DECIMAL#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="environment">
+  	 	  ENVIRONMENT = #environment:DECIMAL#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="service">
+  	 	  SERVICE = #service:DECIMAL#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="room">
+  	 	  ROOM = #room:DECIMAL#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="product">
+  	 	  PRODUCT = #product:DECIMAL#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="description">
+  	 	  DESCRIPTION = #description:LONGVARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="systype">
+  	 	  SYSTYPE = #systype:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="objectid">
+  	 	  OBJECTID = #objectid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="capita">
+  	 	  CAPITA = #capita:DECIMAL#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="praise">
+  	 	  PRAISE = #praise:INTEGER#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="examine">
+  	 	  EXAMINE = #examine:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="score">
+  	 	  SCORE = #score:DECIMAL#
+  	  </isNotNull>
+     </dynamic>
+    where FUID = #fuid:VARCHAR# 
+  </update>
+  
+   <select id="execSql" parameterClass="string" resultMap="re_BuComment"><![CDATA[$sql$]]></select>
+   
+    <select id="execSqlObject" parameterClass="string" resultClass="java.lang.Object"><![CDATA[$sql$]]></select>
+</sqlMap>
+

@@ -1,0 +1,50 @@
+@charset "utf-8";
+/* CSS Document */
+
+#container{background:#f4f1e7;}
+
+#header{width:100%;height:35px;background:#2e3c50;padding:10px 0px;float:left; text-align:center;}
+#header #return{width:20%;height:100%;float:left;}
+#header #xq{width:20%;height:100%;float:left;font-size:1em;background:url(../images/wz.png) center center no-repeat;}
+#header a{display:block;width:100%;height:100%;line-height:35px;text-align:center;}
+#header #return a{background:url(../images/return.png) center center no-repeat;}
+#header #title{float:left;width:60%;height:100%;text-align:center;color:#fff;font-size:1.1875em;line-height:35px;}
+/*搜索框*/
+#search{float:left;width:86%;height:100%;background:#FFF;border-radius:10px;}
+#search span{display:block;width:12%;float:left;height:100%;background:url(../images/search.png) center center no-repeat;}
+#search input{width:75%;float:left;height:100%;font-size:0.875em;border-radius:0px 10px 10px 0px;}
+#search a{width:13%;height:100%;float:left;background:url(../images/yy.jpg) center center no-repeat;}
+
+
+#hover{clear:both;margin:0px 10px;padding-top:5px;}
+#hover #cont{float:left;width:100%;border:1px solid #fff;border-radius:5px; box-shadow:1px 1px 1px #cbc8c0;box-sizing:border-box;background:#f4e4c4;padding-bottom:15px;}
+#hover #cont .cont_title{color:#646464;height:40px;line-height:40px;border-bottom:1px solid #aaaaaa;margin:0px 12px;font-size:0.9375em;box-sizing:border-box;}
+#hover #cont #list{padding-top:10px;margin:0px 12px;box-sizing:border-box;}
+#hover #cont #list ul{flaot:left;padding-left:12px;}
+#hover #cont #list li{color:#646464;border-left:1px solid #b4b4b4;font-size:0.875em;}
+#hover #cont #list li span{ border-bottom:1px solid #aaaaaa; display:block;margin-left:25px;padding:15px 0px;font-weight:bold;font-size:1em;}
+#hover #cont #list li img{ vertical-align:top;}
+#hover #cont #list li ul{padding:0px;}
+#hover #cont #list li ul li{padding-top:20px;color:#787878;border:0px;}
+#hover #cont #list li ul li img{margin-left:-6px;margin-right:19px;}
+#hover #cont #list .gj img{margin-left:-33px;margin-right:18px;}
+#hover #cont #list .sc span{padding-bottom:0px;border-bottom:0px;padding-top:10px;}
+#hover #cont #list .sc a{color:#646464;font-size:1em;float:right;margin-right:5px;}
+#hover #cont #list .sc a img{margin:0px;margin-left:10px;margin-top:4px;}
+#hover #cont #list .bx{border-left-style:dashed;}
+#hover #cont #list .bx img{margin-left:-33px;margin-right:20px;}
+#hover #cont #list .bx a{color:#717699;font-size:1em;float:right;}
+#hover #cont #list .bx a img{margin:0px;padding-right:10px;margin-top:-2px;}
+#hover #cont #list .header img{margin-left:-39px;margin-top:-4px;margin-right:13px;}
+#hover #cont #list .footer img{margin-left:-39px;margin-top:-4px;margin-right:13px;}
+#hover #cont #list .header span{padding-top:0px;}
+#hover #cont #list .footer span{padding-bottom:0px;border:0px;}
+
+#footer{position:fixed;float:left;bottom:0px;width:100%;background:#2e3c50;padding:10px 0px;}
+#footer a{text-align:center;float:left;width:50%; display:block;}
+#footer img{ vertical-align:top;margin-top:-3px;margin-right:5px;}
+#footer .bor{border-right:1px solid #fff; box-sizing:border-box;}
+
+
+
+

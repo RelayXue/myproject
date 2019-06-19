@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="tujing-default" extends="struts-default" abstract="true">
+		<global-results>
+			<result name="input">/module/web/input.jsp</result>
+			<result name="json">/module/web/json.jsp</result>
+			<result name="xml">/module/web/xml.jsp</result>
+			<result name="error"></result>
+			<result name="exception">/module/web/exception.jsp</result>
+			<result name="invalid.token">/module/web/invalidToken.jsp</result>
+		</global-results>
+		<!--异常声明 -->
+		<global-exception-mappings> 
+		    <exception-mapping exception="java.lang.NoSuchMethodException" result="noMethodException"/> 
+		    <exception-mapping exception="java.sql.SQLException" result="sqlException"/>
+		</global-exception-mappings>
+		 
+	</package>
+	
+	<package name="base" extends="tujing-default" namespace="/web">
+		<action name="index" method="index" class="com.gh.action.web.IndexAction">
+			<result>/module/web/index.jsp</result>
+			<result name="input">/login.jsp</result>
+		</action>
+		
+		<action name="search_*" class="com.gh.action.web.SearchAction" method="{1}">
+			<result>/module/web/searchList.jsp</result>
+			<result name="point_detail">/module/web/point_detail.jsp</result>
+			<result name="searchAll">/module/web/list.jsp</result>
+			<result name="typeInit">/module/web/searchTypeList.jsp</result>
+			<result name="scenicList">/module/web/scenicList.jsp</result>
+			<result name="test">/module/web/test.jsp</result>
+			<result name="carLine">/module/web/carLineSearch.jsp</result>
+			<result name="walkLine">/module/web/walkLineSearch.jsp</result>
+			<result name="typeList">/module/web/diningList.jsp</result>
+			<result name="typeDiv">/module/web/typeDiv.jsp</result>
+			<result name="scenicDiv">/module/web/scenicDiv.jsp</result>
+			<result name="show_detail">/module/web/show_detail.jsp</result>
+			<result name="scenicDetail">/module/web/scenic_detail.jsp</result>
+			<result name="trafficPlayList">/module/web/trafficPlayList.jsp</result>
+			<result name="trafficPlayDiv">/module/web/trafficPlayDiv.jsp</result>
+			<result name="newsList">/module/web/newsList.jsp</result>
+			<result name="newsDiv">/module/web/newsDiv.jsp</result>
+			<result name="newsDetail">/module/web/newsDetail.jsp</result>
+			<result name="likeToGo">/module/web/likeToGoDiv.jsp</result>
+			<result name="showMap">/module/web/show_map.jsp</result>
+			<result name="commentList">/module/web/commentDiv.jsp</result>
+			<result name="wuzhen360">/module/web/wuzhen360.jsp</result>
+			<result name="contact">/module/web/contact_us.jsp</result>
+			<result name="link">/module/web/link.jsp</result>
+			<result name="wuzhen">/module/web/tourArea.jsp</result>
+		</action>
+	</package>
+</struts>

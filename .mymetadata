@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="WuZhen"
+  id="myeclipse.1330406561600"
+  context-root="/"
+  j2ee-spec="6.0"
+  archive="WuZhen.war">
+  <attributes>
+    <attribute name="webrootdir" value="/WebRoot" />
+  </attributes>
+</project-module>
+

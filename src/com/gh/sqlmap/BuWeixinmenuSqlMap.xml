@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="tj_BuWeixinmenu">
+
+    <resultMap id="re_BuWeixinmenu" class="com.gh.entity.BuWeixinmenu">
+        <result property="fuid" column="FUID"/>
+        <result property="fullname" column="FULLNAME"/>
+        <result property="wurl" column="WURL"/>
+        <result property="sortcode" column="SORTCODE"/>
+        <result property="createdate" column="CREATEDATE"/>
+        <result property="modifydate" column="MODIFYDATE"/>
+        <result property="parentid" column="PARENTID"/>
+    </resultMap>
+    
+    <!-- 用于select查询公用抽取的列 -->
+	<sql id="BuWeixinmenu.columns">
+	    <![CDATA[
+        FUID ,FULLNAME ,WURL ,SORTCODE ,CREATEDATE ,MODIFYDATE ,PARENTID 
+	    ]]>
+	</sql>
+  
+	 <select id="selectByPrimaryKey" parameterClass="com.gh.entity.BuWeixinmenu" resultMap="re_BuWeixinmenu">
+	    SELECT <include refid="BuWeixinmenu.columns"/>
+	    from bu_weixinmenu
+	    where 
+		        FUID = #fuid:VARCHAR# 
+ 	 </select>
+ 	 
+	<delete id="deleteByPrimaryKey" parameterClass="com.gh.entity.BuWeixinmenu">
+	    delete from bu_weixinmenu
+    	where 
+		        FUID = #fuid:VARCHAR# 
+  </delete>
+  
+  	<delete id="deleteByWhere" parameterClass="java.lang.String">
+	    delete from bu_weixinmenu
+    	where 
+		      $swhere$
+	  </delete>
+  
+   <insert id="insert" parameterClass="com.gh.entity.BuWeixinmenu">
+	        insert into bu_weixinmenu (  FUID ,   FULLNAME ,   WURL ,   SORTCODE ,   CREATEDATE ,   MODIFYDATE ,   PARENTID   )
+   	 	values ( #fuid:VARCHAR# ,  #fullname:VARCHAR# ,  #wurl:VARCHAR# ,  #sortcode:INTEGER# ,  #createdate:TIMESTAMP# ,  #modifydate:TIMESTAMP# ,  #parentid:VARCHAR#  )
+   	
+  </insert>
+ 	
+ 	
+ 	<update id="updateByPrimaryKey" parameterClass="com.gh.entity.BuWeixinmenu">
+   	UPDATE bu_weixinmenu SET
+	        FULLNAME = #fullname:VARCHAR# ,
+	        WURL = #wurl:VARCHAR# ,
+	        SORTCODE = #sortcode:INTEGER# ,
+	        CREATEDATE = #createdate:TIMESTAMP# ,
+	        MODIFYDATE = #modifydate:TIMESTAMP# ,
+	        PARENTID = #parentid:VARCHAR# 
+        WHERE 
+	        FUID = #fuid:VARCHAR# 
+  </update>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterClass="com.gh.entity.BuWeixinmenu">
+  	  update bu_weixinmenu
+  	  <dynamic prepend="set">
+  	   <isNotNull prepend="," property="fuid">
+  	 	  FUID = #fuid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="fullname">
+  	 	  FULLNAME = #fullname:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="wurl">
+  	 	  WURL = #wurl:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="sortcode">
+  	 	  SORTCODE = #sortcode:INTEGER#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createdate">
+  	 	  CREATEDATE = #createdate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="modifydate">
+  	 	  MODIFYDATE = #modifydate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="parentid">
+  	 	  PARENTID = #parentid:VARCHAR#
+  	  </isNotNull>
+     </dynamic>
+    where FUID = #fuid:VARCHAR# 
+  </update>
+  
+   <select id="execSql" parameterClass="string" resultMap="re_BuWeixinmenu"><![CDATA[$sql$]]></select>
+   
+    <select id="execSqlObject" parameterClass="string" resultClass="java.lang.Object"><![CDATA[$sql$]]></select>
+</sqlMap>
+

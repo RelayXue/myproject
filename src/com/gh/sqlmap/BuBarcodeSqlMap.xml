@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="tj_BuBarcode">
+
+    <resultMap id="re_BuBarcode" class="com.gh.entity.BuBarcode">
+        <result property="fuid" column="FUID"/>
+        <result property="code" column="CODE"/>
+        <result property="description" column="DESCRIPTION"/>
+        <result property="status" column="STATUS"/>
+        <result property="prstatus" column="PRSTATUS"/>
+        <result property="images" column="IMAGES"/>
+        <result property="content" column="CONTENT"/>
+        <result property="codepath" column="CODEPATH"/>
+        <result property="createdate" column="CREATEDATE"/>
+        <result property="createuserrealname" column="CREATEUSERREALNAME"/>
+        <result property="modifydate" column="MODIFYDATE"/>
+        <result property="modifyuserrealname" column="MODIFYUSERREALNAME"/>
+        <result property="type" column="TYPE"/>
+    </resultMap>
+    
+    <!-- 用于select查询公用抽取的列 -->
+	<sql id="BuBarcode.columns">
+	    <![CDATA[
+        FUID ,CODE ,DESCRIPTION ,STATUS ,PRSTATUS ,IMAGES ,CONTENT ,CODEPATH ,CREATEDATE ,CREATEUSERREALNAME ,MODIFYDATE ,MODIFYUSERREALNAME ,TYPE 
+	    ]]>
+	</sql>
+  
+	 <select id="selectByPrimaryKey" parameterClass="com.gh.entity.BuBarcode" resultMap="re_BuBarcode">
+	    SELECT <include refid="BuBarcode.columns"/>
+	    from bu_barcode
+	    where 
+		        FUID = #fuid:VARCHAR# 
+ 	 </select>
+ 	 
+	<delete id="deleteByPrimaryKey" parameterClass="com.gh.entity.BuBarcode">
+	    delete from bu_barcode
+    	where 
+		        FUID = #fuid:VARCHAR# 
+  </delete>
+  
+  	<delete id="deleteByWhere" parameterClass="java.lang.String">
+	    delete from bu_barcode
+    	where 
+		      $swhere$
+	  </delete>
+  
+   <insert id="insert" parameterClass="com.gh.entity.BuBarcode">
+	        insert into bu_barcode (  FUID ,   CODE ,   DESCRIPTION ,   STATUS ,   PRSTATUS ,   IMAGES ,   CONTENT ,   CODEPATH ,   CREATEDATE ,   CREATEUSERREALNAME ,   MODIFYDATE ,   MODIFYUSERREALNAME ,   TYPE   )
+   	 	values ( #fuid:VARCHAR# ,  #code:VARCHAR# ,  #description:VARCHAR# ,  #status:VARCHAR# ,  #prstatus:VARCHAR# ,  #images:VARCHAR# ,  #content:VARCHAR# ,  #codepath:VARCHAR# ,  #createdate:TIMESTAMP# ,  #createuserrealname:VARCHAR# ,  #modifydate:TIMESTAMP# ,  #modifyuserrealname:VARCHAR# ,  #type:VARCHAR#  )
+   	
+  </insert>
+ 	
+ 	
+ 	<update id="updateByPrimaryKey" parameterClass="com.gh.entity.BuBarcode">
+   	UPDATE bu_barcode SET
+	        CODE = #code:VARCHAR# ,
+	        DESCRIPTION = #description:VARCHAR# ,
+	        STATUS = #status:VARCHAR# ,
+	        PRSTATUS = #prstatus:VARCHAR# ,
+	        IMAGES = #images:VARCHAR# ,
+	        CONTENT = #content:VARCHAR# ,
+	        CODEPATH = #codepath:VARCHAR# ,
+	        CREATEDATE = #createdate:TIMESTAMP# ,
+	        CREATEUSERREALNAME = #createuserrealname:VARCHAR# ,
+	        MODIFYDATE = #modifydate:TIMESTAMP# ,
+	        MODIFYUSERREALNAME = #modifyuserrealname:VARCHAR# ,
+	        TYPE = #type:VARCHAR# 
+        WHERE 
+	        FUID = #fuid:VARCHAR# 
+  </update>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterClass="com.gh.entity.BuBarcode">
+  	  update bu_barcode
+  	  <dynamic prepend="set">
+  	   <isNotNull prepend="," property="fuid">
+  	 	  FUID = #fuid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="code">
+  	 	  CODE = #code:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="description">
+  	 	  DESCRIPTION = #description:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="status">
+  	 	  STATUS = #status:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="prstatus">
+  	 	  PRSTATUS = #prstatus:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="images">
+  	 	  IMAGES = #images:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="content">
+  	 	  CONTENT = #content:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="codepath">
+  	 	  CODEPATH = #codepath:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createdate">
+  	 	  CREATEDATE = #createdate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createuserrealname">
+  	 	  CREATEUSERREALNAME = #createuserrealname:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="modifydate">
+  	 	  MODIFYDATE = #modifydate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="modifyuserrealname">
+  	 	  MODIFYUSERREALNAME = #modifyuserrealname:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="type">
+  	 	  TYPE = #type:VARCHAR#
+  	  </isNotNull>
+     </dynamic>
+    where FUID = #fuid:VARCHAR# 
+  </update>
+  
+   <select id="execSql" parameterClass="string" resultMap="re_BuBarcode"><![CDATA[$sql$]]></select>
+   
+    <select id="execSqlObject" parameterClass="string" resultClass="java.lang.Object"><![CDATA[$sql$]]></select>
+</sqlMap>
+

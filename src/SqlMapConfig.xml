@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE sqlMapConfig     
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"     
+    "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+<sqlMapConfig>
+	<settings cacheModelsEnabled="false" enhancementEnabled="true"
+		lazyLoadingEnabled="true" errorTracingEnabled="true" maxRequests="32"
+		maxSessions="10" maxTransactions="5" useStatementNamespaces="true" />
+	<sqlMap resource="com/gh/sqlmap/BaseDatadictionarySqlMap.xml" />
+	<sqlMap resource="com/gh/sqlmap/BaseMenuRoleSqlMap.xml" />
+	<sqlMap resource="com/gh/sqlmap/BaseMenuSqlMap.xml" />
+	<sqlMap resource="com/gh/sqlmap/BaseOperatingSqlMap.xml" />
+	<sqlMap resource="com/gh/sqlmap/BaseOperationLogSqlMap.xml" />
+	<sqlMap resource="com/gh/sqlmap/BaseOrganizeMenuSqlMap.xml" />
+	<sqlMap resource="com/gh/sqlmap/BaseOrganizeSqlMap.xml" />
+	<sqlMap resource="com/gh/sqlmap/BaseRoleSqlMap.xml" />
+	<sqlMap resource="com/gh/sqlmap/BaseScopeSqlMap.xml" />
+	<sqlMap resource="com/gh/sqlmap/BaseUserRoleSqlMap.xml" />
+	<sqlMap resource="com/gh/sqlmap/BaseUserSqlMap.xml" />
+	<sqlMap resource="com/gh/sqlmap/ObPromptdataSqlMap.xml" />
+	<sqlMap resource="com/gh/sqlmap/ObVideoSqlMap.xml" />
+	<sqlMap resource="com/gh/sqlmap/BuAttractionsSqlMap.xml" />
+	<sqlMap resource="com/gh/sqlmap/BuStreetlightsSqlMap.xml" />
+	<sqlMap resource="com/gh/sqlmap/BuPublicfacilitiesSqlMap.xml" />
+	<sqlMap resource="com/gh/sqlmap/BuBarcodeSqlMap.xml" />
+	<sqlMap resource="com/gh/sqlmap/BuQuicklinksSqlMap.xml" />
+	<sqlMap resource="com/gh/sqlmap/BuEventSqlMap.xml" />
+	<sqlMap resource="com/gh/sqlmap/BuServiceltemsSqlMap.xml" />
+	<sqlMap resource="com/gh/sqlmap/BuCommoditySqlMap.xml" />
+	<sqlMap resource="com/gh/sqlmap/BuActivitiesSqlMap.xml" />
+	<sqlMap resource="com/gh/sqlmap/BuInterestSqlMap.xml" />
+	<sqlMap resource="com/gh/sqlmap/BuNavigationSqlMap.xml" />
+	<sqlMap resource="com/gh/sqlmap/BuScenicSqlMap.xml" />
+	<sqlMap resource="com/gh/sqlmap/BuNaattrSqlMap.xml" />
+	<sqlMap resource="com/gh/sqlmap/ObImagesSqlMap.xml" />
+	<sqlMap resource="com/gh/sqlmap/BuBasicdataSqlMap.xml"/>
+	<sqlMap resource="com/gh/sqlmap/BuDiningSqlMap.xml"/>
+	<sqlMap resource="com/gh/sqlmap/BuDiningSpecialtySqlMap.xml"/>
+	<sqlMap resource="com/gh/sqlmap/BuStaySqlMap.xml"/>
+	<sqlMap resource="com/gh/sqlmap/BuStayRoomSqlMap.xml"/>
+	<sqlMap resource="com/gh/sqlmap/BuEntertainmentshoppingSqlMap.xml"/>
+	<sqlMap resource="com/gh/sqlmap/BuWeixinmenuSqlMap.xml"/>
+	<sqlMap resource="com/gh/sqlmap/BuNewsSqlMap.xml"/>
+	<sqlMap resource="com/gh/sqlmap/BuWeixinmessageSqlMap.xml"/>
+	<sqlMap resource="com/gh/sqlmap/BuAffairsSqlMap.xml"/>
+	<sqlMap resource="com/gh/sqlmap/BuWeatherSqlMap.xml"/>
+	<sqlMap resource="com/gh/sqlmap/BuWeixinmassSqlMap.xml"/>
+	<sqlMap resource="com/gh/sqlmap/BuGeographySqlMap.xml"/>
+	<sqlMap resource="com/gh/sqlmap/GmPathCrossPointSqlMap.xml"/>
+	<sqlMap resource="com/gh/sqlmap/GmPathLineSqlMap.xml"/>
+	<sqlMap resource="com/gh/sqlmap/integrateddata_SqlMap.xml"/>
+	<sqlMap resource="com/gh/sqlmap/BuCommentSqlMap.xml"/>
+	<sqlMap resource="com/gh/sqlmap/BuRoadSqlMap.xml"/>
+	<sqlMap resource="com/gh/sqlmap/BuPersonnelSqlMap.xml"/>
+	<sqlMap resource="com/gh/sqlmap/BuGpsdeviceSqlMap.xml"/>
+	<sqlMap resource="com/gh/sqlmap/BuLoglogSqlMap.xml"/>
+	<sqlMap resource="com/gh/sqlmap/BuScanningSqlMap.xml"/>
+	<sqlMap resource="com/gh/sqlmap/BuLinkSqlMap.xml"/>
+	<sqlMap resource="com/gh/sqlmap/BuWeixinconfigSqlMap.xml"/>
+	<sqlMap resource="com/gh/sqlmap/BuWeixinluckdrawSqlMap.xml"/>
+	<sqlMap resource="com/gh/sqlmap/BuWeixinactivitySqlMap.xml"/>
+	<sqlMap resource="com/gh/sqlmap/BuWeixinvoteSqlMap.xml"/>
+ 	<sqlMap resource="com/gh/sqlmap/BuWeixinVotingRecordSqlMap.xml"/>
+ 	<!-- 审核列表 -->
+ 	<sqlMap resource="com/gh/sqlmap/BuExamineSqlMap.xml"/>
+ 	<!-- 公安 -->
+ 	<sqlMap resource="com/gh/sqlmap/BuPublicsecuritySqlMap.xml"/>
+ 	<!-- 旅店 -->
+ 	<sqlMap resource="com/gh/sqlmap/BuHostelSqlMap.xml"/>
+ 	
+ 	
+ 	<sqlMap resource="com/gh/sqlmap/BuWeixinrewardSqlMap.xml"/>
+ 	<sqlMap resource="com/gh/sqlmap/VotingrecordSqlMap.xml"/>
+ 	<sqlMap resource="com/gh/sqlmap/BuAccommodationSqlMap.xml"/>
+ 	<sqlMap resource="com/gh/sqlmap/OpinionSqlMap.xml"/>
+ 	
+ 	<!-- 摄影活动 -->
+ 	<sqlMap resource="com/gh/sqlmap/A20161characterworksSqlMap.xml"/>
+ 	<sqlMap resource="com/gh/sqlmap/A20161clickSqlMap.xml"/>
+ 	<sqlMap resource="com/gh/sqlmap/A20161activitySqlMap.xml"/>
+ 	<!-- 诗歌大挑战 -->
+ 	<sqlMap resource="com/gh/sqlmap/A20162subjectSqlMap.xml"/>
+ 	<sqlMap resource="com/gh/sqlmap/A20162userSqlMap.xml"/>
+ 	
+ 	<!-- 2017-1 -->
+ 	<sqlMap resource="com/gh/sqlmap/A20171userSqlMap.xml"/>
+ 	<sqlMap resource="com/gh/sqlmap/A20171bridgeroadSqlMap.xml"/>
+</sqlMapConfig>

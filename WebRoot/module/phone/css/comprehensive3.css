@@ -1,0 +1,40 @@
+@charset "utf-8";
+/* CSS Document */
+
+#container{background:#f4f1e7;}
+
+#header{width:100%;height:35px;background:#2e3c50;padding:10px 0px;float:left; text-align:center;}
+#header #return{width:20%;height:100%;float:left;}
+#header #xq{width:20%;height:100%;float:left;font-size:1em;background:url(../images/wz.png) center center no-repeat;}
+#header a{display:block;width:100%;height:100%;line-height:35px;text-align:center;}
+#header #return a{background:url(../images/return.png) center center no-repeat;}
+#header #title{float:left;width:60%;height:100%;text-align:center;color:#fff;font-size:1.1875em;line-height:35px;}
+/*搜索框*/
+#search{float:left;width:86%;height:100%;background:#FFF;border-radius:10px;}
+#search span{display:block;width:12%;float:left;height:100%;background:url(../images/search.png) center center no-repeat;}
+#search input{width:75%;float:left;height:100%;font-size:0.875em;border-radius:0px 10px 10px 0px;}
+#search a{width:13%;height:100%;float:left;background:url(../images/yy.jpg) center center no-repeat;}
+
+
+#hover{clear:both;margin:0px 10px;padding-top:5px;}
+#hover #cont{float:left;width:100%;border:2px solid #717699; box-sizing:border-box;background:#FFF;}
+#hover #cont .cont_title{color:#fff;padding:10px 0px;background:#717699;}
+#hover #cont .cont_title p{padding-left:10px;font-size:0.875em;line-height:20px;}
+#hover #cont .cont_title p span{font-size:1.357em;font-weight:bold;}
+#hover #cont #list{padding:15px 0px;margin:0px 30px;}
+#hover #cont #list ul{flaot:left;width:100%;}
+#hover #cont #list li{color:#646464;border-left:1px solid #717699;padding-bottom:20px;font-size:0.875em;}
+#hover #cont #list li img{ vertical-align:top;margin-left:-7px;margin-right:15px;}
+#hover #cont #list .title{font-size:1em;}
+#hover #cont #list .title img{margin-left:-13px;margin-top:-4px;margin-right:9px;}
+#hover #cont #list .tit1{font-weight:bold;}
+#hover #cont #list .tit3{font-weight:bold;padding-bottom:0px;}
+
+#footer{position:fixed;float:left;bottom:0px;width:100%;background:#2e3c50;padding:10px 0px;}
+#footer a{text-align:center;float:left;width:50%; display:block;}
+#footer img{ vertical-align:top;margin-top:-3px;margin-right:5px;}
+#footer .bor{border-right:1px solid #fff; box-sizing:border-box;}
+
+
+
+

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="tj_GmPathLine">
+
+    <resultMap id="re_GmPathLine" class="com.gh.entity.GmPathLine">
+        <result property="fuid" column="F_UID"/>
+        <result property="fno" column="F_NO"/>
+        <result property="fname" column="F_NAME"/>
+        <result property="flength" column="F_LENGTH"/>
+        <result property="fbeginX" column="F_BEGIN_X"/>
+        <result property="fbeginY" column="F_BEGIN_Y"/>
+        <result property="fendX" column="F_END_X"/>
+        <result property="fendY" column="F_END_Y"/>
+        <result property="fstring" column="F_STRING"/>
+        <result property="forderByAsc" column="F_ORDER_BY_ASC"/>
+        <result property="forderByDesc" column="F_ORDER_BY_DESC"/>
+        <result property="fcreateTime" column="F_CREATE_TIME"/>
+    </resultMap>
+    
+    <!-- 用于select查询公用抽取的列 -->
+	<sql id="GmPathLine.columns">
+	    <![CDATA[
+        F_UID ,F_NO ,F_NAME ,F_LENGTH ,F_BEGIN_X ,F_BEGIN_Y ,F_END_X ,F_END_Y ,F_STRING ,F_ORDER_BY_ASC ,F_ORDER_BY_DESC ,F_CREATE_TIME 
+	    ]]>
+	</sql>
+  
+	 <select id="selectByPrimaryKey" parameterClass="com.gh.entity.GmPathLine" resultMap="re_GmPathLine">
+	    SELECT <include refid="GmPathLine.columns"/>
+	    from gm_path_line
+	    where 
+		        F_UID = #fuid:VARCHAR# 
+ 	 </select>
+ 	 
+	<delete id="deleteByPrimaryKey" parameterClass="com.gh.entity.GmPathLine">
+	    delete from gm_path_line
+    	where 
+		        F_UID = #fuid:VARCHAR# 
+  </delete>
+  
+  	<delete id="deleteByWhere" parameterClass="java.lang.String">
+	    delete from gm_path_line
+    	where 
+		      $swhere$
+	  </delete>
+  
+   <insert id="insert" parameterClass="com.gh.entity.GmPathLine">
+	        insert into gm_path_line (  F_UID ,   F_NO ,   F_NAME ,   F_LENGTH ,   F_BEGIN_X ,   F_BEGIN_Y ,   F_END_X ,   F_END_Y ,   F_STRING ,   F_ORDER_BY_ASC ,   F_ORDER_BY_DESC ,   F_CREATE_TIME   )
+   	 	values ( #fuid:VARCHAR# ,  #fno:DECIMAL# ,  #fname:VARCHAR# ,  #flength:DECIMAL# ,  #fbeginX:DECIMAL# ,  #fbeginY:DECIMAL# ,  #fendX:DECIMAL# ,  #fendY:DECIMAL# ,  #fstring:LONGVARCHAR# ,  #forderByAsc:VARCHAR# ,  #forderByDesc:VARCHAR# ,  #fcreateTime:TIMESTAMP#  )
+   	
+  </insert>
+ 	
+ 	
+ 	<update id="updateByPrimaryKey" parameterClass="com.gh.entity.GmPathLine">
+   	UPDATE gm_path_line SET
+	        F_NO = #fno:DECIMAL# ,
+	        F_NAME = #fname:VARCHAR# ,
+	        F_LENGTH = #flength:DECIMAL# ,
+	        F_BEGIN_X = #fbeginX:DECIMAL# ,
+	        F_BEGIN_Y = #fbeginY:DECIMAL# ,
+	        F_END_X = #fendX:DECIMAL# ,
+	        F_END_Y = #fendY:DECIMAL# ,
+	        F_STRING = #fstring:LONGVARCHAR# ,
+	        F_ORDER_BY_ASC = #forderByAsc:VARCHAR# ,
+	        F_ORDER_BY_DESC = #forderByDesc:VARCHAR# ,
+	        F_CREATE_TIME = #fcreateTime:TIMESTAMP# 
+        WHERE 
+	        F_UID = #fuid:VARCHAR# 
+  </update>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterClass="com.gh.entity.GmPathLine">
+  	  update gm_path_line
+  	  <dynamic prepend="set">
+  	   <isNotNull prepend="," property="fuid">
+  	 	  F_UID = #fuid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="fno">
+  	 	  F_NO = #fno:DECIMAL#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="fname">
+  	 	  F_NAME = #fname:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="flength">
+  	 	  F_LENGTH = #flength:DECIMAL#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="fbeginX">
+  	 	  F_BEGIN_X = #fbeginX:DECIMAL#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="fbeginY">
+  	 	  F_BEGIN_Y = #fbeginY:DECIMAL#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="fendX">
+  	 	  F_END_X = #fendX:DECIMAL#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="fendY">
+  	 	  F_END_Y = #fendY:DECIMAL#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="fstring">
+  	 	  F_STRING = #fstring:LONGVARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="forderByAsc">
+  	 	  F_ORDER_BY_ASC = #forderByAsc:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="forderByDesc">
+  	 	  F_ORDER_BY_DESC = #forderByDesc:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="fcreateTime">
+  	 	  F_CREATE_TIME = #fcreateTime:TIMESTAMP#
+  	  </isNotNull>
+     </dynamic>
+    where F_UID = #fuid:VARCHAR# 
+  </update>
+  
+   <select id="execSql" parameterClass="string" resultMap="re_GmPathLine"><![CDATA[$sql$]]></select>
+   
+    <select id="execSqlObject" parameterClass="string" resultClass="java.lang.Object"><![CDATA[$sql$]]></select>
+</sqlMap>
+

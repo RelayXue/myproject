@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="tj_BuWeixinvote">
+
+    <resultMap id="re_BuWeixinvote" class="com.gh.entity.BuWeixinvote">
+        <result property="fuid" column="FUID"/>
+        <result property="weixinid" column="WEIXINID"/>
+        <result property="activityid" column="ACTIVITYID"/>
+        <result property="createtime" column="CREATETIME"/>
+    </resultMap>
+    
+    <!-- 用于select查询公用抽取的列 -->
+	<sql id="BuWeixinvote.columns">
+	    <![CDATA[
+        FUID ,WEIXINID ,ACTIVITYID ,CREATETIME 
+	    ]]>
+	</sql>
+  
+	 <select id="selectByPrimaryKey" parameterClass="com.gh.entity.BuWeixinvote" resultMap="re_BuWeixinvote">
+	    SELECT <include refid="BuWeixinvote.columns"/>
+	    from bu_weixinvote
+	    where 
+		        FUID = #fuid:VARCHAR# 
+ 	 </select>
+ 	 
+	<delete id="deleteByPrimaryKey" parameterClass="com.gh.entity.BuWeixinvote">
+	    delete from bu_weixinvote
+    	where 
+		        FUID = #fuid:VARCHAR# 
+  </delete>
+  
+  	<delete id="deleteByWhere" parameterClass="java.lang.String">
+	    delete from bu_weixinvote
+    	where 
+		      $swhere$
+	  </delete>
+  
+   <insert id="insert" parameterClass="com.gh.entity.BuWeixinvote">
+	        insert into bu_weixinvote (  FUID ,   WEIXINID ,   ACTIVITYID ,   CREATETIME   )
+   	 	values ( #fuid:VARCHAR# ,  #weixinid:VARCHAR# ,  #activityid:VARCHAR# ,  #createtime:TIMESTAMP#  )
+   	
+  </insert>
+ 	
+ 	
+ 	<update id="updateByPrimaryKey" parameterClass="com.gh.entity.BuWeixinvote">
+   	UPDATE bu_weixinvote SET
+	        WEIXINID = #weixinid:VARCHAR# ,
+	        ACTIVITYID = #activityid:VARCHAR# ,
+	        CREATETIME = #createtime:TIMESTAMP# 
+        WHERE 
+	        FUID = #fuid:VARCHAR# 
+  </update>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterClass="com.gh.entity.BuWeixinvote">
+  	  update bu_weixinvote
+  	  <dynamic prepend="set">
+  	   <isNotNull prepend="," property="fuid">
+  	 	  FUID = #fuid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="weixinid">
+  	 	  WEIXINID = #weixinid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="activityid">
+  	 	  ACTIVITYID = #activityid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createtime">
+  	 	  CREATETIME = #createtime:TIMESTAMP#
+  	  </isNotNull>
+     </dynamic>
+    where FUID = #fuid:VARCHAR# 
+  </update>
+  
+   <select id="execSql" parameterClass="string" resultMap="re_BuWeixinvote"><![CDATA[$sql$]]></select>
+   
+    <select id="execSqlObject" parameterClass="string" resultClass="java.lang.Object"><![CDATA[$sql$]]></select>
+</sqlMap>
+

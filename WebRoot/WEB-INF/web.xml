@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			WEB-INF/classes/applicationContext.xml  <!-- ,WEB-INF/classes/TimerConfig.xml-->
+		</param-value>
+	</context-param>
+	
+	<listener>
+		<listener-class>
+			org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+	</listener>
+	<!-- 防止SQL注入的过滤器  -->
+	<filter>
+		<filter-name>SqlAbnormalFilter</filter-name>
+		<filter-class>com.gh.interceptor.SqlAbnormalFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>SqlAbnormalFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	
+	<filter>
+		<filter-name>struts2</filter-name>
+		<filter-class>
+		  org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter 
+			<!-- org.apache.struts2.dispatcher.FilterDispatcher-->
+		</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<servlet> 
+		<servlet-name>Competence</servlet-name> 
+		<servlet-class>com.gh.action.system.CompetenceManager</servlet-class> 
+		<load-on-startup>1</load-on-startup> 
+	</servlet>
+		<servlet> 
+			<servlet-name>UploadServlet</servlet-name>
+			<servlet-class>com.gh.common.UploadServlet</servlet-class>
+		</servlet>
+		<servlet-mapping>
+			<servlet-name>UploadServlet</servlet-name>
+			<url-pattern>/UploadServlet</url-pattern>
+		</servlet-mapping>  
+	
+ <display-name></display-name>	
+  <welcome-file-list>
+    <welcome-file>/login.jsp</welcome-file>
+   
+  </welcome-file-list>
+</web-app>

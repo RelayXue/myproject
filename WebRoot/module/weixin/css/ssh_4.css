@@ -1,0 +1,122 @@
+﻿
+
+
+body
+{
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    background-color: #ded8cb;
+}
+.utop
+{
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+}
+.utop img
+{
+    height: 81px;
+    width: 100%;
+}
+.ucontainer
+{
+    margin: 10px 5px 10px 5px;
+    top:30px;
+    width:96%;
+    position:absolute;
+}
+.ucontainer .uitem
+{
+    position:relative;  
+}
+.uitem .l
+{
+    height: 105px;
+    width: 5px;
+    position:absolute;
+    background: url('../images/qleft1.png');
+}
+.uitem .c
+{
+    height: 105px;
+    float: left;
+    width:100%; 
+     background-color:#f4f1e7;
+}
+.uitem .c .t
+{
+    height: 4px;
+    background: url('../images/qtop.png');
+    background-repeat: repeat-x;
+}
+.uitem .c .b
+{
+    height: 4px;
+    background: url('../images/qtop.png');
+    background-repeat: repeat-x;
+}
+.uitem .c .u
+{ 
+}
+.uitem .c .u .ucontent
+{
+      margin:4px 13px 3px 13px;
+      background-color:#e1ded6;
+      height:88px;
+      padding-top:2px;
+}
+
+.uitem .c .u .ucontent .f1
+{
+    font-size:17pt;
+    color:#282828; 
+    text-align:center;
+     font-weight:bold;
+     height: 25px
+}
+.uitem .c .u .ucontent .f2
+{
+    font-size:14pt;
+    color:#282828; 
+    text-align:center;
+    height: 22px
+}
+.uitem .c .u .ucontent .f3
+{
+    font-size:11pt;
+    color:#828282; 
+    text-align:center;
+    height: 17px
+}
+.uitem .c .u .ucontent .f4
+{
+    font-size:12pt;
+    color:#979797; 
+    text-align:center;
+    height: 12px
+}
+.uitem .r
+{
+    height: 105px;
+    width: 5px; 
+    position:absolute;
+     right:0px;
+    background: url('../images/qleft1.png');
+}
+
+.ubottom
+{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    background: url('../images/bottom_bk1.png');
+    height: 174px;
+    z-index:-1;
+}
+a
+{
+    color: Black;
+    text-decoration: none;
+    outline: none;
+    outline: none;
+    blr: expression(this.onFocus=this.blur());
+}

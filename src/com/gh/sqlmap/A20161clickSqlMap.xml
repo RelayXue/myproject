@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="tj_A20161click">
+
+    <resultMap id="re_A20161click" class="com.gh.entity.A20161click">
+        <result property="fuid" column="FUID"/>
+        <result property="weixinid" column="WEIXINID"/>
+        <result property="worksid" column="WORKSID"/>
+        <result property="createtime" column="CREATETIME"/>
+    </resultMap>
+    
+    <!-- 用于select查询公用抽取的列 -->
+	<sql id="A20161click.columns">
+	    <![CDATA[
+        FUID ,WEIXINID ,WORKSID ,CREATETIME 
+	    ]]>
+	</sql>
+  
+	 <select id="selectByPrimaryKey" parameterClass="com.gh.entity.A20161click" resultMap="re_A20161click">
+	    SELECT <include refid="A20161click.columns"/>
+	    from a2016_1_click
+	    where 
+		        FUID = #fuid:VARCHAR# 
+ 	 </select>
+ 	 
+	<delete id="deleteByPrimaryKey" parameterClass="com.gh.entity.A20161click">
+	    delete from a2016_1_click
+    	where 
+		        FUID = #fuid:VARCHAR# 
+  </delete>
+  
+  	<delete id="deleteByWhere" parameterClass="java.lang.String">
+	    delete from a2016_1_click
+    	where 
+		      $swhere$
+	  </delete>
+  
+   <insert id="insert" parameterClass="com.gh.entity.A20161click">
+	        insert into a2016_1_click (  FUID ,   WEIXINID ,   WORKSID ,   CREATETIME   )
+   	 	values ( #fuid:VARCHAR# ,  #weixinid:VARCHAR# ,  #worksid:VARCHAR# ,  #createtime:TIMESTAMP#  )
+   	
+  </insert>
+ 	
+ 	
+ 	<update id="updateByPrimaryKey" parameterClass="com.gh.entity.A20161click">
+   	UPDATE a2016_1_click SET
+	        WEIXINID = #weixinid:VARCHAR# ,
+	        WORKSID = #worksid:VARCHAR# ,
+	        CREATETIME = #createtime:TIMESTAMP# 
+        WHERE 
+	        FUID = #fuid:VARCHAR# 
+  </update>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterClass="com.gh.entity.A20161click">
+  	  update a2016_1_click
+  	  <dynamic prepend="set">
+  	   <isNotNull prepend="," property="weixinid">
+  	 	  WEIXINID = #weixinid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="worksid">
+  	 	  WORKSID = #worksid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createtime">
+  	 	  CREATETIME = #createtime:TIMESTAMP#
+  	  </isNotNull>
+     </dynamic>
+    where FUID = #fuid:VARCHAR# 
+  </update>
+  
+   <select id="execSql" parameterClass="string" resultMap="re_A20161click"><![CDATA[$sql$]]></select>
+   
+    <select id="execSqlObject" parameterClass="string" resultClass="java.lang.Object"><![CDATA[$sql$]]></select>
+</sqlMap>
+

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="tj_BaseScope">
+
+    <resultMap id="re_BaseScope" class="com.gh.entity.BaseScope">
+        <result property="fuid" column="FUID"/>
+        <result property="menuId" column="MENU_ID"/>
+        <result property="roleId" column="ROLE_ID"/>
+        <result property="organizeId" column="ORGANIZE_ID"/>
+        <result property="enabled" column="ENABLED"/>
+        <result property="deletemark" column="DELETEMARK"/>
+        <result property="description" column="DESCRIPTION"/>
+        <result property="createdate" column="CREATEDATE"/>
+        <result property="createuserrealname" column="CREATEUSERREALNAME"/>
+        <result property="createuserid" column="CREATEUSERID"/>
+        <result property="modifydate" column="MODIFYDATE"/>
+        <result property="modifyuserrealname" column="MODIFYUSERREALNAME"/>
+        <result property="modifyuserid" column="MODIFYUSERID"/>
+    </resultMap>
+    
+    <!-- 用于select查询公用抽取的列 -->
+	<sql id="BaseScope.columns">
+	    <![CDATA[
+        FUID ,MENU_ID ,ROLE_ID ,ORGANIZE_ID ,ENABLED ,DELETEMARK ,DESCRIPTION ,CREATEDATE ,CREATEUSERREALNAME ,CREATEUSERID ,MODIFYDATE ,MODIFYUSERREALNAME ,MODIFYUSERID 
+	    ]]>
+	</sql>
+  
+	 <select id="selectByPrimaryKey" parameterClass="com.gh.entity.BaseScope" resultMap="re_BaseScope">
+	    SELECT <include refid="BaseScope.columns"/>
+	    from base_scope
+	    where 
+		        FUID = #fuid:VARCHAR# 
+ 	 </select>
+ 	 
+	<delete id="deleteByPrimaryKey" parameterClass="com.gh.entity.BaseScope">
+	    delete from base_scope
+    	where 
+		        FUID = #fuid:VARCHAR# 
+  </delete>
+  
+  
+   <insert id="insert" parameterClass="com.gh.entity.BaseScope">
+	        insert into base_scope (  FUID ,   MENU_ID ,   ROLE_ID ,   ORGANIZE_ID ,   ENABLED ,   DELETEMARK ,   DESCRIPTION ,   CREATEDATE ,   CREATEUSERREALNAME ,   CREATEUSERID ,   MODIFYDATE ,   MODIFYUSERREALNAME ,   MODIFYUSERID   )
+   	 	values ( #fuid:VARCHAR# ,  #menuId:VARCHAR# ,  #roleId:VARCHAR# ,  #organizeId:LONGVARCHAR# ,  #enabled:DOUBLE# ,  #deletemark:DOUBLE# ,  #description:LONGVARCHAR# ,  #createdate:TIMESTAMP# ,  #createuserrealname:VARCHAR# ,  #createuserid:VARCHAR# ,  #modifydate:TIMESTAMP# ,  #modifyuserrealname:VARCHAR# ,  #modifyuserid:VARCHAR#  )
+   	
+  </insert>
+ 	
+ 	
+ 	<update id="updateByPrimaryKey" parameterClass="com.gh.entity.BaseScope">
+   	UPDATE base_scope SET
+	        MENU_ID = #menuId:VARCHAR# ,
+	        ROLE_ID = #roleId:VARCHAR# ,
+	        ORGANIZE_ID = #organizeId:LONGVARCHAR# ,
+	        ENABLED = #enabled:DOUBLE# ,
+	        DELETEMARK = #deletemark:DOUBLE# ,
+	        DESCRIPTION = #description:LONGVARCHAR# ,
+	        CREATEDATE = #createdate:TIMESTAMP# ,
+	        CREATEUSERREALNAME = #createuserrealname:VARCHAR# ,
+	        CREATEUSERID = #createuserid:VARCHAR# ,
+	        MODIFYDATE = #modifydate:TIMESTAMP# ,
+	        MODIFYUSERREALNAME = #modifyuserrealname:VARCHAR# ,
+	        MODIFYUSERID = #modifyuserid:VARCHAR# 
+        WHERE 
+	        FUID = #fuid:VARCHAR# 
+  </update>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterClass="com.gh.entity.BaseScope">
+  	  update base_scope
+  	  <dynamic prepend="set">
+  	   <isNotNull prepend="," property="fuid">
+  	 	  FUID = #fuid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="menuId">
+  	 	  MENU_ID = #menuId:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="roleId">
+  	 	  ROLE_ID = #roleId:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="organizeId">
+  	 	  ORGANIZE_ID = #organizeId:LONGVARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="enabled">
+  	 	  ENABLED = #enabled:DOUBLE#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="deletemark">
+  	 	  DELETEMARK = #deletemark:DOUBLE#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="description">
+  	 	  DESCRIPTION = #description:LONGVARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createdate">
+  	 	  CREATEDATE = #createdate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createuserrealname">
+  	 	  CREATEUSERREALNAME = #createuserrealname:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createuserid">
+  	 	  CREATEUSERID = #createuserid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="modifydate">
+  	 	  MODIFYDATE = #modifydate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="modifyuserrealname">
+  	 	  MODIFYUSERREALNAME = #modifyuserrealname:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="modifyuserid">
+  	 	  MODIFYUSERID = #modifyuserid:VARCHAR#
+  	  </isNotNull>
+     </dynamic>
+    where FUID = #fuid:VARCHAR# 
+  </update>
+  
+   <select id="execSql" parameterClass="string" resultMap="re_BaseScope"><![CDATA[$sql$]]></select>
+   
+    <select id="execSqlObject" parameterClass="string" resultClass="java.lang.Object"><![CDATA[$sql$]]></select>
+</sqlMap>
+

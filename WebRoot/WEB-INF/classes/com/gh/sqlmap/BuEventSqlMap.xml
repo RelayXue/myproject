@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="tj_BuEvent">
+
+    <resultMap id="re_BuEvent" class="com.gh.entity.BuEvent">
+        <result property="fuid" column="FUID"/>
+        <result property="dnumber" column="DNUMBER"/>
+        <result property="title" column="TITLE"/>
+        <result property="description" column="DESCRIPTION"/>
+        <result property="status" column="STATUS"/>
+        <result property="createdate" column="CREATEDATE"/>
+        <result property="createuserrealname" column="CREATEUSERREALNAME"/>
+        <result property="modifydate" column="MODIFYDATE"/>
+        <result property="address" column="ADDRESS"/>
+        <result property="type" column="type"/>
+        <result property="modifyuserrealname" column="MODIFYUSERREALNAME"/>
+    </resultMap>
+    
+    <!-- 用于select查询公用抽取的列 -->
+	<sql id="BuEvent.columns">
+	    <![CDATA[
+        FUID ,DNUMBER ,TITLE ,DESCRIPTION ,STATUS ,CREATEDATE ,CREATEUSERREALNAME ,MODIFYDATE ,ADDRESS ,type ,MODIFYUSERREALNAME 
+	    ]]>
+	</sql>
+  
+	 <select id="selectByPrimaryKey" parameterClass="com.gh.entity.BuEvent" resultMap="re_BuEvent">
+	    SELECT <include refid="BuEvent.columns"/>
+	    from bu_event
+	    where 
+		        FUID = #fuid:VARCHAR# 
+ 	 </select>
+ 	 
+	<delete id="deleteByPrimaryKey" parameterClass="com.gh.entity.BuEvent">
+	    delete from bu_event
+    	where 
+		        FUID = #fuid:VARCHAR# 
+  </delete>
+  
+  	<delete id="deleteByWhere" parameterClass="java.lang.String">
+	    delete from bu_event
+    	where 
+		      $swhere$
+	  </delete>
+  
+   <insert id="insert" parameterClass="com.gh.entity.BuEvent">
+	        insert into bu_event (  FUID ,   DNUMBER ,   TITLE ,   DESCRIPTION ,   STATUS ,   CREATEDATE ,   CREATEUSERREALNAME ,   MODIFYDATE ,   ADDRESS ,   type ,   MODIFYUSERREALNAME   )
+   	 	values ( #fuid:VARCHAR# ,  #dnumber:VARCHAR# ,  #title:VARCHAR# ,  #description:VARCHAR# ,  #status:VARCHAR# ,  #createdate:TIMESTAMP# ,  #createuserrealname:VARCHAR# ,  #modifydate:TIMESTAMP# ,  #address:VARCHAR# ,  #type:VARCHAR# ,  #modifyuserrealname:VARCHAR#  )
+   	
+  </insert>
+ 	
+ 	
+ 	<update id="updateByPrimaryKey" parameterClass="com.gh.entity.BuEvent">
+   	UPDATE bu_event SET
+	        DNUMBER = #dnumber:VARCHAR# ,
+	        TITLE = #title:VARCHAR# ,
+	        DESCRIPTION = #description:VARCHAR# ,
+	        STATUS = #status:VARCHAR# ,
+	        CREATEDATE = #createdate:TIMESTAMP# ,
+	        CREATEUSERREALNAME = #createuserrealname:VARCHAR# ,
+	        MODIFYDATE = #modifydate:TIMESTAMP# ,
+	        ADDRESS = #address:VARCHAR# ,
+	        type = #type:VARCHAR# ,
+	        MODIFYUSERREALNAME = #modifyuserrealname:VARCHAR# 
+        WHERE 
+	        FUID = #fuid:VARCHAR# 
+  </update>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterClass="com.gh.entity.BuEvent">
+  	  update bu_event
+  	  <dynamic prepend="set">
+  	   <isNotNull prepend="," property="fuid">
+  	 	  FUID = #fuid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="dnumber">
+  	 	  DNUMBER = #dnumber:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="title">
+  	 	  TITLE = #title:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="description">
+  	 	  DESCRIPTION = #description:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="status">
+  	 	  STATUS = #status:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createdate">
+  	 	  CREATEDATE = #createdate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createuserrealname">
+  	 	  CREATEUSERREALNAME = #createuserrealname:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="modifydate">
+  	 	  MODIFYDATE = #modifydate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="address">
+  	 	  ADDRESS = #address:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="type">
+  	 	  type = #type:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="modifyuserrealname">
+  	 	  MODIFYUSERREALNAME = #modifyuserrealname:VARCHAR#
+  	  </isNotNull>
+     </dynamic>
+    where FUID = #fuid:VARCHAR# 
+  </update>
+  
+   <select id="execSql" parameterClass="string" resultMap="re_BuEvent"><![CDATA[$sql$]]></select>
+   
+    <select id="execSqlObject" parameterClass="string" resultClass="java.lang.Object"><![CDATA[$sql$]]></select>
+</sqlMap>
+

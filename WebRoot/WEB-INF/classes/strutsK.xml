@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.devMode" value="false" />
+	<package name="basicdata" namespace="/" extends="oriental-pearl">
+	
+	<!--景区管理    景点 -->
+	<action name="buAttractions" class="com.gh.action.business.BuAttractionsAction" method="show">
+			<result name="buAttractions">/business/BuAttractions.jsp</result>
+			<result name="buAttractionsEditor">/business/BuAttractionsEditor.jsp</result>
+			<result name="show" type="redirectAction">
+				<param name="actionName">buAttractions</param>
+				<param name="indexPage">${indexPage}</param>
+				<param name="skey">${skey}</param>
+				<param name="type">${type}</param>
+			</result>
+		</action>
+	
+		<!-- 基础地图数据 -->
+		<action name="buGeography" class="com.gh.action.business.BuGeographyAction" method="show">
+			<result name="buGeography">/business/BuGeography.jsp</result>
+			<result name="buGeographyEditor">/business/BuGeographyEditor.jsp</result>
+			<!--<result name="connectUs">/business/connectUs.jsp</result>
+			<result name="connectUsEdit.jsp">/business/connectUsEdit.jsp</result>
+			-->
+			<result name="show" type="redirectAction">
+				<param name="actionName">buGeography</param>
+				<param name="indexPage">${indexPage}</param>
+				<param name="skey">${skey}</param>
+				<param name="type">${type}</param>
+			</result>
+		</action>
+		
+		<!-- 未分类基础地图数据 -->
+		<action name="buGeographys" class="com.gh.action.business.BuGeographyAction" method="shows">
+			<result name="BuOther">/business/BuOther.jsp</result>
+			<result name="BuOtherEditor">/business/BuOtherEditor.jsp</result>
+			<result name="shows" type="redirectAction">
+				<param name="actionName">buGeographys</param>
+				<param name="indexPage">${indexPage}</param>
+				<param name="skey">${skey}</param>
+				<param name="type">${type}</param>
+			</result>
+		</action>
+		
+		<!-- 基础地图数据(新) -->
+		<action name="buBasicdata" class="com.gh.action.business.BuBasicdataAction" method="show">
+			<result name="buBasicdata">/business/BuBasicdata.jsp</result>
+			<result name="buBasicdataEditor">/business/BuBasicdataEditor.jsp</result>
+			<result name="show" type="redirectAction">
+				<param name="actionName">buBasicdata</param>
+				<param name="indexPage">${indexPage}</param>
+				<param name="skey">${skey}</param>
+				<param name="type">${type}</param>
+			</result>
+		</action>
+		
+		<!-- 酒店、名宿管理  -->
+		<action name="buStay" class="com.gh.action.business.BuStayAction" method="show">
+			<result name="buStay">/business/BuStay.jsp</result>
+			<result name="buStayCode">/business/BuStayCode.jsp</result>
+			<result name="buStayEditor">/business/BuStayEditor.jsp</result>
+			<result name="show" type="redirectAction">
+				<param name="actionName">buStay</param>
+				<param name="indexPage">${indexPage}</param>
+				<param name="skey">${skey}</param>
+				<param name="type">${type}</param>
+			</result>
+			<result name="showExamine" type="redirectAction">
+				<param name="actionName">buStay!showExamine</param>
+				<param name="indexPage">${indexPage}</param>
+				<param name="skey">${skey}</param>
+				<param name="type">${type}</param>
+			</result>
+		</action>
+		
+		<action name="buStayRoom" class="com.gh.action.business.BuStayRoomAction" method="show">
+			<result name="buStayRoom">/business/BuStayRoom.jsp</result>
+			<result name="buStayRoomEditor">/business/BuStayRoomEditor.jsp</result>
+			<result name="show" type="redirectAction">
+				<param name="actionName">buStayRoom</param>
+				<param name="indexPage">${indexPage}</param>
+				<param name="skey">${skey}</param>
+				<param name="stayid">${stayid}</param>
+			</result>
+			
+		</action>
+		
+		
+		<!-- 餐饮管理 -->
+		<action name="buDining" class="com.gh.action.business.BuDiningAction" method="show">
+			<result name="buDining">/business/BuDining.jsp</result>
+			<result name="buDiningCode">/business/BuDiningCode.jsp</result>
+			<result name="buDiningEditor">/business/BuDiningEditor.jsp</result>
+			<result name="show" type="redirectAction">
+				<param name="actionName">buDining</param>
+				<param name="indexPage">${indexPage}</param>
+				<param name="skey">${skey}</param>
+				<param name="type">${type}</param>
+			</result>
+			<result name="showExamine" type="redirectAction">
+				<param name="actionName">buDining!showExamine</param>
+				<param name="indexPage">${indexPage}</param>
+				<param name="skey">${skey}</param>
+				<param name="type">${type}</param>
+			</result>
+		</action>
+		
+		<action name="buDiningSpecialty" class="com.gh.action.business.BuDiningSpecialtyAction" method="show">
+		    <result name="buDiningSpecialty">/business/BuDiningSpecialty.jsp</result>
+			<result name="buDiningSpecialtyEditor">/business/BuDiningSpecialtyEditor.jsp</result>
+			<result name="show" type="redirectAction">
+			
+				<param name="actionName">buDiningSpecialty</param>
+				<param name="indexPage">${indexPage}</param>
+				<param name="skey">${skey}</param>
+				<param name="diningid">${diningid}</param>
+			</result>
+		</action>
+		
+		
+		<!-- 购物管理&娱乐管理 -->
+		<action name="buEntertainmentshopping" class="com.gh.action.business.BuEntertainmentshoppingAction" method="show">
+			<result name="buEntertainmentshopping">/business/BuEntertainmentshopping.jsp</result>
+			<result name="buEntertainmentshoppingCode">/business/BuEntertainmentshoppingCode.jsp</result>
+			<result name="buEntertainmentshoppingEditor">/business/BuEntertainmentshoppingEditor.jsp</result>
+			<result name="show" type="redirectAction">
+				<param name="actionName">buEntertainmentshopping</param>
+				<param name="indexPage">${indexPage}</param>
+				<param name="skey">${skey}</param>
+				<param name="type">${type}</param>
+			</result>
+			<result name="showExamine" type="redirectAction">
+				<param name="actionName">buEntertainmentshopping!showExamine</param>
+				<param name="indexPage">${indexPage}</param>
+				<param name="skey">${skey}</param>
+				<param name="type">${type}</param>
+			</result>
+		</action>
+
+		
+		<!-- 微信新闻管理 -->
+		
+		<action name="ImgUpload" class="com.gh.action.weixin.ImgUploadAction" method="imgUpload">
+		</action>
+			<!-- 乌镇概括 -->
+		<action name="buNews" class="com.gh.action.weixin.BuNewsAction" method="show">
+			<result name="buNewsModify">/module/weixin/buNewsModify.jsp</result>
+			<result name="show" type="redirectAction">
+				<param name="actionName">buNews</param>
+				<param name="type">${type}</param>
+			</result>
+			<!-- 新鲜速递、诚信推荐、自驾攻略 -->
+			<result name="buNews">/module/weixin/BuNews.jsp</result>
+			<result name="buNewsEditor">/module/weixin/BuNewsEditor.jsp</result>
+			<result name="show" type="redirectAction">
+				<param name="actionName">buNews</param>
+				<param name="indexPage">${indexPage}</param>
+				<param name="skey">${skey}</param>
+				<param name="type">${type}</param>
+			</result>
+		</action>
+		
+		<!-- 活动专区 -->
+		<action name="buWeixinactivity" class="com.gh.action.weixin.backstage.BuWeixinactivityAction" method="show">
+			<result name="buWeixinactivity">/module/weixin/BuWeixinactivity.jsp</result>
+			<result name="buWeixinactivityEditor">/module/weixin/BuWeixinactivityEditor.jsp</result>
+			<result name="show" type="redirectAction">
+				<param name="actionName">buWeixinactivity</param>
+				<param name="indexPage">${indexPage}</param>
+			</result>
+		</action>
+		
+		
+		
+		<!-- 触摸屏 -->
+		<action name="touchNews" class="com.gh.action.weixin.BuNewsAction" method="shows">
+			<result name="touchNews">/module/touch/touchNews.jsp</result>
+			<result name="touchModify">/module/touch/touchModify.jsp</result>
+			<result name="phoneModify">/module/phone/phoneModify.jsp</result>
+			<result name="touchEditor">/module/touch/touchEditor.jsp</result>
+			<result name="shows" type="redirectAction">
+				<param name="actionName">touchNews</param>
+				<param name="indexPage">${indexPage}</param>
+				<param name="skey">${skey}</param>
+				<param name="type">${type}</param>
+			</result>
+		</action>
+		
+		<!-- 电脑版管理,交通播报,路线推荐 -->
+		<action name="OtherNews" class="com.gh.action.weixin.BuNewsAction" method="show_s">
+			<result name="OtherNews">/business/OtherNews.jsp</result>
+			<result name="OtherNewsEditor">/business/OtherNewsEditor.jsp</result>
+			<result name="ModifyNewsEditor">/business/ModifyNewsEditor.jsp</result>
+			<result name="ReplenishEditor">/business/ReplenishEditor.jsp</result><!-- 联系我们,乌镇国际旅游区 -->
+			<result name="show_s" type="redirectAction">
+				<param name="actionName">OtherNews</param>
+				<param name="indexPage">${indexPage}</param>
+				<param name="skey">${skey}</param>
+				<param name="type">${type}</param>
+			</result>
+		</action>
+		
+		
+		<!-- 事务管理 -->
+		<action name="buAffairs" class="com.gh.action.business.BuAffairsAction"  method="show">
+			<result name="buAffairs">/business/BuAffairs.jsp</result>
+			<result name="buAffairsEditor">/business/BuAffairsEditor.jsp</result>
+			<result name="show" type="redirectAction">
+				<param name="actionName">buAffairs</param>
+				<param name="indexPage">${indexPage}</param>
+				<param name="skey">${skey}</param>
+				<param name="type">${type}</param>
+			</result>
+		</action>
+		<!-- 人员登录日志 -->
+		<action name="buLoglog" class="com.gh.action.business.BuLoglogAction"  method="show">
+			<result name="buLoglog">/business/BuLoglog.jsp</result>
+		</action>
+		
+		<!-- 二维码扫描日志 -->
+		<action name="buScanning" class="com.gh.action.business.BuScanningAction"  method="show">
+			<result name="buScanning">/business/BuScanning.jsp</result>
+		</action>
+		<!-- 友情连接 -->
+		<action name="buLink" class="com.gh.action.business.BuLinkAction" method="show">
+			<result name="buLink">/business/BuLink.jsp</result>
+			<result name="buLinkEditor">/business/BuLinkEditor.jsp</result>
+			<result name="show" type="redirectAction">
+				<param name="actionName">buLink</param>
+				<param name="indexPage">${indexPage}</param>
+				<param name="skey">${skey}</param>
+			</result>
+		</action>
+		
+		<!-- 摄影活动 -->
+		<action name="activity" class="com.gh.action.business.A20161activityAction" method="show">
+			<result name="activity">/business/Photoactivity.jsp</result>
+		</action>
+			<!-- 专家操作区 -->
+		<action name="characterworks" class="com.gh.action.business.A20161characterworksAction" method="show">
+			<result name="characterwork">/business/PhotoCharacterwork.jsp</result>
+			<result name="show" type="redirectAction">
+				<param name="actionName">characterworks</param>
+				<param name="indexPage">${indexPage}</param>
+				<param name="skey">${skey}</param>
+				<param name="type">${type}</param>
+			</result>
+			<result name="show1" type="redirectAction">
+				<param name="actionName">characterworks!show1</param>
+				<param name="indexPage">${indexPage}</param>
+				<param name="skey">${skey}</param>
+			</result>
+			<result name="manager">/business/PhotoManager.jsp</result>
+			<result name="edit">/business/PhotoManageredit.jsp</result>
+			<result name="add">/business/PhotoManageredit.jsp</result>
+			<result name="detail">/business/PhotoCharaterDetail.jsp</result>
+		</action>
+		
+	</package>
+</struts>

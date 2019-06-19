@@ -1,0 +1,51 @@
+@charset "utf-8";
+/* CSS Document */
+
+#container{background:#f4f1e7;}
+
+#header{width:100%;height:35px;background:#2e3c50;padding:10px 0px;float:left;}
+#header div{border-left:5px solid transparent;border-right:5px solid transparent;box-sizing: border-box;}
+#header #return{width:10%;height:100%;float:left;}
+#header p{width:100%;height:100%;}
+#header a{display:block;width:100%;height:100%;line-height:35px;text-align:center;}
+#header #return a{background:url(../images/return.png) center center no-repeat;}
+#header #xq a{border-radius:5px;background:#717699;}
+/*搜索框*/
+#search{float:left;width:86%;height:100%;background:#FFF;border-radius:10px;}
+#search span{display:block;width:12%;float:left;height:100%;background:url(../images/search.png) center center no-repeat;}
+#search input{width:75%;float:left;height:100%;font-size:0.875em;border-radius:0px 10px 10px 0px;}
+#search a{width:13%;height:100%;float:left;background:url(../images/yy.jpg) center center no-repeat;}
+
+#gxq{float:left;width:100%;padding-top:15px;padding-bottom:10px;}
+#gxq img{width:100%;}
+
+#menu{margin:0px 10px;}
+#menu li{float:left;width:25%;text-align:center;height:50px;line-height:50px;background:#fff;}
+#menu li a{color:#282828; display:block;border:1px solid #b4b4b4;box-sizing:border-box;border-right:0px;}
+#menu li a:hover{background:#717699;color:#fff;}
+#menu .bor a{border-right:1px solid #b4b4b4;box-sizing:border-box;}
+
+#hover{clear:both;margin:0px 10px;}
+#hover dl{float:left;width:100%;background:#fff;margin-top:5px;border:1px solid #c8c8c8; box-sizing:border-box;}
+#hover dt{float:left;width:40%;border-right:20px solid transparent;box-sizing: border-box;}
+#hover dt img{width:100%;}
+#hover dd{float:left;width:60%;}
+#hover li{font-size:0.75em;line-height:18px;color:#565148;}
+#hover ul{float:left;width:100%;}
+#hover .title{font-weight:bold;font-size:0.875em;line-height:25px;padding-top:5px;}
+#hover .title a{color:#717699;font-weight:normal;}
+#hover .bor{border-bottom:1px solid #ccc;padding-bottom:5px;margin-bottom:5px;}
+#hover .bor img{margin-right:5px;}
+#hover li img{vertical-align:top;}
+#hover #btn{clear:both;float:left;width:100%;margin-top:5px;}
+#hover #btn p{width:50%;text-align:center;float:left;}
+#hover #btn a{padding:6px 0px;display:block;background:#fff;border:1px solid;border-radius:5px;margin-right:4px;box-sizing:border-box;}
+#hover #btn img{margin-right:5px;vertical-align:top;margin-top:5px;}
+#hover #btn .phone a{color:#c9af9f;}
+#hover #btn .zzb a{color:#8589a7;}
+#hover #btn .zzb img{margin-left:5px;margin-right:0px;margin-top:3px;}
+
+
+
+
+

@@ -1,0 +1,56 @@
+<chart caption="水质实时数据查询" subcaption="(2012-02-01)" lineThickness="1" showValues="1" formatNumberScale="0" anchorRadius="1" divLineAlpha="20" divLineColor="CC3300" divLineIsDashed="1" showAlternateHGridColor="1" alternateHGridAlpha="5" alternateHGridColor="CC3300" shadowAlpha="40"  numvdivlines="5" chartRightMargin="35" bgColor="FFFFFF,CC3300" bgAngle="270" bgAlpha="10,10">
+<categories>
+  <category label="12" /> 
+  <category label="13" /> 
+  <category label="14" /> 
+  <category label="15" /> 
+  <category label="16" /> 
+  <category label="17" /> 
+  <category label="18" /> 
+  </categories>
+<dataset seriesName="浊度" color="1D8BD1" anchorBorderColor="1D8BD1" anchorBgColor="1D8BD1">
+  <set value="33" /> 
+  <set value="44" /> 
+  <set value="62" /> 
+  <set value="1" /> 
+  <set value="2" /> 
+  <set value="54" /> 
+  <set value="34" /> 
+  </dataset>
+<dataset seriesName="氨氮" color="F1683C" anchorBorderColor="F1683C" anchorBgColor="F1683C">
+  <set value="12" /> 
+  <set value="12" /> 
+  <set value="12" /> 
+  <set value="12" /> 
+  <set value="23" /> 
+  <set value="12" /> 
+  <set value="15" /> 
+  </dataset>
+<dataset seriesName="余氯" color="2AD62A" anchorBorderColor="2AD62A" anchorBgColor="2AD62A">
+  <set value="21" /> 
+  <set value="55" /> 
+  <set value="32" /> 
+  <set value="24" /> 
+  <set value="30" /> 
+  <set value="51" /> 
+  <set value="43" /> 
+  </dataset>
+<dataset seriesName="二氧化氯" color="DBDC25" anchorBorderColor="DBDC25" anchorBgColor="DBDC25">
+  <set value="22" /> 
+  <set value="33" /> 
+  <set value="12" /> 
+  <set value="30" /> 
+  <set value="38" /> 
+  <set value="51" /> 
+  <set value="28" /> 
+  </dataset>
+<styles>
+<definition>
+  <style name="CaptionFont" type="font" size="12" /> 
+  </definition>
+<application>
+  <apply toObject="CAPTION" styles="CaptionFont" /> 
+  <apply toObject="SUBCAPTION" styles="CaptionFont" /> 
+  </application>
+  </styles>
+  </chart>

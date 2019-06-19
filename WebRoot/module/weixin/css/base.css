@@ -1,0 +1,889 @@
+@charset "utf-8";
+body {
+	width:100%;
+	margin:0 auto;
+	padding:0;
+	background:#ded8cb;
+	font-family:"Microsoft YaHei", "SimSun";
+	position:relative;
+	font-size:1.4rem;
+	line-height:1.5;
+}
+a,a img,p,h2,h3,h4 {margin:0;padding:0;border:none;}
+h2,h3,h4 {line-height:1.5em;}
+p {line-height:1.8em;}
+ul,ul li {margin:0;padding:0;list-style:none;}
+
+a:link,a:visited,a:active {color:#000;text-decoration:none;background:none;}
+a:hover {color:#eb5426;text-decoration:none;background:none;}
+
+
+/*---   菜单   ---*/
+#navigation {
+	width:90%;
+	background:url(../images/navigation-bj2.jpg) repeat-y center;
+	background-size:100%;
+	padding-top:22px;
+	margin:0 auto;
+	position:relative;
+}
+#navigation ul li {
+	width:100%;
+	height:98px;
+	overflow:hidden;
+	margin:22px auto;
+	background:#d1c5ac;
+	border:1px solid #a0957f;
+	position:relative;
+}
+#navigation ul li p {
+	width:60%;
+	height:84px;
+	background:#f4e4c4;
+	margin:6px auto 0;
+	border:1px solid #b9ae97;
+	text-align:center;
+	line-height:84px;
+	font-size:2em;
+}
+li p a {
+	display:block;
+	width:100%;
+	height:100%;
+}
+#navigation ul li span {
+	display:block;
+	width:8px;
+	height:100%;
+	overflow:hidden;
+	position:absolute;
+	top:0;
+}
+#navigation ul li span.left {
+	left:5%;
+}
+#navigation ul li span.right {
+	right:5%;
+}
+#navigation ul li span img {
+	width:8px;
+	height:100%;
+}
+
+
+/*---   美食介绍   ---*/
+#foodimg {
+	width:100%;
+	height:auto;
+	overflow:hidden;
+	position:relative;
+}
+
+#foodintroduction {
+	width:90%;
+	margin:0 auto;
+	overflow:hidden;
+	padding:30px 0 120px;
+	position:relative;
+	font-size:1.8em;
+}
+#foodintroduction p {
+	margin-bottom:10px;
+}
+
+/*---   乌镇简介---*/
+#about,#details {
+	width:90%;
+	margin:0 auto;
+	overflow:hidden;
+	padding:30px 0 120px;
+	position:relative;
+}
+#about h3,#details h3 {
+	font-size:2.2em;
+	line-height:2.5em;
+}
+#details span {
+	font-size:1.8em;
+	line-height:2em;
+	color:#969696;
+}
+#about #aboutimg ,#details #detailsimg {
+	width:100%;
+	height:auto;
+	overflow:hidden;
+	position:relative;
+}
+#about #aboutintroduction,#details #detailsintroduction {
+	width:100%;
+	margin:0 auto;
+	overflow:hidden;
+	padding:30px 0 0;
+	position:relative;
+	font-size:1.8em;
+}
+#about #aboutintroduction p,#details #detailsintroduction p {
+	margin-bottom:10px;
+}
+
+
+
+/*手机banner轮播*/
+.swipe{
+	width:100%;
+	overflow:hidden;
+	position:relative;
+	background-size:100%;
+}
+.swipe ul{
+	-webkit-transition:left 800ms ease-in 0;
+	-moz-transition:left 800ms ease-in 0;
+	-o-transition:left 800ms ease-in 0;
+	-ms-transition:left 800ms ease-in 0;
+	transition:left 800ms ease-in 0;
+}
+.swipe img{ display:block;}
+.swipe #pagenavi{ position:absolute; left:0; bottom:5px; text-align:center; width:100%;}
+.swipe #pagenavi a{width:20px; height:5px; line-height:99em; background:#b5b5b5; margin:0 1px; overflow:hidden; cursor:pointer; display:inline-block; *display:inline; *zoom:1;
+}
+.swipe #pagenavi a.active{
+	background:#26292E;
+}
+
+/*---   底部功能   ---*/
+#function {
+	width:90%;
+	height:50px;
+	overflow:hidden;
+	border-top:1px solid #c8c5bf;
+	line-height:50px;
+	bottom:0;
+	left:5%;
+	color:#656565;
+}
+#function a {
+	color:#656565;
+}
+#function img {
+	margin-right:2%;
+}
+#function .read {
+	float:left;
+	width:25%;
+	height:100%;
+	overflow:hidden;
+	position:relative;
+}
+#function .chan {
+	float:left;
+	width:25%;
+	height:100%;
+	overflow:hidden;
+	position:relative;
+}
+#function .shareit {
+	float:left;
+	width:25%;
+	height:100%;
+	overflow:hidden;
+	position:relative;
+}
+#function .correction {
+	float:left;
+	width:20%;
+	height:100%;
+	overflow:hidden;
+	position:relative;
+	text-align:right;
+	left:5%;
+}
+
+
+#xxsdtopx {
+	width:90%;
+	height:auto;
+	overflow:hidden;
+	border-top:1px solid #c0bbb2;
+	margin:25px auto 0;
+	position:relative;
+}
+#xxsd {
+	width:90%;
+	height:auto;
+	overflow:hidden;
+	background:url(../images/xxsd-bj1.jpg) repeat-y center #fff9ee;
+	background-size:100% 50px;
+	margin:0 auto;
+	position:relative;
+}
+
+#xxsd .xxsd {
+	width:95%;
+	height:100%;
+	padding:30px 0 20px;
+	overflow:hidden;
+	margin:0 auto;
+	position:relative;
+}
+#xxsd .xxsd .xxsdimg {
+	float:left;
+	width:30%;
+	height:100%;
+	overflow:hidden;
+	position:relative;
+}
+#xxsd .xxsd .xxsdimg a img {
+	width:90%;
+	height:auto;
+	padding:3px;
+	background:#fff9ed;
+	box-shadow:0 0 10px rgba(0,0,0,0.20);
+	margin:10px;
+}
+#xxsd .xxsd .xxsdtext {
+	float:left;
+	width:65%;
+	height:100%;
+	overflow:hidden;
+	position:relative;
+	left:5%;
+}
+#xxsd .xxsd .xxsdtext h3 {
+	width:100%;
+	font-size:2em;
+	line-height:1.2em;
+}
+#xxsd .xxsd .xxsdtext span {
+	width:100%;
+	font-size:1.8em;
+	line-height:2em;
+	color:#969696;
+}
+#xxsd .xxsd .xxsdtext p {
+	width:100%;
+	font-size:1.8em;
+	line-height:1.5em;
+}
+#xxsd .xxsdbj {
+	width:100%;
+	height:auto;
+	overflow:hidden;
+	position:relative;
+}
+
+
+/*---   底部功能   ---*/
+#function2 {
+	width: 90%;
+	height: 100px;
+	overflow: hidden;
+	border-top: 1px solid #c8c5bf;
+	line-height: 100px;
+	position: relative;
+	font-size: 2em;
+	color: #656565;
+	margin: 0 auto;
+	padding-bottom: 20px;
+}
+#function2 a {
+	color:#656565;
+}
+#function2 img {
+	margin-right:2%;
+}
+#function2 .read {
+	float:left;
+	width:25%;
+	height:100%;
+	overflow:hidden;
+	position:relative;
+}
+#function2 .chan {
+	float:left;
+	width:25%;
+	height:100%;
+	overflow:hidden;
+	position:relative;
+}
+#function2 .shareit {
+	float:left;
+	width:25%;
+	height:100%;
+	overflow:hidden;
+	position:relative;
+}
+#function2 .correction {
+	float:left;
+	width:20%;
+	height:100%;
+	overflow:hidden;
+	position:relative;
+	text-align:right;
+	left:5%;
+}
+
+
+
+/*---   自驾攻略   ---*/
+
+#car-1 {
+	width:90%;
+	height:auto;
+	margin:0 auto;
+	position:relative;
+}
+#car-1 ul li {
+	width:96%;
+	height:130px;
+	overflow:hidden;
+	padding:15px 2%;
+	border:1px solid #aaa08c;
+	border-radius:15px;
+	background:#d1c5ac;
+	margin-top:20px;
+	position:relative;
+}
+
+#car-1 ul li .read {
+	display:block;
+	float:left;
+	width:30%;
+	height:100%;
+	overflow:hidden;
+	background:#f4e4c4;
+	text-align:center;
+	border:1px solid #c8bda5;
+	border-radius:15px;
+	font-size:2.2em;
+	line-height:130px;
+	position:relative;
+}
+#car-1 ul li #chans {
+	float:left;
+	width:47%;
+	height:100%;
+	overflow:hidden;
+	position:relative;
+	margin-left:3%;
+}
+#car-1 ul li #chans .chan {
+	float:left;
+	width:100%;
+	height:50%;
+	overflow:hidden;
+	color:#656565;
+	font-size:1.6em;
+	line-height:2.2em;
+	position:relative;
+}
+#car-1 ul li #chans .shareit {
+	float:left;
+	width:100%;
+	height:50%;
+	overflow:hidden;
+	font-size:1.6em;
+	line-height:2.2em;
+	position:relative;
+	
+}
+#car-1 ul li .correction {
+	float:left;
+	width:16%;
+	height:100%;
+	overflow:hidden;
+	position:relative;
+	font-size:2.2em;
+	line-height:130px;
+	text-align:right;
+}
+#car-1 ul li .correction a {
+	color:#fff;
+}
+
+
+/*---   自驾攻略   ---*/
+
+#car-2 {
+	width:90%;
+	height:auto;
+	margin:0 auto;
+	position:relative;
+}
+#car-2 ul li {
+	width:96%;
+	height:90px;
+	overflow:hidden;
+	padding:15px 2%;
+	border:1px solid #aaa08c;
+	border-radius:15px;
+	background:#d1c5ac;
+	line-height:90px;
+	font-size: 1.8em;
+	margin-top:20px;
+	position:relative;
+}
+
+#car-2 ul li .read {
+	display:block;
+	float:left;
+	width:40%;
+	height:100%;
+	overflow:hidden;
+	background:#f4e4c4;
+	text-align:center;
+	border:1px solid #c8bda5;
+	border-radius:15px;
+	position:relative;
+}
+#car-2 ul li .chan {
+	float:left;
+	width:20%;
+	height:100%;
+	overflow:hidden;
+	color:#656565;
+	text-align:center;
+	position:relative;
+}
+#car-2 ul li .shareit {
+	float:left;
+	width:20%;
+	height:100%;
+	overflow:hidden;
+	text-align:center;
+	position:relative;
+}
+#car-2 ul li .correction {
+	float:left;
+	width:16%;
+	height:100%;
+	overflow:hidden;
+	position:relative;
+	text-align:right;
+}
+#car-2 ul li .correction a {
+	color:#fff;
+}
+
+#car-2 .more-1 {
+	width:100%;
+	height:100px;
+	overflow:hidden;
+	background:url(../images/zjglbj-1.jpg) no-repeat;
+	background-size:100% 100%;
+	margin-top:40px;
+	text-align:center;
+	line-height:100px;
+	font-size:1.8em;
+	position:relative;
+}
+
+
+
+#xxsd-2 {
+	width:90%;
+	height:auto;
+	overflow:hidden;
+	margin:30px auto 0;
+	background:#fff9ee;
+	border:1px solid #c0bbb2;
+	border-radius:15px;
+	position:relative;
+}
+#xxsd-2 .title-1 {
+	width:96%;
+	height:98%;
+	overflow:hidden;
+	background:#b2a182;
+	padding:1% 2%;
+	position:relative;
+}
+#xxsd-2 .title-1 h3 {
+	font-size:2em;
+}
+#xxsd-2 .title-1 h3 a {
+	color:#fff;
+}
+#xxsd-2 .title-1 span {
+	display:block;
+	width:100%;
+	font-size:1.8em;
+	color:#fff;
+	border-bottom:1px dashed #fff;
+}
+
+#xxsd-2 .xxsd-2img {
+	width:94%;
+	height:98%;
+	overflow:hidden;
+	padding:0 3% 2%;
+	position:relative;
+}
+#xxsd-2 .xxsd-2img img {
+	width:98%;
+	height:auto;
+	padding:20px 10px 10px;
+	border:1px solid #d0cbc2;
+	border-top:none;
+	background:#fff;
+	text-align:center;
+	position:relative;
+}
+
+#xxsd-2 .xxsd-2text {
+	width:94%;
+	height:98%;
+	overflow:hidden;
+	padding:0 3% 2%;
+	font-size:1.8em;
+	position:relative;
+}
+#xxsd-2 .xxsd-2function {
+	width:94%;
+	height: 100px;
+	overflow: hidden;
+	border-top: 1px solid #c8c5bf;
+	line-height: 100px;
+	position: relative;
+	font-size: 2em;
+	color: #656565;
+	margin:0 auto;
+	padding:0 0 2%;
+}
+#xxsd-2 .xxsd-2function a {
+	color:#656565;
+}
+#xxsd-2 .xxsd-2function img {
+	margin-right:2%;
+}
+#xxsd-2 .xxsd-2function .read {
+	float:left;
+	width:25%;
+	height:100%;
+	overflow:hidden;
+	position:relative;
+}
+#xxsd-2 .xxsd-2function .chan {
+	float:left;
+	width:25%;
+	height:100%;
+	overflow:hidden;
+	position:relative;
+}
+#xxsd-2 .xxsd-2function .shareit {
+	float:left;
+	width:25%;
+	height:100%;
+	overflow:hidden;
+	position:relative;
+}
+#xxsd-2 .xxsd-2function .correction {
+	float:left;
+	width:20%;
+	height:100%;
+	overflow:hidden;
+	position:relative;
+	text-align:right;
+	left:5%;
+}
+
+
+
+
+#cxtj {
+	width:90%;
+	height:auto;
+	overflow:hidden;
+	margin:20px auto 0;
+	position:relative;
+}
+#cxtj .cxtjbj-1,#cxtj .cxtjbj-1 img {
+	width:100%;
+	height:auto;
+	overflow:hidden;
+	position:relative;
+	line-height:0;
+}
+
+#cxtj .cxtj {
+	width:97.8%;
+	height:100%;
+	padding:30px 2% 20px;
+	overflow:hidden;
+	margin:0 auto;
+	background:#fff9ee;
+	border-left:1px solid #c0bbb2;
+	border-right:1px solid #c0bbb2;
+	position:relative;
+}
+#cxtj .cxtj .cxtjimg {
+	float:left;
+	width:30%;
+	height:100%;
+	overflow:hidden;
+	position:relative;
+}
+#cxtj .cxtj .cxtjimg a img {
+	width:90%;
+	height:auto;
+	padding:3px;
+	background:#fff9ed;
+	box-shadow:0 0 10px rgba(0,0,0,0.20);
+	margin:10px;
+}
+#cxtj .cxtj .cxtjtext {
+	float:left;
+	width:62%;
+	height:100%;
+	overflow:hidden;
+	position:relative;
+	left:5%;
+}
+#cxtj .cxtj .cxtjtext h3 {
+	width:100%;
+	font-size:2em;
+	line-height:1.2em;
+}
+#cxtj .cxtj .cxtjtext span {
+	width:100%;
+	font-size:1.8em;
+	line-height:2em;
+	color:#969696;
+}
+#cxtj .cxtj .cxtjtext p {
+	width:100%;
+	font-size:1.8em;
+	line-height:1.5em;
+}
+
+#cxtj .cxtjfunction {
+	width:97.8%;
+	height:100px;
+	overflow:hidden;
+	border-top:1px solid #c8c5bf;
+	line-height:100px;
+	position: relative;
+	font-size: 2em;
+	color: #656565;
+	margin:0 auto;
+	padding:0 2% 0;
+	background:#fff9ee;
+	border-left:1px solid #c0bbb2;
+	border-right:1px solid #c0bbb2;
+}
+#cxtj .cxtjfunction a {
+	color:#656565;
+}
+#cxtj .cxtjfunction img {
+	margin-right:2%;
+}
+#cxtj .cxtjfunction .read {
+	float:left;
+	width:25%;
+	height:100%;
+	overflow:hidden;
+	position:relative;
+	margin-left:2%;
+}
+#cxtj .cxtjfunction .chan {
+	float:left;
+	width:25%;
+	height:100%;
+	overflow:hidden;
+	position:relative;
+}
+#cxtj .cxtjfunction .shareit {
+	float:left;
+	width:23%;
+	height:100%;
+	overflow:hidden;
+	position:relative;
+}
+#cxtj .cxtjfunction .correction {
+	float:left;
+	width:20%;
+	height:100%;
+	overflow:hidden;
+	position:relative;
+	text-align:right;
+	left:2%;
+}
+
+
+
+
+#details .ykfxfunction {
+	width:100%;
+	height:100px;
+	overflow:hidden;
+	line-height:100px;
+	position:relative;
+	font-size:2em;
+	color:#656565;
+	margin:0 auto;
+	padding:0;
+}
+#details .ykfxfunction a {
+	color:#656565;
+}
+#details .ykfxfunction img {
+	margin-right:2%;
+}
+#details .ykfxfunction .read {
+	float:left;
+	width:25%;
+	height:100%;
+	overflow:hidden;
+	position:relative;
+	margin-left:2%;
+}
+#details .ykfxfunction .chan {
+	float:left;
+	width:25%;
+	height:100%;
+	overflow:hidden;
+	position:relative;
+}
+#details .ykfxfunction .shareit {
+	float:left;
+	width:23%;
+	height:100%;
+	overflow:hidden;
+	position:relative;
+}
+#details .ykfxfunction .correction {
+	float:left;
+	width:20%;
+	height:100%;
+	overflow:hidden;
+	position:relative;
+	text-align:right;
+	left:2%;
+}
+
+
+
+
+/*---   出游天气   ---*/
+
+#cytq-1 {
+	width:78%;
+	height:auto;
+	border:3px solid #a3a099;
+	border-radius:15px;
+	padding:0 6%;
+	overflow:hidden;
+	margin:20px auto 0;
+	background:#fff9ee;
+	position:relative;
+}
+#cytq-1 #title-1 {
+	width:100%;
+	text-align:center;
+	font-size:2em;
+	line-height:3em;
+	border-bottom:1px solid #b4b4b4;
+	position:relative;
+}
+#cytq-1 #time-1 {
+	width:100%;
+	text-align:center;
+	font-size:1.6em;
+	line-height:3em;
+	border-bottom:1px solid #b4b4b4;
+	font-weight:100;
+	position:relative;
+}
+
+#cytq-1 #weather-1 {
+	width:100%;
+	height:auto;
+	text-align:center;
+	font-size:2em;
+	font-weight:100;
+	padding:5% 0 25%;
+	position:relative;
+}
+#cytq-1 #weather-1 .temperature {
+	width:60%;
+	height:auto;
+	overflow:hidden;
+	float:left;
+	line-height:1.6em;
+	font-weight:100;
+	position:relative;
+}
+#cytq-1 #weather-1 .temperature span {
+	font-size:2.5em;
+	line-height:1.5em;
+}
+#cytq-1 #weather-1 .temperature span span {
+	font-size:0.6em;
+}
+#cytq-1 #weather-1 .tqimg {
+	width:30%;
+	height:auto;
+	float:left;
+	padding-left:10%;
+	position:relative;
+}
+#cytq-1 #weather-1 .tqimg img {
+	width:80%;
+	height:auto;
+}
+
+#cytq-1 #air-1 {
+	clear:both;
+	width:100%;
+	text-align:center;
+	font-size:1.6em;
+	line-height:3em;
+	border-top:1px solid #b4b4b4;
+	font-weight:100;
+	position:relative;
+}
+
+#cytq-2 {
+	width:90%;
+	height:auto;
+	border:1px solid #fff;
+	border-radius:15px;
+	padding:2% 0;
+	overflow:hidden;
+	margin:20px auto 0;
+	background:#f4e4c4;
+	box-shadow: 0 0 5px rgba(0,0,0,0.20);
+	text-align:center;
+	position:relative;
+}
+#cytq-2 #time-2 {
+	float:left;
+	width:25%;
+	font-size:2em;
+	text-align:left;
+	padding-left:5%;
+	padding-top:2%;
+	position:relative;
+}
+#cytq-2 #time-2 span {
+	font-size:1.3em;
+}
+#cytq-2 #tqimg-2 {
+	float:left;
+	width:40%;
+	position:relative;
+}
+#cytq-2 #tqimg-2 img {
+	width:50%;
+	height:auto;
+	background:#fff9ee;
+	border:1px solid #b9ae97;
+	border-radius:15px;
+	padding:5% 20%;
+}
+#cytq-2 #weather-2 {
+	float:left;
+	width:25%;
+	font-size:2em;
+	padding-top:2%;
+	position:relative;
+}

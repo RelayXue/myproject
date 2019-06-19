@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	 <constant name="struts.i18n.encoding" value="utf-8"/>
+	 <constant name="struts.devMode" value="false" />
+	 <constant name="struts.objectFactory" value="spring" />
+	 <constant name="struts.ognl.allowStaticMethodAccess" value="true"></constant>
+	 <constant  name="struts.action.excludePattern" value="/js/fckeditor/editor/filemanager/connectors/.*,/upload/.*"></constant> 
+	 <include file="strutsZ.xml"/>
+	 <include file="strutsB.xml"/>
+	 <include file="strutsH.xml"/>
+	 <include file="strutsW.xml"/>
+	 <include file="strutsK.xml"/>
+	 <include file="strutsWeb.xml"/>
+	 <package name="oriental-pearl" extends="struts-default" abstract="true">
+		<interceptors>
+			<!-- 异常拦截器 -->
+			<interceptor name="exceptionInterceptor" class="com.gh.interceptor.ExceptionInterceptor"/>
+			<!-- 权限拦截器 -->
+			<interceptor name="authInterceptor" class="com.gh.interceptor.AuthInterceptor"/>
+			<!-- 自定义拦截器栈 -->
+			<interceptor-stack name="orientalStack">
+			    <interceptor-ref name="exceptionInterceptor" />
+			    <interceptor-ref name="authInterceptor" />
+				<interceptor-ref name="defaultStack">
+				   <param name="exception.logEnabled">true</param>  
+                   <param name="exception.logLevel">error</param>
+				</interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="orientalStack" />
+		<global-results>	
+			<result name="input">/input.jsp</result>
+			<result name="json">/json.jsp</result>
+			<result name="login" type="redirectAction">
+				<param name="actionName">Login!logout</param>
+				<param name="namespace">/</param>
+			</result>
+			<result name="error">/exception.jsp</result>
+			<result name="export" type="stream">
+				<param name="contentType">application/vnd.ms-excel;charset=utf-8</param>
+				<param name="inputName">inputStream</param>
+				<param name="contentDisposition">
+					attachment;filename=${fileName}
+              	</param>
+				<param name="bufferSize">10000</param>
+			</result>
+		</global-results>
+	</package>
+</struts>

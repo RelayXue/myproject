@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="tj_BuGpsdevice">
+
+    <resultMap id="re_BuGpsdevice" class="com.gh.entity.BuGpsdevice">
+        <result property="fuid" column="FUID"/>
+        <result property="type" column="TYPE"/>
+        <result property="description" column="DESCRIPTION"/>
+        <result property="mobile" column="MOBILE"/>
+        <result property="fx" column="FX"/>
+        <result property="fy" column="FY"/>
+        <result property="createdate" column="CREATEDATE"/>
+        <result property="modifydate" column="MODIFYDATE"/>
+        <result property="perid" column="PERID"/>
+    </resultMap>
+    
+    <!-- 用于select查询公用抽取的列 -->
+	<sql id="BuGpsdevice.columns">
+	    <![CDATA[
+        FUID ,TYPE ,DESCRIPTION ,MOBILE ,FX ,FY ,CREATEDATE ,MODIFYDATE ,PERID 
+	    ]]>
+	</sql>
+  
+	 <select id="selectByPrimaryKey" parameterClass="com.gh.entity.BuGpsdevice" resultMap="re_BuGpsdevice">
+	    SELECT <include refid="BuGpsdevice.columns"/>
+	    from bu_gpsdevice
+	    where 
+		        FUID = #fuid:VARCHAR# 
+ 	 </select>
+ 	 
+	<delete id="deleteByPrimaryKey" parameterClass="com.gh.entity.BuGpsdevice">
+	    delete from bu_gpsdevice
+    	where 
+		        FUID = #fuid:VARCHAR# 
+  </delete>
+  
+  	<delete id="deleteByWhere" parameterClass="java.lang.String">
+	    delete from bu_gpsdevice
+    	where 
+		      $swhere$
+	  </delete>
+  
+   <insert id="insert" parameterClass="com.gh.entity.BuGpsdevice">
+	        insert into bu_gpsdevice (  FUID ,   TYPE ,   DESCRIPTION ,   MOBILE ,   FX ,   FY ,   CREATEDATE ,   MODIFYDATE ,   PERID   )
+   	 	values ( #fuid:VARCHAR# ,  #type:VARCHAR# ,  #description:VARCHAR# ,  #mobile:VARCHAR# ,  #fx:DECIMAL# ,  #fy:DECIMAL# ,  #createdate:TIMESTAMP# ,  #modifydate:TIMESTAMP# ,  #perid:VARCHAR#  )
+   	
+  </insert>
+ 	
+ 	
+ 	<update id="updateByPrimaryKey" parameterClass="com.gh.entity.BuGpsdevice">
+   	UPDATE bu_gpsdevice SET
+	        TYPE = #type:VARCHAR# ,
+	        DESCRIPTION = #description:VARCHAR# ,
+	        MOBILE = #mobile:VARCHAR# ,
+	        FX = #fx:DECIMAL# ,
+	        FY = #fy:DECIMAL# ,
+	        CREATEDATE = #createdate:TIMESTAMP# ,
+	        MODIFYDATE = #modifydate:TIMESTAMP# ,
+	        PERID = #perid:VARCHAR# 
+        WHERE 
+	        FUID = #fuid:VARCHAR# 
+  </update>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterClass="com.gh.entity.BuGpsdevice">
+  	  update bu_gpsdevice
+  	  <dynamic prepend="set">
+  	   <isNotNull prepend="," property="fuid">
+  	 	  FUID = #fuid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="type">
+  	 	  TYPE = #type:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="description">
+  	 	  DESCRIPTION = #description:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="mobile">
+  	 	  MOBILE = #mobile:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="fx">
+  	 	  FX = #fx:DECIMAL#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="fy">
+  	 	  FY = #fy:DECIMAL#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createdate">
+  	 	  CREATEDATE = #createdate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="modifydate">
+  	 	  MODIFYDATE = #modifydate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="perid">
+  	 	  PERID = #perid:VARCHAR#
+  	  </isNotNull>
+     </dynamic>
+    where FUID = #fuid:VARCHAR# 
+  </update>
+  
+   <select id="execSql" parameterClass="string" resultMap="re_BuGpsdevice"><![CDATA[$sql$]]></select>
+   
+    <select id="execSqlObject" parameterClass="string" resultClass="java.lang.Object"><![CDATA[$sql$]]></select>
+</sqlMap>
+

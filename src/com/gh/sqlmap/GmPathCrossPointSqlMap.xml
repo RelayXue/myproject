@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="tj_GmPathCrossPoint">
+
+    <resultMap id="re_GmPathCrossPoint" class="com.gh.entity.GmPathCrossPoint">
+        <result property="fuid" column="F_UID"/>
+        <result property="fno" column="F_NO"/>
+        <result property="fx" column="F_X"/>
+        <result property="fy" column="F_Y"/>
+        <result property="fcreateTime" column="F_CREATE_TIME"/>
+    </resultMap>
+    
+    <!-- 用于select查询公用抽取的列 -->
+	<sql id="GmPathCrossPoint.columns">
+	    <![CDATA[
+        F_UID ,F_NO ,F_X ,F_Y ,F_CREATE_TIME 
+	    ]]>
+	</sql>
+  
+	 <select id="selectByPrimaryKey" parameterClass="com.gh.entity.GmPathCrossPoint" resultMap="re_GmPathCrossPoint">
+	    SELECT <include refid="GmPathCrossPoint.columns"/>
+	    from gm_path_cross_point
+	    where  	 </select>
+ 	 
+	<delete id="deleteByPrimaryKey" parameterClass="com.gh.entity.GmPathCrossPoint">
+	    delete from gm_path_cross_point
+    	where   </delete>
+  
+  	<delete id="deleteByWhere" parameterClass="java.lang.String">
+	    delete from gm_path_cross_point
+    	where 
+		      $swhere$
+	  </delete>
+  
+   <insert id="insert" parameterClass="com.gh.entity.GmPathCrossPoint">
+	        insert into gm_path_cross_point (  F_UID ,   F_NO ,   F_X ,   F_Y ,   F_CREATE_TIME   )
+   	 	values ( #fuid:VARCHAR# ,  #fno:DECIMAL# ,  #fx:DECIMAL# ,  #fy:DECIMAL# ,  #fcreateTime:TIMESTAMP#  )
+   	
+  </insert>
+ 	
+ 	
+ 	<update id="updateByPrimaryKey" parameterClass="com.gh.entity.GmPathCrossPoint">
+   	UPDATE gm_path_cross_point SET
+	        F_UID = #fuid:VARCHAR# ,
+	        F_NO = #fno:DECIMAL# ,
+	        F_X = #fx:DECIMAL# ,
+	        F_Y = #fy:DECIMAL# ,
+	        F_CREATE_TIME = #fcreateTime:TIMESTAMP# 
+        WHERE 
+  </update>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterClass="com.gh.entity.GmPathCrossPoint">
+  	  update gm_path_cross_point
+  	  <dynamic prepend="set">
+  	   <isNotNull prepend="," property="fuid">
+  	 	  F_UID = #fuid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="fno">
+  	 	  F_NO = #fno:DECIMAL#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="fx">
+  	 	  F_X = #fx:DECIMAL#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="fy">
+  	 	  F_Y = #fy:DECIMAL#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="fcreateTime">
+  	 	  F_CREATE_TIME = #fcreateTime:TIMESTAMP#
+  	  </isNotNull>
+     </dynamic>
+    where 
+  </update>
+  
+   <select id="execSql" parameterClass="string" resultMap="re_GmPathCrossPoint"><![CDATA[$sql$]]></select>
+   
+    <select id="execSqlObject" parameterClass="string" resultClass="java.lang.Object"><![CDATA[$sql$]]></select>
+</sqlMap>
+

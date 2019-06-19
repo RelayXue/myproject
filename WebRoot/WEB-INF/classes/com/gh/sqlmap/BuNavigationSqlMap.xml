@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="tj_BuNavigation">
+
+    <resultMap id="re_BuNavigation" class="com.gh.entity.BuNavigation">
+        <result property="fuid" column="FUID"/>
+        <result property="fullname" column="FULLNAME"/>
+        <result property="introduction" column="INTRODUCTION"/>
+        <result property="createdate" column="CREATEDATE"/>
+        <result property="createuserrealname" column="CREATEUSERREALNAME"/>
+        <result property="modifydate" column="MODIFYDATE"/>
+        <result property="modifyuserrealname" column="MODIFYUSERREALNAME"/>
+        <result property="fxy" column="FXY"/>
+    </resultMap>
+    
+    <!-- 用于select查询公用抽取的列 -->
+	<sql id="BuNavigation.columns">
+	    <![CDATA[
+        FUID ,FULLNAME ,INTRODUCTION ,CREATEDATE ,CREATEUSERREALNAME ,MODIFYDATE ,MODIFYUSERREALNAME ,FXY 
+	    ]]>
+	</sql>
+  
+	 <select id="selectByPrimaryKey" parameterClass="com.gh.entity.BuNavigation" resultMap="re_BuNavigation">
+	    SELECT <include refid="BuNavigation.columns"/>
+	    from bu_navigation
+	    where 
+		        FUID = #fuid:VARCHAR# 
+ 	 </select>
+ 	 
+	<delete id="deleteByPrimaryKey" parameterClass="com.gh.entity.BuNavigation">
+	    delete from bu_navigation
+    	where 
+		        FUID = #fuid:VARCHAR# 
+  </delete>
+  
+  	<delete id="deleteByWhere" parameterClass="java.lang.String">
+	    delete from bu_navigation
+    	where 
+		      $swhere$
+	  </delete>
+  
+   <insert id="insert" parameterClass="com.gh.entity.BuNavigation">
+	        insert into bu_navigation (  FUID ,   FULLNAME ,   INTRODUCTION ,   CREATEDATE ,   CREATEUSERREALNAME ,   MODIFYDATE ,   MODIFYUSERREALNAME ,   FXY   )
+   	 	values ( #fuid:VARCHAR# ,  #fullname:VARCHAR# ,  #introduction:VARCHAR# ,  #createdate:TIMESTAMP# ,  #createuserrealname:VARCHAR# ,  #modifydate:TIMESTAMP# ,  #modifyuserrealname:VARCHAR# ,  #fxy:LONGVARCHAR#  )
+   	
+  </insert>
+ 	
+ 	
+ 	<update id="updateByPrimaryKey" parameterClass="com.gh.entity.BuNavigation">
+   	UPDATE bu_navigation SET
+	        FULLNAME = #fullname:VARCHAR# ,
+	        INTRODUCTION = #introduction:VARCHAR# ,
+	        CREATEDATE = #createdate:TIMESTAMP# ,
+	        CREATEUSERREALNAME = #createuserrealname:VARCHAR# ,
+	        MODIFYDATE = #modifydate:TIMESTAMP# ,
+	        MODIFYUSERREALNAME = #modifyuserrealname:VARCHAR# ,
+	        FXY = #fxy:LONGVARCHAR# 
+        WHERE 
+	        FUID = #fuid:VARCHAR# 
+  </update>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterClass="com.gh.entity.BuNavigation">
+  	  update bu_navigation
+  	  <dynamic prepend="set">
+  	   <isNotNull prepend="," property="fuid">
+  	 	  FUID = #fuid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="fullname">
+  	 	  FULLNAME = #fullname:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="introduction">
+  	 	  INTRODUCTION = #introduction:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createdate">
+  	 	  CREATEDATE = #createdate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createuserrealname">
+  	 	  CREATEUSERREALNAME = #createuserrealname:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="modifydate">
+  	 	  MODIFYDATE = #modifydate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="modifyuserrealname">
+  	 	  MODIFYUSERREALNAME = #modifyuserrealname:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="fxy">
+  	 	  FXY = #fxy:LONGVARCHAR#
+  	  </isNotNull>
+     </dynamic>
+    where FUID = #fuid:VARCHAR# 
+  </update>
+  
+   <select id="execSql" parameterClass="string" resultMap="re_BuNavigation"><![CDATA[$sql$]]></select>
+   
+    <select id="execSqlObject" parameterClass="string" resultClass="java.lang.Object"><![CDATA[$sql$]]></select>
+</sqlMap>
+

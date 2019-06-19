@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="tj_Opinion">
+
+    <resultMap id="re_Opinion" class="com.gh.entity.Opinion">
+        <result property="createdate" column="createdate"/>
+        <result property="content" column="content"/>
+        <result property="fuid" column="fuid"/>
+    </resultMap>
+    
+    <!-- 用于select查询公用抽取的列 -->
+	<sql id="Opinion.columns">
+	    <![CDATA[
+        createdate ,content ,fuid 
+	    ]]>
+	</sql>
+  
+	 <select id="selectByPrimaryKey" parameterClass="com.gh.entity.Opinion" resultMap="re_Opinion">
+	    SELECT <include refid="Opinion.columns"/>
+	    from opinion
+	    where 
+		        fuid = #fuid:VARCHAR# 
+ 	 </select>
+ 	 
+	<delete id="deleteByPrimaryKey" parameterClass="com.gh.entity.Opinion">
+	    delete from opinion
+    	where 
+		        fuid = #fuid:VARCHAR# 
+  </delete>
+  
+  	<delete id="deleteByWhere" parameterClass="java.lang.String">
+	    delete from opinion
+    	where 
+		      $swhere$
+	  </delete>
+  
+   <insert id="insert" parameterClass="com.gh.entity.Opinion">
+	        insert into opinion (  createdate ,   content ,   fuid   )
+   	 	values ( #createdate:TIMESTAMP# ,  #content:VARCHAR# ,  #fuid:VARCHAR#  )
+   	
+  </insert>
+ 	
+ 	
+ 	<update id="updateByPrimaryKey" parameterClass="com.gh.entity.Opinion">
+   	UPDATE opinion SET
+	        createdate = #createdate:TIMESTAMP# ,
+	        content = #content:VARCHAR# 
+        WHERE 
+	        fuid = #fuid:VARCHAR# 
+  </update>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterClass="com.gh.entity.Opinion">
+  	  update opinion
+  	  <dynamic prepend="set">
+  	   <isNotNull prepend="," property="createdate">
+  	 	  createdate = #createdate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="content">
+  	 	  content = #content:VARCHAR#
+  	  </isNotNull>
+     </dynamic>
+    where fuid = #fuid:VARCHAR# 
+  </update>
+  
+   <select id="execSql" parameterClass="string" resultMap="re_Opinion"><![CDATA[$sql$]]></select>
+   
+    <select id="execSqlObject" parameterClass="string" resultClass="java.lang.Object"><![CDATA[$sql$]]></select>
+</sqlMap>
+

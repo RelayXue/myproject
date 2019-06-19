@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="tj_BuServiceltems">
+
+    <resultMap id="re_BuServiceltems" class="com.gh.entity.BuServiceltems">
+        <result property="fuid" column="FUID"/>
+        <result property="address" column="ADDRESS"/>
+        <result property="fullname" column="FULLNAME"/>
+        <result property="openinghours" column="OPENINGHOURS"/>
+        <result property="fx" column="FX"/>
+        <result property="fy" column="FY"/>
+        <result property="introduction" column="INTRODUCTION"/>
+        <result property="images" column="IMAGES"/>
+        <result property="createdate" column="CREATEDATE"/>
+        <result property="createuserrealname" column="CREATEUSERREALNAME"/>
+        <result property="modifydate" column="MODIFYDATE"/>
+        <result property="modifyuserrealname" column="MODIFYUSERREALNAME"/>
+    </resultMap>
+    
+    <!-- 用于select查询公用抽取的列 -->
+	<sql id="BuServiceltems.columns">
+	    <![CDATA[
+        FUID ,ADDRESS ,FULLNAME ,OPENINGHOURS ,FX ,FY ,INTRODUCTION ,IMAGES ,CREATEDATE ,CREATEUSERREALNAME ,MODIFYDATE ,MODIFYUSERREALNAME 
+	    ]]>
+	</sql>
+  
+	 <select id="selectByPrimaryKey" parameterClass="com.gh.entity.BuServiceltems" resultMap="re_BuServiceltems">
+	    SELECT <include refid="BuServiceltems.columns"/>
+	    from bu_serviceltems
+	    where 
+		        FUID = #fuid:VARCHAR# 
+ 	 </select>
+ 	 
+	<delete id="deleteByPrimaryKey" parameterClass="com.gh.entity.BuServiceltems">
+	    delete from bu_serviceltems
+    	where 
+		        FUID = #fuid:VARCHAR# 
+  </delete>
+  
+  	<delete id="deleteByWhere" parameterClass="java.lang.String">
+	    delete from bu_serviceltems
+    	where 
+		      $swhere$
+	  </delete>
+  
+   <insert id="insert" parameterClass="com.gh.entity.BuServiceltems">
+	        insert into bu_serviceltems (  FUID ,   ADDRESS ,   FULLNAME ,   OPENINGHOURS ,   FX ,   FY ,   INTRODUCTION ,   IMAGES ,   CREATEDATE ,   CREATEUSERREALNAME ,   MODIFYDATE ,   MODIFYUSERREALNAME   )
+   	 	values ( #fuid:VARCHAR# ,  #address:VARCHAR# ,  #fullname:VARCHAR# ,  #openinghours:VARCHAR# ,  #fx:VARCHAR# ,  #fy:VARCHAR# ,  #introduction:VARCHAR# ,  #images:VARCHAR# ,  #createdate:TIMESTAMP# ,  #createuserrealname:VARCHAR# ,  #modifydate:TIMESTAMP# ,  #modifyuserrealname:VARCHAR#  )
+   	
+  </insert>
+ 	
+ 	
+ 	<update id="updateByPrimaryKey" parameterClass="com.gh.entity.BuServiceltems">
+   	UPDATE bu_serviceltems SET
+	        ADDRESS = #address:VARCHAR# ,
+	        FULLNAME = #fullname:VARCHAR# ,
+	        OPENINGHOURS = #openinghours:VARCHAR# ,
+	        FX = #fx:VARCHAR# ,
+	        FY = #fy:VARCHAR# ,
+	        INTRODUCTION = #introduction:VARCHAR# ,
+	        IMAGES = #images:VARCHAR# ,
+	        CREATEDATE = #createdate:TIMESTAMP# ,
+	        CREATEUSERREALNAME = #createuserrealname:VARCHAR# ,
+	        MODIFYDATE = #modifydate:TIMESTAMP# ,
+	        MODIFYUSERREALNAME = #modifyuserrealname:VARCHAR# 
+        WHERE 
+	        FUID = #fuid:VARCHAR# 
+  </update>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterClass="com.gh.entity.BuServiceltems">
+  	  update bu_serviceltems
+  	  <dynamic prepend="set">
+  	   <isNotNull prepend="," property="fuid">
+  	 	  FUID = #fuid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="address">
+  	 	  ADDRESS = #address:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="fullname">
+  	 	  FULLNAME = #fullname:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="openinghours">
+  	 	  OPENINGHOURS = #openinghours:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="fx">
+  	 	  FX = #fx:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="fy">
+  	 	  FY = #fy:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="introduction">
+  	 	  INTRODUCTION = #introduction:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="images">
+  	 	  IMAGES = #images:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createdate">
+  	 	  CREATEDATE = #createdate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createuserrealname">
+  	 	  CREATEUSERREALNAME = #createuserrealname:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="modifydate">
+  	 	  MODIFYDATE = #modifydate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="modifyuserrealname">
+  	 	  MODIFYUSERREALNAME = #modifyuserrealname:VARCHAR#
+  	  </isNotNull>
+     </dynamic>
+    where FUID = #fuid:VARCHAR# 
+  </update>
+  
+   <select id="execSql" parameterClass="string" resultMap="re_BuServiceltems"><![CDATA[$sql$]]></select>
+   
+    <select id="execSqlObject" parameterClass="string" resultClass="java.lang.Object"><![CDATA[$sql$]]></select>
+</sqlMap>
+

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="tj_BaseOperationLog">
+
+    <resultMap id="re_BaseOperationLog" class="com.gh.entity.BaseOperationLog">
+        <result property="fuid" column="FUID"/>
+        <result property="userid" column="USERID"/>
+        <result property="username" column="USERNAME"/>
+        <result property="realname" column="REALNAME"/>
+        <result property="description" column="DESCRIPTION"/>
+        <result property="operating" column="OPERATING"/>
+        <result property="createdate" column="CREATEDATE"/>
+    </resultMap>
+    
+    <!-- 用于select查询公用抽取的列 -->
+	<sql id="BaseOperationLog.columns">
+	    <![CDATA[
+        FUID ,USERID ,USERNAME ,REALNAME ,DESCRIPTION ,OPERATING ,CREATEDATE 
+	    ]]>
+	</sql>
+  
+	 <select id="selectByPrimaryKey" parameterClass="com.gh.entity.BaseOperationLog" resultMap="re_BaseOperationLog">
+	    SELECT <include refid="BaseOperationLog.columns"/>
+	    from base_operation_log
+	    where 
+		        FUID = #fuid:VARCHAR# 
+ 	 </select>
+ 	 
+	<delete id="deleteByPrimaryKey" parameterClass="com.gh.entity.BaseOperationLog">
+	    delete from base_operation_log
+    	where 
+		        FUID = #fuid:VARCHAR# 
+  </delete>
+  
+  
+   <insert id="insert" parameterClass="com.gh.entity.BaseOperationLog">
+	        insert into base_operation_log (  FUID ,   USERID ,   USERNAME ,   REALNAME ,   DESCRIPTION ,   OPERATING ,   CREATEDATE   )
+   	 	values ( #fuid:VARCHAR# ,  #userid:VARCHAR# ,  #username:VARCHAR# ,  #realname:VARCHAR# ,  #description:LONGVARCHAR# ,  #operating:LONGVARCHAR# ,  #createdate:TIMESTAMP#  )
+   	
+  </insert>
+ 	
+ 	
+ 	<update id="updateByPrimaryKey" parameterClass="com.gh.entity.BaseOperationLog">
+   	UPDATE base_operation_log SET
+	        USERID = #userid:VARCHAR# ,
+	        USERNAME = #username:VARCHAR# ,
+	        REALNAME = #realname:VARCHAR# ,
+	        DESCRIPTION = #description:LONGVARCHAR# ,
+	        OPERATING = #operating:LONGVARCHAR# ,
+	        CREATEDATE = #createdate:TIMESTAMP# 
+        WHERE 
+	        FUID = #fuid:VARCHAR# 
+  </update>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterClass="com.gh.entity.BaseOperationLog">
+  	  update base_operation_log
+  	  <dynamic prepend="set">
+  	   <isNotNull prepend="," property="fuid">
+  	 	  FUID = #fuid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="userid">
+  	 	  USERID = #userid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="username">
+  	 	  USERNAME = #username:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="realname">
+  	 	  REALNAME = #realname:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="description">
+  	 	  DESCRIPTION = #description:LONGVARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="operating">
+  	 	  OPERATING = #operating:LONGVARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createdate">
+  	 	  CREATEDATE = #createdate:TIMESTAMP#
+  	  </isNotNull>
+     </dynamic>
+    where FUID = #fuid:VARCHAR# 
+  </update>
+  
+   <select id="execSql" parameterClass="string" resultMap="re_BaseOperationLog"><![CDATA[$sql$]]></select>
+   
+    <select id="execSqlObject" parameterClass="string" resultClass="java.lang.Object"><![CDATA[$sql$]]></select>
+</sqlMap>
+

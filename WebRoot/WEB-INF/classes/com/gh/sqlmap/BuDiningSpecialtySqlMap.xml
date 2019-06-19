@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="tj_BuDiningSpecialty">
+
+    <resultMap id="re_BuDiningSpecialty" class="com.gh.entity.BuDiningSpecialty">
+        <result property="fuid" column="FUID"/>
+        <result property="fullname" column="FULLNAME"/>
+        <result property="dimages" column="DIMAGES"/>
+        <result property="createdate" column="CREATEDATE"/>
+        <result property="modifydate" column="MODIFYDATE"/>
+        <result property="introduction" column="INTRODUCTION"/>
+        <result property="diningid" column="DININGID"/>
+        <result property="pirce" column="PIRCE"/>
+    </resultMap>
+    
+    <!-- 用于select查询公用抽取的列 -->
+	<sql id="BuDiningSpecialty.columns">
+	    <![CDATA[
+        FUID ,FULLNAME ,DIMAGES ,CREATEDATE ,MODIFYDATE ,INTRODUCTION ,DININGID ,PIRCE 
+	    ]]>
+	</sql>
+  
+	 <select id="selectByPrimaryKey" parameterClass="com.gh.entity.BuDiningSpecialty" resultMap="re_BuDiningSpecialty">
+	    SELECT <include refid="BuDiningSpecialty.columns"/>
+	    from bu_dining_specialty
+	    where 
+		        FUID = #fuid:VARCHAR# 
+ 	 </select>
+ 	 
+	<delete id="deleteByPrimaryKey" parameterClass="com.gh.entity.BuDiningSpecialty">
+	    delete from bu_dining_specialty
+    	where 
+		        FUID = #fuid:VARCHAR# 
+  </delete>
+  
+  	<delete id="deleteByWhere" parameterClass="java.lang.String">
+	    delete from bu_dining_specialty
+    	where 
+		      $swhere$
+	  </delete>
+  
+   <insert id="insert" parameterClass="com.gh.entity.BuDiningSpecialty">
+	        insert into bu_dining_specialty (  FUID ,   FULLNAME ,   DIMAGES ,   CREATEDATE ,   MODIFYDATE ,   INTRODUCTION ,   DININGID ,   PIRCE   )
+   	 	values ( #fuid:VARCHAR# ,  #fullname:VARCHAR# ,  #dimages:VARCHAR# ,  #createdate:TIMESTAMP# ,  #modifydate:TIMESTAMP# ,  #introduction:LONGVARCHAR# ,  #diningid:VARCHAR# ,  #pirce:INTEGER#  )
+   	
+  </insert>
+ 	
+ 	
+ 	<update id="updateByPrimaryKey" parameterClass="com.gh.entity.BuDiningSpecialty">
+   	UPDATE bu_dining_specialty SET
+	        FULLNAME = #fullname:VARCHAR# ,
+	        DIMAGES = #dimages:VARCHAR# ,
+	        CREATEDATE = #createdate:TIMESTAMP# ,
+	        MODIFYDATE = #modifydate:TIMESTAMP# ,
+	        INTRODUCTION = #introduction:LONGVARCHAR# ,
+	        DININGID = #diningid:VARCHAR# ,
+	        PIRCE = #pirce:INTEGER# 
+        WHERE 
+	        FUID = #fuid:VARCHAR# 
+  </update>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterClass="com.gh.entity.BuDiningSpecialty">
+  	  update bu_dining_specialty
+  	  <dynamic prepend="set">
+  	   <isNotNull prepend="," property="fuid">
+  	 	  FUID = #fuid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="fullname">
+  	 	  FULLNAME = #fullname:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="dimages">
+  	 	  DIMAGES = #dimages:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createdate">
+  	 	  CREATEDATE = #createdate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="modifydate">
+  	 	  MODIFYDATE = #modifydate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="introduction">
+  	 	  INTRODUCTION = #introduction:LONGVARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="diningid">
+  	 	  DININGID = #diningid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="pirce">
+  	 	  PIRCE = #pirce:INTEGER#
+  	  </isNotNull>
+     </dynamic>
+    where FUID = #fuid:VARCHAR# 
+  </update>
+  
+   <select id="execSql" parameterClass="string" resultMap="re_BuDiningSpecialty"><![CDATA[$sql$]]></select>
+   
+    <select id="execSqlObject" parameterClass="string" resultClass="java.lang.Object"><![CDATA[$sql$]]></select>
+</sqlMap>
+

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="tj_A20162subject">
+
+    <resultMap id="re_A20162subject" class="com.gh.entity.A20162subject">
+        <result property="fuid" column="FUID"/>
+        <result property="createtime" column="CREATETIME"/>
+        <result property="title" column="TITLE"/>
+        <result property="type" column="TYPE"/>
+        <result property="one" column="ONE"/>
+        <result property="two" column="TWO"/>
+        <result property="three" column="THREE"/>
+        <result property="four" column="FOUR"/>
+        <result property="yes" column="YES"/>
+    </resultMap>
+    
+    <!-- 用于select查询公用抽取的列 -->
+	<sql id="A20162subject.columns">
+	    <![CDATA[
+        FUID ,CREATETIME ,TITLE ,TYPE ,ONE ,TWO ,THREE ,FOUR ,YES 
+	    ]]>
+	</sql>
+  
+	 <select id="selectByPrimaryKey" parameterClass="com.gh.entity.A20162subject" resultMap="re_A20162subject">
+	    SELECT <include refid="A20162subject.columns"/>
+	    from a2016_2_subject
+	    where 
+		        FUID = #fuid:VARCHAR# 
+ 	 </select>
+ 	 
+	<delete id="deleteByPrimaryKey" parameterClass="com.gh.entity.A20162subject">
+	    delete from a2016_2_subject
+    	where 
+		        FUID = #fuid:VARCHAR# 
+  </delete>
+  
+  	<delete id="deleteByWhere" parameterClass="java.lang.String">
+	    delete from a2016_2_subject
+    	where 
+		      $swhere$
+	  </delete>
+  
+   <insert id="insert" parameterClass="com.gh.entity.A20162subject">
+	        insert into a2016_2_subject (  FUID ,   CREATETIME ,   TITLE ,   TYPE ,   ONE ,   TWO ,   THREE ,   FOUR ,   YES   )
+   	 	values ( #fuid:VARCHAR# ,  #createtime:TIMESTAMP# ,  #title:VARCHAR# ,  #type:INTEGER# ,  #one:VARCHAR# ,  #two:VARCHAR# ,  #three:VARCHAR# ,  #four:VARCHAR# ,  #yes:INTEGER#  )
+   	
+  </insert>
+ 	
+ 	
+ 	<update id="updateByPrimaryKey" parameterClass="com.gh.entity.A20162subject">
+   	UPDATE a2016_2_subject SET
+	        CREATETIME = #createtime:TIMESTAMP# ,
+	        TITLE = #title:VARCHAR# ,
+	        TYPE = #type:INTEGER# ,
+	        ONE = #one:VARCHAR# ,
+	        TWO = #two:VARCHAR# ,
+	        THREE = #three:VARCHAR# ,
+	        FOUR = #four:VARCHAR# ,
+	        YES = #yes:INTEGER# 
+        WHERE 
+	        FUID = #fuid:VARCHAR# 
+  </update>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterClass="com.gh.entity.A20162subject">
+  	  update a2016_2_subject
+  	  <dynamic prepend="set">
+  	   <isNotNull prepend="," property="createtime">
+  	 	  CREATETIME = #createtime:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="title">
+  	 	  TITLE = #title:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="type">
+  	 	  TYPE = #type:INTEGER#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="one">
+  	 	  ONE = #one:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="two">
+  	 	  TWO = #two:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="three">
+  	 	  THREE = #three:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="four">
+  	 	  FOUR = #four:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="yes">
+  	 	  YES = #yes:INTEGER#
+  	  </isNotNull>
+     </dynamic>
+    where FUID = #fuid:VARCHAR# 
+  </update>
+  
+   <select id="execSql" parameterClass="string" resultMap="re_A20162subject"><![CDATA[$sql$]]></select>
+   
+    <select id="execSqlObject" parameterClass="string" resultClass="java.lang.Object"><![CDATA[$sql$]]></select>
+</sqlMap>
+

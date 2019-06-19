@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html> <!--<![endif]-->
+	<head>
+
+		<!-- Basic -->
+		<meta charset="utf-8">
+		<title>乌镇名人</title>		
+		<meta name="keywords" content="乌镇" />
+		<meta name="description" content="乌镇旅游">
+		<meta name="author" content="taoguang.com">
+
+		<!-- Mobile Metas -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/bootstrap.css">
+		<link rel="stylesheet" href="css/theme.css">
+
+		<!--[if IE]>
+			<link rel="stylesheet" href="css/ie.css">
+		<![endif]-->
+
+		<!--[if lte IE 8]>
+			<script src="js/respond.js"></script>
+			<script src="js/excanvas.js"></script>
+		<![endif]-->
+
+</head>
+<body>
+<div id="map"></div>
+<header class="text-center">
+	<ul class="map-menu nav">
+		<li class="m-side"><a href=""><i class="fa fa-angle-left"></i></a></li>
+		<li class="m-center"><a href="" class="path-bus"><i class="fa fa-bus"></i>公车</a></li>
+		<li class="m-center"><a href="" class="path-car active"><i class="fa fa-car"></i>自驾</a></li>
+		<li class="m-center"><a href="" class="path-walk"><i class="fa fa-male"></i>步行</a></li>
+		<li class="m-side"><a href="">周边</a></li>
+	</ul>
+</header>
+
+<div class="popup path-car active pd20">
+	<div class="arrow path-car"></div>
+	<h3>桐乡市乌镇晨阳宾馆</h3>
+    <p>距离10公里 需40分钟</p>
+</div>
+<div class="tools">
+	<button class="tool map-path"><i></i>手选路线</button>
+    <button class="tool map-search"><i></i>搜索</button>
+    <button class="tool map-home"><i></i>首页</button>
+</div>
+<div class="tools-zoom">
+    <div class="map-zoom">
+		<div class="z-in"><i></i></div>
+		<div class="zslider slider-vertical" style="height: 200px;">
+			<div class="slider-range bg-z"></div>
+			<a class="slider-handle state-default corner-all" href="#" style="bottom:55%;"></a>
+		</div>
+		<div class="z-out"><i></i></div>
+	</div>
+</div>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/custom.js"></script>
+</body>
+</html>

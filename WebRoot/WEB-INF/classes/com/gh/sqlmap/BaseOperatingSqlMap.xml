@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="tj_BaseOperating">
+
+    <resultMap id="re_BaseOperating" class="com.gh.entity.BaseOperating">
+        <result property="fuid" column="FUID"/>
+        <result property="menuid" column="MENUID"/>
+        <result property="code" column="CODE"/>
+        <result property="deletemark" column="DELETEMARK"/>
+        <result property="description" column="DESCRIPTION"/>
+        <result property="createdate" column="CREATEDATE"/>
+        <result property="createuserrealname" column="CREATEUSERREALNAME"/>
+        <result property="createuserid" column="CREATEUSERID"/>
+        <result property="modifydate" column="MODIFYDATE"/>
+        <result property="modifyuserrealname" column="MODIFYUSERREALNAME"/>
+        <result property="modifyuserid" column="MODIFYUSERID"/>
+        <result property="fullname" column="FULLNAME"/>
+    </resultMap>
+    
+    <!-- 用于select查询公用抽取的列 -->
+	<sql id="BaseOperating.columns">
+	    <![CDATA[
+        FUID ,MENUID ,CODE ,DELETEMARK ,DESCRIPTION ,CREATEDATE ,CREATEUSERREALNAME ,CREATEUSERID ,MODIFYDATE ,MODIFYUSERREALNAME ,MODIFYUSERID ,FULLNAME 
+	    ]]>
+	</sql>
+  
+	 <select id="selectByPrimaryKey" parameterClass="com.gh.entity.BaseOperating" resultMap="re_BaseOperating">
+	    SELECT <include refid="BaseOperating.columns"/>
+	    from base_operating
+	    where 
+		        FUID = #fuid:VARCHAR# 
+ 	 </select>
+ 	 
+	<delete id="deleteByPrimaryKey" parameterClass="com.gh.entity.BaseOperating">
+	    delete from base_operating
+    	where 
+		        FUID = #fuid:VARCHAR# 
+  </delete>
+  
+  
+   <insert id="insert" parameterClass="com.gh.entity.BaseOperating">
+	        insert into base_operating (  FUID ,   MENUID ,   CODE ,   DELETEMARK ,   DESCRIPTION ,   CREATEDATE ,   CREATEUSERREALNAME ,   CREATEUSERID ,   MODIFYDATE ,   MODIFYUSERREALNAME ,   MODIFYUSERID ,   FULLNAME   )
+   	 	values ( #fuid:VARCHAR# ,  #menuid:VARCHAR# ,  #code:VARCHAR# ,  #deletemark:DOUBLE# ,  #description:LONGVARCHAR# ,  #createdate:TIMESTAMP# ,  #createuserrealname:VARCHAR# ,  #createuserid:VARCHAR# ,  #modifydate:TIMESTAMP# ,  #modifyuserrealname:VARCHAR# ,  #modifyuserid:VARCHAR# ,  #fullname:VARCHAR#  )
+   	
+  </insert>
+ 	
+ 	
+ 	<update id="updateByPrimaryKey" parameterClass="com.gh.entity.BaseOperating">
+   	UPDATE base_operating SET
+	        MENUID = #menuid:VARCHAR# ,
+	        CODE = #code:VARCHAR# ,
+	        DELETEMARK = #deletemark:DOUBLE# ,
+	        DESCRIPTION = #description:LONGVARCHAR# ,
+	        CREATEDATE = #createdate:TIMESTAMP# ,
+	        CREATEUSERREALNAME = #createuserrealname:VARCHAR# ,
+	        CREATEUSERID = #createuserid:VARCHAR# ,
+	        MODIFYDATE = #modifydate:TIMESTAMP# ,
+	        MODIFYUSERREALNAME = #modifyuserrealname:VARCHAR# ,
+	        MODIFYUSERID = #modifyuserid:VARCHAR# ,
+	        FULLNAME = #fullname:VARCHAR# 
+        WHERE 
+	        FUID = #fuid:VARCHAR# 
+  </update>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterClass="com.gh.entity.BaseOperating">
+  	  update base_operating
+  	  <dynamic prepend="set">
+  	   <isNotNull prepend="," property="fuid">
+  	 	  FUID = #fuid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="menuid">
+  	 	  MENUID = #menuid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="code">
+  	 	  CODE = #code:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="deletemark">
+  	 	  DELETEMARK = #deletemark:DOUBLE#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="description">
+  	 	  DESCRIPTION = #description:LONGVARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createdate">
+  	 	  CREATEDATE = #createdate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createuserrealname">
+  	 	  CREATEUSERREALNAME = #createuserrealname:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createuserid">
+  	 	  CREATEUSERID = #createuserid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="modifydate">
+  	 	  MODIFYDATE = #modifydate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="modifyuserrealname">
+  	 	  MODIFYUSERREALNAME = #modifyuserrealname:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="modifyuserid">
+  	 	  MODIFYUSERID = #modifyuserid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="fullname">
+  	 	  FULLNAME = #fullname:VARCHAR#
+  	  </isNotNull>
+     </dynamic>
+    where FUID = #fuid:VARCHAR# 
+  </update>
+  
+   <select id="execSql" parameterClass="string" resultMap="re_BaseOperating"><![CDATA[$sql$]]></select>
+   
+    <select id="execSqlObject" parameterClass="string" resultClass="java.lang.Object"><![CDATA[$sql$]]></select>
+</sqlMap>
+

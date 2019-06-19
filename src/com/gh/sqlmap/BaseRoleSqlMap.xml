@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="tj_BaseRole">
+
+    <resultMap id="re_BaseRole" class="com.gh.entity.BaseRole">
+        <result property="fuid" column="FUID"/>
+        <result property="systemid" column="SYSTEMID"/>
+        <result property="organizeid" column="ORGANIZEID"/>
+        <result property="code" column="CODE"/>
+        <result property="realname" column="REALNAME"/>
+        <result property="category" column="CATEGORY"/>
+        <result property="sortcode" column="SORTCODE"/>
+        <result property="deletemark" column="DELETEMARK"/>
+        <result property="enabled" column="ENABLED"/>
+        <result property="description" column="DESCRIPTION"/>
+        <result property="createdate" column="CREATEDATE"/>
+        <result property="createuserid" column="CREATEUSERID"/>
+        <result property="createuserrealname" column="CREATEUSERREALNAME"/>
+        <result property="modifydate" column="MODIFYDATE"/>
+        <result property="modifyuserid" column="MODIFYUSERID"/>
+        <result property="modifyuserrealname" column="MODIFYUSERREALNAME"/>
+    </resultMap>
+    
+    <!-- 用于select查询公用抽取的列 -->
+	<sql id="BaseRole.columns">
+	    <![CDATA[
+        FUID ,SYSTEMID ,ORGANIZEID ,CODE ,REALNAME ,CATEGORY ,SORTCODE ,DELETEMARK ,ENABLED ,DESCRIPTION ,CREATEDATE ,CREATEUSERID ,CREATEUSERREALNAME ,MODIFYDATE ,MODIFYUSERID ,MODIFYUSERREALNAME 
+	    ]]>
+	</sql>
+  
+	 <select id="selectByPrimaryKey" parameterClass="com.gh.entity.BaseRole" resultMap="re_BaseRole">
+	    SELECT <include refid="BaseRole.columns"/>
+	    from base_role
+	    where 
+		        FUID = #fuid:VARCHAR# 
+ 	 </select>
+ 	 
+	<delete id="deleteByPrimaryKey" parameterClass="com.gh.entity.BaseRole">
+	    delete from base_role
+    	where 
+		        FUID = #fuid:VARCHAR# 
+  </delete>
+  
+  
+   <insert id="insert" parameterClass="com.gh.entity.BaseRole">
+	        insert into base_role (  FUID ,   SYSTEMID ,   ORGANIZEID ,   CODE ,   REALNAME ,   CATEGORY ,   SORTCODE ,   DELETEMARK ,   ENABLED ,   DESCRIPTION ,   CREATEDATE ,   CREATEUSERID ,   CREATEUSERREALNAME ,   MODIFYDATE ,   MODIFYUSERID ,   MODIFYUSERREALNAME   )
+   	 	values ( #fuid:VARCHAR# ,  #systemid:VARCHAR# ,  #organizeid:VARCHAR# ,  #code:VARCHAR# ,  #realname:VARCHAR# ,  #category:VARCHAR# ,  #sortcode:DOUBLE# ,  #deletemark:DOUBLE# ,  #enabled:DOUBLE# ,  #description:VARCHAR# ,  #createdate:TIMESTAMP# ,  #createuserid:VARCHAR# ,  #createuserrealname:VARCHAR# ,  #modifydate:TIMESTAMP# ,  #modifyuserid:VARCHAR# ,  #modifyuserrealname:VARCHAR#  )
+   	
+  </insert>
+ 	
+ 	
+ 	<update id="updateByPrimaryKey" parameterClass="com.gh.entity.BaseRole">
+   	UPDATE base_role SET
+	        SYSTEMID = #systemid:VARCHAR# ,
+	        ORGANIZEID = #organizeid:VARCHAR# ,
+	        CODE = #code:VARCHAR# ,
+	        REALNAME = #realname:VARCHAR# ,
+	        CATEGORY = #category:VARCHAR# ,
+	        SORTCODE = #sortcode:DOUBLE# ,
+	        DELETEMARK = #deletemark:DOUBLE# ,
+	        ENABLED = #enabled:DOUBLE# ,
+	        DESCRIPTION = #description:VARCHAR# ,
+	        CREATEDATE = #createdate:TIMESTAMP# ,
+	        CREATEUSERID = #createuserid:VARCHAR# ,
+	        CREATEUSERREALNAME = #createuserrealname:VARCHAR# ,
+	        MODIFYDATE = #modifydate:TIMESTAMP# ,
+	        MODIFYUSERID = #modifyuserid:VARCHAR# ,
+	        MODIFYUSERREALNAME = #modifyuserrealname:VARCHAR# 
+        WHERE 
+	        FUID = #fuid:VARCHAR# 
+  </update>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterClass="com.gh.entity.BaseRole">
+  	  update base_role
+  	  <dynamic prepend="set">
+  	   <isNotNull prepend="," property="fuid">
+  	 	  FUID = #fuid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="systemid">
+  	 	  SYSTEMID = #systemid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="organizeid">
+  	 	  ORGANIZEID = #organizeid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="code">
+  	 	  CODE = #code:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="realname">
+  	 	  REALNAME = #realname:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="category">
+  	 	  CATEGORY = #category:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="sortcode">
+  	 	  SORTCODE = #sortcode:DOUBLE#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="deletemark">
+  	 	  DELETEMARK = #deletemark:DOUBLE#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="enabled">
+  	 	  ENABLED = #enabled:DOUBLE#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="description">
+  	 	  DESCRIPTION = #description:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createdate">
+  	 	  CREATEDATE = #createdate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createuserid">
+  	 	  CREATEUSERID = #createuserid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createuserrealname">
+  	 	  CREATEUSERREALNAME = #createuserrealname:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="modifydate">
+  	 	  MODIFYDATE = #modifydate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="modifyuserid">
+  	 	  MODIFYUSERID = #modifyuserid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="modifyuserrealname">
+  	 	  MODIFYUSERREALNAME = #modifyuserrealname:VARCHAR#
+  	  </isNotNull>
+     </dynamic>
+    where FUID = #fuid:VARCHAR# 
+  </update>
+  
+   <select id="execSql" parameterClass="string" resultMap="re_BaseRole"><![CDATA[$sql$]]></select>
+   
+    <select id="execSqlObject" parameterClass="string" resultClass="java.lang.Object"><![CDATA[$sql$]]></select>
+</sqlMap>
+

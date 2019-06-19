@@ -1,0 +1,94 @@
+@charset "utf-8";
+/* CSS Document */
+@import url(base.css); /* 公用样式*/
+
+.v_warp{ width:100%; min-width:1000px; height:auto !important;  position:relative; }  
+.v_top{ width:100%; min-width:1000px; height:82px; position: absolute; border-bottom: 1px solid #81a8ae;}
+
+.v_logo{ height:83px; float:left;}
+.v_nav{ height:83px; float:right; padding-right:10px;}
+.v_nav li{ width:90px; height:80px; float:left; margin-right:10px; display:inline;}
+.v_nav li a{ width:90px; height:80px; display:block;}
+.v_nav li a .pic1,.v_nav li a:hover .pic2,.v_nav li a.active .pic2{ display:block;}
+.v_nav li a .pic2,.v_nav li a:hover .pic1,.v_nav li a.active .pic1{ display:none;}
+.v_nav li .pic{ width:90px; height:56px;}
+.v_nav li .info{ width:90px; height:18px; line-height:18px; text-align:center; color:#404040;}
+.v_nav li a:hover .info,.v_nav li a.active .info{ font-size:14px; color:#0f5b8c;}
+/*浮窗*/
+.v_arrow{ width:37px; height:19px; background:url(../images/v_arrow1.png) no-repeat; position:absolute; left:50%; top:-19px; margin-left:-8px;}
+.v_close{ width:16px; height:16px; background:url(../images/v_close.png) no-repeat; position:absolute; top:10px; right:10px; cursor:pointer;}
+.v_pop{ position:absolute; top:127px; display:none;}
+.v_pop .corner,.v_mpop .corner{ width:10px; height:10px; float:left;}
+.v_pop .line,.v_mpop .line{ height:10px; float:left; background:url(../images/v_popbg.png) repeat-x;}
+.v_pbox{ padding:0 20px 10px 20px; background:url(../images/v_popbg.png) repeat;}
+.v_pbox .ptit{ height:20px; line-height:20px; color:#0f5b8c; margin-bottom:6px;}
+.v_pop1{ right:206px;}
+.v_pop1 .line{ width:510px;}
+.v_pop1 .v_pbox{ width:490px;}
+.v_pop2{ right:170px;}
+.v_pop2 .line,.v_pop3 .line{ width:390px;}
+.v_pop2 .v_pbox,.v_pop3 .v_pbox{ width:370px;}
+.v_pop3{ right:65px;}
+.v_pop .search{ height:22px; padding-left:20px;}
+.v_pop .search .info{ display:block; line-height:22px; color:#4d4d4d; font-weight:bold; float:left; margin-right:5px;}
+.v_pop .search .inp{ width:145px; height:20px; line-height:21px; padding:0 5px; float:left; margin-right:10px; border:1px solid #c4c4c4; background:#ffffff;}
+.v_pop .search .btn{ width:57px; height:22px; display:block; float:left; background:url(../images/search_btn.jpg) no-repeat;}
+/*pop1*/
+.v_pscenic{ width:488px; height:300px; background:#ffffff; border:1px solid #cecece;}
+.v_psnav{ width:82px; height:300px; float:left; background:url(../images/v_slbg.jpg) repeat-y;}
+.v_psnav a{ width:60px; height:42px; display:block; padding-left:21px; line-height:42px; border-bottom:1px solid #cecece; color:#313131;}
+.v_psnav a.active{ background:#ffffff; width:61px;}
+.v_psmain{ width:386px; height:280px; margin-top:10px; padding:0 0 0 12px; float:left; display:block; overflow:hidden; position:relative; display:none;}
+.v_pslist{ width:376px; position:absolute; float:left;}
+.v_pslist li{ width:188px; height:61px; margin-bottom:10px; float:left;}
+.v_pslist .pic{ width:61px; height:61px; float:left;}
+.v_pslist .infos{ width:112px; float:right;}
+
+.v_pslist .info1{ height:14px; line-height:14px; color:#5d5d5d; font-weight:bold;}
+.v_pslist .info2{ height:26px; line-height:26px; color:#5d5d5d; margin-bottom:3px;}
+.v_pslist a.btn{ width:61px; height:18px; line-height:18px; display:block; text-align:center; color:#7e7e7e; background:url(../images/v_sbtn.jpg) no-repeat;}
+.v_pslist a.btn:hover{ color:#3b79a1;}
+.v_psmain .scrollbar{ width:7px; height:284px; float:right; position:relative; display:none; z-index:9999999; background:url(../images/bb.gif) repeat-y;}
+.v_psmain .scroller{position:absolute; top:0; width:6px; cursor:pointer; background:#259eeb; border:1px solid #2a5c8e;}
+/*pop2*/
+.v_pshow{ width:363px; padding:10px 0 0 7px; background:#ffffff; border:1px solid #cecece;}
+.v_pshow li{ width:121px; height:22px; line-height:22px; float:left; color:#5d5d5d; margin-bottom:10px;}
+.v_pshow li input,.v_pshow li img,.v_pshow li span{ float:left;}
+.v_pshow li input{ margin:4px 5px 0 0;}
+/*pop3*/
+.v_pguide{ width:340px; padding:14px 14px 0 14px; background:#ffffff; border:1px solid #cecece;}
+.v_pguide li{ width:340px; margin-bottom:10px;}
+.v_pguide .tip{ width:74px; height:23px; float:left; margin-top:2px; margin-right:24px; color:#ffffff; line-height:23px; text-align:center; background:url(../images/v_gtip.jpg) no-repeat;}
+.v_pguide .info{ width:242px; line-height:14px; color:#5f5f5f; float:left;}
+/*景点浮窗*/
+.v_arrow2{ width:90px; height:66px; background:url(../images/v_arrow2.png) no-repeat; position:absolute; left:50%; bottom:-66px; margin-left:-45px;}
+.v_close2{ width:30px; height:30px; background:url(../images/v_close2.png) no-repeat; position:absolute; top:16px; right:16px; cursor:pointer;}
+.v_mpop{ position:absolute; display:none;}
+.v_mpop .line{ width:780px;}
+.v_mpbox{ padding:0 26px 10px 26px; background:url(../images/v_popbg.png) repeat;}
+.v_mpbox .ptit{ height:46px; line-height:46px; color:#0f5b8c; font-size:22px; color:#464646;}
+.v_mpbox .mppic{ width:738px; height:434px; border:5px solid #000000; margin-bottom:14px;}
+.v_mpbox .mppic img{ border:1px solid #fff;}
+.v_mpbox .mpinfo1{ width:748px; line-height:16px; margin-bottom:14px; color:#4a4a4a;}
+.v_mpbox .mpinfo1 div{ width:33%; float:left;}
+.v_mpbox .mpinfo2{ width:678px; padding-left:70px; line-height:16px; color:#4a4a4a; text-indent:-70px;}
+.v_mappoint{ width:20px; height:32px; position:absolute; cursor:pointer; background:url(../images/v_mappoint.png) no-repeat;}
+/*浮动工具*/
+.maptool .size .magnify,.maptool .size .narrow,.maptool .size .voice,.maptool .size .line,.maptool .size .lpoint,.maptool .size .lon{ background:url(../images/commtip.png) no-repeat;}
+.maptool .arrow{ width:40px; height:40px; position:absolute; top:151px; right:42px;}
+.maptool .size{ width:14px; position:absolute; top:202px; right:54px;}
+.maptool .size .magnify,.maptool .size .narrow,.maptool .size .voice{ width:14px; height:14px; margin-bottom:3px; cursor:pointer;}
+.maptool .size .magnify{ background-position:0 0;}
+.maptool .size .narrow{ background-position:0 -20px;}
+.maptool .size .voice{ background-position:0 -40px;}
+.maptool .size .line{ width:14px; height:82px; background-position:-20px 0; position:relative; margin-bottom:3px;}
+.maptool .size .lpoint{ width:14px; height:14px; cursor:pointer; background-position:0 -60px; position:absolute; bottom:50px; left:0;}
+.maptool .size .lon{ width:14px; height:50px; background:url(../images/map_lineon.png) no-repeat bottom; position:absolute; bottom:0; left:0;}
+
+
+.tjaBtn{ width:61px; height:18px; line-height:18px; display:block; text-align:center; background:url(../images/v_sbtn.jpg) no-repeat;}
+.tjaBtn:hover{ color:#3b79a1;} 
+
+
+
+

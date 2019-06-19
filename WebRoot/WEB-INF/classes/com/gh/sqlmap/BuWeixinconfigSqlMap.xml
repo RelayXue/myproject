@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="tj_BuWeixinconfig">
+
+    <resultMap id="re_BuWeixinconfig" class="com.gh.entity.BuWeixinconfig">
+        <result property="fuid" column="FUID"/>
+        <result property="type" column="TYPE"/>
+        <result property="fullname" column="FULLNAME"/>
+        <result property="content" column="CONTENT"/>
+        <result property="createdate" column="CREATEDATE"/>
+        <result property="modifydate" column="MODIFYDATE"/>
+        <result property="remark" column="REMARK"/>
+        <result property="sort" column="SORT"/>
+        <result property="drawstarttime" column="DRAWSTARTTIME"/>
+        <result property="drawendtime" column="DRAWENDTIME"/>
+        <result property="weekstart" column="WEEKSTART"/>
+        <result property="weekend" column="WEEKEND"/>
+        <result property="beginDraw" column="BEGIN_DRAW"/>
+        <result property="drawTotal" column="DRAW_TOTAL"/>
+        <result property="drawStarttimeInfo" column="DRAW_STARTTIME_INFO"/>
+        <result property="regulation" column="REGULATION"/>
+        <result property="winningInfo" column="WINNING_INFO"/>
+        <result property="notWinningInfo" column="NOT_WINNING_INFO"/>
+        <result property="notDrawInfo" column="NOT_DRAW_INFO"/>
+    </resultMap>
+    
+    <!-- 用于select查询公用抽取的列 -->
+	<sql id="BuWeixinconfig.columns">
+	    <![CDATA[
+        FUID ,TYPE ,FULLNAME ,CONTENT ,CREATEDATE ,MODIFYDATE ,REMARK ,SORT ,DRAWSTARTTIME ,DRAWENDTIME ,WEEKSTART ,WEEKEND ,BEGIN_DRAW ,DRAW_TOTAL ,DRAW_STARTTIME_INFO ,REGULATION ,WINNING_INFO ,NOT_WINNING_INFO ,NOT_DRAW_INFO 
+	    ]]>
+	</sql>
+  
+	 <select id="selectByPrimaryKey" parameterClass="com.gh.entity.BuWeixinconfig" resultMap="re_BuWeixinconfig">
+	    SELECT <include refid="BuWeixinconfig.columns"/>
+	    from bu_weixinconfig
+	    where 
+		        FUID = #fuid:VARCHAR# 
+ 	 </select>
+ 	 
+	<delete id="deleteByPrimaryKey" parameterClass="com.gh.entity.BuWeixinconfig">
+	    delete from bu_weixinconfig
+    	where 
+		        FUID = #fuid:VARCHAR# 
+  </delete>
+  
+  	<delete id="deleteByWhere" parameterClass="java.lang.String">
+	    delete from bu_weixinconfig
+    	where 
+		      $swhere$
+	  </delete>
+  
+   <insert id="insert" parameterClass="com.gh.entity.BuWeixinconfig">
+	        insert into bu_weixinconfig (  FUID ,   TYPE ,   FULLNAME ,   CONTENT ,   CREATEDATE ,   MODIFYDATE ,   REMARK ,   SORT ,   DRAWSTARTTIME ,   DRAWENDTIME ,   WEEKSTART ,   WEEKEND ,   BEGIN_DRAW ,   DRAW_TOTAL ,   DRAW_STARTTIME_INFO ,   REGULATION ,   WINNING_INFO ,   NOT_WINNING_INFO ,   NOT_DRAW_INFO   )
+   	 	values ( #fuid:VARCHAR# ,  #type:VARCHAR# ,  #fullname:VARCHAR# ,  #content:LONGVARCHAR# ,  #createdate:TIMESTAMP# ,  #modifydate:TIMESTAMP# ,  #remark:VARCHAR# ,  #sort:INTEGER# ,  #drawstarttime:TIMESTAMP# ,  #drawendtime:TIMESTAMP# ,  #weekstart:INTEGER# ,  #weekend:INTEGER# ,  #beginDraw:INTEGER# ,  #drawTotal:INTEGER# ,  #drawStarttimeInfo:LONGVARCHAR# ,  #regulation:LONGVARCHAR# ,  #winningInfo:LONGVARCHAR# ,  #notWinningInfo:LONGVARCHAR# ,  #notDrawInfo:LONGVARCHAR#  )
+   	
+  </insert>
+ 	
+ 	
+ 	<update id="updateByPrimaryKey" parameterClass="com.gh.entity.BuWeixinconfig">
+   	UPDATE bu_weixinconfig SET
+	        TYPE = #type:VARCHAR# ,
+	        FULLNAME = #fullname:VARCHAR# ,
+	        CONTENT = #content:LONGVARCHAR# ,
+	        CREATEDATE = #createdate:TIMESTAMP# ,
+	        MODIFYDATE = #modifydate:TIMESTAMP# ,
+	        REMARK = #remark:VARCHAR# ,
+	        SORT = #sort:INTEGER# ,
+	        DRAWSTARTTIME = #drawstarttime:TIMESTAMP# ,
+	        DRAWENDTIME = #drawendtime:TIMESTAMP# ,
+	        WEEKSTART = #weekstart:INTEGER# ,
+	        WEEKEND = #weekend:INTEGER# ,
+	        BEGIN_DRAW = #beginDraw:INTEGER# ,
+	        DRAW_TOTAL = #drawTotal:INTEGER# ,
+	        DRAW_STARTTIME_INFO = #drawStarttimeInfo:LONGVARCHAR# ,
+	        REGULATION = #regulation:LONGVARCHAR# ,
+	        WINNING_INFO = #winningInfo:LONGVARCHAR# ,
+	        NOT_WINNING_INFO = #notWinningInfo:LONGVARCHAR# ,
+	        NOT_DRAW_INFO = #notDrawInfo:LONGVARCHAR# 
+        WHERE 
+	        FUID = #fuid:VARCHAR# 
+  </update>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterClass="com.gh.entity.BuWeixinconfig">
+  	  update bu_weixinconfig
+  	  <dynamic prepend="set">
+  	   <isNotNull prepend="," property="fuid">
+  	 	  FUID = #fuid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="type">
+  	 	  TYPE = #type:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="fullname">
+  	 	  FULLNAME = #fullname:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="content">
+  	 	  CONTENT = #content:LONGVARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createdate">
+  	 	  CREATEDATE = #createdate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="modifydate">
+  	 	  MODIFYDATE = #modifydate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="remark">
+  	 	  REMARK = #remark:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="sort">
+  	 	  SORT = #sort:INTEGER#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="drawstarttime">
+  	 	  DRAWSTARTTIME = #drawstarttime:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="drawendtime">
+  	 	  DRAWENDTIME = #drawendtime:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="weekstart">
+  	 	  WEEKSTART = #weekstart:INTEGER#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="weekend">
+  	 	  WEEKEND = #weekend:INTEGER#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="beginDraw">
+  	 	  BEGIN_DRAW = #beginDraw:INTEGER#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="drawTotal">
+  	 	  DRAW_TOTAL = #drawTotal:INTEGER#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="drawStarttimeInfo">
+  	 	  DRAW_STARTTIME_INFO = #drawStarttimeInfo:LONGVARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="regulation">
+  	 	  REGULATION = #regulation:LONGVARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="winningInfo">
+  	 	  WINNING_INFO = #winningInfo:LONGVARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="notWinningInfo">
+  	 	  NOT_WINNING_INFO = #notWinningInfo:LONGVARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="notDrawInfo">
+  	 	  NOT_DRAW_INFO = #notDrawInfo:LONGVARCHAR#
+  	  </isNotNull>
+     </dynamic>
+    where FUID = #fuid:VARCHAR# 
+  </update>
+  
+   <select id="execSql" parameterClass="string" resultMap="re_BuWeixinconfig"><![CDATA[$sql$]]></select>
+   
+    <select id="execSqlObject" parameterClass="string" resultClass="java.lang.Object"><![CDATA[$sql$]]></select>
+</sqlMap>
+

@@ -1,0 +1,25 @@
+<chart palette="2" caption="County Comparison" shownames="1" showvalues="0" useRoundEdges="1" legendBorderAlpha="0">
+	<categories>
+		<category label="嘉兴南出口" />
+		<category label="330嘉兴北出口2" />
+		<category label="330嘉兴北出口3" />
+		<category label="330嘉兴4" />
+		<category label="330嘉兴北出口5" />
+	</categories>
+
+	<dataset seriesName="流量" color="AFD8F" showValues="0">
+		<set value="48149" />
+		<set value="48149" />
+		<set value="48149" />
+		<set value="48149" />
+		<set value="48149" />
+	</dataset>
+
+	<dataset seriesName="报警" color="F6BD0F" showValues="0">
+		<set value="33"/>
+		<set value="11"/>
+		<set value="11"/>
+		<set value="23"/>
+		<set value="23"/>
+	</dataset>
+</chart>

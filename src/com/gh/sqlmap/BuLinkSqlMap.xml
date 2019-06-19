@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="tj_BuLink">
+
+    <resultMap id="re_BuLink" class="com.gh.entity.BuLink">
+        <result property="fuid" column="fuid"/>
+        <result property="name" column="name"/>
+        <result property="url" column="url"/>
+        <result property="logo" column="logo"/>
+        <result property="content" column="content"/>
+        <result property="createTime" column="create_time"/>
+    </resultMap>
+    
+    <!-- 用于select查询公用抽取的列 -->
+	<sql id="BuLink.columns">
+	    <![CDATA[
+        fuid ,name ,url ,logo ,content ,create_time 
+	    ]]>
+	</sql>
+  
+	 <select id="selectByPrimaryKey" parameterClass="com.gh.entity.BuLink" resultMap="re_BuLink">
+	    SELECT <include refid="BuLink.columns"/>
+	    from bu_link
+	    where  	 
+	    		FUID = #fuid:VARCHAR#
+	    </select>
+ 	 
+	<delete id="deleteByPrimaryKey" parameterClass="com.gh.entity.BuLink">
+	    delete from bu_link
+    	where   
+    			FUID = #fuid:VARCHAR#
+    	</delete>
+  
+  	<delete id="deleteByWhere" parameterClass="java.lang.String">
+	    delete from bu_link
+    	where 
+		      $swhere$
+	  </delete>
+  
+   <insert id="insert" parameterClass="com.gh.entity.BuLink">
+	        insert into bu_link (  fuid ,   name ,   url ,   logo ,   content ,   create_time   )
+   	 	values ( #fuid:VARCHAR# ,  #name:VARCHAR# ,  #url:VARCHAR# ,  #logo:VARCHAR# ,  #content:VARCHAR# ,  #createTime:TIMESTAMP#  )
+   	
+  </insert>
+ 	
+ 	
+ 	<update id="updateByPrimaryKey" parameterClass="com.gh.entity.BuLink">
+   	UPDATE bu_link SET
+	        fuid = #fuid:VARCHAR# ,
+	        name = #name:VARCHAR# ,
+	        url = #url:VARCHAR# ,
+	        logo = #logo:VARCHAR# ,
+	        content = #content:VARCHAR# ,
+	        create_time = #createTime:TIMESTAMP# 
+        WHERE 
+        	 FUID = #fuid:VARCHAR# 
+  </update>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterClass="com.gh.entity.BuLink">
+  	  update bu_link
+  	  <dynamic prepend="set">
+  	   <isNotNull prepend="," property="fuid">
+  	 	  fuid = #fuid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="name">
+  	 	  name = #name:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="url">
+  	 	  url = #url:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="logo">
+  	 	  logo = #logo:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="content">
+  	 	  content = #content:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createTime">
+  	 	  create_time = #createTime:TIMESTAMP#
+  	  </isNotNull>
+     </dynamic>
+    where FUID = #fuid:VARCHAR# 
+  </update>
+  
+   <select id="execSql" parameterClass="string" resultMap="re_BuLink"><![CDATA[$sql$]]></select>
+   
+    <select id="execSqlObject" parameterClass="string" resultClass="java.lang.Object"><![CDATA[$sql$]]></select>
+</sqlMap>
+

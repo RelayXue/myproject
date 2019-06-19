@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="tj_BuWeixinmessage">
+
+    <resultMap id="re_BuWeixinmessage" class="com.gh.entity.BuWeixinmessage">
+        <result property="fuid" column="FUID"/>
+        <result property="content" column="CONTENT"/>
+        <result property="messagetime" column="MESSAGETIME"/>
+        <result property="msgtype" column="MSGTYPE"/>
+        <result property="msgid" column="MSGID"/>
+        <result property="fromusername" column="FROMUSERNAME"/>
+        <result property="picurl" column="PICURL"/>
+        <result property="mediaid" column="MEDIAID"/>
+        <result property="locationx" column="LOCATIONX"/>
+        <result property="locationy" column="LOCATIONY"/>
+        <result property="scale" column="SCALE"/>
+        <result property="tlabel" column="TLABEL"/>
+        <result property="createdate" column="CREATEDATE"/>
+    </resultMap>
+    
+    <!-- 用于select查询公用抽取的列 -->
+	<sql id="BuWeixinmessage.columns">
+	    <![CDATA[
+        FUID ,CONTENT ,MESSAGETIME ,MSGTYPE ,MSGID ,FROMUSERNAME ,PICURL ,MEDIAID ,LOCATIONX ,LOCATIONY ,SCALE ,TLABEL ,CREATEDATE 
+	    ]]>
+	</sql>
+  
+	 <select id="selectByPrimaryKey" parameterClass="com.gh.entity.BuWeixinmessage" resultMap="re_BuWeixinmessage">
+	    SELECT <include refid="BuWeixinmessage.columns"/>
+	    from bu_weixinmessage
+	    where 
+		        FUID = #fuid:VARCHAR# 
+ 	 </select>
+ 	 
+	<delete id="deleteByPrimaryKey" parameterClass="com.gh.entity.BuWeixinmessage">
+	    delete from bu_weixinmessage
+    	where 
+		        FUID = #fuid:VARCHAR# 
+  </delete>
+  
+  	<delete id="deleteByWhere" parameterClass="java.lang.String">
+	    delete from bu_weixinmessage
+    	where 
+		      $swhere$
+	  </delete>
+  
+   <insert id="insert" parameterClass="com.gh.entity.BuWeixinmessage">
+	        insert into bu_weixinmessage (  FUID ,   CONTENT ,   MESSAGETIME ,   MSGTYPE ,   MSGID ,   FROMUSERNAME ,   PICURL ,   MEDIAID ,   LOCATIONX ,   LOCATIONY ,   SCALE ,   TLABEL ,   CREATEDATE   )
+   	 	values ( #fuid:VARCHAR# ,  #content:VARCHAR# ,  #messagetime:INTEGER# ,  #msgtype:VARCHAR# ,  #msgid:VARCHAR# ,  #fromusername:VARCHAR# ,  #picurl:VARCHAR# ,  #mediaid:VARCHAR# ,  #locationx:VARCHAR# ,  #locationy:VARCHAR# ,  #scale:INTEGER# ,  #tlabel:VARCHAR# ,  #createdate:TIMESTAMP#  )
+   	
+  </insert>
+ 	
+ 	
+ 	<update id="updateByPrimaryKey" parameterClass="com.gh.entity.BuWeixinmessage">
+   	UPDATE bu_weixinmessage SET
+	        CONTENT = #content:VARCHAR# ,
+	        MESSAGETIME = #messagetime:INTEGER# ,
+	        MSGTYPE = #msgtype:VARCHAR# ,
+	        MSGID = #msgid:VARCHAR# ,
+	        FROMUSERNAME = #fromusername:VARCHAR# ,
+	        PICURL = #picurl:VARCHAR# ,
+	        MEDIAID = #mediaid:VARCHAR# ,
+	        LOCATIONX = #locationx:VARCHAR# ,
+	        LOCATIONY = #locationy:VARCHAR# ,
+	        SCALE = #scale:INTEGER# ,
+	        TLABEL = #tlabel:VARCHAR# ,
+	        CREATEDATE = #createdate:TIMESTAMP# 
+        WHERE 
+	        FUID = #fuid:VARCHAR# 
+  </update>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterClass="com.gh.entity.BuWeixinmessage">
+  	  update bu_weixinmessage
+  	  <dynamic prepend="set">
+  	   <isNotNull prepend="," property="fuid">
+  	 	  FUID = #fuid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="content">
+  	 	  CONTENT = #content:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="messagetime">
+  	 	  MESSAGETIME = #messagetime:INTEGER#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="msgtype">
+  	 	  MSGTYPE = #msgtype:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="msgid">
+  	 	  MSGID = #msgid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="fromusername">
+  	 	  FROMUSERNAME = #fromusername:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="picurl">
+  	 	  PICURL = #picurl:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="mediaid">
+  	 	  MEDIAID = #mediaid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="locationx">
+  	 	  LOCATIONX = #locationx:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="locationy">
+  	 	  LOCATIONY = #locationy:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="scale">
+  	 	  SCALE = #scale:INTEGER#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="tlabel">
+  	 	  TLABEL = #tlabel:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createdate">
+  	 	  CREATEDATE = #createdate:TIMESTAMP#
+  	  </isNotNull>
+     </dynamic>
+    where FUID = #fuid:VARCHAR# 
+  </update>
+  
+   <select id="execSql" parameterClass="string" resultMap="re_BuWeixinmessage"><![CDATA[$sql$]]></select>
+   
+    <select id="execSqlObject" parameterClass="string" resultClass="java.lang.Object"><![CDATA[$sql$]]></select>
+</sqlMap>
+

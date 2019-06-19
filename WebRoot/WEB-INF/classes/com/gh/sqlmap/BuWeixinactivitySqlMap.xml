@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="tj_BuWeixinactivity">
+
+    <resultMap id="re_BuWeixinactivity" class="com.gh.entity.BuWeixinactivity">
+        <result property="fuid" column="FUID"/>
+        <result property="content" column="CONTENT"/>
+        <result property="title" column="TITLE"/>
+        <result property="author" column="AUTHOR"/>
+        <result property="number" column="NUMBER"/>
+        <result property="worder" column="WORDER"/>
+        <result property="createtime" column="CREATETIME"/>
+        <result property="isVote" column="isVote"/>
+        <result property="phone" column="PHONE"/>
+    </resultMap>
+    
+    <!-- 用于select查询公用抽取的列 -->
+	<sql id="BuWeixinactivity.columns">
+	    <![CDATA[
+        FUID ,CONTENT ,TITLE ,AUTHOR ,NUMBER ,WORDER ,CREATETIME ,isVote ,PHONE 
+	    ]]>
+	</sql>
+  
+	 <select id="selectByPrimaryKey" parameterClass="com.gh.entity.BuWeixinactivity" resultMap="re_BuWeixinactivity">
+	    SELECT <include refid="BuWeixinactivity.columns"/>
+	    from bu_weixinactivity
+	    where 
+		        FUID = #fuid:VARCHAR# 
+ 	 </select>
+ 	 
+	<delete id="deleteByPrimaryKey" parameterClass="com.gh.entity.BuWeixinactivity">
+	    delete from bu_weixinactivity
+    	where 
+		        FUID = #fuid:VARCHAR# 
+  </delete>
+  
+  	<delete id="deleteByWhere" parameterClass="java.lang.String">
+	    delete from bu_weixinactivity
+    	where 
+		      $swhere$
+	  </delete>
+  
+   <insert id="insert" parameterClass="com.gh.entity.BuWeixinactivity">
+	        insert into bu_weixinactivity (  FUID ,   CONTENT ,   TITLE ,   AUTHOR ,   NUMBER ,   WORDER ,   CREATETIME ,   isVote ,   PHONE   )
+   	 	values ( #fuid:VARCHAR# ,  #content:VARCHAR# ,  #title:VARCHAR# ,  #author:VARCHAR# ,  #number:INTEGER# ,  #worder:VARCHAR# ,  #createtime:TIMESTAMP# ,  #isVote:INTEGER# ,  #phone:VARCHAR#  )
+   	
+  </insert>
+ 	
+ 	
+ 	<update id="updateByPrimaryKey" parameterClass="com.gh.entity.BuWeixinactivity">
+   	UPDATE bu_weixinactivity SET
+	        CONTENT = #content:VARCHAR# ,
+	        TITLE = #title:VARCHAR# ,
+	        AUTHOR = #author:VARCHAR# ,
+	        NUMBER = #number:INTEGER# ,
+	        WORDER = #worder:VARCHAR# ,
+	        CREATETIME = #createtime:TIMESTAMP# ,
+	        isVote = #isVote:INTEGER# ,
+	        PHONE = #phone:VARCHAR# 
+        WHERE 
+	        FUID = #fuid:VARCHAR# 
+  </update>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterClass="com.gh.entity.BuWeixinactivity">
+  	  update bu_weixinactivity
+  	  <dynamic prepend="set">
+  	   <isNotNull prepend="," property="fuid">
+  	 	  FUID = #fuid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="content">
+  	 	  CONTENT = #content:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="title">
+  	 	  TITLE = #title:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="author">
+  	 	  AUTHOR = #author:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="number">
+  	 	  NUMBER = #number:INTEGER#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="worder">
+  	 	  WORDER = #worder:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createtime">
+  	 	  CREATETIME = #createtime:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="isVote">
+  	 	  isVote = #isVote:INTEGER#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="phone">
+  	 	  PHONE = #phone:VARCHAR#
+  	  </isNotNull>
+     </dynamic>
+    where FUID = #fuid:VARCHAR# 
+  </update>
+  
+   <select id="execSql" parameterClass="string" resultMap="re_BuWeixinactivity"><![CDATA[$sql$]]></select>
+   
+    <select id="execSqlObject" parameterClass="string" resultClass="java.lang.Object"><![CDATA[$sql$]]></select>
+</sqlMap>
+

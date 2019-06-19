@@ -1,0 +1,55 @@
+﻿
+
+
+body
+{
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    background-color: #ded8cb;
+}
+.utop
+{
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+}
+.utop img
+{
+    height: 81px;
+    width: 100%;
+}
+.utitle
+{
+    width: 100%;
+    text-align: center;
+    font-size: 19.5pt;
+    margin-bottom: 45px;
+    margin-top: -20px;
+}
+.ucontainer
+{
+    width: 100%;
+    text-align: center;
+}
+.ucontainer
+{
+    text-align: center;
+    width: 100%;
+}
+.ucontainer .item
+{
+    background: url('../images/item_bk1.png');
+    width: 158px;
+    height: 62px;
+    font-size: 20pt;
+    line-height: 62px;
+    margin-bottom: 30px;
+}
+.ubottom
+{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    background: url('../images/bottom_bk1.png');
+    height:174px;
+}
+a{color:Black;text-decoration:none;outline:none;outline:none;blr:expression(this.onFocus=this.blur());}

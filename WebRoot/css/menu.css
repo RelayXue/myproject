@@ -1,0 +1,167 @@
+@charset "utf-8";
+/* CSS Document */
+
+/**
+ *********************************************
+ * Prototype of styles for horizontal CSS-menu
+ * @data 30.06.2009
+ *********************************************
+ * (X)HTML-scheme:
+ *  <div id="menu">
+ *      <ul class="menu">
+ *          <li><a href="#" class="parent"><span>level 1</span></a>
+ *              <div><ul>
+ *                  <li><a href="#" class="parent"><span>level 2</span></a>
+ *                      <div><ul><li><a href="#"><span>level 3</span></a></li></ul></div>
+ *                  </li>
+ *              </ul></div>
+ *          </li>
+ *          <li class="last"><a href="#"><span>level 1</span></a></li>
+ *      </ul>
+ *  </div>
+ *********************************************
+ */
+
+/* menu::base Download by http://www.codefans.net*/
+div#menu {
+    height:37px;
+	
+}
+
+div#menu ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    float: left;
+}
+div#menu ul.menu {
+    padding-left: 4px;
+}
+
+div#menu li {
+    position: relative;
+    z-index: 9;
+    margin: 0;
+    padding: 0;
+    display: block;
+    float: left;
+	font-size:14px;
+}
+   
+div#menu li:hover>ul {
+    left: -2px;
+}
+
+div#menu li div {
+    list-style: none;
+    float: left;
+    position: absolute;
+    top: 37px;
+    left: 0;
+    width: 117px;
+    z-index: 11;
+    visibility: hidden;
+	margin-left:5px;
+    
+}
+div#menu li:hover>div {
+    visibility: visible;
+}
+
+div#menu li.current a {}
+
+/* menu::level1 */
+div#menu a {
+    position: relative;
+    z-index: 10;
+    height: 37px;
+    display: block;
+    float: left;	
+    padding: 0;
+	text-align:center;
+	width:117px;
+    line-height: 37px;
+    text-decoration: none;
+	 font-weight:bold; color:#ffffff;
+	  margin:0 7px 0 5px;
+	  font-size:14px;
+}
+div#menu span {
+    color: #ffffff;
+    font-weight:bold;
+	height: 37px;
+	line-height: 37px;
+    text-transform:uppercase;
+    display: block;
+    cursor: pointer;
+    background-repeat: no-repeat;		
+}
+div#menu ul a:hover span,div#menu ul li.active a span {
+    color: #ffffff;
+	 background:url(../images/nav_on.jpg) no-repeat;
+}
+
+div#menu li { background:url(../images/nav_libg.jpg) no-repeat right; }
+div#menu li.last span{
+    background:none;
+}
+
+/* menu::level2 */
+div#menu ul ul li {
+	border-top:1px solid #001621;
+    z-index: 9;
+	background:none;
+	
+}
+div#menu ul ul {
+    z-index: 12;	
+    padding: 0;
+    background:#024263;
+    margin-top:0px;
+}
+div#menu ul ul a {
+  	width: 150px;
+    height: 35px;
+	margin:0;
+    float: none;
+    display: block;
+    background:none;
+    z-index: -1;
+}
+div#menu ul ul a span {
+    line-height: 36px;
+	 text-align:center;
+    color: #ffffff;
+    font-weight:normal;
+    text-transform: none;
+    background:none;
+}
+div#menu ul ul a:hover span,div#menu ul ul li.active a span {
+    background:#005a89;color: #fff;
+}
+
+div#menu ul ul li.last { background: none; }
+div#menu ul ul li {
+    width: 100%;
+}
+
+/* menu::level3 */
+div#menu ul ul div {
+    width: 150px;
+    margin: -38px 0 0 150px !important;
+    height: auto;
+    _padding: 0 0 9px 3px;
+}
+div#menu ul ul ul {
+	_padding-right:1px;
+	background:#005a89;
+}
+div#menu ul ul ul a:hover span,div#menu ul ul ul li.active a span {
+    background:#036fa7;
+}
+/* lava lamp */
+div#menu li.back {
+}
+div#menu li.back .left {
+}
+

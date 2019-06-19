@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script src="js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="css/main.css"/>
+    <script type="text/javascript">
+            var dragging = false;
+            var iY;
+			var iOffsetY;
+			var s = 0;
+			var mi = 0;	//最小层级
+			var ma = 10;	//最大层级
+			var interval = 11;	//滚动间隔
+			$(function(){
+				$("._zoom_bar_line").height(interval * (ma+2));
+				$("#_zoom_bar_btn").mousedown(function(e) {
+					dragging = true;
+					iY = e.clientY;
+					iOffsetY = this.offsetTop;
+					$("#v").html(iY+","+this.offsetTop);
+					this.setCapture && this.setCapture();
+					return false;
+				});
+				document.onmousemove = function(e) {
+					if (dragging && s <= (ma*interval) && s >= (mi*interval)) {
+						var e = e || window.event;
+						var oY = e.clientY - iY + iOffsetY;
+						setZoomBar(oY);
+						return false;
+					}
+					
+				};
+				$(document).mouseup(function(e) {
+					dragging = false;
+					$("#v").html("-1");
+				})
+				
+				setZoomBar(interval*3)
+			})
+
+			function runZoomBarBtn(i){
+				var oY = parseInt($("#_zoom_bar_btn").css("top"));
+				if(i == 1){
+					oY += interval;
+				}else if(i == 0){
+					oY -= interval;
+				}
+				setZoomBar(oY);
+			}
+			
+			function setZoomBar(oY){
+				if (oY <= (ma*interval) && oY >= (mi*interval)) {
+					if(oY < (mi*interval)) oY = (mi*interval);
+					if(oY > (ma*interval)) oY = (ma*interval);
+					if(oY % interval > 0) oY = parseInt(oY / interval) * interval;
+					$("#_zoom_bar_btn").css({"top":oY + "px"});
+					s = oY;
+					zoomBarScrollListener(parseInt(oY / interval));
+				}
+			}
+			
+			function zoomBarScrollListener(level){
+				
+			}
+ 
+    </script>
+</head>
+
+<body>
+<div class="_top">
+	<div class="_grop">
+    	<div class="_logo"></div>
+        <div class="_box">
+        	<div class="_name"></div>
+            <div class="_ms">
+            	<div class="_search_box">
+               		<input type="text" placeholder="综合查询" value="综合查询"/>
+                    <div class="_search_btn"></div>
+                </div>
+                <div class="_menu">景点  |  服务  |  机构  |  特色街  |  购物  |  特产  |  交通播报</div>
+            </div>
+            <div class="_weather">
+            	<img src="images/m_icon_06.png" />
+                <div class="_tt1">25℃ [晴]</div>
+                <div class="_tt2">东北风（3~4）级</div>
+            </div>
+        </div>
+    </div>
+    <div class="_tllp"></div>
+</div>
+<div class="_body">
+	<div class="_canvas">
+    	<div class="_top_menu">
+        	<div class="_left">
+            	<a class="_ico1">
+                	<div id="_ipage">
+                    	<div class="" style="border:1px solid #ccc; height: 45px; margin:10px; background-color:#fff;">
+                        	<input type="text" placeholder="输入关键字" style="border:none;	height:28px; font-size:16px; margin-left:10px ;	margin-top:8px ; width:320px; line-height:28px;" />
+                            <div class="" style="float:right; border-left:1px solid #ccc; height:100%; width:50px; background-image:url(images/search_btn.png); background-repeat:no-repeat; background-position:center;"></div>
+                        </div>
+                        <div class="listA">
+                        	<span class="row ltop">
+                            	<span style="line-height:30px;">大家都喜欢去<span style="color:#57839e;  font-weight:bold; font-size:14px;">【可乘k350】</span></span>
+                                <div style="clear:both"></div>
+                            </span>
+                        	<div class="row right_icon icon_in right_icon_bb">
+                            	<span class="fleft" style="background-image:url(images/m_icon3_03.png); background-repeat:no-repeat; background-position:center; width:25px;  display:block; height:31px; text-align:center; line-height:18px; margin-right:20px; color:#FFF;">A</span>
+                            	<span class="fleft">西彭景点</span>
+                                <span class="fleft" style="display:block; background-image:url(images/m_icon3_06.png); background-repeat:no-repeat; background-position:0 3px; padding-left:26px;margin-left:20px; color:#e5772d">4.5</span>
+								<span class="fright" style="color:#717699">详细</span>
+                                <div style="clear:both"></div>
+                            </div>
+                        	<div class="row right_icon icon_in right_icon_bb">
+                            	<span class="fleft" style="background-image:url(images/m_icon3_10.png); background-repeat:no-repeat; background-position:center; width:25px;  display:block; height:31px; text-align:center; line-height:18px; margin-right:20px; color:#FFF;">B</span>
+                            	<span class="fleft">西彭景点</span>
+                                <span class="fleft" style="display:block; background-image:url(images/m_icon3_06.png); background-repeat:no-repeat; background-position:0 3px; padding-left:26px;margin-left:20px; color:#e5772d">4.5</span>
+								<span class="fright" style="color:#717699">详细</span>
+                                <div style="clear:both"></div>
+                            </div>
+                        	<div class="row right_icon icon_in right_icon_bb">
+                            	<span class="fleft" style="background-image:url(images/m_icon3_03.png); background-repeat:no-repeat; background-position:center; width:25px;  display:block; height:31px; text-align:center; line-height:18px; margin-right:20px; color:#FFF;">C</span>
+                            	<span class="fleft">西彭景点</span>
+                                <span class="fleft" style="display:block; background-image:url(images/m_icon3_06.png); background-repeat:no-repeat; background-position:0 3px; padding-left:26px;margin-left:20px; color:#e5772d">4.5</span>
+								<span class="fright" style="color:#717699">详细</span>
+                                <div style="clear:both"></div>
+                            </div>
+                        	<div class="row right_icon icon_in right_icon_bb">
+                            	<span class="fleft" style="background-image:url(images/m_icon3_03.png); background-repeat:no-repeat; background-position:center; width:25px;  display:block; height:31px; text-align:center; line-height:18px; margin-right:20px; color:#FFF;">D</span>
+                            	<span class="fleft">西彭景点</span>
+                                <span class="fleft" style="display:block; background-image:url(images/m_icon3_06.png); background-repeat:no-repeat; background-position:0 3px; padding-left:26px;margin-left:20px; color:#e5772d">4.5</span>
+								<span class="fright" style="color:#717699">详细</span>
+                                <div style="clear:both"></div>
+                            </div>
+                        	<div class="row right_icon icon_in right_icon_bb">
+                            	<span class="fleft" style="background-image:url(images/m_icon3_03.png); background-repeat:no-repeat; background-position:center; width:25px;  display:block; height:31px; text-align:center; line-height:18px; margin-right:20px; color:#FFF;">E</span>
+                            	<span class="fleft">西彭景点</span>
+                                <span class="fleft" style="display:block; background-image:url(images/m_icon3_06.png); background-repeat:no-repeat; background-position:0 3px; padding-left:26px;margin-left:20px; color:#e5772d">4.5</span>
+								<span class="fright" style="color:#717699">详细</span>
+                                <div style="clear:both"></div>
+                            </div>
+                        	<div class="row right_icon icon_in right_icon_bb">
+                            	<span class="fleft" style="background-image:url(images/m_icon3_03.png); background-repeat:no-repeat; background-position:center; width:25px;  display:block; height:31px; text-align:center; line-height:18px; margin-right:20px; color:#FFF;">E</span>
+                            	<span class="fleft">西彭景点</span>
+                                <span class="fleft" style="display:block; background-image:url(images/m_icon3_06.png); background-repeat:no-repeat; background-position:0 3px; padding-left:26px;margin-left:20px; color:#e5772d">4.5</span>
+								<span class="fright" style="color:#717699">详细</span>
+                                <div style="clear:both"></div>
+                            </div>
+                         	<div class="row right_icon icon_in right_icon_bb">
+                            	<span class="fleft" style="background-image:url(images/m_icon3_03.png); background-repeat:no-repeat; background-position:center; width:25px;  display:block; height:31px; text-align:center; line-height:18px; margin-right:20px; color:#FFF;">E</span>
+                            	<span class="fleft">西彭景点</span>
+                                <span class="fleft" style="display:block; background-image:url(images/m_icon3_06.png); background-repeat:no-repeat; background-position:0 3px; padding-left:26px;margin-left:20px; color:#e5772d">4.5</span>
+								<span class="fright" style="color:#717699">详细</span>
+                                <div style="clear:both"></div>
+                            </div>
+                        	<div class="row right_icon icon_in right_icon_bb">
+                            	<span class="fleft" style="background-image:url(images/m_icon3_03.png); background-repeat:no-repeat; background-position:center; width:25px;  display:block; height:31px; text-align:center; line-height:18px; margin-right:20px; color:#FFF;">E</span>
+                            	<span class="fleft">西彭景点</span>
+                                <span class="fleft" style="display:block; background-image:url(images/m_icon3_06.png); background-repeat:no-repeat; background-position:0 3px; padding-left:26px;margin-left:20px; color:#e5772d">4.5</span>
+								<span class="fright" style="color:#717699">详细</span>
+                                <div style="clear:both"></div>
+                            </div>
+                        </div>
+                        <div class="_page_tool">
+                        	<span class="checked">1</span>
+                            <span>2</span>
+                            <span>3</span>
+                            <span>4</span>
+                            <span>5</span>
+                            <span>6</span>
+                        </div>
+                    </div>
+                </a>
+                <a class="_ico2"><div id="_ipage"></div></a>
+                <a class="_ico3"><div id="_ipage"></div></a>
+                <a class="_ico4"><div id="_ipage"></div></a>
+                <a class="_ico5"><div id="_ipage"></div></a>
+        	</div>
+            <div class="_right">
+            	<span class="_ico1">视野内查询</span>
+                <span class="_ico2">测量</span>
+                <span class="_ico3">定位</span>
+                <span class="_ico4">截取</span>
+            </div>
+        </div>
+        <div class="_left_menu">
+        	<span class="_ico1">美食</span>
+            <span class="_ico2">住宿</span>
+            <span class="_ico3">娱乐</span>
+            <span class="_ico4">交通</span>
+            <span class="_ico5">诚信<br />商家</span>
+        </div>
+        <div class="_right_menu">
+        	<span class="_ico1">导览</span>
+            <span class="_ico2">路况</span>
+            <span class="_ico3">分享</span>
+        </div>
+        <div class="_zoom_bar">
+			<div class="_zoom_bar_add_btn" onclick="runZoomBarBtn(0)"></div>
+            <div class="_zoom_bar_body" >
+                <div style="position:relative;">
+                    <div id="_zoom_bar_btn" class="_zoom_bar_btn"></div>
+                    <div class="_zoom_bar_line"></div>
+                </div>
+            </div>
+            <div class="_zoom_bar_minus_btn" onclick="runZoomBarBtn(1)"></div>
+        </div>
+    	<div class="_close"></div>
+    </div>
+</div>
+<div class="_bottom">
+<span style="color:#969696">————————————————</span>&nbsp;&nbsp;&nbsp;&nbsp;乌镇国际旅游区&nbsp;&nbsp;·&nbsp;&nbsp;联系我们&nbsp;&nbsp;·&nbsp;&nbsp;友情链接&nbsp;&nbsp;·&nbsp;&nbsp;媒体专区&nbsp;&nbsp;·&nbsp;&nbsp;网络预订&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#969696">————————————————</spa
+></div>
+</body>
+</html>

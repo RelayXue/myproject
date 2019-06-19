@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="tj_BuAccommodation">
+
+    <resultMap id="re_BuAccommodation" class="com.gh.entity.BuAccommodation">
+        <result property="fuid" column="FUID"/>
+        <result property="hname" column="HNAME"/>
+        <result property="address" column="ADDRESS"/>
+        <result property="householder" column="HOUSEHOLDER"/>
+        <result property="mobile" column="MOBILE"/>
+        <result property="description" column="DESCRIPTION"/>
+        <result property="himg" column="HIMG"/>
+        <result property="createdate" column="CREATEDATE"/>
+        <result property="num" column="NUM"/>
+        <result property="num2" column="NUM2"/>
+        <result property="morder" column="morder"/>
+        <result property="isvote" column="ISVOTE"/>
+    </resultMap>
+    
+    <!-- 用于select查询公用抽取的列 -->
+	<sql id="BuAccommodation.columns">
+	    <![CDATA[
+        FUID ,HNAME ,ADDRESS ,HOUSEHOLDER ,MOBILE ,DESCRIPTION ,HIMG ,CREATEDATE ,NUM ,NUM2 ,morder ,ISVOTE 
+	    ]]>
+	</sql>
+  
+	 <select id="selectByPrimaryKey" parameterClass="com.gh.entity.BuAccommodation" resultMap="re_BuAccommodation">
+	    SELECT <include refid="BuAccommodation.columns"/>
+	    from bu_accommodation
+	    where 
+		        FUID = #fuid:VARCHAR# 
+ 	 </select>
+ 	 
+	<delete id="deleteByPrimaryKey" parameterClass="com.gh.entity.BuAccommodation">
+	    delete from bu_accommodation
+    	where 
+		        FUID = #fuid:VARCHAR# 
+  </delete>
+  
+  	<delete id="deleteByWhere" parameterClass="java.lang.String">
+	    delete from bu_accommodation
+    	where 
+		      $swhere$
+	  </delete>
+  
+   <insert id="insert" parameterClass="com.gh.entity.BuAccommodation">
+	        insert into bu_accommodation (  FUID ,   HNAME ,   ADDRESS ,   HOUSEHOLDER ,   MOBILE ,   DESCRIPTION ,   HIMG ,   CREATEDATE ,   NUM ,   NUM2 ,   morder ,   ISVOTE   )
+   	 	values ( #fuid:VARCHAR# ,  #hname:VARCHAR# ,  #address:VARCHAR# ,  #householder:VARCHAR# ,  #mobile:VARCHAR# ,  #description:VARCHAR# ,  #himg:VARCHAR# ,  #createdate:TIMESTAMP# ,  #num:INTEGER# ,  #num2:INTEGER# ,  #morder:INTEGER# ,  #isvote:VARCHAR#  )
+   	
+  </insert>
+ 	
+ 	
+ 	<update id="updateByPrimaryKey" parameterClass="com.gh.entity.BuAccommodation">
+   	UPDATE bu_accommodation SET
+	        HNAME = #hname:VARCHAR# ,
+	        ADDRESS = #address:VARCHAR# ,
+	        HOUSEHOLDER = #householder:VARCHAR# ,
+	        MOBILE = #mobile:VARCHAR# ,
+	        DESCRIPTION = #description:VARCHAR# ,
+	        HIMG = #himg:VARCHAR# ,
+	        CREATEDATE = #createdate:TIMESTAMP# ,
+	        NUM = #num:INTEGER# ,
+	        NUM2 = #num2:INTEGER# ,
+	        morder = #morder:INTEGER# ,
+	        ISVOTE = #isvote:VARCHAR# 
+        WHERE 
+	        FUID = #fuid:VARCHAR# 
+  </update>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterClass="com.gh.entity.BuAccommodation">
+  	  update bu_accommodation
+  	  <dynamic prepend="set">
+  	   <isNotNull prepend="," property="hname">
+  	 	  HNAME = #hname:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="address">
+  	 	  ADDRESS = #address:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="householder">
+  	 	  HOUSEHOLDER = #householder:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="mobile">
+  	 	  MOBILE = #mobile:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="description">
+  	 	  DESCRIPTION = #description:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="himg">
+  	 	  HIMG = #himg:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createdate">
+  	 	  CREATEDATE = #createdate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="num">
+  	 	  NUM = #num:INTEGER#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="num2">
+  	 	  NUM2 = #num2:INTEGER#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="morder">
+  	 	  morder = #morder:INTEGER#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="isvote">
+  	 	  ISVOTE = #isvote:VARCHAR#
+  	  </isNotNull>
+     </dynamic>
+    where FUID = #fuid:VARCHAR# 
+  </update>
+  
+   <select id="execSql" parameterClass="string" resultMap="re_BuAccommodation"><![CDATA[$sql$]]></select>
+   
+    <select id="execSqlObject" parameterClass="string" resultClass="java.lang.Object"><![CDATA[$sql$]]></select>
+</sqlMap>
+

@@ -1,0 +1,174 @@
+ 
+ 
+ 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="stylesheet" href="http://localhost:8080/Gckq/resource/js/menu/style.css" type="text/css" />
+		<link href="http://localhost:8080/Gckq/resource/js/menu/tool.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="http://localhost:8080/Gckq/resource/js/jquery.js"></script>
+		<script type="text/javascript" src="http://localhost:8080/Gckq/resource/js/My97DatePicker/WdatePicker.js"></script>
+
+		<script type="text/javascript" src="http://localhost:8080/Gckq/resource/js/Date.js"></script>
+		<script type="text/javascript" src="http://localhost:8080/Gckq/resource/js/menu/jquery.ui.core.min.js"></script>
+		<script type="text/javascript" src="http://localhost:8080/Gckq/resource/js/menu/jquery.ui.widget.min.js"></script>
+		<script type="text/javascript" src="http://localhost:8080/Gckq/resource/js/menu/jquery.ui.tabs.min.js"></script>
+		<script type="text/javascript" src="http://localhost:8080/Gckq/resource/js/GPS/map_common.js"></script>
+		<script type="text/javascript" src="http://localhost:8080/Gckq/resource/js/GPS/business.js"></script>
+		<script type="text/javascript" src="http://localhost:8080/Gckq/resource/js/GPS/mapgj.js"></script>
+		
+		<script type="text/javascript"> 
+		
+		var data='null';
+		var data_yx='null';
+	$(document).ready(function() {
+		var PerNum='null';
+		if(data!='null'&&data.length!=0){
+			data=decodeURIComponent(data);
+			$("#btnStart").removeAttr("disabled");
+		}else if(data=='nodata'){
+			alert("�������");
+			return;
+		} 
+		if(PerNum!='null'&&data!='null'){
+			$("#searchKey").attr("GpsId",PerNum);
+			window.parent.showLine(data,data_yx);
+		}
+		//��ͣ ����
+		 $("#btnPause").click(function (){
+		 	var speed=$("#playspeed").find("option:selected").val();
+		 	var ty=$(this).attr("ty");
+		 	if(ty=='zt'){
+		 		$(this).html("����");
+		 		$(this).attr("ty","jx");
+		 		window.parent.suspend_gj('zt',speed);
+		 	}
+		 	if(ty=='jx'){
+		 		$(this).html("��ͣ");
+		 		$(this).attr("ty","zt");
+		 		window.parent.suspend_gj('jx',speed);
+		 	}
+		 })
+	});
+	 
+	function control(te){
+	if(te=='bf'){
+		var speed=$("#playspeed").find("option:selected").val();
+		$("#playspeed").change(function(){
+			 speed=$("#playspeed").find("option:selected").val();
+			 window.parent.speedInit(speed);
+		});
+		 window.parent.GpsPlay(data,data_yx,speed);
+		 $("#btnStart").attr("disabled","disabled");
+		 $("#btnPause").removeAttr("disabled"); 
+		 $("#btnStop").removeAttr("disabled");
+	}else if(te=='stop'){
+		$("#btnStart").removeAttr("disabled");
+		$("#btnPause").attr("disabled","disabled");
+		 $("#btnStop").attr("disabled","disabled");
+		 $("#btnPause").html("��ͣ");
+	 	 $("#btnPause").attr("ty","zt");
+		 this.parent.suspend_gj('stop');
+		}
+		
+	}
+		
+		
+		
+	function InOne() {
+		var now1 = new Date();
+		var now = new Date();
+		now.addDays(-1);
+		$("#startTime1").attr("value", now.Format("yyyy-MM-dd"));
+		$("#endTime1").attr("value", now1.Format("yyyy-MM-dd"));
+	}
+	function InThree() {
+		var now1 = new Date();
+		var now = new Date();
+		now.addDays(-3);
+		$("#startTime1").attr("value", now.Format("yyyy-MM-dd"));
+		$("#endTime1").attr("value", now1.Format("yyyy-MM-dd"));
+	}
+	function funFillPerson(perArr){
+		$("#searchKey").attr("GpsId","13659565642");
+	}
+	
+</script>
+	</head>
+ 
+	<body>
+		<div id="tabs">
+			<ul>
+				<li>
+					  <span class=""  >&nbsp; <img
+						src="http://localhost:8080/Gckq/resource/images/icon_alert.gif"
+						width="12" height="12" />&nbsp;<strong>��Ա�켣��Ϣ</strong> </span>  
+				</li>
+			</ul>
+			<div id="tabs-1" style="padding: 5px 0 0 5px;">
+				<div class="searchBox">
+					<input type="text" readonly="readonly" id="searchKey" value=""  />
+					&nbsp;
+					<a href="javascript:window.parent.showPer()"    class="btn">ѡ��</a>
+					<div class="pbr"></div>
+					<div class="pbr"></div>
+					<div class="pbr"></div>
+					��ʼʱ�䣺<input type="text" value="" id=startTime1 style="height: 10px" onfocus="WdatePicker()" />
+					<div class="pbr"></div>
+					����ʱ�䣺<input type="text" id=endTime1 value="" style="height: 10px" onfocus="WdatePicker()" />
+					<div class="pbr"></div>
+					<div class="pbr"></div>
+					<a href="javascript:void(0)" onclick="InOne()" class="btn">���һ��</a>
+					<a href="javascript:void(0)" onclick="InThree()" class="btn">�������</a>
+					<div class="pbr"></div>
+					<a href="javascript:void(0)" onclick="readGj()" class="btn btn-red">��ȡ�켣</a>
+					<div class="pbr"></div>
+					<DIV >
+						<FONT size=2>�����ٶ�:</FONT>
+						<SELECT id=playspeed >
+							<OPTION value=1>
+								1
+							</OPTION>
+							<OPTION value=2>
+								2
+							</OPTION>
+							<OPTION value=3>
+								3
+							</OPTION>
+							<OPTION value=4>
+								4
+							</OPTION>
+							<OPTION selected value=5>
+								5
+							</OPTION>
+							<OPTION value=6>
+								6
+							</OPTION>
+							<OPTION value=7>
+								7
+							</OPTION>
+							<OPTION value=8>
+								8
+							</OPTION>
+							<OPTION value=9>
+								9
+							</OPTION>
+						</SELECT>
+						&nbsp;9Ϊ����1Ϊ���
+					</DIV>
+					<div class="pbr"></div>
+					<!-- class="btn btn-blue" btn-green -->
+					<button class="btn btn-green" id="btnStart" disabled onclick="control('bf')">����</button>
+					<button class="btn btn-green" id="btnPause" disabled ty="zt">��ͣ</button>
+					<button class="btn btn-green" id="btnStop"  disabled onclick="control('stop')" >ֹͣ</button>
+					<div class="pbr"></div>
+				</div>
+			</div>
+		</div>
+ 
+	</body>
+</html>
+ 
+ 
+

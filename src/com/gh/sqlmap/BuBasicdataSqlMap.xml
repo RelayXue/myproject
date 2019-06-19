@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="tj_BuBasicdata">
+
+    <resultMap id="re_BuBasicdata" class="com.gh.entity.BuBasicdata">
+        <result property="fuid" column="FUID"/>
+        <result property="fullname" column="FULLNAME"/>
+        <result property="fx" column="FX"/>
+        <result property="fy" column="FY"/>
+        <result property="phone" column="PHONE"/>
+        <result property="address" column="ADDRESS"/>
+        <result property="dimages" column="DIMAGES"/>
+        <result property="introduction" column="INTRODUCTION"/>
+        <result property="createdate" column="CREATEDATE"/>
+        <result property="modifydate" column="MODIFYDATE"/>
+        <result property="type" column="TYPE"/>
+        <result property="deletemark" column="DELETEMARK"/>
+    </resultMap>
+    
+    <!-- 用于select查询公用抽取的列 -->
+	<sql id="BuBasicdata.columns">
+	    <![CDATA[
+        FUID ,FULLNAME ,FX ,FY ,PHONE ,ADDRESS ,DIMAGES ,INTRODUCTION ,CREATEDATE ,MODIFYDATE ,TYPE ,DELETEMARK 
+	    ]]>
+	</sql>
+  
+	 <select id="selectByPrimaryKey" parameterClass="com.gh.entity.BuBasicdata" resultMap="re_BuBasicdata">
+	    SELECT <include refid="BuBasicdata.columns"/>
+	    from bu_basicdata
+	    where 
+		        FUID = #fuid:VARCHAR# 
+ 	 </select>
+ 	 
+	<delete id="deleteByPrimaryKey" parameterClass="com.gh.entity.BuBasicdata">
+	    delete from bu_basicdata
+    	where 
+		        FUID = #fuid:VARCHAR# 
+  </delete>
+  
+  	<delete id="deleteByWhere" parameterClass="java.lang.String">
+	    delete from bu_basicdata
+    	where 
+		      $swhere$
+	  </delete>
+  
+   <insert id="insert" parameterClass="com.gh.entity.BuBasicdata">
+	        insert into bu_basicdata (  FUID ,   FULLNAME ,   FX ,   FY ,   PHONE ,   ADDRESS ,   DIMAGES ,   INTRODUCTION ,   CREATEDATE ,   MODIFYDATE ,   TYPE ,   DELETEMARK   )
+   	 	values ( #fuid:VARCHAR# ,  #fullname:VARCHAR# ,  #fx:VARCHAR# ,  #fy:VARCHAR# ,  #phone:VARCHAR# ,  #address:VARCHAR# ,  #dimages:VARCHAR# ,  #introduction:LONGVARCHAR# ,  #createdate:TIMESTAMP# ,  #modifydate:TIMESTAMP# ,  #type:VARCHAR# ,  #deletemark:INTEGER#  )
+   	
+  </insert>
+ 	
+ 	
+ 	<update id="updateByPrimaryKey" parameterClass="com.gh.entity.BuBasicdata">
+   	UPDATE bu_basicdata SET
+	        FULLNAME = #fullname:VARCHAR# ,
+	        FX = #fx:VARCHAR# ,
+	        FY = #fy:VARCHAR# ,
+	        PHONE = #phone:VARCHAR# ,
+	        ADDRESS = #address:VARCHAR# ,
+	        DIMAGES = #dimages:VARCHAR# ,
+	        INTRODUCTION = #introduction:LONGVARCHAR# ,
+	        CREATEDATE = #createdate:TIMESTAMP# ,
+	        MODIFYDATE = #modifydate:TIMESTAMP# ,
+	        TYPE = #type:VARCHAR# ,
+	        DELETEMARK = #deletemark:INTEGER# 
+        WHERE 
+	        FUID = #fuid:VARCHAR# 
+  </update>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterClass="com.gh.entity.BuBasicdata">
+  	  update bu_basicdata
+  	  <dynamic prepend="set">
+  	   <isNotNull prepend="," property="fuid">
+  	 	  FUID = #fuid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="fullname">
+  	 	  FULLNAME = #fullname:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="fx">
+  	 	  FX = #fx:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="fy">
+  	 	  FY = #fy:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="phone">
+  	 	  PHONE = #phone:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="address">
+  	 	  ADDRESS = #address:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="dimages">
+  	 	  DIMAGES = #dimages:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="introduction">
+  	 	  INTRODUCTION = #introduction:LONGVARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createdate">
+  	 	  CREATEDATE = #createdate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="modifydate">
+  	 	  MODIFYDATE = #modifydate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="type">
+  	 	  TYPE = #type:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="deletemark">
+  	 	  DELETEMARK = #deletemark:INTEGER#
+  	  </isNotNull>
+     </dynamic>
+    where FUID = #fuid:VARCHAR# 
+  </update>
+  
+   <select id="execSql" parameterClass="string" resultMap="re_BuBasicdata"><![CDATA[$sql$]]></select>
+   
+    <select id="execSqlObject" parameterClass="string" resultClass="java.lang.Object"><![CDATA[$sql$]]></select>
+</sqlMap>
+

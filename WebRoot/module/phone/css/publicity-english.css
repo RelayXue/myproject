@@ -1,0 +1,14 @@
+@charset "utf-8";
+/* CSS Document */
+
+#container{background:url(../images/bg.png) no-repeat;background-size:100% 100%;}
+
+#content{margin:0px 20px;padding-top:20px;}
+#header{float:left;width:100%;border-bottom:1px solid #a6a8b9;}
+#header div{float:left;}
+#header #logo{float:left;}
+#header #logo img{width:100%;}
+#text{float:left;width:100%;color:#6d6d6c;font-size:0.875em; font-family:"仿宋";line-height:20px;padding:10px 0px;border-bottom:1px solid #a6a8b9;}
+#btn{width:50%;margin:0px auto;clear:both;padding-top:15px;}
+#btn a{display:block;color:#fff;background:#5d607f;text-align:center;padding:6px 0px;border-radius:5px;}
+#btn img{vertical-align:top;margin-top:4px;}

@@ -1,0 +1,81 @@
+2014-08-21 ：
+表：BU_ENTERTAINMENTSHOPPING  添加TYPE varchar(40)字段
+
+2014-08-25:
+表：
+bu_stay
+bu_dining
+bu_entertainmentshopping   这三张表添加了   DELETEMARK int(2)的字段
+
+2014-10-28:
+
+bu_news 添加了DELETEMARK int(2)的字段   （pdm中未添加）
+
+
+bu_stay （pdm中未添加）
+
+	    管理人：custodian VARCHAR 100   为空
+	
+	   房间数量：rooms  varchar 50    为空
+	   
+2014-11-08:
+bu_news 添加了(备注)REMARK varchar(1000) 为空  
+
+2014-11-14：
+表BU_ENTERTAINMENTSHOPPING：添加字段：注册号：REGISTRATIONNO
+
+2014-12-11：
+表bu_attractions    添加字段：PRAISE 点赞数     BROWSE  浏览数    type:类型     DELETEMARK: 0 未删除 1以删除
+
+
+2014-12-24：
+表 bu_geography     添加DELETEMARK: 0 未删除 1以删除
+
+
+
+2014-12-29
+评论表新增字段     人均	CAPITA	numeric(18,6)	评分	SCORE	numeric(18,6)	
+新增表   BU_ROAD                                               
+新闻表  新增字段     经度	FX	varchar(100) 纬度	FY	varchar(100)	
+
+
+
+2015-1-5
+新增表  人员BU_PERSONNEL  GPS表BU_GPSDEVICE
+新增字段   评论数	COMMENT	int，星级	STAR	numeric(12,4)		 （表bu_dining，表bu_attractions，表bu_stay，表bu_entertainmentshopping，表 bu_news ）
+新增字段    评论数	COMMENT	int  表 bu_comment
+
+2015-1-6 
+基础地理信息BU_GEOGRAPHY 新增字段 INTRODUCTION text 
+新增字段  二维码路径	CODEPATH	varchar(200)	二维码生成状态	PRSTATUS	varchar(10) （表购物娱乐BU_ENTERTAINMENTSHOPPING，表住宿BU_STAY，表BU_DINING）
+ 
+ 2015-2-2  表  评论BU_COMMENT 新增字段   EXAMINE  审核状态
+ 
+ 
+ 
+ 2015-03-26:  表：base_datadictionary 添加:Notshow 字段      设置Notshow 为 1值的时候，表示：前台（web）页面不显示的数据字典中的命名名称，后台操作显示。
+ 
+ 2015-05-07: 表：bu_geography，bu_stay，bu_entertainmentshopping ，bu_dining 都添加了feature   text  ：特色             promise(varchar) ：商家承诺  字段
+ 
+  2015-5-11 表  住宿BU_STAY、餐饮BU_DINING、购物娱乐BU_ENTERTAINMENTSHOPPING    新增字段    二维码ID	QID	varchar(50)
+  
+  2015-5-11 新增视图INTEGRATEDDATA
+  
+ 2015-05-29: 表：bu_geography，bu_stay，bu_entertainmentshopping ，bu_dining  都新增字段：dangyuan   int
+ 
+  2015-06-29: 表：bu_news 新增字段  SORT  
+
+  2015-07-3:  新增表 bu_weixinconfig    表   bu_weixinmass新增字段 排序orderby    新增字段  媒体ID  MEDIAID
+  
+  2015-07-9： 新增表  微信抽奖BU_WEIXINLUCKDRAW
+  
+  2015-08-28： 新增表  微信活动BU_WEIXINACTIVITY   新增表    微信投票BU_WEIXINVOTE
+  
+  2015-9-18  住宿BU_STAY，购物娱乐BU_ENTERTAINMENTSHOPPING，餐饮BU_DINING   新增字段  ISZY 是否子夜路
+  
+  
+  2015-10-10  bu_attractions，bu_geography   新增字段  ISZY 是否子夜路
+
+ 
+ 
+

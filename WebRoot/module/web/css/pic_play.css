@@ -1,0 +1,43 @@
+@charset "utf-8";
+/* CSS Document */
+
+* { font-size:13px; font-family:Georgia, "Times New Roman","瀹嬩綋"; color:#333; margin:0; padding:0; list-style:none; text-shadow:0 1px 1px #fff; }
+html { background:url(bg.png) repeat; }
+a img { border:0;}
+
+#psWraper { background:#eee; padding:10px 0; margin-top:80px; border-top:1px dashed #999; }
+#psText { padding-bottom:10px; margin-bottom:20px; border-bottom:1px dashed #bebebe; }
+#psText samp { font-weight:bold; font-size:14px; letter-spacing:0.1em; }
+#psText samp a { color:#06F;letter-spacing:0.1em; }
+#psText h2 { font-size:20px; margin:10px auto; }
+#psText p { padding:10px 0; line-height:25px; letter-spacing:0.1em; }
+#psText ul { margin:10px auto; }
+#psText ul li { line-height:25px; line-height:25px; letter-spacing:0.1em; }
+#ps { width:600px; margin:0 auto; padding:30px 0; }
+#ps h1 { padding-bottom:20px; text-shadow:1px 1px 0 #fff; color:#c00; font-size:23px; font-weight:bold; }
+#ps h2 { line-height:20px; text-shadow:1px 1px 0 #fff; padding:10px 0; }
+#ps h1 p { display:inline; font-size:16px; font-weight:bold; color:#666; margin-left:20px; }
+#ps dl { padding-left:0; padding-bottom:40px; }
+#ps dl dt,#ps dl dd { height:30px; line-height:30px; font-size:13px; text-shadow:1px 1px 0 #fff;  }
+#ps dl dt { padding-left:10px; }
+#ps dl dd { color:#ff6600; text-shadow:1px 1px 0 #fff; }
+#ps dl dd span {color:#900; margin-right:50px; letter-spacing:0.01em; padding-left:10px;}
+
+#jcImg { width:625px; padding:5px; border:1px solid #ccc; background:#f2f2f2; position:relative; overflow:hidden; } 
+#jcImg ul { width:625px; height:350px; overflow:hidden; position:relative; z-index:0; }
+#jcImg ul li { display:none; width:625px; height:350px; overflow:hidden; position:absolute; left:0; top:0; z-index:0; }
+#smallImg { height:65px;overflow:hidden; margin:5px auto 0; position:relative; width:590px; }
+#jcImg dl { width:9999%; position:relative; }
+#jcImg dd { float:left; width:115px; height:64px; overflow:hidden; margin-right:4px; _display:inline; cursor:pointer; position:relative; }
+#jcImg dd div { position:absolute; background:#000; height:64px; width:115px; }
+#jcImg b { width:14px; height:64px; position:absolute; top:360px; z-index:1; cursor:pointer; }
+#jcImg #prev { float:left; left:4px; background-position:0 0;background:#fff url(../images/prev.png) no-repeat; }
+#jcImg #next { float:right; right:4px; background-position:right 0;background:#fff url(../images/next.png) no-repeat;  }
+#jcImg #prev:hover {  background-position:0 -70px; background:#fff url(../images/prev_selected.png) no-repeat; }
+#jcImg #next:hover {  background-position:right -70px; background:#fff url(../images/next_selected.png) no-repeat; }
+#imgText { position:absolute; z-index:1; left:5px; top:315px; width:625px; height:40px; display:none; }
+#imgText p,#imgText b { display:block; position:absolute; left:0; top:0; width:591px; line-height:40px; padding:0 17px; height:40px; overflow:hidden; z-index:1; }
+#imgText b { background:#000; z-index:0; }
+#imgText span { color:#fff; text-shadow:1px 1px 0 #000; float:left; font-size:14px; }
+#imgText samp { color:#fff; text-shadow:1px 1px 0 #000; float:right; font-size:13px;  }
+#imgHover { border:4px solid #EC0000; height:56px; width:107px; position:absolute; left:0; top:0; display:none;}

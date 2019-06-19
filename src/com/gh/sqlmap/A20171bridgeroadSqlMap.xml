@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="tj_A20171bridgeroad">
+
+    <resultMap id="re_A20171bridgeroad" class="com.gh.entity.A20171bridgeroad">
+        <result property="fuid" column="FUID"/>
+        <result property="remark" column="REMARK"/>
+        <result property="temporaryname" column="TEMPORARYNAME"/>
+        <result property="createtime" column="CREATETIME"/>
+    </resultMap>
+    
+    <!-- 用于select查询公用抽取的列 -->
+	<sql id="A20171bridgeroad.columns">
+	    <![CDATA[
+        FUID ,REMARK ,TEMPORARYNAME ,CREATETIME 
+	    ]]>
+	</sql>
+  
+	 <select id="selectByPrimaryKey" parameterClass="com.gh.entity.A20171bridgeroad" resultMap="re_A20171bridgeroad">
+	    SELECT <include refid="A20171bridgeroad.columns"/>
+	    from a2017_1_bridgeroad
+	    where 
+		        FUID = #fuid:VARCHAR# 
+ 	 </select>
+ 	 
+	<delete id="deleteByPrimaryKey" parameterClass="com.gh.entity.A20171bridgeroad">
+	    delete from a2017_1_bridgeroad
+    	where 
+		        FUID = #fuid:VARCHAR# 
+  </delete>
+  
+  	<delete id="deleteByWhere" parameterClass="java.lang.String">
+	    delete from a2017_1_bridgeroad
+    	where 
+		      $swhere$
+	  </delete>
+  
+   <insert id="insert" parameterClass="com.gh.entity.A20171bridgeroad">
+	        insert into a2017_1_bridgeroad (  FUID ,   REMARK ,   TEMPORARYNAME ,   CREATETIME   )
+   	 	values ( #fuid:VARCHAR# ,  #remark:VARCHAR# ,  #temporaryname:VARCHAR# ,  #createtime:TIMESTAMP#  )
+   	
+  </insert>
+ 	
+ 	
+ 	<update id="updateByPrimaryKey" parameterClass="com.gh.entity.A20171bridgeroad">
+   	UPDATE a2017_1_bridgeroad SET
+	        REMARK = #remark:VARCHAR# ,
+	        TEMPORARYNAME = #temporaryname:VARCHAR# ,
+	        CREATETIME = #createtime:TIMESTAMP# 
+        WHERE 
+	        FUID = #fuid:VARCHAR# 
+  </update>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterClass="com.gh.entity.A20171bridgeroad">
+  	  update a2017_1_bridgeroad
+  	  <dynamic prepend="set">
+  	   <isNotNull prepend="," property="remark">
+  	 	  REMARK = #remark:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="temporaryname">
+  	 	  TEMPORARYNAME = #temporaryname:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createtime">
+  	 	  CREATETIME = #createtime:TIMESTAMP#
+  	  </isNotNull>
+     </dynamic>
+    where FUID = #fuid:VARCHAR# 
+  </update>
+  
+   <select id="execSql" parameterClass="string" resultMap="re_A20171bridgeroad"><![CDATA[$sql$]]></select>
+   
+    <select id="execSqlObject" parameterClass="string" resultClass="java.lang.Object"><![CDATA[$sql$]]></select>
+</sqlMap>
+

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="tj_ObVideo">
+
+    <resultMap id="re_ObVideo" class="com.gh.entity.ObVideo">
+        <result property="fuid" column="FUID"/>
+        <result property="fullname" column="FULLNAME"/>
+        <result property="description" column="DESCRIPTION"/>
+        <result property="createdate" column="CREATEDATE"/>
+        <result property="modifydate" column="MODIFYDATE"/>
+        <result property="modifyuserrealname" column="MODIFYUSERREALNAME"/>
+        <result property="camid" column="CAMID"/>
+        <result property="ip" column="IP"/>
+        <result property="port" column="PORT"/>
+        <result property="username" column="USERNAME"/>
+        <result property="password" column="PASSWORD"/>
+        <result property="channel" column="CHANNEL"/>
+        <result property="devtype" column="DEVTYPE"/>
+        <result property="devid" column="DEVID"/>
+        <result property="realtype" column="REALTYPE"/>
+        <result property="sreamip" column="SREAMIP"/>
+        <result property="streamport" column="STREAMPORT"/>
+        <result property="proxyip" column="PROXYIP"/>
+        <result property="proxyport" column="PROXYPORT"/>
+        <result property="accessip" column="ACCESSIP"/>
+        <result property="accessport" column="ACCESSPORT"/>
+        <result property="fx" column="FX"/>
+        <result property="fy" column="FY"/>
+    </resultMap>
+    
+    <!-- 用于select查询公用抽取的列 -->
+	<sql id="ObVideo.columns">
+	    <![CDATA[
+        FUID ,FULLNAME ,DESCRIPTION ,CREATEDATE ,MODIFYDATE ,MODIFYUSERREALNAME ,CAMID ,IP ,PORT ,USERNAME ,PASSWORD ,CHANNEL ,DEVTYPE ,DEVID ,REALTYPE ,SREAMIP ,STREAMPORT ,PROXYIP ,PROXYPORT ,ACCESSIP ,ACCESSPORT ,FX ,FY 
+	    ]]>
+	</sql>
+  
+	 <select id="selectByPrimaryKey" parameterClass="com.gh.entity.ObVideo" resultMap="re_ObVideo">
+	    SELECT <include refid="ObVideo.columns"/>
+	    from ob_video
+	    where 
+		        FUID = #fuid:VARCHAR# 
+ 	 </select>
+ 	 
+	<delete id="deleteByPrimaryKey" parameterClass="com.gh.entity.ObVideo">
+	    delete from ob_video
+    	where 
+		        FUID = #fuid:VARCHAR# 
+  </delete>
+  
+  
+   <insert id="insert" parameterClass="com.gh.entity.ObVideo">
+	        insert into ob_video (  FUID ,   FULLNAME ,   DESCRIPTION ,   CREATEDATE ,   MODIFYDATE ,   MODIFYUSERREALNAME ,   CAMID ,   IP ,   PORT ,   USERNAME ,   PASSWORD ,   CHANNEL ,   DEVTYPE ,   DEVID ,   REALTYPE ,   SREAMIP ,   STREAMPORT ,   PROXYIP ,   PROXYPORT ,   ACCESSIP ,   ACCESSPORT ,   FX ,   FY   )
+   	 	values ( #fuid:VARCHAR# ,  #fullname:VARCHAR# ,  #description:LONGVARCHAR# ,  #createdate:TIMESTAMP# ,  #modifydate:TIMESTAMP# ,  #modifyuserrealname:LONGVARCHAR# ,  #camid:VARCHAR# ,  #ip:VARCHAR# ,  #port:VARCHAR# ,  #username:VARCHAR# ,  #password:VARCHAR# ,  #channel:VARCHAR# ,  #devtype:VARCHAR# ,  #devid:VARCHAR# ,  #realtype:DECIMAL# ,  #sreamip:VARCHAR# ,  #streamport:VARCHAR# ,  #proxyip:VARCHAR# ,  #proxyport:VARCHAR# ,  #accessip:VARCHAR# ,  #accessport:VARCHAR# ,  #fx:DECIMAL# ,  #fy:DECIMAL#  )
+   	
+  </insert>
+ 	
+ 	
+ 	<update id="updateByPrimaryKey" parameterClass="com.gh.entity.ObVideo">
+   	UPDATE ob_video SET
+	        FULLNAME = #fullname:VARCHAR# ,
+	        DESCRIPTION = #description:LONGVARCHAR# ,
+	        CREATEDATE = #createdate:TIMESTAMP# ,
+	        MODIFYDATE = #modifydate:TIMESTAMP# ,
+	        MODIFYUSERREALNAME = #modifyuserrealname:LONGVARCHAR# ,
+	        CAMID = #camid:VARCHAR# ,
+	        IP = #ip:VARCHAR# ,
+	        PORT = #port:VARCHAR# ,
+	        USERNAME = #username:VARCHAR# ,
+	        PASSWORD = #password:VARCHAR# ,
+	        CHANNEL = #channel:VARCHAR# ,
+	        DEVTYPE = #devtype:VARCHAR# ,
+	        DEVID = #devid:VARCHAR# ,
+	        REALTYPE = #realtype:DECIMAL# ,
+	        SREAMIP = #sreamip:VARCHAR# ,
+	        STREAMPORT = #streamport:VARCHAR# ,
+	        PROXYIP = #proxyip:VARCHAR# ,
+	        PROXYPORT = #proxyport:VARCHAR# ,
+	        ACCESSIP = #accessip:VARCHAR# ,
+	        ACCESSPORT = #accessport:VARCHAR# ,
+	        FX = #fx:DECIMAL# ,
+	        FY = #fy:DECIMAL# 
+        WHERE 
+	        FUID = #fuid:VARCHAR# 
+  </update>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterClass="com.gh.entity.ObVideo">
+  	  update ob_video
+  	  <dynamic prepend="set">
+  	   <isNotNull prepend="," property="fuid">
+  	 	  FUID = #fuid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="fullname">
+  	 	  FULLNAME = #fullname:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="description">
+  	 	  DESCRIPTION = #description:LONGVARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createdate">
+  	 	  CREATEDATE = #createdate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="modifydate">
+  	 	  MODIFYDATE = #modifydate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="modifyuserrealname">
+  	 	  MODIFYUSERREALNAME = #modifyuserrealname:LONGVARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="camid">
+  	 	  CAMID = #camid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="ip">
+  	 	  IP = #ip:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="port">
+  	 	  PORT = #port:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="username">
+  	 	  USERNAME = #username:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="password">
+  	 	  PASSWORD = #password:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="channel">
+  	 	  CHANNEL = #channel:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="devtype">
+  	 	  DEVTYPE = #devtype:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="devid">
+  	 	  DEVID = #devid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="realtype">
+  	 	  REALTYPE = #realtype:DECIMAL#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="sreamip">
+  	 	  SREAMIP = #sreamip:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="streamport">
+  	 	  STREAMPORT = #streamport:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="proxyip">
+  	 	  PROXYIP = #proxyip:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="proxyport">
+  	 	  PROXYPORT = #proxyport:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="accessip">
+  	 	  ACCESSIP = #accessip:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="accessport">
+  	 	  ACCESSPORT = #accessport:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="fx">
+  	 	  FX = #fx:DECIMAL#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="fy">
+  	 	  FY = #fy:DECIMAL#
+  	  </isNotNull>
+     </dynamic>
+    where FUID = #fuid:VARCHAR# 
+  </update>
+  
+   <select id="execSql" parameterClass="string" resultMap="re_ObVideo"><![CDATA[$sql$]]></select>
+   
+    <select id="execSqlObject" parameterClass="string" resultClass="java.lang.Object"><![CDATA[$sql$]]></select>
+</sqlMap>
+

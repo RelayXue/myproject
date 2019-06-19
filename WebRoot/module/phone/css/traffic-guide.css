@@ -1,0 +1,66 @@
+@charset "utf-8";
+/* CSS Document */
+
+#container{background:#f4f1e7;}
+
+#header{width:100%;height:50px;background:#2e3c50;float:left;}
+#header ul{width:100%;float:left;height:100%;}
+#header li{float:left;width:25%;height:100%;background:#fff;}
+#header li a{ display:block;height:100%;text-align:center;border:1px solid #a5a9ad;border-left:0px;box-sizing: border-box;}
+#header #nav1 a{background:url(../images/nav1.png) center center no-repeat;}
+#header #nav2 a{background:url(../images/nav2.png) center center no-repeat;}
+#header #nav3 a{background:url(../images/nav3.png) center center no-repeat;}
+#header #nav4 a{background:url(../images/nav4.png) center center no-repeat;}
+#header #nav5 a{background:url(../images/nav5.png) center center no-repeat;}
+#header #nav1 a{border-left:1px solid #a5a9ad;}
+
+#wz{background:#d8d6d3;float:left;width:100%;padding-bottom:15px;}
+#wz #cont{margin:0px 15px;}
+#wz #content{width:100%;background:#fff;height:100px; box-shadow:2px 2px 2px #b7b4b2;}
+#wz #content .left{width:15%;float:left;height:100%;border-right:1px solid #d7d7d7; box-sizing:border-box;}
+#wz #content .left a{display:block;width:100%;height:100%;background:url(../images/jh.jpg) center center no-repeat;}
+#wz #content .right{width:85%;float:left;height:100%;}
+#wz #content .right div{width:100%;height:50%;float:left;border-bottom:1px solid #d7d7d7; box-sizing:border-box;}
+#wz .f_l{float:left;}
+#wz .f_r{float:right;}
+#wz img{ vertical-align:top;margin-top:18px;margin-right:10px;}
+#wz span{display:block;float:left;margin-left:10px;}
+#wz .s1{padding:7px 8px;color:#fff;border-radius:3px;margin-top:9px;}
+#wz .s2{line-height:50px;}
+#wz .qd .s1{background:#64a489; }
+#wz .zd .s1{background:#59759d; }
+#wz .qd .s2{color:#64a489; }
+#wz .zd .s2{color:#979797; }
+#wz #content .right .nob{border:0px;}
+
+/*弹出层*/
+#hover{margin:0px 15px;}
+#hover div{width:100%;float:left;background:#fff;border:1px solid #d1c9b8;margin-top:15px;}
+#hover div ul{padding:0px 15px;}
+#hover li{float:left;width:100%;padding:10px 0px;border-bottom:1px solid #d1c9b8;}
+#hover p{float:left;height:30px;line-height:30px;}
+#hover .p1{width:10%;background:url(../images/sz.jpg) 0px center no-repeat;}
+#hover .p2{width:80%;}
+#hover .p3{width:10%;background:url(../images/jt2.jpg) right center no-repeat;}
+#hover span{ display:block;color:#605b51;font-size:1em;font-weight:bold;}
+#hover .nob{border:0px;text-align:center;padding:16px 0px;}
+#hover .nob a{color:#979797;font-size:0.9375em;}
+#hover .nob img{ vertical-align:top;margin-right:5px;margin-top:-1px;}
+
+#qhb{float:left;width:100%;margin-top:15px;color:#1e1e1e;font-size:1em;margin-bottom:10px;text-align:center;background:url(../images/fg_bg2.png) center center no-repeat;background-size:100%;}
+#qhb img{width:100%;}
+
+#list{margin:0px 15px;}
+#list ul{float:left;width:100%;}
+#list li{float:left;width:25%;text-align:center;padding:5px 0px;border-right:1px solid #aaaaaa; box-sizing:border-box;}
+#list span{display:block;color:#1e1e1e;font-size:0.9375em;}
+#list img{margin-bottom:5px;}
+#list .bor{border-bottom:1px solid #aaaaaa;}
+#list .nob{border:0px;}
+
+
+
+
+
+
+

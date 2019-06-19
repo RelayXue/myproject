@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="tj_BaseDatadictionary">
+
+    <resultMap id="re_BaseDatadictionary" class="com.gh.entity.BaseDatadictionary">
+        <result property="fuid" column="FUID"/>
+        <result property="fullname" column="FULLNAME"/>
+        <result property="code" column="CODE"/>
+        <result property="sequence" column="SEQUENCE"/>
+        <result property="description" column="DESCRIPTION"/>
+        <result property="createdate" column="CREATEDATE"/>
+        <result property="modifydate" column="MODIFYDATE"/>
+        <result property="modifyuserrealname" column="MODIFYUSERREALNAME"/>
+    </resultMap>
+    
+    <!-- 用于select查询公用抽取的列 -->
+	<sql id="BaseDatadictionary.columns">
+	    <![CDATA[
+        FUID ,FULLNAME ,CODE ,SEQUENCE ,DESCRIPTION ,CREATEDATE ,MODIFYDATE ,MODIFYUSERREALNAME 
+	    ]]>
+	</sql>
+  
+	 <select id="selectByPrimaryKey" parameterClass="com.gh.entity.BaseDatadictionary" resultMap="re_BaseDatadictionary">
+	    SELECT <include refid="BaseDatadictionary.columns"/>
+	    from base_datadictionary
+	    where 
+		        FUID = #fuid:VARCHAR# 
+ 	 </select>
+ 	 
+	<delete id="deleteByPrimaryKey" parameterClass="com.gh.entity.BaseDatadictionary">
+	    delete from base_datadictionary
+    	where 
+		        FUID = #fuid:VARCHAR# 
+	  </delete>
+	  
+	
+  
+  
+   <insert id="insert" parameterClass="com.gh.entity.BaseDatadictionary">
+	        insert into base_datadictionary (  FUID ,   FULLNAME ,   CODE ,   SEQUENCE ,   DESCRIPTION ,   CREATEDATE ,   MODIFYDATE ,   MODIFYUSERREALNAME   )
+   	 	values ( #fuid:VARCHAR# ,  #fullname:VARCHAR# ,  #code:VARCHAR# ,  #sequence:DOUBLE# ,  #description:LONGVARCHAR# ,  #createdate:TIMESTAMP# ,  #modifydate:TIMESTAMP# ,  #modifyuserrealname:VARCHAR#  )
+   	
+  </insert>
+ 	
+ 	
+ 	<update id="updateByPrimaryKey" parameterClass="com.gh.entity.BaseDatadictionary">
+   	UPDATE base_datadictionary SET
+	        FULLNAME = #fullname:VARCHAR# ,
+	        CODE = #code:VARCHAR# ,
+	        SEQUENCE = #sequence:DOUBLE# ,
+	        DESCRIPTION = #description:LONGVARCHAR# ,
+	        CREATEDATE = #createdate:TIMESTAMP# ,
+	        MODIFYDATE = #modifydate:TIMESTAMP# ,
+	        MODIFYUSERREALNAME = #modifyuserrealname:VARCHAR# 
+        WHERE 
+	        FUID = #fuid:VARCHAR# 
+  </update>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterClass="com.gh.entity.BaseDatadictionary">
+  	  update base_datadictionary
+  	  <dynamic prepend="set">
+  	   <isNotNull prepend="," property="fuid">
+  	 	  FUID = #fuid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="fullname">
+  	 	  FULLNAME = #fullname:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="code">
+  	 	  CODE = #code:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="sequence">
+  	 	  SEQUENCE = #sequence:DOUBLE#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="description">
+  	 	  DESCRIPTION = #description:LONGVARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createdate">
+  	 	  CREATEDATE = #createdate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="modifydate">
+  	 	  MODIFYDATE = #modifydate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="modifyuserrealname">
+  	 	  MODIFYUSERREALNAME = #modifyuserrealname:VARCHAR#
+  	  </isNotNull>
+     </dynamic>
+    where FUID = #fuid:VARCHAR# 
+  </update>
+  
+   <select id="execSql" parameterClass="string" resultMap="re_BaseDatadictionary"><![CDATA[$sql$]]></select>
+   
+    <select id="execSqlObject" parameterClass="string" resultClass="java.lang.Object"><![CDATA[$sql$]]></select>
+</sqlMap>
+

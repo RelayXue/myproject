@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="tj_BuPersonnel">
+
+    <resultMap id="re_BuPersonnel" class="com.gh.entity.BuPersonnel">
+        <result property="fuid" column="FUID"/>
+        <result property="type" column="TYPE"/>
+        <result property="description" column="DESCRIPTION"/>
+        <result property="deletemark" column="DELETEMARK"/>
+        <result property="realname" column="REALNAME"/>
+        <result property="username" column="USERNAME"/>
+        <result property="sex" column="SEX"/>
+        <result property="mobile" column="MOBILE"/>
+        <result property="userpassword" column="USERPASSWORD"/>
+        <result property="useronline" column="USERONLINE"/>
+        <result property="fx" column="FX"/>
+        <result property="fy" column="FY"/>
+        <result property="createdate" column="CREATEDATE"/>
+        <result property="modifydate" column="MODIFYDATE"/>
+        <result property="intime" column="INTIME"/>
+    </resultMap>
+    
+    <!-- 用于select查询公用抽取的列 -->
+	<sql id="BuPersonnel.columns">
+	    <![CDATA[
+        FUID ,TYPE ,DESCRIPTION ,DELETEMARK ,REALNAME ,USERNAME ,SEX ,MOBILE ,USERPASSWORD ,USERONLINE ,FX ,FY ,CREATEDATE ,MODIFYDATE ,INTIME 
+	    ]]>
+	</sql>
+  
+	 <select id="selectByPrimaryKey" parameterClass="com.gh.entity.BuPersonnel" resultMap="re_BuPersonnel">
+	    SELECT <include refid="BuPersonnel.columns"/>
+	    from bu_personnel
+	    where 
+		        FUID = #fuid:VARCHAR# 
+ 	 </select>
+ 	 
+	<delete id="deleteByPrimaryKey" parameterClass="com.gh.entity.BuPersonnel">
+	    delete from bu_personnel
+    	where 
+		        FUID = #fuid:VARCHAR# 
+  </delete>
+  
+  	<delete id="deleteByWhere" parameterClass="java.lang.String">
+	    delete from bu_personnel
+    	where 
+		      $swhere$
+	  </delete>
+  
+   <insert id="insert" parameterClass="com.gh.entity.BuPersonnel">
+	        insert into bu_personnel (  FUID ,   TYPE ,   DESCRIPTION ,   DELETEMARK ,   REALNAME ,   USERNAME ,   SEX ,   MOBILE ,   USERPASSWORD ,   USERONLINE ,   FX ,   FY ,   CREATEDATE ,   MODIFYDATE ,   INTIME   )
+   	 	values ( #fuid:VARCHAR# ,  #type:VARCHAR# ,  #description:VARCHAR# ,  #deletemark:VARCHAR# ,  #realname:VARCHAR# ,  #username:VARCHAR# ,  #sex:VARCHAR# ,  #mobile:VARCHAR# ,  #userpassword:VARCHAR# ,  #useronline:VARCHAR# ,  #fx:DECIMAL# ,  #fy:DECIMAL# ,  #createdate:TIMESTAMP# ,  #modifydate:TIMESTAMP# ,  #intime:TIMESTAMP#  )
+   	
+  </insert>
+ 	
+ 	
+ 	<update id="updateByPrimaryKey" parameterClass="com.gh.entity.BuPersonnel">
+   	UPDATE bu_personnel SET
+	        TYPE = #type:VARCHAR# ,
+	        DESCRIPTION = #description:VARCHAR# ,
+	        DELETEMARK = #deletemark:VARCHAR# ,
+	        REALNAME = #realname:VARCHAR# ,
+	        USERNAME = #username:VARCHAR# ,
+	        SEX = #sex:VARCHAR# ,
+	        MOBILE = #mobile:VARCHAR# ,
+	        USERPASSWORD = #userpassword:VARCHAR# ,
+	        USERONLINE = #useronline:VARCHAR# ,
+	        FX = #fx:DECIMAL# ,
+	        FY = #fy:DECIMAL# ,
+	        CREATEDATE = #createdate:TIMESTAMP# ,
+	        MODIFYDATE = #modifydate:TIMESTAMP# ,
+	        INTIME = #intime:TIMESTAMP# 
+        WHERE 
+	        FUID = #fuid:VARCHAR# 
+  </update>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterClass="com.gh.entity.BuPersonnel">
+  	  update bu_personnel
+  	  <dynamic prepend="set">
+  	   <isNotNull prepend="," property="fuid">
+  	 	  FUID = #fuid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="type">
+  	 	  TYPE = #type:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="description">
+  	 	  DESCRIPTION = #description:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="deletemark">
+  	 	  DELETEMARK = #deletemark:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="realname">
+  	 	  REALNAME = #realname:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="username">
+  	 	  USERNAME = #username:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="sex">
+  	 	  SEX = #sex:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="mobile">
+  	 	  MOBILE = #mobile:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="userpassword">
+  	 	  USERPASSWORD = #userpassword:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="useronline">
+  	 	  USERONLINE = #useronline:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="fx">
+  	 	  FX = #fx:DECIMAL#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="fy">
+  	 	  FY = #fy:DECIMAL#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="createdate">
+  	 	  CREATEDATE = #createdate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="modifydate">
+  	 	  MODIFYDATE = #modifydate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="intime">
+  	 	  INTIME = #intime:TIMESTAMP#
+  	  </isNotNull>
+     </dynamic>
+    where FUID = #fuid:VARCHAR# 
+  </update>
+  
+   <select id="execSql" parameterClass="string" resultMap="re_BuPersonnel"><![CDATA[$sql$]]></select>
+   
+    <select id="execSqlObject" parameterClass="string" resultClass="java.lang.Object"><![CDATA[$sql$]]></select>
+</sqlMap>
+

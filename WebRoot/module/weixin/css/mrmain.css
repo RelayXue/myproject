@@ -1,0 +1,70 @@
+﻿
+body
+{
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    background-color: #ded8cb;
+}
+.main
+{
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+}
+.main .item
+{
+    height: 120px;
+    background-color: #f4e4c4;
+    border: 1px solid #a0957f;
+    margin-bottom:8px;
+
+}
+.main .item .content .bt
+{
+    font-size:16pt;
+}
+.main .item .content .nr
+{
+    font-size:14pt;
+}
+.main .item .content
+{ 
+   margin-top:10px;
+   margin-left:107px;
+}
+.main .item .pic
+{
+    width: 97px;
+    height: 97px;
+    padding: 11px 11px 11px 11px;
+    float:left;
+}
+.main .item img
+{
+    width: 97px;
+    height: 97px;
+}
+
+
+
+
+a:link
+{
+    color: #000000;
+    text-decoration: none;
+}
+a:visited
+{
+    color: #000000;
+    text-decoration: none;
+}
+a:hover
+{
+    color: #7d7b77;
+    text-decoration: none;
+}
+a:active
+{
+    color: #000000; 
+    text-decoration: none;
+}

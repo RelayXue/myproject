@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="z_weixin" namespace="/" extends="struts-default">
+		<!-- 第一个活动  旅店投票活动-->
+		<action name="accommodation" class="com.gh.action.weixin.AccommodationAction">
+			<result name="accommodationShow" type="redirectAction">
+				<param name="actionName">accommodation!getWeiXinId</param>
+			</result>
+			<result name="Jump">module/weixin/HomePage.jsp</result>
+			<result name="PagingPage">module/weixin/AccommodationPage.jsp</result>
+			<result name="Paging">module/weixin/Accommodeation.jsp</result>
+			
+			<!-- 投票分页 -->
+			<result name="getWeiXinId" type="redirectAction">
+				<param name="actionName">accommodation!Vote?weixinid=${weixinid}</param>
+			</result>
+			<result name="Votepage">module/weixin/AccommodationPage_Vote.jsp</result>
+			<result name="Vote">module/weixin/Accommodeation_Vote.jsp</result>
+			<result name="goReward">module/weixin/LuckDraw_Accommodation.jsp</result>
+			<result name="excessive">module/weixin/jiangpin.jsp</result>
+			<!-- 查询详情 -->
+			<result name="selectById">module/weixin/AccommodeationXiangQing.jsp</result>
+			<!-- 后台维护 -->
+			<result name="selectByPage">module/weixin/AccommodeationBackstage.jsp</result>
+			<result name="updateById">module/weixin/updateAccommodation.jsp</result>
+			<result name="SetUpVoteList">module/weixin/AccommodationBackstage.jsp</result>
+			<result name="show" type="redirectAction">
+				<param name="actionName">accommodation!selectByPage</param>
+			</result>
+			<!-- 投票的后台功能 -->
+			<result name="listReward">/module/weixin/Reward.jsp</result>
+			<result name="rule">/module/weixin/VotingRecordRule.jsp</result>
+			<result name="VotingRecord">/module/weixin/HotelVotingRecord.jsp</result>
+			<result name="isReceive" type="redirectAction">
+				<param name="actionName">accommodation!listReward</param>
+			</result>
+			<result name="setVote" type="redirectAction">
+				<param name="actionName">accommodation!SetUpVoteList</param>
+			</result>
+		</action>
+		<!-- 我为乌镇拍封面 -->
+		<action name="Photography" class="com.gh.action.weixin.A2016_1_characterworks">
+			<!-- 活动 -->
+			<result name="NotOpenActivity">/Photography/NotStart.jsp</result>
+			<result name="UploadPictures">/Photography/UploadPictures.jsp</result>
+			<result name="worksData">/Photography/worksData.jsp</result>
+			<result name="worksPage">/Photography/worksPage.jsp</result>
+			<result name="worksDetails">/Photography/worksDetails.jsp</result>
+			<result name="QRcode">/Photography/QRcode.jsp</result>
+			<result name="ranking">/Photography/ranking.jsp</result>
+			<!-- 展示作品 -->
+			<result name="saveWorks" type="redirectAction">
+				<param name="actionName">Photography!exhibitionWorks?operation=${operation}&amp;type=${type}</param>
+			</result>
+			<result name="vote">/Photography/tiaozhuan.jsp</result>
+			<result name="getWeixinid" type="redirectAction">
+				<param name="actionName">Photography!getWeiXinId</param>
+			</result>
+		</action>
+		
+		<!-- 第二个活动  诗歌挑战大赛-->
+		<action name="poetryChallenge" method="list" class="com.gh.action.weixin.A2016_2_PoetryChallenge">
+			<result name="list">/activity/two/list.jsp</result>
+			<result name="add">/activity/two/addOrUpdate.jsp</result>
+			<result name="addOrUpdate" type="redirectAction">
+				<param name="actionName">poetryChallenge</param>
+			</result>
+			
+			<!-- phone -->
+			<result name="QRcode">/Photography/QRcode.jsp</result>
+			<result name="getWeixin">/activity/two/getWeixin.jsp</result>
+			<result name="error" type="redirectAction">
+				<param name="actionName">poetryChallenge!homePage</param>
+			</result>
+			<result name="homePage">/activity/two/index.jsp</result>
+			<result name="answer">/activity/two/answer.jsp</result>
+			
+			<result name="All">/activity/two/all.jsp</result>
+			<result name="Year">/activity/two/year.jsp</result>
+			<result name="No">/activity/two/no.jsp</result>
+			
+			<result name="receive">/activity/two/receive.jsp</result>
+		</action>
+	</package>
+	
+	
+	<package name="activity" namespace="/2017" extends="struts-default">
+		<!-- 第一个 -->
+		<action name="one" class="com.gh.action.weixin.A2017_1_Action">
+			<!-- 后台——路、桥基础信息 -->
+			<result name="list">/activity/2017-1/list.jsp</result>
+			<result name="edit">/activity/2017-1/edit.jsp</result>
+			<result name="addOrEdit" type="redirectAction">
+				<param name="actionName">one!list</param>
+			</result>
+			
+			<!-- 后台——参与人员数据 -->
+			<result name="listPeople">/activity/2017-1/listPeople.jsp</result>
+			<result name="updateIswing" type="redirectAction">
+				<param name="actionName">one!listPeople</param>
+				<param name="totalPage">${totalPage}</param>
+				<param name="indexPage">${indexPage}</param>
+				<param name="pageSize">${pageSize}</param>
+			</result>
+			
+			<!-- 微信端 -->
+			<result name="success" type="redirectAction">
+				<param name="actionName">one!listRoad</param>
+			</result>
+			<result name="listRoad">/activity/2017-1/listRoad.jsp</result>
+			<result name="rename">/activity/2017-1/rename.jsp</result>
+			
+			
+			
+			<result name="QRcode">/activity/2017-1/QRcode.jsp</result>
+		</action>
+	</package>
+</struts>

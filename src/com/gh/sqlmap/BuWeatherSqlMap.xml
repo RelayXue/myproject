@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="tj_BuWeather">
+
+    <resultMap id="re_BuWeather" class="com.gh.entity.BuWeather">
+        <result property="fuid" column="FUID"/>
+        <result property="carwash" column="CARWASH"/>
+        <result property="carwashindex" column="CARWASHINDEX"/>
+        <result property="dressingst" column="DRESSINGST"/>
+        <result property="dressing" column="DRESSING"/>
+        <result property="traveling" column="TRAVELING"/>
+        <result property="travelingst" column="TRAVELINGST"/>
+        <result property="movement" column="MOVEMENT"/>
+        <result property="movementst" column="MOVEMENTST"/>
+        <result property="cold" column="COLD"/>
+        <result property="coldst" column="COLDST"/>
+        <result property="ultravioletrays" column="ULTRAVIOLETRAYS"/>
+        <result property="ultravioletraysst" column="ULTRAVIOLETRAYSST"/>
+        <result property="allergy" column="ALLERGY"/>
+        <result property="clothes" column="CLOTHES"/>
+        <result property="comfort" column="COMFORT"/>
+        <result property="windpower" column="WINDPOWER"/>
+        <result property="wind" column="WIND"/>
+        <result property="week" column="WEEK"/>
+        <result property="calendar" column="CALENDAR"/>
+        <result property="time" column="TIME"/>
+        <result property="temperaturenow" column="TEMPERATURENOW"/>
+        <result property="temperature" column="TEMPERATURE"/>
+        <result property="image" column="IMAGE"/>
+        <result property="changes" column="CHANGES"/>
+        <result property="description" column="DESCRIPTION"/>
+        <result property="modifydate" column="MODIFYDATE"/>
+        <result property="type" column="TYPE"/>
+    </resultMap>
+    
+    <!-- 用于select查询公用抽取的列 -->
+	<sql id="BuWeather.columns">
+	    <![CDATA[
+        FUID ,CARWASH ,CARWASHINDEX ,DRESSINGST ,DRESSING ,TRAVELING ,TRAVELINGST ,MOVEMENT ,MOVEMENTST ,COLD ,COLDST ,ULTRAVIOLETRAYS ,ULTRAVIOLETRAYSST ,ALLERGY ,CLOTHES ,COMFORT ,WINDPOWER ,WIND ,WEEK ,CALENDAR ,TIME ,TEMPERATURENOW ,TEMPERATURE ,IMAGE ,CHANGES ,DESCRIPTION ,MODIFYDATE ,TYPE 
+	    ]]>
+	</sql>
+  
+	 <select id="selectByPrimaryKey" parameterClass="com.gh.entity.BuWeather" resultMap="re_BuWeather">
+	    SELECT <include refid="BuWeather.columns"/>
+	    from bu_weather
+	    where 
+		        FUID = #fuid:VARCHAR# 
+ 	 </select>
+ 	 
+	<delete id="deleteByPrimaryKey" parameterClass="com.gh.entity.BuWeather">
+	    delete from bu_weather
+    	where 
+		        FUID = #fuid:VARCHAR# 
+  </delete>
+  
+  	<delete id="deleteByWhere" parameterClass="java.lang.String">
+	    delete from bu_weather
+    	where 
+		      $swhere$
+	  </delete>
+  
+   <insert id="insert" parameterClass="com.gh.entity.BuWeather">
+	        insert into bu_weather (  FUID ,   CARWASH ,   CARWASHINDEX ,   DRESSINGST ,   DRESSING ,   TRAVELING ,   TRAVELINGST ,   MOVEMENT ,   MOVEMENTST ,   COLD ,   COLDST ,   ULTRAVIOLETRAYS ,   ULTRAVIOLETRAYSST ,   ALLERGY ,   CLOTHES ,   COMFORT ,   WINDPOWER ,   WIND ,   WEEK ,   CALENDAR ,   TIME ,   TEMPERATURENOW ,   TEMPERATURE ,   IMAGE ,   CHANGES ,   DESCRIPTION ,   MODIFYDATE ,   TYPE   )
+   	 	values ( #fuid:VARCHAR# ,  #carwash:VARCHAR# ,  #carwashindex:VARCHAR# ,  #dressingst:VARCHAR# ,  #dressing:VARCHAR# ,  #traveling:VARCHAR# ,  #travelingst:VARCHAR# ,  #movement:VARCHAR# ,  #movementst:VARCHAR# ,  #cold:VARCHAR# ,  #coldst:VARCHAR# ,  #ultravioletrays:VARCHAR# ,  #ultravioletraysst:VARCHAR# ,  #allergy:VARCHAR# ,  #clothes:VARCHAR# ,  #comfort:VARCHAR# ,  #windpower:VARCHAR# ,  #wind:VARCHAR# ,  #week:VARCHAR# ,  #calendar:VARCHAR# ,  #time:VARCHAR# ,  #temperaturenow:VARCHAR# ,  #temperature:VARCHAR# ,  #image:VARCHAR# ,  #changes:VARCHAR# ,  #description:VARCHAR# ,  #modifydate:TIMESTAMP# ,  #type:INTEGER#  )
+   	
+  </insert>
+ 	
+ 	
+ 	<update id="updateByPrimaryKey" parameterClass="com.gh.entity.BuWeather">
+   	UPDATE bu_weather SET
+	        CARWASH = #carwash:VARCHAR# ,
+	        CARWASHINDEX = #carwashindex:VARCHAR# ,
+	        DRESSINGST = #dressingst:VARCHAR# ,
+	        DRESSING = #dressing:VARCHAR# ,
+	        TRAVELING = #traveling:VARCHAR# ,
+	        TRAVELINGST = #travelingst:VARCHAR# ,
+	        MOVEMENT = #movement:VARCHAR# ,
+	        MOVEMENTST = #movementst:VARCHAR# ,
+	        COLD = #cold:VARCHAR# ,
+	        COLDST = #coldst:VARCHAR# ,
+	        ULTRAVIOLETRAYS = #ultravioletrays:VARCHAR# ,
+	        ULTRAVIOLETRAYSST = #ultravioletraysst:VARCHAR# ,
+	        ALLERGY = #allergy:VARCHAR# ,
+	        CLOTHES = #clothes:VARCHAR# ,
+	        COMFORT = #comfort:VARCHAR# ,
+	        WINDPOWER = #windpower:VARCHAR# ,
+	        WIND = #wind:VARCHAR# ,
+	        WEEK = #week:VARCHAR# ,
+	        CALENDAR = #calendar:VARCHAR# ,
+	        TIME = #time:VARCHAR# ,
+	        TEMPERATURENOW = #temperaturenow:VARCHAR# ,
+	        TEMPERATURE = #temperature:VARCHAR# ,
+	        IMAGE = #image:VARCHAR# ,
+	        CHANGES = #changes:VARCHAR# ,
+	        DESCRIPTION = #description:VARCHAR# ,
+	        MODIFYDATE = #modifydate:TIMESTAMP# ,
+	        TYPE = #type:INTEGER# 
+        WHERE 
+	        FUID = #fuid:VARCHAR# 
+  </update>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterClass="com.gh.entity.BuWeather">
+  	  update bu_weather
+  	  <dynamic prepend="set">
+  	   <isNotNull prepend="," property="fuid">
+  	 	  FUID = #fuid:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="carwash">
+  	 	  CARWASH = #carwash:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="carwashindex">
+  	 	  CARWASHINDEX = #carwashindex:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="dressingst">
+  	 	  DRESSINGST = #dressingst:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="dressing">
+  	 	  DRESSING = #dressing:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="traveling">
+  	 	  TRAVELING = #traveling:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="travelingst">
+  	 	  TRAVELINGST = #travelingst:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="movement">
+  	 	  MOVEMENT = #movement:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="movementst">
+  	 	  MOVEMENTST = #movementst:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="cold">
+  	 	  COLD = #cold:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="coldst">
+  	 	  COLDST = #coldst:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="ultravioletrays">
+  	 	  ULTRAVIOLETRAYS = #ultravioletrays:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="ultravioletraysst">
+  	 	  ULTRAVIOLETRAYSST = #ultravioletraysst:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="allergy">
+  	 	  ALLERGY = #allergy:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="clothes">
+  	 	  CLOTHES = #clothes:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="comfort">
+  	 	  COMFORT = #comfort:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="windpower">
+  	 	  WINDPOWER = #windpower:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="wind">
+  	 	  WIND = #wind:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="week">
+  	 	  WEEK = #week:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="calendar">
+  	 	  CALENDAR = #calendar:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="time">
+  	 	  TIME = #time:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="temperaturenow">
+  	 	  TEMPERATURENOW = #temperaturenow:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="temperature">
+  	 	  TEMPERATURE = #temperature:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="image">
+  	 	  IMAGE = #image:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="changes">
+  	 	  CHANGES = #changes:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="description">
+  	 	  DESCRIPTION = #description:VARCHAR#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="modifydate">
+  	 	  MODIFYDATE = #modifydate:TIMESTAMP#
+  	  </isNotNull>
+  	   <isNotNull prepend="," property="type">
+  	 	  TYPE = #type:INTEGER#
+  	  </isNotNull>
+     </dynamic>
+    where FUID = #fuid:VARCHAR# 
+  </update>
+  
+   <select id="execSql" parameterClass="string" resultMap="re_BuWeather"><![CDATA[$sql$]]></select>
+   
+    <select id="execSqlObject" parameterClass="string" resultClass="java.lang.Object"><![CDATA[$sql$]]></select>
+</sqlMap>
+
